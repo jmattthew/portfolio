@@ -1,0 +1,330 @@
+HTML, BODY         {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	background-color: rgb(255, 233, 191);
+}
+
+HR                 {
+	display: none;
+}
+
+H1                 {
+	font-family: 'Roboto Slab', serif;
+	font-size: 32px;
+	color: black;
+	margin: 0px;
+	text-shadow: 2px 3px 0px rgba(0,0,0,0.22);
+}
+
+H2                 {
+	font-family: 'Roboto Slab', serif;
+	font-size: 22px;
+	color: black;
+	margin-top: 0px;
+}
+
+A                  {
+	color: black;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+A:visited          {
+	color: black;
+}
+
+A H2               {
+	text-decoration: underline;
+}
+
+P                  {
+	font-family: 'Arimo', Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+}
+
+P STRONG           {
+	color: rgb(100,100,100);
+	font-weight: 700;
+}
+
+#header            {
+	position: fixed;
+	top: 0px;
+	z-index: 1;
+	width: 100%;
+	background-color: rgb(255, 233, 191);
+}
+
+#header H1         {
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+
+#headSpace         {
+	height: 100px;
+}
+
+.section           {
+	background-repeat: repeat;
+	background-attachment: fixed;
+}
+
+.section H1        {
+	padding: 20px;
+}
+
+
+.projContainer     {
+	max-width: 1000px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	overflow: hidden; /* needed for intro effect */
+}
+
+.project           {
+	display: inline-block;
+	border: none;
+	width: 333px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.project DIV       {
+	margin: 20px;
+	padding: 20px;
+	background-color: white;
+	border-radius: 7px;
+}
+
+.project .slider   {
+	display: none;
+	position: relative;
+	float: left;
+	margin-left: 273px; 
+	box-shadow: none;
+	background-repeat: no-repeat;
+	text-align: center;
+}
+
+.project .slider SPAN {
+	font-size: 14px;
+	font-family: 'Arimo', Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 295px;
+	text-shadow: 0px 0px 8px rgb(255, 255, 255)
+}
+
+#sectionProduct    {
+	background-image: url(sequin_tile_product.jpg);
+	background-color: rgb(190,190,190);
+}
+
+#sectionProduct H1 {
+	background-color: rgb(255, 173, 0);
+}
+
+#sectionProduct .project DIV {
+	background-color: rgb(255, 233, 191);
+	border: 1px solid rgb(230, 193, 138);
+}
+
+#sectionProduct P  {
+}
+
+#sectionProduct STRONG {
+}
+
+
+#sectionUX         {
+	background-color: rgb(226, 226, 226);
+}
+
+#sectionUX H1      {
+	background-color: rgb(69, 158, 255);
+}
+
+#sectionUX .project DIV {
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(226, 226, 226);
+}
+
+#sectionUX P       {
+	color: rgb(100, 100, 100);
+}
+
+#sectionUX STRONG  {
+	color: rgb(50, 50, 50);
+}
+
+
+#sectionGraphic    {
+	background-image: url(sequin_tile_brown.jpg);
+	background-color: rgb(190,190,190);
+}
+
+#sectionGraphic H1 {
+	background-color: rgb(138, 92, 66);
+}
+
+#sectionGraphic .project DIV {
+	background-color: rgb(192, 156, 117);
+	border: 1px solid rgb(172, 136, 97);
+}
+
+#sectionGraphic  P {
+	color: rgb(65, 65, 65);
+}
+
+#sectionGraphic STRONG {
+	color: black;
+}
+
+
+#sectionBlog       {
+	background-color: rgb(255, 146, 74);
+}
+
+#sectionBlog H1    {
+	background-color: rgb(255, 102, 0);
+}
+
+#sectionBlog .project DIV {
+	background-color: rgb(255, 172, 116);
+	border: 1px solid rgb(255, 146, 74);
+}
+
+#sectionBlog P     {
+	color: rgb(88, 62, 47);
+}
+
+#sectionBlog STRONG {
+	color: black;
+}
+
+
+#sectionPhoto      {
+	background-image: url(sequin_tile_graphic.png);
+	background-color: rgb(190,190,190);
+}
+
+#sectionPhoto H1   {
+	background-color: rgb(104, 104, 104);
+}
+
+#sectionPhoto .project DIV {
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(131, 131, 131);
+}
+
+#sectionPhoto P    {
+	color: rgb(58, 58, 58);
+}
+
+#sectionPhoto STRONG {
+	color: black;
+}
+
+
+#sectionPersonal   {
+	background-color: rgb(78, 67, 56);
+}
+
+#sectionPersonal H1 {
+	background-color: rgb(177, 148, 111);
+}
+
+#sectionPersonal .project DIV {
+	background-color: rgb(177, 148, 111);
+	border: 1px solid rgb(78, 67, 56);
+}
+
+#sectionPersonal P {
+	color: rgb(27, 27, 27);
+}
+
+#sectionPersonal STRONG {
+	color: black;
+}
+
+
+#extension         {
+	background-image: url(RT_and_Twitch.png);
+}
+
+#smartWatch        {
+	background-image: url(smartWatch.jpg);
+}
+
+#couchsurfing      {
+	background-image: url(couchsurfing.jpg);
+}
+
+#rottenTomatoes    {
+	background-image: url(rottenTomatoes.jpg);
+}
+
+#wireframes      {
+	background-image: url(mobile_meetups.png);
+}
+
+#shsh              {
+	background-image: url(shsh.jpg);
+}
+
+#fermi             {
+	background-image: url(fermi.jpg);
+}
+
+#manual            {
+	background-image: url(manual.jpg);
+}
+
+#monsters          {
+	background-image: url(monsters.jpg);
+}
+
+#theAverage        {
+	background-image: url(theAverage.jpg);
+}
+
+#beingMediated     {
+	background-image: url(beingMediated.jpg);
+}
+
+#abstract          {
+	background-image: url(abstract.jpg);
+}
+
+#portraits         {
+	background-image: url(portraits.jpg);
+}
+
+#mural             {
+	background-image: url(mural.jpg);
+}
+
+#costume           {
+	background-image: url(costume.jpg);
+}
+
+#mashup            {
+	background-image: url(mashup.jpg);
+}
+
+#footer            {
+	margin-bottom: 40px;
+}
+
+#footer A          {
+	text-decoration: underline;
+}
+
+#footer A:hover    {
+	text-decoration: none;
+}

@@ -1,0 +1,136 @@
+HTML, BODY {
+	padding: 0px;
+	margin: 0px;
+	background: #FFF;
+	background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(204, 204, 204) 100%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: initial;
+	/* 
+	weirdly necessary because transform:scale seems to only visually scale the element, it retains it's height causing a long page    
+	*/	
+	overflow: hidden; 
+}
+
+#content {
+	width: 100%;
+}
+
+.panel {
+	float: left;
+	width: 50%;
+}
+
+.title {
+	font-family: 'Arimo', Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-size: 18px;
+	color: black;
+	text-align: center;
+	height: 50px; 
+	overflow: hidden;
+}
+
+.title P {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	margin: 0px;
+	padding: 0px; 
+}
+
+.phone {
+	clear: both;
+	background-image: url('iphone-5-frame.png');
+	background-size: 100%;
+}
+
+IFRAME {
+	position: relative;	
+	padding: 0px;
+	margin: 0px;
+	border: 0px; 
+	box-shadow: 0px 2px 2px 2px black;
+}
+
+#proto_screen {
+	background-color: rgb(255, 255, 255);
+}
+
+#rt_screen {
+	background-color: rgb(58, 148, 37);
+}
+
+#rt_shield, #proto_shield {
+	display: block;
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	border: 0px; 
+	width: 320px;
+	text-decoration: none;
+	font-family: 'Arimo', Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	color: black;
+	background-color: rgb(255, 255, 132);
+	opacity: 0;
+}
+
+#proto_shield {
+	width: 640px;
+	font-size: 52px;
+}
+
+#rt_shield P {
+	margin: 0px;
+	padding: 20px;
+}
+
+#proto_shield P {
+	margin: 0px;
+	padding: 40px;
+}
+
+#rt_shield DIV {
+	text-align: center; 
+	margin-top: 30px;
+}
+
+#proto_shield DIV {
+	text-align: center; 
+	margin-top: 60px;
+}
+
+#rt_shield DIV SPAN, #proto_shield DIV SPAN {
+	background-color: rgb(66, 226, 255);
+	border: 3px solid rgb(95, 171, 186);
+	border-radius: 9px;
+	padding: 10px 20px;
+	font-weight: 700;
+	box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+#proto_shield DIV SPAN {
+	border: 6px solid rgb(95, 171, 186);
+	border-radius: 18px;
+	padding: 20px 60px;
+	box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+#rt_home_button {
+	display: block;
+	position: relative;
+	background-color: rgba(62, 129, 9, 0.4);
+	border-radius: 100%
+}
+
+#prototype > DIV {
+	float: right;
+	margin-right: 10%; 
+}
+
+#live_site > DIV {
+	float: left;
+	margin-left: 10%; 
+}

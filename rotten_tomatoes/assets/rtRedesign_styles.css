@@ -1,0 +1,726 @@
+HTML, BODY {
+	padding: 0px;
+	margin: 0px;
+	background-color: #FFF;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: initial;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+
+
+
+/********************
+
+         TOP
+
+********************/
+
+#top {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 2;
+	box-shadow: 0px -100px 100px 100px rgba(0,0,0,0.5);
+	border-bottom: 1px solid rgb(162, 162, 162);
+	overflow: hidden;
+}
+
+#nav_logo {
+	display: block;
+	background-color: rgb(102, 195, 58);
+	padding: 8px 0px; 
+}
+
+#logo {
+	display: block;
+	margin: 0px auto;
+	background-image: url('rt_mobile_logo.png');
+	background-repeat: no-repeat;
+	width: 408px;
+	height: 55px;
+}
+
+#nav_list_type {
+	width: 100%;
+	display: table;
+	background-color: rgb(102, 195, 58);
+}
+
+#nav_list_type UL {
+	width: 100%;
+	display: table-row;
+}
+
+#nav_list_type LI {
+	display: table-cell;
+	vertical-align: middle;
+	width: 25%;
+	text-align: center;
+}
+
+#nav_list_type A {
+	display: block;
+	padding: 14px 0px;
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+	border-top: 1px solid rgb(127, 211, 81);
+	box-shadow: inset 0px -50px 50px -50px rgba(0, 0, 0, 0.1);
+}
+
+#nav_list_type A.even {
+	background-color: rgb(115, 203, 70);
+}
+
+#nav_list_type A.selected {
+	background-color: rgb(183, 249, 132);
+	color: rgb(78, 158, 59);
+	border-top: 1px solid rgb(183, 249, 132);
+	box-shadow: none;
+}
+
+#nav_list_type LI:last-child A {
+	padding: 30px 0px;
+}
+
+#nav_list_sort {
+	background-color: rgb(183, 249, 132);
+}
+
+#nav_list_sort UL {
+	display: block;
+	margin: 0px;
+	padding: 0px; 
+	list-style: none;
+	font-size: 0px;
+}
+
+#nav_list_sort LI {
+	display: inline-block;
+	padding: 12px 0px;
+}
+
+#nav_list_sort A {
+	display: block;
+	color: rgb(78, 158, 59);
+	background-color: rgb(222, 255, 199);
+	border-radius: 10px;
+	text-decoration: none;
+	font-size: 28px;
+	font-weight: bold;
+	padding: 8px 10px;
+	margin-left: 12px;
+	border: 1px solid rgba(102, 195, 58, 0.27);
+}
+
+#nav_sort_search {
+	background-image: url('icon_search.png');
+	background-size: 29px;
+	background-repeat: no-repeat;
+	background-position: 10px 9px;
+}
+
+#nav_sort_search:before {
+	content: '\00a0 \00a0 \00a0 \00a0 \00a0';
+}
+
+
+
+
+
+/********************
+
+        MIDDLE
+
+********************/
+
+#middle {
+	position: absolute;
+	top: 239px;
+	z-index: 0;
+	width: 100%;
+}
+
+#item_list {
+	background-color: white;
+	height: 100%;
+	overflow: auto;
+}
+
+#item_list UL {
+	display: block;
+	margin: 0px;
+	padding: 0px; 
+	list-style: none;
+	font-size: 0px;
+}
+
+#item_list LI {
+	display: inline-block;
+	width: 100%;
+	margin: 0px;
+	padding: 0px; 
+	border-bottom: 1px solid rgb(239, 239, 239);
+	overflow: hidden;
+}
+
+#item_list LI.selected {
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.38);
+	position: relative;
+}
+
+#item_list LI.selected .list_item_title {
+	font-size: 36px;
+	padding-left: 9px;
+}
+
+#item_list LI.empty {
+	border-bottom: 1px solid rgba(102, 195, 58, 0.5);
+}
+
+#item_list LI.empty A {
+	box-shadow: inset 0px 0px 0px 33px rgba(102, 195, 58, 0.4)
+}
+
+#item_list A {
+	display: block;
+	color: rgb(73, 73, 73);
+	text-decoration: none;
+	white-space: nowrap;
+	background-color: white;
+	padding: 0px;
+}
+
+#item_list A.even {
+	background-color: rgb(244, 244, 244);
+}
+
+.list_item_score {
+	display: inline-block;
+	background-image: url('tomoto_meter_sprite.png');
+	background-repeat: no-repeat;
+	background-size: 84px;
+	width: 27px;
+	height: 30px;
+	margin-left: 15px;
+	font-size: 28px;
+}
+
+#item_list LI.selected .list_item_score {
+	height: 33px;
+	background-size: 95px;
+	width: 33px;
+}
+
+#item_list DIV.fresh {
+
+}
+
+#item_list DIV.splat {
+	background-position: -31px 3px;
+}
+
+.list_item_title {
+	display: inline-block;
+	padding: 15px 0px 15px 15px;
+	font-size: 28px;
+}
+
+#item_list_pointer {
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translateY(-50%) translateX(-100%);
+	-webkit-transform: translateY(-50%) translateX(-100%);
+}
+#pointer {
+	border-style: solid;
+	border-width: 50px 50px 50px 0;
+	border-color: transparent rgba(183, 249, 132, 1) transparent transparent
+}
+
+#pointer_edge {
+	border-style: solid;
+	border-width: 62px 62px 62px 0;
+	border-color: transparent rgba(51, 160, 0, 0.5) transparent transparent;
+	margin-bottom: -111px;
+}
+
+
+
+
+
+/********************
+
+    MIDDLE - MORE
+
+********************/
+
+
+#section_more {
+	background-color: white;
+	height: 100%;
+	width: 0%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	box-shadow: -15px 0px 10px 10px rgba(102, 195, 58, 0.36);
+	display: none;
+	overflow: auto;
+}
+
+#people_celebs {
+	width: 75%;	
+	color: rgb(65, 65, 65);
+}
+
+#people_celebs > DIV {
+	padding: 30px;
+}
+
+#people_celebs IMG {
+	width: 245px;
+	height: 245px;
+	float: left;
+	margin-right: 30px;
+	border: 1px solid rgb(133, 133, 133);
+	background: radial-gradient(ellipse at center, rgb(255, 255, 255) 50%,rgb(233, 233, 233) 100%);
+}
+
+#people_celebs P {
+	margin: 0px;
+	margin-bottom: 28px;
+}
+
+#people_celebs SPAN.fresh {
+	background-image: url('tomoto_meter_sprite.png');
+	background-size: 84px;
+	display: block;
+	float: left;
+	width: 28px;
+	height: 28px;
+	margin-right: 10px;
+	background-position: 0px 0px;
+}
+
+#people_celebs SPAN.splat {
+	background-image: url('tomoto_meter_sprite.png');
+	background-size: 84px;
+	display: block;
+	float: left;
+	width: 28px;
+	height: 28px;
+	margin-right: 10px;
+	background-position: -28px 0px;
+}
+
+#people_celebs A {
+	text-decoration: none;
+	color: rgb(102, 195, 58);
+	font-weight: bold;
+}
+
+#nav_more {
+	position: absolute;
+	width: 0%;
+	z-index: 2;
+	right: 0px;
+	background-color: rgb(183, 249, 132);
+	overflow: hidden;
+	display: none;
+	box-shadow: -30px 0px 30px -15px rgba(0, 0, 0, 0.2);
+	border-left: 1px solid rgb(178, 204, 165);
+}
+
+#nav_more UL {
+	margin: 0px;
+	padding: 0px;
+	height: 100%
+}
+
+#nav_more LI {
+	margin:	0px;
+	padding: 0px; 
+	display: block;
+	list-style: none;
+	text-align: center;
+	height: 14%;
+	border-top: 1px solid rgb(169, 240, 119);
+}
+
+#nav_more LI:first-child {
+	height: 2%;
+	border-top: 0px;
+}
+
+#nav_more .even {
+	background-color: rgb(174, 242, 123);
+}
+
+#nav_more A {
+	text-decoration: none;
+	font-weight: bold;
+	color: rgb(78, 158, 59);
+	display: block;
+	position: relative;
+	height: 100%;
+}
+
+#nav_more A.selected {
+	background-color: rgb(102, 195, 58);
+	color: black;
+}
+
+#nav_more SPAN {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	-webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+/********************
+
+    BOTTOM - ITEMS
+
+********************/
+
+#bottom {
+	box-shadow: 0px 100px 100px 100px rgba(0,0,0,0.5);
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	border-top: 1px solid rgb(191, 191, 191)
+}
+
+#item_score_sort {
+	background-color: rgb(183, 249, 132);
+	position: relative;
+	z-index: 2;
+	box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.2);
+	border-bottom: 1px solid rgb(191, 191, 191)
+}
+
+#item_score_sort UL {
+	display: block;
+	margin: 0px;
+	padding: 0px; 
+	list-style: none;
+	font-size: 0px;
+}
+
+#item_score_sort LI {
+	display: inline-block;
+	padding: 12px 0px;
+}
+
+#item_score_sort A {
+	display: block;
+	color: rgb(78, 158, 59);
+	background-color: rgb(222, 255, 199);
+	border-radius: 10px;
+	text-decoration: none;
+	font-size: 28px;
+	font-weight: bold;
+	padding: 8px 10px;
+	margin-left: 12px;
+	border: 1px solid rgba(102, 195, 58, 0.27);
+}
+
+#item_info_container {
+	width: 100%;
+	height: 275px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	position: relative;
+	z-index: 0;
+	background-color: white;
+}
+
+#item_info_container > DIV {
+	font-size: 0px;
+	white-space: nowrap;
+}
+
+#item_info_container > DIV > DIV {
+	display: inline-block;
+	height: 275px;
+	overflow: hidden;
+}
+
+.item_poster {
+	width: 180px;
+}
+
+.item_meter {
+	width: 160px;	
+}
+
+.item_meter > DIV {
+	float: left;
+}
+
+.tomato_meter {
+	height: 200px;
+	margin-left: 20px;
+	background-image: url('tomoto_meter_sprite.png');
+	background-repeat: no-repeat;
+	background-size: 375px 125px;
+	background-position: 0px 15px;
+	width: 125px;
+	height: 148px;
+	font-size: 0px;
+}
+
+.item_meter .certified {
+	background-position: -250px 15px;
+}
+
+.item_meter .splat {
+	background-position: -125px 15px;
+}
+
+.tomato_score {
+	color: rgb(39, 118, 20);
+	font-size: 58px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center; 
+	margin-bottom: 3px;
+}
+
+.tomato_stats {
+	font-size: 16px;
+	color: rgb(83, 83, 83);
+	text-align: center;
+	width: 100%;
+}
+
+.item_stars {
+	width: 47px;
+	margin-right: 10px;
+	background-image: url('distribution_bg.png');
+}
+
+.item_stars_average {
+	width: 100%;
+	height: 100%;
+	margin-top: 20px;
+	background-position: 0px -20px;
+	background-image: url('stars.png');
+	background-repeat: no-repeat;
+}
+
+.item_distribution {
+	width: 47px;
+	margin-right: 10px;
+	background-image: url('distribution_bg.png');
+}
+
+.item_distribution_fake {
+	width: 100%;
+	height: 100%;
+	background-image: url('distribution_fake.png');
+	background-repeat: no-repeat;
+}
+
+.item_consensus, .item_plot {
+	border-right: 1px solid rgb(226, 226, 226);
+}
+
+.item_consensus, .item_plot, .item_details {
+	width: 630px;
+	margin-right: 10px;
+	white-space: normal;
+}
+
+.item_consensus > DIV, .item_plot > DIV, .item_details > DIV {
+	margin-left: 10px;
+	margin-top: 20px;
+	height: 238px;
+	overflow: hidden;
+}
+
+.item_consensus P, .item_plot P, .item_details P {
+	color: rgb(79, 79, 79);
+	font-size: 28px;
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
+.item_details {
+	width: 420px;	
+}
+
+.item_details A {
+	color: rgb(115, 160, 105);
+	text-decoration: none;
+	width: 420px;	
+}
+
+.item_plot {
+	width: 630px;	
+	margin-right: 0px !important;
+}
+
+#item_shadow_left {
+	width: 100px;
+	height: 275px;
+	position: absolute;
+	margin-top: -275px;
+	left: 0px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+#item_shadow_right {
+	width: 100px;
+	height: 275px;
+	position: absolute;
+	margin-top: -275px;
+	right: 0px;
+	background: linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+
+
+
+
+/********************
+
+   BOTTOM - REVIEWS
+
+********************/
+
+#reviews_container {
+	height: 0px;
+	overflow: hidden;
+}
+
+.review {
+	border-bottom: 1px solid rgb(239, 239, 239);
+	padding: 17px;
+	padding-bottom: 32px;
+	color: rgb(57, 57, 57);
+}
+
+#reviews_container .even {
+	background-color: rgb(244, 244, 244);
+}
+
+.review_critic {
+	font-size: 0px;
+}
+
+.critic_meter {
+	display: inline-block;
+	background-image: url('tomoto_meter_sprite.png');
+	background-repeat: no-repeat;
+	background-size: 84px;
+	width: 27px;
+	height: 30px;
+	margin-right: 15px;
+}
+
+.review_critic .splat {
+	background-position: -31px 3px;
+}
+
+A.critic_name {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 28px;
+	font-weight: bold;
+	color: rgb(115, 160, 105);
+}
+
+A.critic_link {
+	display: inline-block;
+	margin-left: 10px;
+	font-size: 28px;
+	font-weight: bold;
+	color: rgb(115, 160, 105);
+	text-decoration: none;
+}
+
+.review_blurb {
+	padding-top: 7px;
+}
+
+
+
+
+
+
+/********************
+
+     BOTTOM - NAV
+
+********************/
+
+#nav_item {
+	width: 100%;
+	display: table;
+	background-color: rgb(102, 195, 58);
+	position: relative;
+	z-index: 1;
+	box-shadow: 0px -10px 25px 0px rgba(0,0,0,0.2);
+	border-top: 1px solid rgb(171, 171, 171)
+}
+
+#nav_item UL {
+	width: 100%;
+	display: table-row;
+}
+
+#nav_item LI {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#nav_item A {
+	display: block;
+	padding: 14px 0px;
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+#nav_item A.even {
+	background-color: rgb(115, 203, 70);
+}
+
+#nav_item A.selected {
+	background-color: rgb(183, 249, 132);
+	color: rgb(78, 158, 59);
+}
+
+#nav_item LI:last-child {
+	width: 55px;
+}
+
+#nav_item LI:last-child A {
+	background-image: url('icon_pin.png');
+	background-repeat: no-repeat;
+	background-position: 23px 13px;
+	background-size: 20px 42.5px;
+}
+
+#nav_item LI:last-child A {
+	border-right: 0px;
+}
+
+
+
+
+
+
+
+
+

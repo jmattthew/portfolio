@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+	// bust frame 
+	if(top != self) { top.location = location; }
+</script>
+
+<title>@Mattthew - Rotten Tomatoes Mobile Redesign</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="../assets/modernizr.2.8.3-custom-build.js"></script>
+<script type="text/javascript">
+	if(Modernizr.touch) {
+		window.location = 'rtRedesign.html';
+	}
+</script>
+<script src="assets/script.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="assets/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="content">
+	<div id="prototype" class="panel">
+		<div class="title"><p>Redesigned Mobile App</p></div>
+		<div class="phone">
+			<iframe id="proto_screen" class="screen" src="rtRedesign.html"></iframe>
+			<a href="#" id="proto_shield">
+				<p>This prototype is a fully functional.  Please scroll and click anywhere!</p>
+				<p>Compare UX and style with RT's live mobile app to the right.  Try it on your mobile phone.</p>
+				<div><span>Continue to App</span></div>
+			</a>
+		</div>
+	</div>
+	<div id="live_site" class="panel">
+		<div class="title"><p>Rotten Tomatoes Mobile App</p></div>
+		<div class="phone">
+			<a href="#" id="rt_home_button"></a>
+			<iframe id="rt_screen" class="screen" src="https://www.rottentomatoes.com/mobile"></iframe>
+			<a href="#" id="rt_shield">
+				<p>Note:  This is RT's actual live app.  You can scroll, but if you click a movie title, you'll be taken away from my portfolio.</p>
+				<p>Instead, please click the green "home" button below this virtual screen to display the app's movie listing page.</p>
+				<div><span>Continue to App</span></div>
+			</a>
+		</div>		
+	</div>
+</div>
+
+</body>
+</html>

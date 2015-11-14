@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Rotten Tomatoes Redesign - Mobile</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+
+var aspect = 2.908 // constant:  aspect ratio of the slide
+var showingRedesign = true;
+
+$(document).ready(function() {
+
+	// change scroll style, scale slides 
+	function resize() {
+		var docWidth = $( window ).width();
+		var docHeight = $( window ).height();  
+		var y = Math.round(docHeight);
+		var x = Math.round(y * aspect);
+		console.log(x + ' ' + y)
+		$('.mock').css('height',y + 'px');
+		$('.mock').css('width',x + 'px');
+	}
+	
+	// call resize after browser window resizing has stopped
+    $( window ).resize(function() {
+		clearTimeout($.data(this, 'scrollTimer'));
+		$.data(this, 'scrollTimer', setTimeout(function() {
+			resize();
+		}, 500));
+	});
+	
+	// assign click function 
+	$('#container').click(function() {
+		if(showingRedesign) {
+			$('#redesign').css('display','none');	
+			$('#original').css('display','block');
+			$('#info').html('Showing current Rotten Tomatoes design. <br/>Click to see redesign by @mattthew.');
+			showingRedesign = false;
+		} else {
+			$('#redesign').css('display','block');	
+			$('#original').css('display','none');	
+			$('#info').html('Showing redesign by <a href="https://twitter.com/mattthew" target="_blank">@mattthew</a>. <br/>Click to see current Rotten Tomatoes design.');
+			showingRedesign = true;		
+		}
+		return false;
+	});
+
+	// GO!
+	resize();
+
+});
+
+</script>
+<style type="text/css">
+	BODY       { padding: 0px; margin: 0px; background-color: white; }
+	IMG        { border: none; }
+	#container { cursor: pointer; }
+	#original  { display: none; }
+	#info      { position: fixed; top: 0px; left: 0px; padding: 5px; background-color: black; color: white; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+	<div id="redesign">
+		<img class="mock" src="assets/Rotten-Tomatoes-Redesign-mobile-slides.jpg" />
+	</div>
+	<div id="original">
+		<img class="mock" src="assets/Rotten-Tomatoes-Original-mobile.jpg" />
+	</div>
+	<div id="info">
+		Showing redesign by <a href="https://twitter.com/mattthew" target="_blank">@mattthew</a>. <br/>Click to see current Rotten Tomatoes design.
+	</div>
+<div>
+
+</body>
+</html>

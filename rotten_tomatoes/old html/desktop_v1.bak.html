@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Rotten Tomatoes Redesign - Desktop</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+var showingOld = false;
+var currentGuide = 1;
+var centerX = 0;
+var centery = 0;
+
+// preset attributes of guide pop-ups
+var guides = new Array();
+var i = 0;
+
+guides[i] = new Object();
+guides[i].message = 'You\'re at the start.';
+guides[i].width = 155;
+guides[i].marginTop = -5292;
+guides[i].offsetX = 100;
+guides[i].pointerType = 'pointNone';
+guides[i].pointerOffsetX = 0;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'I\'d like to points out some things about this redesign.  Please click on this guide or use the arrows on your keyboard.';
+guides[i].width = 290;
+guides[i].marginTop = -5339;
+guides[i].offsetX = -170;
+guides[i].pointerType = 'pointNone';
+guides[i].pointerOffsetX = 0;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'Click the top bar at any time to switch between this redesign and the current Rotten Tomatoes website.';
+guides[i].width = 280;
+guides[i].marginTop = -5446;
+guides[i].offsetX = 0;
+guides[i].pointerType = 'pointUp';
+guides[i].pointerOffsetX = 18;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'Green and red are RT\'s recognizable brand colors.  The entire color scheme is simplified using shades of greens with red as an accent.';
+guides[i].width = 280;
+guides[i].marginTop = -5339;
+guides[i].offsetX = 0;
+guides[i].pointerType = 'pointNone';
+guides[i].pointerOffsetX = 0;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'This left column remains the same across every page.  The current site\'s expandable sections (e.g. "Opening", & "Top Box Office") are replaced with a single scrolling list and buttons to change how the list is "sorted" (e.g. by "New" or "Popular").';
+guides[i].width = 280;
+guides[i].marginTop = -5420;
+guides[i].offsetX = -70;
+guides[i].pointerType = 'pointLeft';
+guides[i].pointerOffsetX = -10;
+guides[i].pointerOffsetY = 63;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'Each film in the list still has an icon for "fresh" or not, which is the key reason for visiting RT.  Howvever, the freshness % is removed for simplicity and to incentivize clicking.  A user who wants to know the exact % will also want to know other details.';
+guides[i].width = 430;
+guides[i].marginTop = -5205;
+guides[i].offsetX = -241;
+guides[i].pointerType = 'pointLeft';
+guides[i].pointerOffsetX = -10;
+guides[i].pointerOffsetY = 63;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'When hovering over a title, it\'s highlighted as shown with a thumbnail of the poster.  This replaces the cluttered pop-up window used on the current website.  Rather than AJAX loading movie info into a pop-up window, the info is AJAX loaded into the center column when the user clicks.';
+guides[i].width = 310;
+guides[i].marginTop = -5280;
+guides[i].offsetX = -57;
+guides[i].pointerType = 'pointLeft';
+guides[i].pointerOffsetX = -10;
+guides[i].pointerOffsetY = 48;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'The rating summary for each film is RT\'s key value proposition.  Therefore, in this design, it is much more prominent and easy to read.  It also now includes a ratings distribution curve.';
+guides[i].width = 330;
+guides[i].marginTop = -5189;
+guides[i].offsetX = -97;
+guides[i].pointerType = 'pointUp';
+guides[i].pointerOffsetX = 155;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'A prominent call-to-action incentivizes users to rate movies.  Hovering in this area displays a short pitch explaining why the user should bother to rate movies. (not shown).';
+guides[i].width = 320;
+guides[i].marginTop = -5157;
+guides[i].offsetX = 0;
+guides[i].pointerType = 'pointUp';
+guides[i].pointerOffsetX = 179;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'RT\'s current edited set of "Top critics" is replaced with a dynamic set of "Your critics" that is unique to each user.  Every critic is ranked based on similarity to the user\'s own movie ratings.';
+guides[i].width = 350;
+guides[i].marginTop = -5397;
+guides[i].offsetX = 40;
+guides[i].pointerType = 'pointRight';
+guides[i].pointerOffsetX = 349;
+guides[i].pointerOffsetY = 38;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'The list of reviews is ranked by similarity to the user, and colored discs indicate the degree of similarity.  This right column also consolidates critic reviews, member reviews, and discussion posts.';
+guides[i].width = 300;
+guides[i].marginTop = -5359;
+guides[i].offsetX = 66;
+guides[i].pointerType = 'pointRight';
+guides[i].pointerOffsetX = 299;
+guides[i].pointerOffsetY = 38;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'Advertising space has been made more valuable.  The small-wide banner is moved to the top and won\'t scroll off-screen.  The large-wide banner and square banner have been replaced with interstitial ads (not shown).';
+guides[i].width = 500;
+guides[i].marginTop = -5446;
+guides[i].offsetX = 0;
+guides[i].pointerType = 'pointUp';
+guides[i].pointerOffsetX = 366;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 0;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'The parts of the webiste most important to users are now visible without scrolling.  The lower section of the page now contains the generic information about the film (e.g. cast list & external news links).';
+guides[i].width = 500;
+guides[i].marginTop = -4933;
+guides[i].offsetX = 0;
+guides[i].pointerType = 'pointDown';
+guides[i].pointerOffsetX = 240;
+guides[i].pointerOffsetY = -1;
+guides[i].pageScroll = 200;
+
+i++;
+guides[i] = new Object();
+guides[i].message = 'Thanks for reading! This guide will loop to the beginning.';
+guides[i].width = 400;
+guides[i].marginTop = -4874;
+guides[i].offsetX = 0;
+guides[i].pointerType = 'pointNone';
+guides[i].pointerOffsetX = 0;
+guides[i].pointerOffsetY = 0;
+guides[i].pageScroll = 200;
+
+
+
+
+
+
+$(document).ready(function() { 
+
+	// switch between mockup view and old site view
+	$('#switcher').click(function() {
+		// show & hide stuff
+		if(showingOld) {
+			$('#comparison').css('visibility','hidden');
+			$('#header').css('visibility','visible');
+			$('#switcher').css('background','none');
+			$('#guide').css('visibility','visible');
+			$('body').css('background-color','#E0E0E0');
+			// because old is much longer than redesign
+			if( $( window ).scrollTop() > 1000 ) { 
+				$('html, body').animate({
+					scrollTop: 1000
+				}, 500);
+			}
+			showingOld = false;
+		} else {
+			$('#comparison').css('visibility','visible');	
+			$('#header').css('visibility','hidden');
+			$('#switcher').css('background-color','rgba(0, 0, 0, 0.11)');
+			$('#guide').css('visibility','hidden');
+			$('body').css('background-color','rgb(177, 215, 254)');
+			showingOld = true;			
+		}
+		return false;
+	});
+
+	// assign click function to previous
+	$('#previousG').click(function() {
+		if(currentGuide>0) {
+			currentGuide--;
+			hideGuide();
+		}
+		return false;
+	});
+
+	// assign click function to next
+	$('#nextG').click(function() {
+		if(currentGuide < guides.length-1) {
+			currentGuide++;
+		} else {
+			currentGuide = 0;
+		}
+		hideGuide();
+		return false;
+	});
+
+	// assign function to left arrow
+	$( document ).keydown(function( event ) {
+		if ( event.which == 37 ) {
+			event.preventDefault();
+			if(currentGuide>0) {
+				currentGuide--;
+				hideGuide();
+			}
+		}
+	});
+
+	// assign function to right arrow
+	$( document ).keydown(function( event ) {
+		if ( event.which == 39 ) {
+			event.preventDefault();
+			if(currentGuide < guides.length-1) {
+				currentGuide++;
+			} else {
+				currentGuide = 0;
+			}
+			hideGuide();
+		}
+	});
+
+	// call resize after browser window resizing has stopped
+	$( window ).resize(function() { 
+		clearTimeout($.data(this, 'scrollTimer'));
+		$.data(this, 'scrollTimer', setTimeout(function() {
+			setCenter();
+			showGuide();
+		}, 500)); 
+	});
+
+	function setCenter() {
+		centerX = $( window ).width()/2;
+		centerY = $( window ).height()/2;
+	}
+	
+	function hideGuide() {
+		$('#guide').animate({
+			opacity: 0,
+		}, 250, function() {
+			showGuide();
+		});			
+	}
+
+	// reposition and set new attributes for guide pop-up
+	function showGuide() {
+		var g = guides[currentGuide];
+		var x = 0;
+		var y = 0;
+		x = centerX - Math.round(g.width/2);
+		x += g.offsetX;
+		$('#message DIV').html(g.message);
+
+		$('#guide').css('width',g.width + 'px');
+		$('#guide').css('margin-left',x + 'px');
+		$('#guide').css('margin-top',g.marginTop + 'px');
+
+		$('.guideNav').css('margin-left',x + 'px');
+		$('.guideNav').css('margin-top',g.marginTop + 'px');
+		x = Math.round(g.width/2);
+		$('.guideNav').css('width',x + 'px');
+
+		x = centerX - Math.round(g.width/2);
+		x += g.offsetX + $('#nextG').width();
+		$('#nextG').css('margin-left',x + 'px');
+
+		y = $('#guide').height();
+		$('.guideNav').css('height',y + 'px');
+
+		$('#pointer').removeClass();
+		$('#pointer').addClass(g.pointerType);
+		$('#pointer').css('margin-left',g.pointerOffsetX + 'px');
+		if(g.pointerType == 'pointUp' || g.pointerType == 'pointLeft' || g.pointerType == 'pointRight') {
+			y = ($('#guide').height() -1) * -1;
+			y += g.pointerOffsetY;
+			$('#pointer').css('margin-top',y + 'px');
+			y = y * -1;
+			$('#pointer').css('margin-bottom',y + 'px');
+		} else {
+			$('#pointer').css('margin-top','-1');
+			$('#pointer').css('margin-bottom','1');			
+		}
+
+		$('html, body').animate({
+			scrollTop: g.pageScroll
+		}, 500);
+	
+		$('#guide').animate({
+			opacity: 1,
+		}, 1000 );			
+	};
+
+	// GO!
+		var timer = setTimeout(function() { 
+			setCenter();
+			showGuide();
+		}, 1000);
+		
+		
+});
+</script>
+<style type="text/css">
+	BODY        { margin: 0px; padding: 0px; background-color: #E0E0E0; text-align: center; }
+	.mockup     { width: 1000px; background-image: url(assets/Rotten-Tomatoes-Redesign-Web.jpg); background-repeat: no-repeat; } 
+	#header     { width: 100%; position: fixed; top: 0px; text-align: center; background-color: rgb(111, 197, 7); box-shadow: 0px 0px 10px #5C5C5C; }
+	#header DIV { height: 89px; margin-left: auto; margin-right: auto; }
+	#content    { height: 2400px; margin-left: auto; margin-right: auto; }
+	#comparison { margin-top: -2400px; width: 1010px; height: 5548px; margin-left: auto; margin-right: auto; background-image: url(assets/Rotten-Tomatoes-Original-desktop.jpg); visibility: hidden; }
+	#switcher   { width: 100%; height: 89px; position: fixed; top: 0px; display: block; rgba(0, 0, 0, 0.11)}
+	#guide      { opacity: 0; float: left; }
+	#message    { background-color: rgba(0, 0, 0, 0.7); padding: 10px 16px 10px 16px; border: 1px solid rgba(255, 255, 255, 0.49); border-radius: 10px; 
+		color: white; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; text-align: left; box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.38); line-height: 25px; }
+	.guideNav   { display: block; float: left; }
+	#previousG  { cursor: w-resize; }
+	#nextG      { cursor: e-resize; }
+	.pointNone  { display: none; }
+	.pointUp    { display: block; width: 0;	height: 0; 	border-left: 11px solid transparent; border-right: 11px solid transparent; border-bottom: 11px solid black; }
+	.pointDown  { display: block; width: 0;	height: 0; 	border-left: 11px solid transparent; border-right: 11px solid transparent; border-top: 11px solid black; margin-top: -1px; margin-bottom: 1px; }
+	.pointLeft  { display: block; width: 0;	height: 0; 	border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-right: 11px solid black; }
+	.pointRight { display: block; width: 0;	height: 0; 	border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 11px solid black; }
+</style>
+</head>
+<body>
+<div id="header" >
+	<div class="mockup"></div>
+</div>
+<div id="content" class="mockup"></div>
+<div id="comparison"></div>
+<a id="switcher" href="#"></a>
+<div id="guide">
+	<div id="message">
+		<div></div>
+	</div>
+	<div id="pointer" class="pointUp"></div>
+</div>
+<a id="previousG" class="guideNav" href="#"></a>
+<a id="nextG" class="guideNav" href="#"></a>
+</body>
+</html>

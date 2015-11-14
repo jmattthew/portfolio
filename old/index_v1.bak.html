@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+	// bust frame 
+	if(top != self) { top.location = location; }
+</script>
+
+<title>@mattthew</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=720">
+
+<link rel="shortcut icon" href="assets/favicon.ico">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="assets/jquery-ui.min.js"></script>
+<script src="assets/jquery.easing.min.js"></script>
+<script src="assets/jquery.velocity.min.js"></script>
+<script src="assets/modernizr.2.8.3-custom-build.js"></script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	// GLOBAL VARS
+	var wHash = window.location.hash;
+
+	function setViewPort() {
+		var vP = document.getElementById('deviceViewPort');
+		if(screen.width < 720) {
+			vP.setAttribute('content','width=360');
+		} else if(screen.width < 1080) {
+			vP.setAttribute('content','width=720');
+		} else {
+			vP.setAttribute('content','width=1080');			
+		}
+	}
+
+	// for each row set height of all projects to match tallest project
+	function setProjectHeight() {
+		// find tallest project
+		$('.section').each(function() {
+			var projectHeights = new Array();
+			$(this).find('.project DIV').each(function(i) {
+				projectHeights[i] = $( this ).height();
+				i++;
+			});	
+			projectHeights = projectHeights.sort(function(a,b) {
+				  return b - a;
+			});
+			var x = projectHeights[0];
+			// make all projects match
+			$(this).find('.project DIV').each(function(i) {
+				$( this ).css('height',x + 'px');
+			});
+
+			// position sliders
+			$(this).find('.slider').css('height',x + 'px');
+			x = (x*-1)-62;
+			$(this).find('.slider').css('margin-top',x + 'px');
+		});
+	}
+
+	function addInstructions() {
+		if(Modernizr.touch) {
+			// on touch devices, single tap displays the image
+			// so it may be non-obvious that another tap will open page
+			$('.slider SPAN').text('Tap to open...');
+		}
+	}
+
+	function readyIntro() {
+		// record height of sections
+		$('.projContainer').each(function(i) {
+			$(this).data('originalHeight', $(this).height());
+			$(this).data('originallOffset', $(this).offset().top);
+		});
+		// hide sections initially
+		if(wHash != '#expand') {
+			$('.projContainer').each(function(i) {
+				$(this).css('height','0px');	
+			});
+			$('.section H1').css('margin-bottom','-30px');
+		} else {
+			// leave expanded and show shadows
+			addShadows();
+		}
+	}
+
+	function addShadows() {
+        // add shadow to sections
+        $('.section').each(function(i) {
+            if(i%2 == 0) {
+                $( this ).css('box-shadow','inset 0 -50px 100px -50px rgba(0,0,0,0.6)');
+                $( this ).find('.project .slider').css('box-shadow','inset 0px 10px 20px rgba(0,0,0,.3)'); // box-shadow: inset -3px 13px 48px 2px rgba(0,0,0,0.75);
+            }
+        });
+        $('#sectionGraphic H1').css('box-shadow','rgba(0, 0, 0, 0.3) 0px 5px 10px -5px inset')
+        $('#sectionPhoto H1').css('box-shadow','rgba(0, 0, 0, 0.3) 0px 5px 10px -5px inset')
+	}
+
+	// bind hover events
+	function bindEvents() {
+
+		if(!Modernizr.touch) {
+			// animate slide over of image
+			$('.project').hover(function() {
+				$(this).find('.slider').css('display','block');
+				$(this).find('.slider').css('border-top-left-radius','0px');
+				$(this).find('.slider').css('border-bottom-left-radius','0px');
+				if(($(this).find('.slider').css('background-position-x')) === undefined) {
+					// firefox, opera don't recognize this property so don't animate background
+					// note is possible to do with hook, but too much of a pain
+					$(this).find('.slider').animate( {
+						width: '243px',
+						marginLeft: '30px',
+					}, 500, 'easeOutQuad', function() {
+						$(this).css('border-radius','');
+						$(this).css('width','253px');
+						$(this).css('margin-left','20px');
+						$(this).css('background-position','0px 0px');
+					});				
+				} else {
+					$(this).find('.slider').css('background-position','-253px 0px');
+					$(this).find('.slider').animate( {
+						width: '243px',
+						marginLeft: '30px',
+						backgroundPositionX: '-10px'
+					}, 500, 'easeOutQuad', function() {
+						$(this).css('border-radius','');
+						$(this).css('width','253px');
+						$(this).css('margin-left','20px');
+						$(this).css('background-position','0px 0px');
+					});
+				}
+			}, function() {
+				$(this).find('.slider').velocity( {
+					opacity: 0
+				}, 250, function() {
+					$(this).css('display','none');											
+					$(this).css('opacity','1');
+					$(this).css('margin-left','273px');
+					$(this).css('width','0px');
+				});
+			});
+		} else {
+			// no animation because it's too slow on most touch devices
+			$('.project').hover(function() {
+				$(this).find('.slider').css('display','block');											
+				$(this).find('.slider').css('width','253px');
+				$(this).find('.slider').css('margin-left','20px');
+			}, function() {
+				$(this).find('.slider').css('display','none');											
+				$(this).find('.slider').css('margin-left','273px');
+				$(this).find('.slider').css('width','0px');				
+			});
+		}
+		
+		//
+ 		if(wHash != '#expand') { 
+			if(!Modernizr.touch) {
+				$('H1 SPAN').hover(function() {
+
+					addShadows();
+					// expand sections animation
+		            var y = 0;
+					$('.projContainer').each(function(i) {
+						y = $(this).data('originalHeight');
+						$(this).velocity({
+							height: y
+						}, 800, 'easeInOutQuad', function(){
+							$(this).css('height','');
+						});
+						$(this).parent().find('H1').velocity({
+							marginBottom: 0
+						}, 800, 'easeInOutQuad');
+					});	            
+			               
+		            //
+					$('H1 SPAN').unbind();
+				});
+			} else {
+				$('H1 SPAN').click(function() {
+
+					// expand sections 
+					addShadows();
+					$('.projContainer').each(function(i) {
+						$(this).css('height','');
+						$(this).parent().find('H1').css('margin-bottom','0px');
+					});	
+
+		            //
+					$('H1 SPAN').unbind();
+				});
+			}
+		}
+
+		// 
+		$(window).scroll(function() {
+            // header shadow on off
+			if($(document).scrollTop() <= 40) {
+				$('#header').css('box-shadow','none');					
+			} else {
+				$('#header').css('box-shadow','0px 5px 10px rgba(0,0,0,0.1)');
+			}
+          
+            // change header color
+			var bg = '';
+			var y = $(document).scrollTop();
+			if( y < $('#sectionProduct H1').offset().top ) {
+				bg = 'body';
+			} else if( y < $('#sectionUX H1').offset().top ) {
+				bg = '#sectionProduct H1';	
+			} else if( y < $('#sectionGraphic H1').offset().top ) {
+				bg = '#sectionUX H1';	
+			} else if( y < $('#sectionBlog H1').offset().top ) {
+				bg = '#sectionGraphic H1';	
+			} else if( y < $('#sectionPhoto H1').offset().top ) {
+				bg = '#sectionBlog H1';	
+			} else if( y < $('#sectionPersonal H1').offset().top ) {
+				bg = '#sectionPhoto H1';	
+			} else if( y < $('#sectionProduct H1').offset().top ) {
+				bg = '#sectionPersonal H1';							
+			}
+
+			$('#header').stop(true, false);
+			$('#header').animate({
+				backgroundColor: $(bg).css('background-color')
+			}, 150 );
+  
+		});
+
+
+	}
+
+	// suppress the opening animation when the user clicks back from links
+	$('A').click(function() {
+		window.location.hash = '#expand';
+	});
+
+	// GO!
+	setViewPort();
+	setProjectHeight();
+	bindEvents();
+	addInstructions();
+	readyIntro();
+	
+});
+
+</script>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="assets/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body style="text-align: center;">
+
+<div id="header">
+	<div>
+		<h1><a href="https://twitter.com/mattthew" target="_blank">Mattthew Brauer</a></h1>
+		<p>Product Designer, Storyteller, &amp; Artist</p>
+	</div>
+</div>
+<hr/>
+
+<div id="headSpace"></div>
+
+<div class="section" id="sectionProduct">
+	<h1><span>Product Design</span></h1>
+	<div class="projContainer">
+		<a href="https://chrome.google.com/webstore/search/mattthew" target="_self" class="project">
+			<div class="info">
+				<h2>Browser Applications</h2>
+				<p><strong>My Role:</strong>  Product Designer &amp; JS Developer</p>
+				<p><strong>Created:</strong>  2013 to 2014</p>
+				<p><strong>Info:</strong>  I published two broswer apps for Chrome &amp; Firefox that extend the functionality of RottenTomatoes.com and Twitch.tv.</p>
+			</div>
+			<div id="extension" class="slider"><span></span></div>
+		</a>
+		<a href="http://imgur.com/a/eUqOV" target="_self" class="project">
+			<div class="info" id="testFont">
+				<h2>Smart Watch</h2>
+				<p><strong>My Role:</strong>  Product Designer</p>
+				<p><strong>Created:</strong>  November 2013</p>
+				<p><strong>Info:</strong>  The is a non-commissioned, just-for-fun design of a smart watch because I think it would be cool product.</p>
+			</div>
+			<div id="smartWatch" class="slider"><span></span></div>
+		</a>
+		<a href="http://www.CouchSurfing.com" target="_self" class="project">
+			<div class="info">
+				<h2>Social Network</h2>
+				<p><strong>Role:</strong>  Senior Product Manager</p>
+				<p><strong>Created:</strong>  2007 to 2012</p>
+				<p><strong>Info:</strong>  CouchSurfing.com is a social network for travlers.  I joined as the #2 employee and worked in product for five years leading to its Series B.</p>
+			</div>
+			<div id="couchsurfing" class="slider"><span></span></div>
+		</a>
+	</div>
+</div>
+<hr/>
+
+<div class="section" id="sectionUX">
+	<h1><span>Mobile &amp; Desktop UX</span></h1>
+	<div class="projContainer">
+		<a href="rotten_tomatoes" target="_self" class="project">
+			<div class="info">
+			<h2>Detailed Mockups</h2>
+			<p><strong>My Role:</strong>  UX &amp; UI Designer</p>
+			<p><strong>Created:</strong>  July 2014</p>
+			<p><strong>Info:</strong>  I love Rotten Tomatoes but think their UI is awful so I did made mobile &amp; desktop redesigns just-for-fun (non-commissioned work).</p>
+			</div>
+			<div id="rottenTomatoes" class="slider"><span></span></div>
+		</a>
+		<a href="wireframes/index.html" target="_self" class="project">
+			<div class="info">
+			<h2>Wireframes &amp; Pageflows</h2>
+			<p><strong>My Role:</strong>  UX Designer</p>
+			<p><strong>Created:</strong>  2011 to 2014</p>
+			<p><strong>Info:</strong>  A selection of my wireframes, pageflows, &amp; flowcharts, mostly done for CouchSurfing.com.</p>
+			</div>
+			<div id="wireframes" class="slider"><span></span></div>
+		</a>
+		<a href="http://imgur.com/a/fA6zB" target="_self" class="project">
+			<div class="info">
+			<h2>Identity &amp; Web Design</h2>
+			<p><strong>My Role:</strong>  UX, UI, Designer, &amp; Developer</p>
+			<p><strong>Created:</strong>  2004 to 2007</p>
+			<p><strong>Info:</strong>  A selection of my paid and commissioned web design work while doing business as Shsh Web Design.</p>
+			</div>
+			<div id="shsh" class="slider"><span></span></div>
+		</a>
+	</div>
+</div>
+<hr/>
+
+<div class="section" id="sectionGraphic">
+	<h1><span>Graphic Design</span></h1>
+	<div class="projContainer">
+		<a href="fermi" target="_self" class="project">
+			<div class="info">
+			<h2>Design &amp; Illustration</h2>
+			<p><strong>My Role:</strong>  Writer, Designer, &amp; Illustrator</p>
+			<p><strong>Created:</strong>  June 2014</p>
+			<p><strong>Info:</strong>  This guide to Fermi's Paradox is a just-for-fun personal project on a topic that fascinates me.</p>
+			</div>
+			<div id="fermi" class="slider"><span></span></div>
+		</a>
+		<a href="http://imgur.com/a/gOaxY" target="_self" class="project">
+			<div class="info">
+			<h2>Technical Illustration</h2>
+			<p><strong>My Role:</strong>  Writer, Designer, &amp; Illustrator</p>
+			<p><strong>Created:</strong>  March 2014</p>
+			<p><strong>Info:</strong>  This is a non-commissioned, just-for-fun parody of the typical overwrought product instruction manual.</p>
+			</div>
+			<div id="manual" class="slider"><span></span></div>
+		</a>		
+	</div>
+</div>
+<hr/>
+
+<div class="section" id="sectionBlog">
+<h1><span>Product Blogging</span></h1>
+	<div class="projContainer">
+		<a href="https://mattthew.jux.com/2163182" target="_self" class="project">
+			<div class="info">
+			<h2>Essay &mdash; User Ratings</h2>
+			<p><strong>My Role:</strong>  Writer &amp; Photographer</p>
+			<p><strong>Created:</strong>  September 2013</p>
+			<p><strong>Info:</strong>  From Amazon to Yelp, most user-ratings websites are doing it wrong.  Here's why.</p>
+			</div>
+			<div id="theAverage" class="slider"><span></span></div>
+		</a>
+		<a href="https://mattthew.jux.com/2154387" target="_self" class="project">
+			<div class="info">
+			<h2>Essay &mdash; AR</h2>
+			<p><strong>My Role:</strong>  Writer &amp; Photographer</p>
+			<p><strong>Created:</strong>  September 2013</p>
+			<p><strong>Info:</strong>  An essay on the topic of augmented reality product design.</p>
+			</div>
+			<div id="beingMediated" class="slider"><span></span></div>
+		</a>
+		<a href="http://imgur.com/a/LTi1Q" target="_self" class="project">
+			<div class="info">
+			<h2>Infographic &mdash; Genre</h2>
+			<p><strong>My Role:</strong>  Writer &amp; Graphic Designer</p>
+			<p><strong>Created:</strong>  January 2014</p>
+			<p><strong>Info:</strong>  This exploration of genre film is a just-for-fun personal project.</p>
+			</div>
+			<div id="monsters" class="slider"><span></span></div>
+		</a>
+	</div>
+</div>
+<hr/>
+
+<div class="section" id="sectionPhoto">
+<h1><span>Video &amp; Photography</span></h1>
+	<div class="projContainer">
+		<a href="https://vimeo.com/96643512" target="_self" class="project">
+			<div class="info">
+			<h2>Documentary Short</h2>
+			<p><strong>My Role:</strong>  Producer &amp; Director</p>
+			<p><strong>Created:</strong>  May 20014</p>
+			<p><strong>Info:</strong>  This non-commissioned documentary video explores the motivations of an abstract painter whose work I admire.</p>
+			</div>
+			<div id="abstract" class="slider"><span></span></div>
+		</a>
+		<a href="https://mattthew.jux.com/2156380" target="_self" class="project">
+			<div class="info">
+			<h2>Photographic Portraits</h2>
+			<p><strong>My Role:</strong>  Photographer</p>
+			<p><strong>Created:</strong>  2012 to 2014</p>
+			<p><strong>Info:</strong>  A selection of my own portrait photography.</p>
+			</div>
+			<div id="portraits" class="slider"><span></span></div>
+		</a>
+	</div>
+</div>
+<hr/>
+
+<div class="section" id="sectionPersonal">
+<h1><span>Personal Artwork</span></h1>
+	<div class="projContainer">
+		<a href="https://mattthew.jux.com/2155032" target="_self" class="project">
+			<div class="info">
+			<h2>Mural</h2>
+			<p><strong>My Role:</strong>  Painter of small elements of the mural</p>
+			<p><strong>Created:</strong>  May 2013</p>
+			<p><strong>Info:</strong>  I volunteered to help paint this wall-sized mural at the Argonne Public Elementary School in San Francisco's Richmond Neighborhood</p>
+			</div>
+			<div id="mural" class="slider"><span></span></div>
+		</a>
+		<a href="https://mattthew.jux.com/2155081" target="_self" class="project">
+			<div class="info">
+			<h2>Costume</h2>
+			<p><strong>My Role:</strong>  Designer &amp; Sewer</p>
+			<p><strong>Created:</strong>  October 2012</p>
+			<p><strong>Info:</strong>  I was the BART map for Halloween.</p>
+			</div>
+			<div id="costume" class="slider"><span></span></div>
+		</a>
+		<a href="https://mattthew.jux.com/2154899" target="_self" class="project" >
+			<div class="info">
+			<h2>Musical Mashup</h2>
+			<p><strong>My Role:</strong>  Audio Editor</p>
+			<p><strong>Created:</strong>  December 2012</p>
+			<p><strong>Info:</strong>  Two songs that sound great together.</p>
+			</div>
+			<div id="mashup" class="slider"><span></span></div>
+		</a>
+	</div>
+</div>
+
+<div id="footer">
+	<div>
+		<p>&copy; <a href="https://twitter.com/mattthew" target="_blank">Mattthew Brauer</a> &amp; Couchsurfing Inc. <a href="assets/resume.pdf">Resume</a> available upon request.</p>
+	</div>
+</div>
+
+</body>
+</html>

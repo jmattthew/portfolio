@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>@Mattthew - Rotten Tomatoes Mobile Redesign (for Mobile Screen)</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=device-width, initial-scale=0.4, user-scalable=no">
+
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="../assets/jquery-ui.min.js"></script>
+<script src="../assets/jquery.easing.min.js"></script>
+<script src="../assets/modernizr.2.8.3-custom-build.js"></script>
+<script src="assets/movieArray.js"></script>
+<script src="assets/rtRedesign_script.js"></script>
+
+<link href="assets/rtRedesign_styles.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="top">
+	<a href="#" id="nav_logo">
+		<span id="logo"></span></a>
+	<div id="nav_list">
+		<div id="nav_list_type">
+			<ul>
+				<li><a href="#" class="selected even">Now In <br>Theaters</a></li>
+				<li><a href="#">Home <br>Viewing</a></li>
+				<li><a href="#" class="even">TV <br>Series</a></li>
+				<li><a href="#">More</a></li>
+			</ul>
+		</div>
+		<div id="nav_list_sort">
+			<ul>
+				<li><a id="nav_sort_by" href="#">Sort by: Top Box Office</a></li>
+				<li><a href="#" id="nav_sort_search">Search</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="middle">
+	<div id="item_list">
+		<ul>
+			<li id="item_0">
+				<a href="#">
+					<div class="list_item_score">&nbsp;</div>
+					<div class="list_item_title">&nbsp;</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div id="item_list_pointer">
+		<div id="pointer_edge"></div>
+		<div id="pointer"></div>
+	</div>
+	<div id="section_more">
+		<div id="people_celebs">
+			<div>
+				<img class="avatar" src="assets/joaquin.jpg">
+				<p>
+					<strong>Joaquin <br>Phoenix</strong>
+				</p>
+				<p>
+					Birthday:  Oct. 28 <br>
+					Box Office:  $912.4M
+				</p>
+				<p>
+					Birthplace: <br>
+					San Juan, Puerto Rico
+				</p>
+				<p>
+					<strong>Highest Rated:</strong>
+				</p>
+				<p>
+					<span class="fresh"></span>94% <a>Her (2013)</a>
+				</p>
+				<p>
+					<strong>Lowest Rated:</strong>
+				</p>
+				<p>
+					<span class="splat"></span>	14% <a>Russkies (1987)</a>
+				</p>
+				<p>&nbsp;</p>
+				<p>
+					<strong>Bio:</strong>
+				</p>
+				<p>
+					Staying true to his last name, Joaquin Phoenix has made a career out of making a couple of films, disappearing, and then reappearing from the ashes to rise upward toward greater glory. The actor, who began his career under the name of "Leaf," lived for a long time in the shadow of his older brother, River. After River's tragic death at the age of 23, Leaf abandoned his career for two years, making a comeback in 1995 with his performance in To Die For, directed by Gus Van Sant (who ironically directed River in one of his last films, 1993's Even Cowgirls Get the Blues). Since then, the actor, who changed his name back to Joaquin in the early '90s, has worked steadily in Hollywood, solidifying both his experience and reputation.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="nav_more">
+	<ul>
+		<li><!-- intentially empty --></li>
+		<li class="even">
+			<a href="#">
+				<span>What's <br>Hot!</span></a>
+		</li>
+		<li>
+			<a href="#">
+				<span>Movie <br>News</span></a>
+		</li>
+		<li class="even">
+			<a href="#">
+				<span>Best &amp; <br>Worst</span></a>
+		</li>
+		<li>
+			<a href="#" class="selected">
+				<span>People &amp; <br>Celebs</span></a>
+		</li>
+		<li class="even">
+			<a href="#">
+				<span>Discuss <br>Movies</span></a>
+		</li>
+		<li>
+			<a href="#">
+				<span>Your <br>Account</span></a>
+		</li>
+		<li class="even">
+			<a href="#">
+				<span>App <br>Settings</span></a>
+		</li>
+	</ul>
+</div>
+<div id="bottom">
+	<div id="item_score_sort">
+		<ul>
+			<li><a href="#" id="score_sort_by">Score by: Your Critics</a></li>
+		</ul>
+	</div>
+	<div id="item_info_container">
+		<div id="item_info_0">
+			<div class="item_poster"></div>
+			<div class="item_meter">
+				<div class="tomato_meter">4</div>
+				<div class="tomato_score">
+					<span>95%</span></div>
+				<div class="tomato_stats">
+					<span>of 190 critics <br>say it's fresh</span>
+				</div>
+			</div>
+			<div class="item_stars">
+				<div class="item_stars_average"></div>
+			</div>
+			<div class="item_distribution">
+				<div class="item_distribution_fake"></div>
+			</div>
+			<div class="item_consensus">
+				<div>
+					<p><strong>Critics' Consensus:</strong></p>
+					<p>
+						Morbi dignissim, augue nec bibendum lobortis, libero sem bibendum nibh, eget finibus erat augue ac leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc lectus elit, posuere quis eleifend sit amet, accumsan ut orci. Nam eu nibh quis arcu cursus accumsan. Morbi malesuada ante ac pretium venenatis. Nulla lobortis enim mauris, vitae viverra lacus pharetra ut. Nullam placerat nisl non convallis pellentesque.
+					</p>
+				</div>
+			</div>
+			<div class="item_details">
+				<div>
+					<p><strong>Length:</strong> 1hr. 50 min., <strong>Rated:</strong> R</p>
+					<p><strong>Release:</strong> Jun 13, 2013</p>
+					<p><strong>Box Office:</strong> $140.3M</p>
+					<p><strong><a href="#">Action &amp; Adventure</a>, <a href="#">Comedy</a>, <a href="#">Spike Jonze</a>, <a href="#">Joaquin Pheonix</a>, <a href="#">Amy Adams</a></strong></p>
+				</div>
+			</div>
+			<div class="item_plot">
+				<div>
+					<p><strong>Plot Summary:</strong></p>
+					<p>
+						Morbi dignissim, augue nec bibendum lobortis, libero sem bibendum nibh, eget finibus erat augue ac leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc lectus elit, posuere quis eleifend sit amet, accumsan ut orci. Nam eu nibh quis arcu cursus accumsan. Morbi malesuada ante ac pretium venenatis. Nulla lobortis enim mauris, vitae viverra lacus pharetra ut. Nullam placerat nisl non convallis pellentesque.
+					</p>
+				</div>			
+			</div>
+		</div>
+	</div>
+	<div id="item_shadow_left"></div>
+	<div id="item_shadow_right"></div>
+	<div id="reviews_container" class="section">
+		<div id="review_0" class="review">
+			<div class="review_critic">
+				<div class="critic_meter"></div>
+				<a href="#" class="critic_name">
+					Connie Ogle, Miami Herald</a>
+				<a href="#" class="critic_link">
+					&#10150;</a>
+			</div>
+			<div class="review_blurb">
+				Morbi dignissim, augue nec bibendum lobortis, libero sem bibendum nibh, eget finibus erat augue ac leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc lectus elit, posuere quis eleifend sit amet, accumsan ut orci. Nam eu nibh quis arcu cursus accumsan. Morbi malesuada ante ac pretium venenatis. Nulla lobortis enim mauris, vitae viverra lacus pharetra ut. Nullam placerat nisl non convallis pellentesque.
+			</div>
+		</div>
+	</div>
+	<div id="nav_item">
+		<ul>
+			<li><a href="#" id="nav_item_info" class="even selected">Info</a></li>
+			<li><a href="#">Reviews</a></li>
+			<li><a href="#" class="even">Media</a></li>
+			<li><a href="#">See It!</a></li>
+			<li><a href="#" class="even">Rate</a></li>
+			<li><a href="#">&nbsp;</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

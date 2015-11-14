@@ -1,0 +1,387 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Where is everybody?!</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="../assets/jquery.easing.min.js"></script>
+<script src="../assets/jquery.velocity.min.js"></script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+var qSpeed = 2.5; // determine the strength of the paralax effect for layer Q:  the higher the number, the "closer" to the background the layer apears
+var rSpeed = 1.25;
+var aspect = 1.81818182 // constant aspect ratio of the slides
+var aspectType = '';
+var totalSlides = 10; // constant number of slides here
+var currentSlide = 0;
+var slideOffset = 0;
+var totalImages=0;
+var loadedImages=0;
+
+$(document).ready(function() {
+
+	// determine the aspect ration of the document
+	function setDocAspect() {
+	    var docWidth = $( window ).width();
+    	var docHeight = $( window ).height();    
+		var docAspect = docWidth/docHeight;
+		if(docAspect >= aspect) {
+			aspectType = 'wide';
+		} else {
+			aspectType = 'tall';
+		}
+	}
+
+	// find which slide the user has scrolled to and set global variable
+	function setCurrentSlide() {
+		var slides = new Array();
+		var bod = 0;
+		if(aspectType == 'tall') {
+			bod = $(document).scrollLeft();
+		} else {
+			bod = $(document).scrollTop();
+		}
+		for(var i=0;i<totalSlides;i++) {
+			slides[i] = new Array();
+			var img = 0;
+			if(aspectType == 'tall') {
+				img = $('#p' + i).offset().left;
+			} else {
+				img = $('#p' + i).offset().top;
+			}
+			slides[i][0] = i; // current slide number
+			slides[i][1] = Math.abs(bod - img); // distance from image to scroll position
+		}
+		// return smallest value
+		slides = slides.sort(function(a,b) {
+			  return a[1] > b[1];
+		});
+		currentSlide = slides[0][0];
+		slideOffset = slides[0][1];
+	}
+		
+	// snap scroll to current slide
+	function doSnap() {
+		var snapLimit = 0;
+		// if image is scrolled close to document edge, align to document edge
+		if(aspectType == 'tall') {
+			snapLimit  = $(window).width() * .1;
+			if(slideOffset < snapLimit) {
+//				var left = $('#p' + currentSlide).offset().left;
+//				$('body').animate( { scrollLeft: left }, 500, 'easeOutBack' );	
+				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 500, easing: 'easeOutBack' }) 
+			}
+		} else {
+			snapLimit  = $(window).height() * .1;
+			if(slideOffset < snapLimit) {
+//				var top = $('#p' + currentSlide).offset().top;
+//				$('body').animate( { scrollTop: top }, 500, 'easeOutBack' );
+				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 500, easing: 'easeOutBack' }) 
+			}
+		}
+	}
+
+	// add click event to previous/next buttons
+	function bindPrevNext() {
+		// remove any previously assigned event handlers
+		$('#previous').off();
+		$('#next').off();
+		// set click events
+		$('#previous').click(function(event) {
+			currentSlide -= 1;
+			if(currentSlide < 0) { currentSlide = 0; }
+			if(aspectType == 'tall') {
+//				var left = $('#p' + currentSlide).offset().left;
+//				$('body').animate( { scrollLeft: left }, 1500, 'easeOutQuad' );	
+				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 1000, easing: 'easeInOutBack' }) 
+			} else {
+//				var top = $('#p' + currentSlide).offset().top;
+//				$('body').animate( { scrollTop: top }, 1500, 'easeOutQuad' );
+				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 1000, easing: 'easeInOutBack' }) 
+			}
+		});	
+		$('#next').click(function(event) {
+			currentSlide += 1;
+			if(currentSlide > totalSlides-1) { currentSlide = totalSlides-1; }
+			if(aspectType == 'tall') {
+//				var left = $('#p' + currentSlide).offset().left;
+//				$('body').velocity( { scrollLeft: left }, 1500, 'easeOutQuad' );	
+				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 2000, easing: 'easeInOutBack' }) 
+			} else {
+//				var top = $('#p' + currentSlide).offset().top;
+//				$('body').velocity( { scrollTop: top }, 1500, 'easeOutQuad' );
+				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 2000, easing: 'easeInOutBack' }) 
+			}
+		});					
+	}
+	
+	// change scroll style, scale slides 
+	function resize() {
+		setDocAspect();
+	    var docWidth = $( window ).width();
+    	var docHeight = $( window ).height();    
+		var x = 0;
+		var y = 0;
+		var m = 0;
+		var w = '';
+		var h = '';
+		// change scroll type
+		if(aspectType == 'tall') {
+			x = docWidth; 
+			y = Math.round(docWidth/aspect);
+			m = Math.round(x/40);
+			$('.slideP, .slideQ, .slideR').css('display','inline-block');
+			$('.slideP, .slideQ, .slideR').css('margin-bottom','0px');
+			$('.slideP, .slideQ, .slideR').css('margin-right',m);
+			$('#centerer').css('display','inline-block');
+			$('#centerer').css('height','100%');
+			bindPrevNext();
+		} else {
+			y = docHeight;
+			x = Math.round(docHeight*aspect);
+			m = Math.round(y/20);
+			$('.slideP, .slideQ, .slideR').css('display','block');
+			$('.slideP, .slideQ, .slideR').css('margin-bottom',m);
+			$('.slideP, .slideQ, .slideR').css('margin-right','0px');
+			$('#centerer').css('display','none');
+			$('#centerer').css('height','0');
+			bindPrevNext();
+		}
+		// scale slides to document
+		w = x + 'px';
+		h = y + 'px';
+		$('.slideImg,#p9').css('width',w);
+		$('.slideImg,#p9').css('height',h);
+		// reposition foreground slides
+		for(var i=0; i<totalSlides; i++) {
+			x = $('#p' + i).offset().left;
+			w = x + 'px';
+			$('#q' + i).css('left',w);
+			$('#r' + i).css('left',w);
+			y = $('#p' + i).offset().top;
+			h = y + 'px';
+			$('#q' + i).css('top',h);
+			$('#r' + i).css('top',h);
+		}
+		// repostion next/previous buttons
+		x = Math.round(docWidth/2);
+		y = docHeight;
+		w = x + 'px';
+		h = y + 'px';
+		$('#previous,#next').css('width',w);
+		$('#previous,#next').css('height',h);
+	}
+	
+	// move to current slide
+	function scrolltoCurrentSlide() {
+//		var left = $('#p' + currentSlide).offset().left;
+//		var top = $('#p' + currentSlide).offset().top;
+//		$('body').animate( { scrollLeft: left }, 1 );			
+//		$('body').animate( { scrollTop: top }, 1 );			
+		$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 1 }) 
+		$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 1 }) 
+	}
+
+	function doParalax() {
+		var	x = $(document).scrollLeft();
+		var y = $(document).scrollTop();
+		var diff = 0;
+		var w = '';
+		var h = '';
+		for(var i=0; i<totalSlides; i++) {
+			if(aspectType == 'tall') {
+				// position Q slides
+				diff = ($('#p' + i).offset().left - x)/qSpeed;
+				diff = Math.round($('#p' + i).offset().left + diff);
+				w = diff + 'px';
+				$('#q' + i).css('left',w);
+				// position R slides
+				diff = ($('#p' + i).offset().left - x)/rSpeed;
+				diff = Math.round($('#p' + i).offset().left + diff);
+				w = diff + 'px';
+				$('#r' + i).css('left',w);
+			} else {
+				// position Q slides
+				diff = ($('#p' + i).offset().top - y)/qSpeed;
+				diff = Math.round($('#p' + i).offset().top + diff);
+				h = diff + 'px';
+				$('#q' + i).css('top',h);
+				// position R slides
+				diff = ($('#p' + i).offset().top - y)/rSpeed;
+				diff = Math.round($('#p' + i).offset().top + diff);
+				h = diff + 'px';
+				$('#r' + i).css('top',h);
+			}
+		}
+	}
+
+	// displays a image loading progress indicator
+	function loadProgress() {
+		// center indicator
+	    var w = ($( window ).width() - $('#loadIndicator').width())/2;
+    	var h = ($( window ).height() - $('#loadIndicator').height())/2;    
+		$('#loadIndicator').css('left',w);
+		$('#loadIndicator').css('top',h);
+		
+		$('img').each(function() {
+			totalImages++;
+			var tmpImg = new Image();
+			tmpImg.src = $(this).attr('src') ;
+			tmpImg.onload = function() {
+				loadedImages++;
+			};
+		});
+	
+		var interval = setInterval(function() {
+			var percent = totalImages/100;
+			var loaded = Math.round(loadedImages/percent);
+			var txt = 'Loading Images....<br/>' + loaded + '%';
+			$('#loadIndicator').html(txt);
+			if (loaded == 100) {
+				clearInterval(interval);
+				$('#loadIndicator').velocity("fadeOut", { duration: 500 }, function() {
+		    		$('#loadIndicator').css('display','none');
+				});
+			}		   
+		}, 10);
+	}
+
+	// call resize after browser window resizing has stopped
+    $(window).resize(function() {
+		clearTimeout($.data(this, 'scrollTimer'));
+		$.data(this, 'scrollTimer', setTimeout(function() {
+			resize();
+			scrolltoCurrentSlide();
+		}, 500));
+	});
+
+	// call doSnap after scrolling has stopped
+	$(window).scroll(function() {
+		doParalax();
+		clearTimeout($.data(this, 'scrollTimer'));
+		$.data(this, 'scrollTimer', setTimeout(function() {
+			setCurrentSlide();
+			doSnap();
+		}, 500));
+	});
+		
+	// GO!
+	loadProgress();
+	resize();
+
+});
+</script>
+<style type="text/css">
+    HTML                  { height: 100%; color: rgb(179, 179, 179); font-size: 14px; font-family: Helvetica; }
+    BODY                  { height: 100%; background-color: black; padding: 0px; margin: 0px; }
+
+	#fullWindow           { height: 100%; text-align: center; white-space: nowrap; }
+    #centerer             { vertical-align: middle; margin-right: -0.25em; /* Adjusts for spacing */ }
+    .slideP               { display: inline-block; margin-left: auto; margin-right: auto; vertical-align: middle; text-align: center; }
+	.slideQ               { position: absolute; display: none; margin-left: auto; margin-right: auto; vertical-align: middle; text-align: center; }
+	.slideR               { position: absolute; display: none; margin-left: auto; margin-right: auto; vertical-align: middle; text-align: center; }
+	.slideImg             { margin-left: auto; margin-right: auto; }
+	
+    #p9:before            { content: ''; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* Adjusts for spacing */ }
+    #surveyInfo           { display: inline-block; margin-left: auto; margin-right: auto; vertical-align: middle; }
+    #surveyInfo A         { color: red; }
+
+	#previous             { display: block; position: fixed; left: 0px; top: 0px; cursor: w-resize; z-index: ; }
+	#next                 { display: block; position: fixed; right: 0px; top: 0px; cursor: e-resize; }
+	
+	#loadIndicator        { position: absolute; top: 5px; left: 5px; background-color: #790000; border: 4px solid red; color: #FFFFFF; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14px; padding: 10px 30px; text-align: center; }
+	
+	#byline               { position: fixed; right:10px; top:10px; text-align: right; }
+    #byline A             { color:rgb(179, 179, 179); font-size:14px; font-family:Helvetica, sans-serif; text-decoration: none; }
+    #byline A:hover       { text-decoration:underline; }
+</style>
+</head>
+
+<body>
+<div id="fullWindow">
+	<div id="centerer"></div>
+	
+	<!-- P level Slides(background)  -->
+	<div class="slideP">
+		<img id="p0" src="images/p0.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p1" src="images/p1.jpg"  class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p2" src="images/p2.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p3" src="images/p3.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p4" src="images/p4.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p5" src="images/p5.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p6" src="images/p6.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p7" src="images/p7.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<img id="p8" src="images/p8.jpg" class="slideImg" />
+	</div><!-- removes the space between inline-blocks
+	--><div class="slideP">
+		<div id="p9" class="slideImg">		
+			<div id="surveyInfo">
+				Thanks for visiting!  How do you answer Fermi's Paradox?<br/>  
+				Please share your opinion with this <a href="https://docs.google.com/forms/d/1tIjZecsgsXdkQ3QxfXJix8eYGDvdZxWLjObopzdT5hk/viewform" target="_blank">short survey</a>.<br/>
+				If you liked this, say something nice <a href="https://twitter.com/mattthew" target="_blank">@mattthew</a>.    
+			</div>
+		</div>
+	</div>
+
+	<!-- Q level Slides (midground) -->
+	<div class="slideQ" id="q0"><img class="slideImg" src="images/q0.png" /></div>
+	<div class="slideQ" id="q1"><img class="slideImg" src="images/q1.png" /></div>
+	<div class="slideQ" id="q2"><img class="slideImg" src="images/q2.png" /></div>
+	<div class="slideQ" id="q3"><img class="slideImg" src="images/q3.png" /></div>
+	<div class="slideQ" id="q4"><img class="slideImg" src="images/q4.png" /></div>
+	<div class="slideQ" id="q5"><img class="slideImg" src="images/q5.png" /></div>
+	<div class="slideQ" id="q6"><img class="slideImg" src="images/q6.png" /></div>
+	<div class="slideQ" id="q7"><img class="slideImg" src="images/q7.png" /></div>
+	<div class="slideQ" id="q8"><img class="slideImg" src="images/q8.png" /></div>
+	<div class="slideQ" id="q9"></div>
+
+	<!-- R level Slides (foreground) -->
+	<div class="slideR" id="r0"><img class="slideImg" src="images/r0.png" /></div>
+	<div class="slideR" id="r1"><img class="slideImg" src="images/r1.png" /></div>
+	<div class="slideR" id="r2"><img class="slideImg" src="images/r2.png" /></div>
+	<div class="slideR" id="r3"><img class="slideImg" src="images/r3.png" /></div>
+	<div class="slideR" id="r4"><img class="slideImg" src="images/r4.png" /></div>
+	<div class="slideR" id="r5"><img class="slideImg" src="images/r5.png" /></div>
+	<div class="slideR" id="r6"><img class="slideImg" src="images/r6.png" /></div>
+	<div class="slideR" id="r7"><img class="slideImg" src="images/r7.png" /></div>
+	<div class="slideR" id="r8"><img class="slideImg" src="images/r8.png" /></div>
+	<div class="slideR" id="r9"></div>
+
+	<!-- Nav Buttons -->
+	<a id="previous" href="#" onClick="return false;"></a>
+	<a id="next" href="#" onClick="return false;"></a>
+	
+	<!-- Load Indicator -->
+	<div id="loadIndicator">Loading Images...<br/>0%</div>
+
+</div>
+<div id="byline">
+	<a href="https://twitter.com/mattthew" target="_blank">@mattthew</a><span id="helper"></span>
+</div>
+</body>
+</html>

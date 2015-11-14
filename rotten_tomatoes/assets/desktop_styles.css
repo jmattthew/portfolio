@@ -1,0 +1,23 @@
+HTML BODY {
+	margin: 0px;
+	padding: 0px; 
+}
+
+BODY {
+	background-color: rgb(222,222,222);
+	background-image: url('temp_redesign_desktop_bg.jpg');
+	background-repeat: no-repeat;
+	width: 1024px;
+	height: 1001px;
+}
+
+.foo {
+font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;	
+}
+
+@media all and (max-width: 1024px) {
+	BODY {
+		width: 100%;
+		background-size: 100%;
+	}
+}
