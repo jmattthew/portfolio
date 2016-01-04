@@ -19,7 +19,7 @@
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-52293845-1', 'auto');
-		ga('send', 'pageview');	
+		ga('send', 'pageview');		
 
 		var deviceViewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		if(deviceViewportWidth <=480) {
@@ -63,49 +63,48 @@
 	</clipPath>
 </svg>
 
-<div id="sectionCardpool" class="section">
-	<div id="cardpoolBG">
-		<a id="bookmark0"></a>
-		<div id="pointerCardpool" class="pointer">
+<div id="sectionRotten" class="section">
+	<a id="bookmark0"></a>
+	<div id="pointerRotten" class="pointer">
+		<div><div class="arrow"></div></div>
+	</div>
+	<div class="title">
+		<h1 id="logoRT"><span>Rotten Tomatoes Redux</span></h1>
+	</div>
+	<div class="projContainer">
+		<a id="projRottenMobile" href="rotten_tomatoes/mobile.html" target="_self" class="project">
+			<h2 class="button"><span>view mobile prototype</span></h2>
+			<p>Though I love Rotten Tomatoes' content, I'm unsatisfied with its mobile app design so I challenged myself to envision and code something better.  Try out this fully functional prototype!  Uncommissioned work.</p>
+		</a>
+		<a id="projRottenExtension" href="rotten_tomatoes/extension.html" target="_self" class="project animated">
+			<h2 class="button"><span>add new functionality</span></h2>
+			<p>This extension for Chrome adds personalization to Rotten Tomatoes.  It ranks film critics based on their similarity to you, and improves the accuracy of the "Tomato Meter" based on your own film ratings.  I designed, coded, and published this project because I wanted to use it.  Uncommissioned work.</p>
+		</a>
+		<a id="projRottenDesktop" href="rotten_tomatoes/desktop.html" target="_self" class="project">
+			<h2 class="button"><span>tour desktop redesign</span></h2>
+			<p>Is my redesigned desktop website better than Rotten Tomatoes' current design?  You be the judge!</p>
+		</a>
+	</div>
+</div>
+
+<div id="sectionGetReady" class="section">
+	<div id="getReadyBG">
+		<a id="bookmark1"></a>
+		<div id="pointerGetReady" class="pointer">
 			<div><div class="arrow"></div></div>
 		</div>
 		<div class="title">
-			<h1 id="logoCardpool"><span>Cardpool</span></h1>
+			<h1 id="logoGetReady"><span>Get Ready!</span></h1>
 		</div>
 		<div class="projContainer">
-			<a id="projCardpoolStore" href="cardpool/appstore.html" target="_self" class="project">
-				<h2 class="button animated"><span>get the iPhone app</span></h2>
-				<p>From napkin to App Store in seven months.  I was sole UX designer and art director for this app.</p>
-			</a>
-			<a id="projCardpoolProto" href="cardpool/prototype1.html" target="_self" class="project">
-				<h2 class="button"><span>view prototype 1</span></h2>
-				<p>This high-fidelity mobile prototype shows upcoming improvements to the app based on usability testing.</p>
-			</a>
-		</div>
-		<div class="projContainer">
-			<a id="projCardpoolWire" href="cardpool/prototype2.html" target="_self" class="project">
-				<h2 class="button"><span>view prototype 2</span></h2>
-				<p>This hand-coded Javascript prototype details a complex scrolling animation.</p>
+			<a id="projGetReadyMocks" href="get_ready.html" target="_self" class="project animated">
+				<h2 class="button"><span>view the mockups</span></h2>
+				<p>Theoretical mobile app for making what-to-bring lists.  Featuring mobile UX &amp; visual design.</p>
 			</a>
 		</div>
 	</div>
 </div>
 
-<div id="sectionRotten" class="section">
-	<a id="bookmark1"></a>
-	<div id="pointerRotten" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="projContainer">
-		<div class="title">
-			<h1 id="logoRT"><span>Rotten Tomatoes</span></h1>
-		</div>
-		<a id="projRottenExtension" href="rotten_tomatoes/extension.html" target="_self" class="project animated">
-			<h2 class="button"><span>get the Chrome extension</span></h2>
-			<p>I designed, coded, and published this Chrome extension. It ranks film critics based on their similarity to you, and improves the accuracy of the "Tomato Meter" based on your own film ratings.</p>
-		</a>
-	</div>
-</div>
 
 <div id="sectionWatch" class="section">
 	<div id="sectionWatchEffect">
@@ -119,7 +118,7 @@
 		<div class="projContainer">
 			<a id="projWatchDesigns" href="watch.html" target="_self" class="project">
 				<h2 class="button"><span>view the mockups</span></h2>
-				<p>This companion for your smart-phone is my take on the smart-watch.  I think a smart-watch should only perform time &amp; date functions because a wrist-size smart-phone isn't very useful.  This UX design is noncommissioned.</p>
+				<p>This companion for your smart-phone is my take on the smart-watch.  I think a smart-watch should only perform time &amp; date functions because a wrist-size smart-phone isn't very useful.  This UX design is uncommissioned.</p>
 			</a>
 		</div>
 	</div>
@@ -130,13 +129,17 @@
 	<div id="pointerCouch" class="pointer">
 		<div><div class="arrow"></div></div>
 	</div>
+	<div class="title">
+		<h1 id="logoCouch"><span>CouchSurfing.com</span></h1>
+	</div>
 	<div class="projContainer animated">
-		<div class="title">
-			<h1 id="logoCouch"><span>CouchSurfing.com</span></h1>
-		</div>
 		<a id="projCouchDesktop" href="couch/UX_desktop.html" target="_self" class="project">
-			<h2 class="button"><div><span>view UX documents</span></div></h2>
+			<h2 class="button"><div><span>view desktop UX</span></div></h2>
 			<p>I joined CouchSurfing as its 2nd employee and grew the company to 45 employees and two rounds of venture funding.  This set of UX documents includes wireframes &amp; the product strategy notes for the company stakeholders.</p>
+		</a>
+		<a id="projCouchMobile" href="couch/UX_mobile.html" target="_self" class="project">
+			<h2 class="button"><div><span>view mobile mockups</span></div></h2>
+			<p>I headed-up CouchSurfing's mobile initiative from conceptio to launch in 2012.  This set of wireframes is an early draft of our iOS UX.  I share equal design credit with another product designer who worked for me.</p>
 		</a>
 	</div>
 </div>
@@ -205,15 +208,15 @@
 		<h1 id="logoDocumentary"><span>Documentary</span></h1>
 	</div>
 	<div class="projContainer">
-		<a id="projDocumentaryVideo" href="vimeo.html" target="_self" class="project animated">
+		<a id="projDocumentaryVideo" href="https://vimeo.com/96643512" target="_self" class="project animated">
 			<h2 class="button"><span></span><div><i></i></div></h2>
-			<p>Watch this 4 minute documentary, which explores the motivations of an abstract painter whose work I admire.  I made this video noncommissioned because I wanted to gain a deeper understanding of a fellow artist.</p>
+			<p>Watch this 4 minute documentary, which explores the motivations of an abstract painter whose work I admire.  I made this video uncommissioned because I wanted to gain a deeper understanding of a fellow artist.</p>
 		</a>
 	</div>
 </div>
 
 <div id="sectionPortraits" class="section">
-	<a id="bookmark8"></a>
+	<a id="bookmark7"></a>
 	<div id="pointerPortraits" class="pointer">
 		<div><div class="arrow"></div></div>
 	</div>
@@ -245,15 +248,47 @@
 			<h2 class="button"><span>view mural painting</span></h2>
 			<p>I was one of the volunteer painters on a mural four-story tall mural at San Francisco's Argonne Elementary School.</p>
 		</a>
+		<!--
+		<a id="projMixedMonsters" href="http://imgur.com/a/gOaxY" target="_self" class="project">
+			<h2 class="button"><span>view infographic</span></h2>
+			<p>A comparison of various fictional monsters bent on assimilating humanity.</p>
+		</a>
+		<a id="projMixedCostume" href="https://mattthew.jux.com/2155081" target="_self" class="project">
+			<h2 class="button"><span>view costume</span></h2>
+			<p>I was the BART map for Halloween.</p>
+		</a>
+		<a id="projMixedMashup" href="https://mattthew.jux.com/2154899" target="_self" class="project">
+			<h2 class="button"><span>hear mashup</span></h2>
+			<p>I discovered two songs from different decades that synchronize perfectly.</p>
+		</a>
+		-->
 	</div>
 </div>
+
+<!-- 
+<div id="sectionTwitch" class="section">
+	<a id="bookmark1"></a>
+	<div id="pointerTwitch" class="pointer">
+		<div><div class="arrow"></div></div>
+	</div>
+	<div class="projContainer">
+		<a id="projTwitchExtension" href="https://chrome.google.com/webstore/detail/twitch%2Btags/pnecickdiomfdfppmmjbccfpbhkjnooc" target="_self" class="project animated">
+			<h2 class="button"><span>add new functionality</span></h2>
+			<p>This extension for Chrome &amp; Firefox adds tagging to Twitch.  Users can tag steamers with keywords and search for new steamers using any combination of keywords.  I designed, coded, and published this project.</p>
+		</a>
+		<div id="projectTwitchLogo" class="project">
+			<h1 id="logoTwitch"><span>Twitch+Tags</span><div></div></h1>
+		</div>
+	</div>
+</div>
+-->
 
 <div id="sectionFooter" class="section">
 	<div class="title">
 		<h1 id="logoFooter"><span>Thanks for visiting!</span></h1>
 		<p><a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>, except where noted.   
-		<span>Resume</span> available upon request. <br>
-		Trademarks &amp; copyrights are the property of their respective owners.</p>
+		<a href="assets/resume.pdf"><span>Resume</span></a> available upon request. <br>
+		Not affiliated with Rotten Tomatoes or CouchSurfing whose trademarks are displayed under fair use.</p>
 	</div>
 </div>
 

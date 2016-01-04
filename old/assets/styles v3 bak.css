@@ -202,75 +202,6 @@ P {
 
 
 /* ======== */
-/* Cardpool */
-/* ======== */
-
-#sectionCardpool {
-	padding-bottom: 0px;
-	background-color: rgb(245, 103, 160);
-	background: linear-gradient(to bottom, rgb(157, 23, 61) 0%, rgb(245, 103, 160) 40%);
-}
-
-#cardpoolBG {
-	padding-bottom: 80px;
-	background-image: url(cardpoolBG.png);
-	background-repeat: no-repeat;
-	background-position: calc(100% + 100px) -94px;
-}
-
-#pointerCardpool {
-}
-
-#pointerCardpool DIV {
-	padding-right: 416px;
-}
-
-#sectionCardpool .arrow {
-	border-top-color: rgb(255,255,255); 
-}
-
-#sectionCardpool .projContainer {
-	text-align: left;
-}
-
-#sectionCardpool .title {
-	padding:0px;
-}
-
-#logoCardpool SPAN {
-	display: block;
-	width: 424px;
-	height: 140px;
-	margin: 0px;
-	padding: 0px;
-	font-size: 0px;
-	background-image: url(logoCardpool.png);
-	background-repeat: no-repeat;
-}
-
-#sectionCardpool .button {
-	opacity: 0;
-	color: rgb(0, 0, 0);
-	border-color: rgb(238, 195, 0);
-	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.3);
-	background-color: rgb(255, 195, 0); 
-	background: linear-gradient(to bottom, rgb(255, 195, 0) 60%, rgb(255, 170, 0) 100%);
-}
-
-#sectionCardpool .button:hover {
-	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
-	margin: 4px -3px -4px 3px;
-	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
-}
-
-#sectionCardpool P {
-	color: rba(0, 0, 0, 0.4);
-}
-
-
-
-
-/* ======== */
 /* ROTTEN */
 /* ======== */
 
@@ -283,44 +214,24 @@ P {
 }
 
 #pointerRotten DIV {
-	padding-left: 592px;
+	padding-left: 325px;
 }
 
 #sectionRotten .arrow {
-	border-top-color: rgb(245, 103, 160);
-}
-
-#sectionRotten .projContainer {
-	margin-top: 50px;
-}
-
-#sectionRotten .title {
-	display: inline-block;
-	/* width & height used for animation effect */
-	width: 500px;
-	height: 220px;
-	margin: 0px;
-	padding-top: 10px;
-}
-
-#logoRT {
-	padding: 0px;
+	border-top-color: #fff;
 }
 
 #logoRT SPAN {
 	display: block;
 	width: 500px;
 	height: 160px;
-	background-image: url(logoRT.png);
+	margin: 0px auto 0px auto;
 	font-size: 0px;
-}
-
-#sectionRotten .project {
-	margin: 0px;
-	margin-left: 90px;
+	background-image: url(logoRT.png);
 }
 
 #sectionRotten .button {
+	opacity: 0;
 	color: rgb(0, 0, 0);
 	border-color: rgb(143, 179, 0);
 	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.3);
@@ -335,6 +246,148 @@ P {
 }
 
 #sectionRotten P {
+}
+
+
+
+
+
+/* ======== */
+/* TWITCH */
+/* ======== */
+
+/*
+#sectionTwitch {
+	background-color: rgb(100, 65, 165);
+	padding-bottom: 120px;  
+}
+
+#sectionTwitch .projContainer {
+	margin-top: 60px;
+}
+
+#pointerTwitch {
+}
+
+#pointerTwitch DIV {
+	padding-right: 695px;
+}
+
+#sectionTwitch .arrow {
+	border-top-color: rgb(208, 83, 0);
+}
+
+#projectTwitchLogo {
+	width: 680px;
+	margin-top: 55px;
+	margin-right: -30px;
+}
+
+#logoTwitch SPAN {
+	display: block;
+	float: left;
+	width: 328px;
+	height: 106px;
+	margin: 0px;
+	font-size: 0px;
+	background-image: url(logoTwitch.png);
+}
+
+#logoTwitch DIV {
+	float: left;
+	width: 352px;
+	height: 106px;
+	margin: 0px;
+	background-image: url(logoTwitch.png);
+	background-position: -358px 0px;
+	background-repeat: no-repeat;
+}
+
+#sectionTwitch .button {
+	color: rgb(0, 0, 0);
+	border-color: rgb(119, 90, 172);
+	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.4);
+	background-color: rgba(255, 255, 255, 0.4); *//* old/lame browser support *//*
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+#sectionTwitch .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+}
+
+#sectionTwitch P {
+	color: rgba(0, 0, 0, 0.7);
+}
+*/
+
+
+
+
+
+/* ======== */
+/* GET READY */
+/* ======== */
+
+#sectionGetReady {
+	padding-bottom: 0px;
+	background-color: rgb(62,191,210);
+	background: linear-gradient(to bottom, rgb(45, 140, 154) 0%, rgb(62, 191, 210) 40%);
+}
+
+#getReadyBG {
+	padding-bottom: 80px;
+	background-image: url(getReadyBG.png);
+	background-repeat: no-repeat;
+	background-position: calc(100% + 100px) -94px;
+}
+
+#pointerGetReady {
+}
+
+#pointerGetReady DIV {
+	padding-right: 378px;
+}
+
+#sectionGetReady .arrow {
+	border-top-color: rgb(57, 121, 0); /* rotten green */
+}
+
+#sectionGetReady .title {
+	margin-top: 45px;
+}
+
+#logoGetReady SPAN {
+	display: block;
+	width: 459px;
+	height: 77px;
+	margin: 0px auto 0px auto;
+	font-size: 0px;
+	background-image: url(logoGetReady.png);
+	background-repeat: no-repeat;
+}
+
+#projGetReadyMocks {
+	margin: 0px 176px 40px 25px;	
+}
+
+#sectionGetReady .button {
+	color: rgb(0, 0, 0);
+	border-color: rgb(238, 195, 0);
+	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.3);
+	background-color: rgb(255, 195, 0); /* old/lame browser support */
+	background: linear-gradient(to bottom, rgb(255, 195, 0) 60%, rgb(255, 170, 0) 100%);
+}
+
+#sectionGetReady .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
+
+#sectionGetReady P {
+	color: rba(0, 0, 0, 0.4);
 }
 
 
@@ -378,7 +431,7 @@ P {
 }
 
 #sectionWatch .arrow {
-	border-top-color: rgb(57, 121, 0); /* rotten green */
+	border-top-color: rgb(62,191,210); /* get ready cyan */
 }
 
 #projWatchDesigns {
@@ -416,22 +469,11 @@ P {
 }
 
 #pointerCouch DIV {
-	padding-left: 592px;
+	padding-left: 330px;
 }
 
 #sectionCouch .arrow {
 	border-top-color: black;
-}
-
-#sectionCouch .projContainer {
-	margin-top: 50px;
-}
-
-#sectionCouch .title {
-	display: inline-block;
-	width: 500px;
-	margin: 0px;
-	margin-top: 10px;
 }
 
 #logoCouch SPAN {
@@ -441,11 +483,6 @@ P {
 	margin: 0px auto 0px auto;
 	font-size: 0px;
 	background-image: url(logoCouch.png);
-}
-
-#sectionCouch .project {
-	margin: 0px;
-	margin-left: 100px;
 }
 
 #sectionCouch .button {
@@ -895,50 +932,46 @@ P {
 	margin-top: 8px !important; 
 }
 
+#map9 A {
+	margin-bottom: 8px !important; 
+}
+
 #map0 A:hover {
-	background-color: rgb(245, 103, 160); /* cardpool pink */
+	background-color: rgb(87, 150, 0); 
 	margin-top: 6px !important; 
 }
 
 #map1 A:hover {
-	background-color: rgb(87, 150, 0); /* rotten green */
+	background-color: black;
 }
 
 #map2 A:hover {
-	background-color: black;
-}
-
-#map3 A:hover {
 	background-color: rgb(208, 83, 0); /* couch orange */
 }
 
-#map4 A:hover {
+#map3 A:hover {
 	background-color: black;
 }
 
-#map5 A:hover {
+#map4 A:hover {
 	background-color: white;
 }
 
-#map6 A:hover {
+#map5 A:hover {
 	background-color: rgb(255, 0, 153);
 }
 
-#map7 A:hover {
+#map6 A:hover {
 	background-color: #FFC866;
 }
 
-#map8 A:hover {
+#map7 A:hover {
 	background-color: rgb(235, 235, 235);
 }
 
-#map9 A:hover {
+#map8 A:hover {
 	background-color: rgb(118, 206, 255);
 	margin-bottom: 6px !important; 
-}
-
-#map9 A {
-	margin-bottom: 8px !important; 
 }
 
 /*
@@ -956,12 +989,20 @@ P {
 
 @media all and (max-width: 1300px) {
 
+	#getReadyBG {
+		background-position: calc(100% + 300px) -94px;
+	}
+
 }
 
 @media all and (max-width: 1024px) {
 
-	#cardpoolBG {
-		background-position: calc(100% + 255px) -205px;
+	#getReadyBG {
+		background-position: calc(100% + 350px) -94px;
+	}
+
+	#logoGetReady SPAN {
+		background-size: 90%;
 	}
 
 	/*  */
@@ -981,6 +1022,16 @@ P {
 
 @media all and (max-width: 890px) {
 
+	#getReadyBG {
+		background-position: calc(100% + 450px) -94px;
+	}
+
+	#logoGetReady SPAN {
+		background-size: 85%;
+	}
+
+	/*  */
+
 	#logoHeader {
 		font-size: 80px;
 	}
@@ -991,59 +1042,8 @@ P {
 
 	/*  */
 
-	#cardpoolBG {
-		background-position: calc(100% + 115px) -130px;
-		background-size: 470px 424px;
-	}
-
-	#logoCardpool SPAN {
-		background-size: 75%;
-		background-position: 25%;
-	}
-
-	/*  */
-
-	#pointerRotten DIV {
-		padding-left: 380px;
-	}
-
-	#sectionRotten .projContainer {
-		margin-top: 10px;
-	}
-
-	#sectionRotten .title {
-		width: 360px;
-		height: 145px;
-	}
-
-	#sectionRotten .project {
-    	margin-left: 55px;
-	}
-
-	#logoRT SPAN {
-		width: 320px;
-		background-size: 100%;
-		background-repeat: no-repeat;
-	}
-
-	/*  */
-
 	#projFermiGuide {
 		padding-left: 300px;
-	}
-
-	/*  */
-
-	#sectionCouch .projContainer {
-		margin-top: 0px;
-	}
-
-	#sectionCouch .title {
-		margin-left: 20px;
-	}
-
-	#pointerCouch DIV {
-		padding-left: 200px;
 	}
 
 	/*  */
@@ -1094,54 +1094,50 @@ P {
 		font-size: 40px;
 	}
 
-	.pointer DIV .arrow {
-		border-width: 40px 40px 0px 40px;
-	}
-
-	/*  */
-
-	#pointerCardpool DIV {
-		padding-right: 195px;
-	}
-
-	#sectionCardpool .projContainer {
-		text-align: center;
-		margin-top: 0px;
-	}
-
-	#logoCardpool {
-	    height: 85px;
-	    margin-top: 170px;
-    }
-
-	#logoCardpool SPAN {
-		background-size: 60%;
-		background-position: 50% 0%;
-		margin: 0px auto 0px auto;
-	}
-
 	/*  */
 
 	#pointerRotten DIV {
 		padding-left: 230px;
 	}
 
-	#sectionRotten .projContainer {
-		margin-top: 0px;
-	}
-
-	#sectionRotten .title {
-		width: 320px;
-	}
-
-	#sectionRotten .project {
-    	margin-left: 0px;
+	#logoRT SPAN {
+		width: 350px;
+		height: 112px;
+		background-size: 350px 112px;
 	}
 
 	/*  */
 
+	#getReadyBG {
+		background-position: calc(100% + 180px) -94px;
+	}
+
+	#logoGetReady SPAN {
+		background-size: 75%;
+		background-position: 15%;
+	}
+
+	#sectionGetReady P {
+		visibility: hidden;
+	}
+
 	#pointerWatch .arrow {
 		visibility: hidden;
+	}
+
+	/*  */
+
+	#sectionTwitch {
+		padding-bottom: 20px;
+	}
+
+	#pointerTwitch DIV {
+		padding: 0px;
+	}
+
+	#logoTwitch {
+		width: 320px;
+		overflow: hidden;
 	}
 
 	/*  */
@@ -1161,19 +1157,14 @@ P {
 
 	/*  */
 
-	#sectionCouch .title {
-		margin-left: 0px;
-		width: 320px;
+	#pointerCouch DIV {
+		padding-left: 230px;
 	}
 
 	#logoCouch SPAN {
-		width: 320px;
-		background-size: 100%;
-		background-repeat: no-repeat;
-	}
-
-	#sectionCouch .project {
-		margin-left: 0px;
+		width: 350px;
+		height: 104px;
+		background-size: 350px 104px;
 	}
 
 	/*  */

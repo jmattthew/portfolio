@@ -4,7 +4,7 @@ $(window).load(function() {
 	var sections = [];
 	var docHeight = $(window).height();
 	var lastSection = 0;
-	var currentSection = -1;
+	var currentSection = 0;
 	var hasScrolled = false;
 	var allowShardEdit = false;
 	var shards = 1;
@@ -201,8 +201,8 @@ $(window).load(function() {
 	//
 	function setSectionColors() {
 		// minimap colors
-		sections[0].color = 'rgb(245, 103, 160)'; // cardpool pink
-		sections[1].color = 'rgb(87, 150, 0)'; // rotten green
+		sections[0].color = 'rgb(87, 150, 0)'; // rotten green
+		sections[1].color = 'rgb(255, 195, 0)'; // gerReady orange
 		sections[2].color = 'rgb(0, 0, 0)'; // watch black
 		sections[3].color = 'rgb(208, 83, 0)'; // couch orange 
 		sections[4].color = 'rgb(0, 0, 0)'; // fermi black
@@ -227,13 +227,11 @@ $(window).load(function() {
 
 	// 
 	function initiateMinimap() {
-		var num = currentSection;
-		num<0 ? num=0 : num; 
-		$('#map' + num + ' A').css('width','12px');
-		$('#map' + num + ' A').css('height','12px');
-		$('#map' + num + ' A').css('margin','-2px 6px');
-		$('#map' + num + ' A').css('background-color',sections[num].color);
-		$('#map' + num + ' A').css('box-shadow','0px 0px 2px 0px rgba(0, 0, 0, 0.3)');
+		$('#map' + currentSection + ' A').css('width','12px');
+		$('#map' + currentSection + ' A').css('height','12px');
+		$('#map' + currentSection + ' A').css('margin','-2px 6px');
+		$('#map' + currentSection + ' A').css('background-color',sections[currentSection].color);
+		$('#map' + currentSection + ' A').css('box-shadow','0px 0px 2px 0px rgba(0, 0, 0, 0.3)');
 	}
 
 	function bindMiniMapEvents() {
@@ -263,28 +261,13 @@ $(window).load(function() {
 
 	// starts animtion for currentSection
 	function doAnimation() {
-		if(currentSection==1) {
+		if(currentSection==0) {
 
 
 
 			// rotten
-			$({count:0}).animate({count:31}, {
-				duration: 1000,
-				easing: 'easeOutQuad',
-				step: function() {
-					$('#sectionRotten .title').css('background', 'radial-gradient(circle at 70% 50%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) '+(this.count/2)+'%, rgba(255,255,255,0) '+(this.count)+'%, rgba(255,255,255,0) 100%)');
-				}
-			});
-
-
-
-		} else if(currentSection==0) {
-
-
-
-			// Cardpool
 			var num = 0;
-			$('#sectionCardpool .button').each(function() {
+			$('#sectionRotten .button').each(function() {
 				var el = this;
 				var delay = num*100;
 				window.setTimeout(function(){
@@ -317,6 +300,15 @@ $(window).load(function() {
 
 
 
+		} else if(currentSection==1) {
+
+
+
+			// getReady
+			// nothing yet
+
+
+
 		} else if(currentSection==2) {
 
 
@@ -326,7 +318,7 @@ $(window).load(function() {
 			str = str.substring(0,str.indexOf(' ')-2);
 			var x = parseInt(str);
 			$({count:0}).animate({count:x}, {
-				duration: 1000,
+				duration: 2000,
 				easing: 'easeOutQuad',
 				step: function() {
 					$('#sectionWatchEffect').css('background','linear-gradient(to right, rgba(0, 0, 0, 1) ' + ((x*0.75)-this.count) + 'px, rgba(0, 0, 0, 0.1) ' + ((x*1.1)-this.count) + 'px, rgba(0, 0, 0, 0) ' + ((x*1.25)-this.count) + 'px');
@@ -426,7 +418,6 @@ $(window).load(function() {
 
 
 
-
 		} else if(currentSection==7) {
 
 
@@ -464,7 +455,7 @@ $(window).load(function() {
 
 
 
-		} else if(currentSection==9) {
+		} else if(currentSection==8) {
 
 
 
@@ -475,22 +466,29 @@ $(window).load(function() {
 
 		}
 
+			// twitch
+			/*
+			$('#logoTwitch DIV').animate({
+				backgroundPositionX: -358
+				// won't work on firefox
+			}, {
+				'duration': 600, 
+				'easing': 'easeInOutBack', 
+			});	
+			*/
 
 	}
 
 	// 
 	function setStartAnimation(num) {
 		if(num == 0) {
-			// Cardpool
-			$('#sectionCardpool .button').css('color','rgba(0, 0, 0, 0.6)');
-			$('#sectionCardpool .button').css('text-shadow','0px -3px 6px rgba(0, 0, 0, 0.6)');
-			$('#sectionCardpool .button').css('opacity','0');
-			$('#sectionCardpool .button').css('margin-top','-20px');
-			$('#sectionCardpool .button').css('margin-bottom','20px');
-		} else if(num==1) {
 			// rotten
-			$('#sectionRotten .title').css('background', '');
-		} else if(num==2) {
+			$('#sectionRotten .button').css('color','rgba(0, 0, 0, 0.6)');
+			$('#sectionRotten .button').css('text-shadow','0px -3px 6px rgba(0, 0, 0, 0.6)');
+			$('#sectionRotten .button').css('opacity','0');
+			$('#sectionRotten .button').css('margin-top','-20px');
+			$('#sectionRotten .button').css('margin-bottom','20px');
+		} else if(num==1) {
 			// watch
 			var str = $('#sectionWatch').css('background-size');
 			str = str.substring(0,str.indexOf(' ')-2);
@@ -502,25 +500,25 @@ $(window).load(function() {
 					$('#sectionWatchEffect').css('background','linear-gradient(to right, rgba(0, 0, 0, 1) ' + ((x*0.75)-this.count) + 'px, rgba(0, 0, 0, 0.1) ' + ((x*1.1)-this.count) + 'px, rgba(0, 0, 0, 0) ' + ((x*1.25)-this.count) + 'px');
 				}
 			});
-		} else if(num==3) {
+		} else if(num==2) {
 			// couch
 			$('#sectionCouch .button DIV').css('background-position','-296px 0px');
-		} else if(num==4 && !Modernizr.touch) {
+		} else if(num==3 && !Modernizr.touch) {
 			// fermi
 			// end is same as start
-		} else if(num==5) {
+		} else if(num==4) {
 			// shsh
 			$('#logoShsh SPAN').css('background-image','');
-		} else if(num==6) {
+		} else if(num==5) {
 			// essays
 			// nothing yet
-		} else if(num==7) {
+		} else if(num==6) {
 			// documentary
 			// end is same as start
-		} else if(num==8) {
+		} else if(num==7) {
 			// portraits
 			// nothing yet
-		} else if(num==9) {
+		} else if(num==8) {
 			// mixed
 			// nothing yet
 		}
@@ -542,6 +540,12 @@ $(window).load(function() {
     // find which section the user is looking at
 	$(window).scroll(function() {
 
+		// animates the top section on fist scroll
+		if(!hasScrolled) {
+			doAnimation();
+			hasScrolled = true;
+		}
+
 		var scrollY = $(document).scrollTop();
 		// section is updated when 'animated' class within 
 		// the section reaches .5 way up the page
@@ -558,9 +562,9 @@ $(window).load(function() {
 				break;								
 			}
 		}
-		if(currentSection<-1) { currentSection = -1; }
+		if(currentSection<0) { currentSection = 0; }
 
-		// set miniMap
+		// set miniMap 
 		for(var i=0; i<sections.length; i++) {
 			$('#map'+ i + ' A').css('width','');
 			$('#map'+ i + ' A').css('height','');
@@ -568,13 +572,11 @@ $(window).load(function() {
 			$('#map'+ i + ' A').css('background-color','');	
 			$('#map'+ i + ' A').css('box-shadow','');	
 		}
-		var num = currentSection;
-		num<0 ? num=0 : num; 
-		$('#map'+ num + ' A').css('width','12px');
-		$('#map'+ num + ' A').css('height','12px');
-		$('#map'+ num + ' A').css('margin','1px 6px');
-		$('#map'+ num + ' A').css('background-color',sections[num].color);
-		$('#map'+ num + ' A').css('box-shadow','0px 0px 2px 0px rgba(0, 0, 0, 0.3)');
+		$('#map'+ currentSection + ' A').css('width','12px');
+		$('#map'+ currentSection + ' A').css('height','12px');
+		$('#map'+ currentSection + ' A').css('margin','1px 6px');
+		$('#map'+ currentSection + ' A').css('background-color',sections[currentSection].color);
+		$('#map'+ currentSection + ' A').css('box-shadow','0px 0px 2px 0px rgba(0, 0, 0, 0.3)');
 
 		// trigger animation start if users is scrolling down
 		if(currentSection > lastSection) {
