@@ -296,11 +296,12 @@ P {
 
 #sectionRotten .title {
 	display: inline-block;
-	/* width & height used for animation effect */
 	width: 500px;
-	height: 220px;
 	margin: 0px;
-	padding-top: 10px;
+	margin-top: 10px;
+	background-image: url(logoTenToes.png);
+	background-position: 120px 0px;
+	background-repeat: no-repeat;
 }
 
 #logoRT {
@@ -309,10 +310,13 @@ P {
 
 #logoRT SPAN {
 	display: block;
-	width: 500px;
-	height: 160px;
-	background-image: url(logoRT.png);
+	height: 220px;
 	font-size: 0px;
+	background-image: url(logoRT.png);
+	background-repeat: no-repeat;
+	background-position: 275px 0px;
+			clip-path: polygon(0px 0%, 114px 0%, 124px 33%, 144px 42%, 166px 100%, 0 100%);
+	-webkit-clip-path: polygon(0px 0%, 114px 0%, 124px 33%, 144px 42%, 166px 100%, 0 100%);
 }
 
 #sectionRotten .project {
@@ -1013,17 +1017,18 @@ P {
 
 	#sectionRotten .title {
 		width: 360px;
+		background-size: 52%;
+		background-position: 86px 0px;
+	}
+
+	#logoRT SPAN {
 		height: 145px;
+		background-size: 100%;
+		background-position: 175px 0px;
 	}
 
 	#sectionRotten .project {
     	margin-left: 55px;
-	}
-
-	#logoRT SPAN {
-		width: 320px;
-		background-size: 100%;
-		background-repeat: no-repeat;
 	}
 
 	/*  */
@@ -1128,10 +1133,6 @@ P {
 
 	#sectionRotten .projContainer {
 		margin-top: 0px;
-	}
-
-	#sectionRotten .title {
-		width: 320px;
 	}
 
 	#sectionRotten .project {
