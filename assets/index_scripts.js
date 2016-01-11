@@ -188,6 +188,18 @@ $(window).load(function() {
 	});
 
 	//
+	function resizeHeader() {
+		var h1 = $(window).height();
+		var h2 = $('#sectionHeader').height();
+		var h3 = $('.pointer:eq(0)').height();
+		var p = (h1 - h2 - (h3*1.25));
+		$('#sectionHeader').animate({ 
+			paddingTop: (p*.48), 
+			paddingBottom: (p*.52) 
+		}, 0);
+	}
+
+	//
 	function getSectionLocations() {
 		var num = 0;
 		$('.animated').each(function() {
@@ -637,6 +649,7 @@ $(window).load(function() {
 	});
 
 	// ACTION
+	resizeHeader();
 	getSectionLocations();
 	setSectionColors();
 	getCurrentSection();
