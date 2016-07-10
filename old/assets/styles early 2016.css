@@ -129,7 +129,7 @@ P {
 
 #sectionHeader {
 	padding-top: 100px;
-	padding-bottom: 1000px;
+	padding-bottom: 110px;
 }
 
 #sectionHeader P {
@@ -242,7 +242,6 @@ P {
 	width: 424px;
 	height: 140px;
 	margin: 0px;
-	margin-left: 20px;
 	padding: 0px;
 	font-size: 0px;
 	background-image: url(logoCardpool.png);
@@ -284,6 +283,7 @@ P {
 }
 
 #pointerRotten DIV {
+	padding-left: 592px;
 }
 
 #sectionRotten .arrow {
@@ -1001,7 +1001,6 @@ P {
 	}
 
 	#logoCardpool SPAN {
-		margin-left: 0px;
 		background-size: 75%;
 		background-position: 25%;
 	}
