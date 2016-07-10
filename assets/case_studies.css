@@ -30,7 +30,7 @@ H2 {
 	letter-spacing: initial;
 	padding: 0px;
 	margin: 50px 0px 20px 0px;
-	color: rgb(247, 70, 141);
+	color: white;
 	clear: both;
 }
 
@@ -62,6 +62,85 @@ P, UL {
 	color: rgb(133,133,133);
 }
 
+A.pageLink:after {
+	content: '\21E3';
+}
+
+.caseStudyMenu {
+	margin-top: 90px;
+}
+
+.caseStudyMenu A {
+	display: inline-block;
+	vertical-align: top;
+	width: 33.3%;
+	box-sizing: border-box;
+	padding-top: 4vw;
+	text-align: center;
+}
+
+.caseStudyMenu DIV {
+	height: 9vw;
+	margin-top: 3.5vw;
+	margin-bottom: -3.5vw;
+    transition: margin 300ms ease-out;
+}
+
+.caseStudyMenu SPAN {
+	display: block;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: initial;
+	font-size: 3vw;
+	color: white;
+    margin: 2vw auto 4.5vw auto;
+    opacity: 0;
+    filter: alpha(opacity=0); /* For IE8 and earlier */
+    transition: opacity 600ms ease-out;
+}
+
+.caseStudyMenu A:hover DIV {
+	margin-top: 1vw;
+	margin-bottom: -1vw;
+}
+
+.caseStudyMenu A:hover SPAN {
+	opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.caseStudyMenu IMG {
+	width: 75%;
+	border: 0;
+}
+
+#optionCardpool {
+	background-color: rgb(245, 103, 160);
+}
+
+#optionRottenTomatoes {
+	background-color: rgb(57, 121, 0);
+}
+
+#optionRottenTomatoes SPAN {
+	color: yellow;
+	text-shadow: 0 0.15vw 0 rgba(0, 0, 0, 1);
+}
+
+#optionCouchSurfing {
+	background-color: rgb(208, 83, 0);
+}
+
+#optionPersonal {
+	background-color: rgb(65 ,65 ,65);
+}
+
+.caseStudyFooter A {
+	color: rgb(133,133,133);
+}
+
 .caseStudyFooter {
 	text-align: center;
 	max-width: 900px;
@@ -85,6 +164,7 @@ P, UL {
 }
 
 .caseStudyFooter P A SPAN {
+	color: black;
 	border-bottom: 1px dotted rgb(133, 133, 133);
 } 
 
@@ -99,9 +179,19 @@ P, UL {
 } 
 
 
+
+
+
+
+
 /* ======== */
 /* Cardpool */
 /* ======== */
+
+
+
+
+
 
 #cardpoolHeader {
 	background-color: rgb(245, 103, 160);
@@ -146,6 +236,10 @@ P, UL {
 	margin: 0px auto;
 }
 
+#cardpoolStudy H2 {
+	color: rgb(247, 70, 141);
+}
+
 #cardpoolStudy .pointer {
 	width: 100%;
 }
@@ -170,10 +264,6 @@ P, UL {
 
 #cardpoolStudy A SPAN {
 	border-bottom: 1px dotted rgb(247, 70, 141);
-}
-
-#cardpoolStudy A.pageLink:after {
-	content: '\21E3';
 }
 
 #cardpoolStudy A.personas {
@@ -341,72 +431,141 @@ DIV.prototypeOverlay:hover {
     filter: alpha(opacity=0); /* For IE8 and earlier */
 }
 
-.caseStudyMenu {
-	margin-top: 90px;
+
+
+
+
+
+/* ======== */
+/* Rotten Tomatoes */
+/* ======== */
+
+
+
+
+
+
+
+#rottenHeader {
+	background-color: rgb(87, 150, 0); /* old/lame browser support */
+	background: linear-gradient(to bottom, rgb(87, 150, 0) 0%, rgb(57, 121, 0) 60%); 
 }
 
-.caseStudyMenu A {
-	display: inline-block;
-	vertical-align: top;
-	width: 33.3%;
+#rottenHeader > DIV {
+	margin-left: 80px;
+	max-width: 900px;
+	height: 300px;
 	box-sizing: border-box;
-	padding-top: 4vw;
-	text-align: center;
+	padding-top: 60px;
 }
 
-.caseStudyMenu DIV {
-	height: 9vw;
-	margin-top: 3.5vw;
-	margin-bottom: -3.5vw;
-    transition: margin 300ms ease-out;
-}
-
-.caseStudyMenu SPAN {
+#rottenHeader .logo SPAN {
 	display: block;
-	font-family: 'Roboto Slab', serif;
-	font-weight: 300;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	letter-spacing: initial;
-	font-size: 3vw;
-	color: white;
-    margin: 2vw auto 4.5vw auto;
-    opacity: 0;
-    filter: alpha(opacity=0); /* For IE8 and earlier */
-    transition: opacity 600ms ease-out;
+	height: 150px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 0px;
+	background-image: url(logoRT.png);
+	background-size: 420px;
+	background-repeat: no-repeat;
+	position: relative;
 }
 
-.caseStudyMenu A:hover DIV {
-	margin-top: 1vw;
-	margin-bottom: -1vw;
+#rottenHeader .headerBG {
+	height: 300px;
+	width: 411px;
+	float: right;
+	margin-top: -300px;
+	padding: 0px;
+	background-image: url(../rotten_tomatoes/assets/rottenBG.png);
+	background-repeat: no-repeat;
+	background-size: 411px;
 }
 
-.caseStudyMenu A:hover SPAN {
-	opacity: 1;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
-}
-
-.caseStudyMenu IMG {
-	width: 75%;
-	border: 0;
-}
-
-#optionRottenTomatoes {
-	background-color: rgb(57, 121, 0);
-}
-
-#optionRottenTomatoes SPAN {
+#rottenHeader H1 {
 	color: yellow;
-	text-shadow: 0 0.15vw 0 rgba(0, 0, 0, 1);
+	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
 }
 
-#optionCouchSurfing {
-	background-color: rgb(208, 83, 0);
+#rottenStudy {
+	max-width: 900px;
+	padding: 0px 80px;
+	margin: 0px auto;
 }
 
-#optionPersonal {
-	background-color: rgb(65 ,65 ,65);
+#rottenStudy H2 {
+	color: rgb(57, 121, 0);
 }
+
+#rottenStudy .pointer {
+	width: 100%;
+}
+
+#rottenStudy .pointer > DIV {
+	margin-left: -5px;
+}
+
+#rottenStudy .pointer .arrow {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 50px 0 50px;
+	border-color: transparent;
+	-webkit-transform: rotate(360deg);
+	border-top-color: rgb(57, 121, 0);
+}
+
+#rottenStudy A {
+	color: rgb(116, 116, 116);
+}
+
+#rottenStudy A SPAN {
+	border-bottom: 1px dotted rgb(87, 150, 0);
+}
+
+#scatterplot {
+	float: right;
+	margin: 0 2vw 60px 60px;
+	border: 0 !important;
+}
+
+#scatterplot IMG {
+	width: 360px;
+	border: 1px solid rgb(232,232,232) !important;
+	box-sizing: border-box;
+	transform-origin: 81% 0%;
+}
+
+#rottenScreenshots {
+	display: block;
+	width: 80vw;
+	height: 50vw;
+	margin: 5vw auto 0 auto;
+	border: 1px solid rgb(232,232,232);
+}
+
+#rottenScreenshots > DIV {
+	width: 80vw;
+	height: 50vw;
+}
+
+#rottenScreenshots > DIV:first-child {
+	margin-bottom: -50vw;
+	background-image: url('../rotten_tomatoes/assets/app_screenshot1.png');
+	background-size: 80vw 50vw;
+	transition: background-size 500ms ease-out, background-position 500ms ease-out;
+}
+
+#rottenScreenshots > DIV:last-child {
+	background-image: url('../rotten_tomatoes/assets/app_screenshot2.png');
+	background-size: 80vw 50vw;
+	background-position: 0vw 0vw;
+	opacity: 0;
+	transition: opacity 500ms linear, background-size 500ms ease-out, background-position 500ms ease-out;
+}
+
+
+
 
 
 /* ======== */
@@ -414,6 +573,15 @@ DIV.prototypeOverlay:hover {
 /* ======== */
 
 @media all and (max-width: 748px) {
+
+	.caseStudyFooter P {
+		font-size: 14px;
+	}
+
+	.caseStudyFooter P.thanks {
+		font-size: 47px;
+		padding: 90px 0px 30px 0px;
+	}
 
 	/* Cardpool */
 
@@ -434,6 +602,17 @@ DIV.prototypeOverlay:hover {
 		width: 30vw;
 		height: 53.36vw;
 		margin-top: -53.36vw;
+	}
+
+	/* Rotten Tomatoes */
+
+	#scatterplot {
+		margin: 0 auto 60px auto;
+	}
+
+	#scatterplot  IMG {
+		width: 100%;
+		transform-origin: 50% 50%;
 	}
 
 	/*  */
@@ -567,6 +746,22 @@ DIV.prototypeOverlay:hover {
 		margin-bottom: 8vw;
 	}
 
+	/*  Rotten Tomatoes */
+
+	#rottenHeader > DIV {
+		height: 250px;
+		padding-top: 50px;
+	}
+
+	#rottenHeader .logo SPAN {
+		height: 105px;
+		background-size: 350px;
+		padding-bottom: 35px;
+	}
+
+	#rottenHeader H1 {
+		font-size: 30px;
+	}
 	/*  */
 
 }
