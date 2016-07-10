@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>@Mattthew - Rotten Tomatoes</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=640, initial-scale=1.0">
+
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');	
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+
+<script type="text/javascript">
+	function doZoom(obj) {
+		var el = $(obj).children();
+		var w = $(document).width()/el.outerWidth(true);
+		if(el.css('transform')=='none') {
+			el.css('transform','scale(1)');			
+		}
+		var matrixRegex = /matrix\((-?\d*\.?\d+),\s*0,\s*0,\s*(-?\d*\.?\d+),\s*0,\s*0\)/;
+		var matches = $(el).css('transform').match(matrixRegex);
+		if(matches[1] == 1) {
+			el.css('transition','transform 0.5s ease-out');
+			el.css('transform','scale('+w+')');
+		} else {
+			el.css('transition','transform 0.1s ease-out');
+			el.css('transform','scale(1)');
+		} 
+	};
+
+	$(window).load(function() {
+		$('#scatterplot').click(function() {
+			doZoom(this);
+			return false;
+		});
+
+		$('#rottenScreenshots').click(function() {
+			var el = $(this).find('DIV');
+			if($(el).last().css('opacity') == 0) {
+				$(el).first().css('background-size','120vw 75vw');
+				$(el).first().css('background-position','-20vw -13.5vw');
+				$(el).last().css('opacity','1');
+			} else {				
+				$(el).first().css('background-size','');
+				$(el).first().css('background-position','');
+				$(el).last().css('opacity','');
+			}
+			return false;
+		});
+	});
+
+</script>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="assets/case_studies.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="rottenHeader">
+	<div>
+		<div class="logo">
+			<span>Rotten Tomatoes</span>
+		</div>
+		<h1>Rotten Tomatoes Case Study</h1>
+	</div>
+	<div class="headerBG"></div>
+</div>
+
+<div id="rottenStudy">
+	<div class="pointer">
+		<div><div class="arrow"></div></div>
+	</div>
+	<h2>Background</h2>
+	<p>
+		Rotten Tomatoes is a well known yet untapped treasure chest of data about movies.  My project began with a desire to <a href="#research" class="pageLink"><span>explore</span></a> that data in an open-ended fashion to see where it could lead.  Through my exploration, I developed a hypothesis for how user rating systems such as those used by Rotten Tomatoes, Yelp, and Amazon could be improved.  I created a MVP app for testing that hypothesis that <a href="#iteration" class="pageLink"><span>evolved</span></a> into an extention for Chrome that creates personalized ratings for each movie, for each user.  It's a personal project that is not solicited nor endorsed by Rotten Tomatoes.  I created the UX &amp; visual design, and wrote the Javascript code.  
+	</p>
+	<p>
+		Try it yourself!  Download the <a href="rotten_tomatoes/extension.html" target="_self"><span>Rotten Tomatoes Extension</span></a> at the Chrome Web Store.
+	</p>
+	<h2>Process</h2>
+	<a name="research"></a>
+	<h3>Open-ended Research</h3>
+	<a id="scatterplot" href="#">
+		<img src="rotten_tomatoes/assets/rt_scatterplot.png" alt="Scatter plot graph"></a>
+	<p>
+		The first incarnation of the app was built to determine which film critic shared my taste in movies.  I wrote a script to screen-scrape the star-ratings of each critic who had rated a list of films that I had also rated.  This allowed me to give each critic a similarity score.  
+	</p>
+	<p>
+		After the compiling the raw data into a spreadsheet, I then tried comparing every professional film critic to every other film critic to find out who had the most and least similar tastes.  On the scatterplot image, each dot represents a vector between two unique film critics.  Each dot's position on the Y-axis shows the number of unique films that both critics rated.  A higher position means more points of comparison.  Each dot's position on the X-axis shows the similarity score between the two critics.  The plot tells us that if two critics have similar star-ratings for roughly 65% of the films they both rated, then they have highly similar tastes.  The plot also shows that the similarity score reaches high accuracy after comparing the ratings of both critics for roughly 40 films.
+	</p>
+	<a name="iteration"></a>
+	<h3>Product Iteration</h3>
+	<p>
+		I knew there was much more that I could do with this kind of data, so I set out to create an purely functional MVP that I could share with the public to generate feedback and new ideas.  After publishing the <a href="rotten_tomatoes/extension.html" target="_self"><span>chrome extension</span></a>, I asked a few friends to install and play with the app, then I interviewed them about their experiences.  
+	</p>
+	<p>
+		I discovered that people who aren’t as obsessed with film as I am wanted something more practical that would improve the Rotten Tomatoes website whenever they visited.  These open-ended conversations surfaced the ideas of personalizing the Tomatometer, adding a histogram of critic ratings, and ranking the critic review-blurbs based on each critic’s similarity to the user.  As I added these new features, I also tackled the app’s UX, providing an interface that seamlessly blends into the existing Rotten Tomatoes website.  
+	</p>
+	<a href="#" id="rottenScreenshots">
+		<div></div>
+		<div></div>
+	</a>
+	<h2>Results</h2>
+	<p>
+		The app has a small base of around 500 users who all found it through organic searching.  These users occassionally send me bug reports and suggestions.  Most recently, I created on onboarding experience for new users including a tool for importing existing star-ratings saved to Rotten Tomatoes.  I've also written a short essay based on this research that describes the <a href="user-ratings.html"><span>flaws in online ratings sytems</span></a> and how they can be improved. 
+	</p>
+</div>
+
+<div class="caseStudyMenu">
+	<a href="cardpool.html" id="optionCardpool">
+		<div>
+			<img src="assets/logoCardpool.png" alt="Cardpool Logo">
+		</div>
+		<span>Case Study</span>
+	</a><!--
+--><a href="couchsurfing.html" id="optionCouchSurfing">
+		<div>
+			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
+		</div>
+		<span>Case Study</span>
+	</a><!--
+--><a href="personal.html" id="optionPersonal">
+		<div>
+			<img src="assets/logoShshReverse.png" alt="Get Ready!">
+		</div>
+		<span>Side Projects</span>
+	</a>
+</div>
+
+<div class="caseStudyFooter">
+	<div>
+		<p class="thanks">Thanks for visiting!</p>
+		<p>
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>, except where noted.   
+			<span>Resume</span> available upon request. <br>
+			<a href="https://flic.kr/p/ajCHS6" target="_blank">Tomato photo</a> &copy;konarheim with <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank">Some rights reserved</a>. Modified. <br>
+			Other trademarks &amp; copyrights are the property of their respective owners. 
+		</p>
+	</div>
+</div>
+
+</body>
+</html>
