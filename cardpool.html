@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>@Mattthew - Cardpool</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=640, initial-scale=1.0">
+
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');	
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+
+<script type="text/javascript">
+	function doZoom(obj) {
+		var el = $(obj).children();
+		var w = $(document).width()/el.outerWidth(true);
+		if(el.css('transform')=='none') {
+			el.css('transform','scale(1)');			
+		}
+		var matrixRegex = /matrix\((-?\d*\.?\d+),\s*0,\s*0,\s*(-?\d*\.?\d+),\s*0,\s*0\)/;
+		var matches = $(el).css('transform').match(matrixRegex);
+		if(matches[1] == 1) {
+			el.css('transition','transform 0.5s ease-out');
+			el.css('transform','scale('+w+')');
+		} else {
+			el.css('transition','transform 0.1s ease-out');
+			el.css('transform','scale(1)');
+		} 
+	};
+
+	$(window).load(function() {
+		$('#appMap A').click(function() {
+			doZoom(this);
+			return false;
+		});
+		$('.personas').click(function() {
+			doZoom(this);
+			return false;
+		});
+	});
+
+</script>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="assets/case_studies.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="cardpoolHeader">
+	<div>
+		<div class="logo">
+			<span>Cardpool</span>
+		</div>
+		<h1>Cardpool Case Study</h1>
+	</div>
+	<div class="headerBG"></div>
+</div>
+
+<div id="cardpoolStudy">
+	<div class="pointer">
+		<div><div class="arrow"></div></div>
+	</div>
+	<h2>Background</h2>
+	<p>
+		As the sole UX designer for Cardpool, my challenge was to launch our first mobile app, moving from sketchpad to app store in 6 months.  The project clock was already ticking by the time I was hired, so I was expected to air drop in at full sprint.  
+	</p>
+	<p>
+		Cardpool is an online exchange for pre-owned gift cards.  While website customers can both buy discounted gift cards and sell unwanted cards, the product mission for the app was to increase sales.  Our ancillary goal was to expand the user base to a wider audience by modernizing the user interface and visual design.
+	</p>
+	<h2>Process</h2>
+	<p>
+		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Meanwhile, I studied our demographics to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of app-flows and animations as well as providing art-direction to our external visual design team.  After launch, I have continued to recommend app updates based on the study of our analytics and direct user feedback.  
+	</p>
+	<a name="personas"></a>
+	<h3>Personas &amp; Marketing Research</h3>
+	<p>
+		Demographic and survey research revealed that our 50% of the legacy user base was 45 and older.  Additionally, a large majority were Caucasian.  I developed personas to guide our visual design decisions towards appealing to a younger and more diverse user base.
+	</p>
+	<a class="personas" href="#personas">
+		<div>
+			<div class="persona_page">
+				<div id="persona_header1" class="persona_header">
+					<img id="persona_luis" src="cardpool/assets/persona_luis.png" alt="Headshot of an imaginary man name Luis">
+					<div>Luis</div>
+				</div>
+				<div class="persona_content">
+					<div>
+						<h4>Bio:</h4>
+						<p>Male, 26</p>
+						<p>Unmarried</p>
+						<p>Associate's Degree</p>
+						<p>Medical Lab Technician Intern</p>
+					</div><!--
+					--><div>
+						<h4>Desires:</h4>
+						<p>To find deals at his favorite popular clothing brands and restaurants.</p>
+					</div><!--
+					--><div>
+						<h4>Behaviors &amp; Beliefs:</h4>
+						<p>As a young intern, Luis has a tight budget yet is brand-conscious.  Luis is a savvy online shopper and quick to try new apps.<br><br>
+						With long hours and a busy personal life, his home is mostly a crash-pad.  He eats out often and shops online primarily via his mobile phone.</p>
+					</div><!--
+					--><div>
+						<h4>Favorite Apps:</h4>
+						<p id="instagram" class="persona_icon" >Instagram</p>
+						<p id="snapchat" class="persona_icon" >Snapchat</p>
+						<p id="amazon" class="persona_icon" >Amazon</p>
+					</div>
+				</div>
+			</div><!--
+			--><div class="persona_page">
+				<div id="persona_header2" class="persona_header">
+					<img id="persona_elaine" src="cardpool/assets/persona_elaine.png" alt="Headshot of an imaginary woman name Elaine">
+					<div>Elaine</div>
+				</div>
+				<div class="persona_content">
+					<div>
+						<h4>Bio:</h4>
+						<p>Female, 32</p>
+						<p>Married with 4 y/o daughter</p>
+						<p>Bachelor's Degree</p>
+						<p>Account Manager</p>
+					</div><!--
+					--><div>
+						<h4>Desires:</h4>
+						<p>To balance the family budget while renovating and decorating her new home.</p>
+					</div><!--
+					--><div>
+						<h4>Behaviors &amp; Beliefs:</h4>
+						<p>Elaine enjoys maximizes her budget from every angle.  She uses multiple credit cards to earn points.<br><br>
+						She frequently uses coupons and online discount codes, and she waits for sales to make purchases.  Her new home is her castle, and she shops to make it beautiful.</p>
+					</div><!--
+					--><div>
+						<h4>Favorite Apps:</h4>
+						<p id="pinterest" class="persona_icon" >Pinterest</p>
+						<p id="retailmenot" class="persona_icon" >RetailMeNot</p>
+						<p id="groupon" class="persona_icon" >Groupon</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	<a name="analysis"></a>
+	<h3>Competitive research</h3>
+	<p>
+		Cardpool’s top competitor was first to market with their mobile app, which meant we were playing catch up.  I dissected their app’s user flow to find good ideas we could duplicate and to surface their usability flaws.  Their app-map and navigation was intuitive but they lacked a visually dynamic presentation of their brands.  I looked to other top online retailers for presentation ideas including lifestyle imagery and scrolling animation.  Our top competitor had a strong checkout flow but lacked the strong security features that our product team required.  I looked at banking and online wallet apps for ideas to guide users through the necessary security hurdles.
+	</p>
+	<div id="appMap">
+		<a href="#appMap">
+			<img src="cardpool/assets/cardpool_app_map.png" alt="Diagram of the Cardpool iOS app-map"></a>
+	</div>
+	<a name="usabilityTesting"></a>
+	<h3>Usability testing</h3>
+	<a href="cardpool/prototype1.html" target="_self" class="cardpoolPrototype">
+		<img src="cardpool/assets/cardpool_prototype1.jpg" alt="Screenshot of Cardpool iOS app prototype 1">
+		<div class="prototypeOverlay"></div>
+		<div>Tap to open prototype</div></a>
+	<p>
+		I had modeled the entire mobile app as a fully interactive prototype with real brands that could be used for precise usability testing.  We hired a testing firm to provide facilities and recruit 10 users for 90 minute interview sessions.  I identified the most important open-ended tasks to give each user, and I observed the interviews on-site to.  We conducted interviews by day, and by night I iterated the prototype based on the days feedback.
+	</p>
+	<p>
+		We discovered an important oversight where we had included out-of-stock brands in our sort by top-discount, which led to user frustration.  We also learned how to clarify our security hurdles with a better progress-meter and by making our forms more visually exciting.  We learned many smaller but crucial lessons about the visual design, including improving readability with higher color-contrast and more visible error messages. 
+	</p>
+	<a name="prototypes"></a>
+	<h3>Prototyping &amp; Design</h3>
+	<a href="cardpool/prototype2.html" target="_self" class="cardpoolPrototype">
+		<img src="cardpool/assets/cardpool_prototype2.jpg" alt="Screenshot of Cardpool iOS app prototype 2">
+		<div class="prototypeOverlay"></div>
+		<div>Tap to open prototype</div></a>
+	<p>
+		To meet our tight deadline, we decided to outsource visual design to an agency.  We also hired a team of temporary contract iOS developers to quickly scale our engineering talent pool.  Given the number of external staff, I wanted to provide the team with a fully functional clickable prototype that modeled every button on every screen within the app.  
+	</p>
+	<p>
+		Meanwhile, I provided art direction to the design agency and coordinated our contract copy editor.  Development began as soon as the first screen had a wireframe and design mockup, and I managed to stay just ahead of the development team over the next seven months. 
+	</p>
+	<h2>Results</h2>
+	<ul>
+		<li>Launched the app in 7 months (1 month past plan).</li>
+		<li>Exceeded 1 million in revenue 4 months after launch.</li>
+		<li>Visit-to-sale conversion rate surpasses the industry average.</li>
+		<li>4.5 star rating in the app store (summer 2016 version).</li>
+	</ul>
+	<p>
+		You can download the <a href="cardpool/appstore.html" target="_self"><span>Cardpool iPhone App</span></a> from the Apple App store.
+	</p>
+</div>
+
+<div class="caseStudyMenu">
+	<a href="" id="optionRottenTomatoes">
+		<div>
+			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
+		</div>
+		<span>Case Study</span>
+	</a><!--
+--><a href="" id="optionCouchSurfing">
+		<div>
+			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
+		</div>
+		<span>Case Study</span>
+	</a><!--
+--><a href="" id="optionPersonal">
+		<div>
+			<img src="assets/logoShshReverse.png" alt="Get Ready!">
+		</div>
+		<span>Side Projects</span>
+	</a>
+</div>
+
+<div class="caseStudyFooter">
+	<div>
+		<p class="thanks">Thanks for visiting!</p>
+		<p>
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>, except where noted.   
+			<span>Resume</span> available upon request. <br>
+			Trademarks &amp; copyrights are the property of their respective owners.
+		</p>
+	</div>
+</div>
+
+</body>
+</html>
