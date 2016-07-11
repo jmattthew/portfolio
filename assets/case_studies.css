@@ -206,13 +206,17 @@ A.pageLink:after {
 	padding: 60px 80px 0px 80px;
 }
 
+#cardpoolHeader H1 {
+	font-weight: normal;
+}
+
 #cardpoolHeader .logo SPAN {
 	display: block;
 	height: 100px;
 	margin: 0px;
 	padding: 0px;
 	font-size: 0px;
-	background-image: url(logoCardpool.png);
+	background-image: url('logoCardpool.png');
 	background-size: 300px;
 	background-repeat: no-repeat;
 }
@@ -224,7 +228,7 @@ A.pageLink:after {
 	max-width: 900px;
 	margin: -300px auto 0px auto;
 	padding: 0px;
-	background-image: url(cardpoolBG.png);
+	background-image: url('cardpoolBG.png');
 	background-repeat: no-repeat;
 	background-size: 520px;
 	background-position: calc(100% + 30px) -70px;
@@ -465,7 +469,7 @@ DIV.prototypeOverlay:hover {
 	margin: 0px;
 	padding: 0px;
 	font-size: 0px;
-	background-image: url(logoRT.png);
+	background-image: url('logoRT.png');
 	background-size: 420px;
 	background-repeat: no-repeat;
 	position: relative;
@@ -477,7 +481,7 @@ DIV.prototypeOverlay:hover {
 	float: right;
 	margin-top: -300px;
 	padding: 0px;
-	background-image: url(../rotten_tomatoes/assets/rottenBG.png);
+	background-image: url('../rotten_tomatoes/assets/rottenBG.png');
 	background-repeat: no-repeat;
 	background-size: 411px;
 }
@@ -485,6 +489,7 @@ DIV.prototypeOverlay:hover {
 #rottenHeader H1 {
 	color: yellow;
 	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
+	font-weight: normal;
 }
 
 #rottenStudy {
@@ -568,6 +573,264 @@ DIV.prototypeOverlay:hover {
 
 
 
+
+
+/* ======== */
+/* Cardpool */
+/* ======== */
+
+
+
+
+
+
+#couchsurfingHeader {
+	background-color: rgb(208, 83, 0);
+}
+
+#couchsurfingHeader > DIV {
+	margin-left: 80px;
+	max-width: 900px;
+	height: 300px;
+	box-sizing: border-box;
+	padding-top: 60px;
+}
+
+#couchsurfingHeader H1 {
+	font-weight: normal;
+}
+
+#couchsurfingHeader .logo SPAN {
+	display: block;
+	height: 150px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 0px;
+	background-image: url('logoCouch.png');
+	background-size: 420px;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#couchsurfingStudy {
+	max-width: 900px;
+	padding: 0px 80px;
+	margin: 0px auto;
+}
+
+#couchsurfingStudy H2 {
+	color: rgb(208, 83, 0);
+}
+
+#couchsurfingStudy .pointer {
+	width: 100%;
+}
+
+#couchsurfingStudy .pointer > DIV {
+	margin-left: -5px;
+}
+
+#couchsurfingStudy .pointer .arrow {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 50px 0 50px;
+	border-color: transparent;
+	-webkit-transform: rotate(360deg);
+	border-top-color: rgb(208, 83, 0);
+}
+
+#couchsurfingStudy A {
+	color: rgb(116, 116, 116);
+}
+
+#couchsurfingStudy A SPAN {
+	border-bottom: 1px dotted rgb(208, 83, 0);
+}
+
+.couchDonutChart {
+	padding: 2vw;
+	float: right;
+	margin-left: 4vw;
+	background: rgb(252,252,252);
+	transform-origin: 100% 30%;
+}
+
+.couchDonutChart DIV {
+    box-sizing: border-box;
+}
+
+.couchDonutChart .donutBG {
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+	width: 18vw;
+	height: 18vw;
+	background: rgb(208, 83, 0); /* orange */
+}
+
+.couchDonutChart .slice {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.couchDonutChart .slice.topLeft {
+	width: 9vw;
+	height: 9vw;
+	background: rgb(228, 228, 228);
+	transform: rotate(0deg);
+}
+
+.couchDonutChart .slice.bottomLeft {
+	clip: rect(0 9vw 9vw 0);
+	background: rgb(228, 228, 228);
+	transform: rotate(348deg);
+}
+
+.couchDonutChart .donutCenter {
+	position: absolute;
+	border-radius: 50%;
+	top: 1.5vw;
+	left: 1.5vw;
+	width: 15vw;
+	height: 15vw;
+	background: rgb(252,252,252);
+}
+
+.couchDonutChart H2 {
+	display: block;
+	text-align: center;
+	font-size: 5vw;
+    margin-top: 4.2vw;
+}
+
+.couchDonutChart P {
+	display: block;
+	text-align: center;
+	font-size: 1.1vw;
+	line-height: initial;
+	margin-top: 1.2vw;
+	font-weight: normal;
+}
+
+.pdf {
+	display: block;
+	margin: 5vw auto 0 auto;
+	border: 1px solid rgb(232,232,232);
+}
+
+#profilesPDF {
+	width: 50vw;
+	height: 50vw;
+	background-size: 50vw 50vw;
+	background-image: url('../couch/assets/profiles.png');
+}
+
+#hostingPDF {
+	width: 50vw;
+	height: 30vw;
+	background-size: 50vw 30vw;
+	background-image: url('../couch/assets/hosting.png');
+}
+
+#matchingPDF {
+	width: 50vw;
+	height: 37.5vw;
+	background-size: 50vw 37.5vw;
+	background-image: url('../couch/assets/matching.png');
+}
+
+#experiencesPDF {
+	width: 50vw;
+	height: 55.9vw;
+	background-size: 50vw 55.9vw;
+	background-image: url('../couch/assets/experiences.png');
+}
+
+.pdf > DIV {
+	width: 50vw;
+	height: 100%;
+	padding: 2vw 2vw 0 0;
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,0);
+    transition: background-color 200ms linear;
+    overflow: hidden;
+}
+
+.pdf:hover > DIV {
+	background-color: rgba(0,0,0,.5);
+}
+
+.pdf > DIV > DIV {
+	width: 20vw;
+	height: 6vw;
+	box-sizing: border-box;
+	margin: 0 0 0 auto;
+	padding-top: 0.9vw;
+	border-radius: .5vw;
+	text-align: center;
+	font-family: 'Roboto Slab', serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 3vw;
+	font-weight: normal;
+	color: black;
+	background-color: white;
+	visibility: hidden;
+}
+
+.pdf:hover > DIV > DIV {
+	visibility: visible;
+	animation-name: animation;
+    animation-duration: 1500ms;
+}
+
+.pdf SPAN {
+	border: 0 !important;
+}
+
+.pdf:hover SPAN {
+	animation-name: animationText;
+	animation-duration: 350ms;
+}
+
+/* Generated with Bounce.js. Edit at http://goo.gl/bkOekC */
+
+@keyframes animation { 
+	 0.00% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); }
+	 1.30% { transform: matrix3d(3.905, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); }
+	 2.55% { transform: matrix3d(4.554, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); }
+	 4.10% { transform: matrix3d(4.025, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); }
+	 5.71% { transform: matrix3d(3.039, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); }
+	 8.11% { transform: matrix3d(1.82, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); }
+	 8.81% { transform: matrix3d(1.581, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); }
+	11.96% { transform: matrix3d(1.034, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); }
+	12.11% { transform: matrix3d(1.023, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); }
+	15.07% { transform: matrix3d(0.947, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); }
+	16.12% { transform: matrix3d(0.951, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); }
+	27.23% { transform: matrix3d(1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); }
+	27.58% { transform: matrix3d(1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); }
+	38.34% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); }
+	40.09% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); }
+	50.00% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); }
+	60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }
+	82.78% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	100.0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+}
+
+@keyframes animationText { 
+	  0.00% { opacity: 0; }
+	 99.99% { opacity: 0; }
+	100.00% { opacity: 1; } 
+}
+
+
+
+
+
 /* ======== */
 /* SMALLER SCREENS */
 /* ======== */
@@ -615,7 +878,11 @@ DIV.prototypeOverlay:hover {
 		transform-origin: 50% 50%;
 	}
 
-	/*  */
+	/* CouchSurfing */
+
+	.couchDonutChart P {
+		font-size: 1.4vw;
+	}
 
 }
 
