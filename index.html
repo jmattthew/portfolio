@@ -5,54 +5,42 @@
 <title>@Mattthew</title>
 <meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta id="deviceViewPort" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<meta id="deviceViewPort" name="viewport" content="width=device-width">
 
 <script type="text/javascript">
-	if(top != self) { 
-		// bust the .cf frame 
-		top.location = location; 
-	} else {
-		// prevents pixel load prior to frame busting
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-52293845-1', 'auto');
-		ga('send', 'pageview');	
-
-		var deviceViewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		if(deviceViewportWidth <=480) {
-			var el = document.querySelector("meta[name=viewport]");
-			el.setAttribute('content', 'width=device-width, initial-scale=0.8');
-		}
-	}
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');	
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script src="assets/jquery-ui.min.js"></script>
 <script src="assets/jquery.easing.min.js"></script>
 <script src="assets/modernizr.2.8.3-custom-build.js"></script>
-<script src="assets/index_scripts.js"></script>
+<script src="assets/index.js"></script>
 
 
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
 <link href="assets/styles.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-<div id="sectionHeader" class="section">
+<div id="sectionHeader">
 	<div class="title">
 		<h1 id="logoHeader">
 			<input id="shardEditor" type="text" value="Your Name" />
-			<a id="shardHolder" href="https://twitter.com/mattthew" target="_blank">
+			<a id="shardHolder" href="#" target="_blank">
 				<span id="shard_0" class="shard"><span>Mattthew</span></span></a>
 			<div id="shardSpacer">
 		</h1>
 		<p>
-			<span>Click on my name!</span>
+			<span>Tap on my name!</span>
 		</p>
 	</div>
 </div>
@@ -63,203 +51,104 @@
 	</clipPath>
 </svg>
 
-<div id="sectionCardpool" class="section">
-	<div id="cardpoolBG">
-		<a id="bookmark0"></a>
-		<div id="pointerCardpool" class="pointer">
-			<div><div class="arrow"></div></div>
-		</div>
-		<div class="title">
-			<h1 id="logoCardpool"><span>Cardpool</span></h1>
-		</div>
-		<div class="projContainer">
-			<a id="projCardpoolStore" href="cardpool.html" target="_self" class="project">
-				<h2 class="button animated"><span>view case study</span></h2>
-				<p>From napkin to App Store in seven months.  I was sole UX designer and art director for this app.</p>
-			</a>
-		</div>
-	</div>
-</div>
-
-<div id="sectionRotten" class="section">
-	<a id="bookmark1"></a>
-	<div id="pointerRotten" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="projContainer">
-		<div class="title">
-			<h1 id="logoRT"><span>Rotten Tomatoes</span></h1>
-		</div>
-		<a id="projRottenExtension" href="rotten_tomatoes.html" target="_self" class="project animated">
-			<h2 class="button"><span>view case study</span></h2>
-			<p>I designed, coded, and published this Chrome extension. It ranks film critics based on their similarity to you, and improves the accuracy of the "Tomato Meter" based on your own film ratings.</p>
-		</a>
-	</div>
-</div>
-
-<div id="sectionWatch" class="section">
-	<div id="sectionWatchEffect">
-		<a id="bookmark2"></a>
-		<div id="pointerWatch" class="pointer">
-			<div><div class="arrow"></div></div>
-		</div>
-		<div class="title animated">
-			<h1 id="logoWatch"><span>Smart Wrist-Companion</span></h1>
-		</div>
-		<div class="projContainer">
-			<a id="projWatchDesigns" href="watch.html" target="_self" class="project">
-				<h2 class="button"><span>view the mockups</span></h2>
-				<p>This companion for your smart-phone is my take on the smart-watch.  I think a smart-watch should only perform time &amp; date functions because a wrist-size smart-phone isn't very useful.  This UX design is noncommissioned.</p>
-			</a>
-		</div>
-	</div>
-</div>
-
-<div id="sectionCouch" class="section">
-	<a id="bookmark3"></a>
-	<div id="pointerCouch" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="projContainer animated">
-		<div class="title">
-			<h1 id="logoCouch"><span>CouchSurfing.com</span></h1>
-		</div>
-		<a id="projCouchDesktop" href="couchsurfing.html" target="_self" class="project">
-			<h2 class="button"><div><span>view case study</span></div></h2>
-			<p>I joined CouchSurfing as its 2nd employee and grew the company to 45 employees and two rounds of venture funding.  This set of UX documents includes wireframes &amp; the product strategy notes for the company stakeholders.</p>
-		</a>
-	</div>
-</div>
-
-<div id="sectionFermi" class="section">
-	<a id="bookmark4"></a>
-	<div id="pointerFermi" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="title">
-		<h1 id="logoFermi"><span>Where is everybody?!</span></h1>
-	</div>
-	<div class="projContainer">
-		<a id="projFermiGuide" href="fermi/index.html" target="_self" class="project animated">
-			<div>
-				<h2 class="button"><span>view the guide</span></h2>
-				<p>An illustrated guide to Fermi's paradox:  the universe is ancient and vast, so why haven't we been visited by intelligent extraterrestrials?  I wrote and illustrated this project.</p>
+<div id="caseStudies">
+	<a href="cardpool.html" class="column" id="c1">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoCardpool.png" alt="Cardpool Logo">
+					</div>
+					<span><span>Case Study</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
 			</div>
 		</a>
+	<a href="rotten_tomatoes.html" class="column" id="c2">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
+					</div>
+					<span><span>Case Study</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+			</div>
+		</a>
+	<a href="couchsurfing.html" class="column" id="c3">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
+					</div>
+					<span><span>Case Study</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+		</div>
+	</a>
+</div>
+
+<div class="pointer">
+	<div>
+		<div class="arrow"></div>
+	</div>
+	<span>
+		<div class="arrow"></div>		
+	</span>
+</div>
+
+<div id="skills">
+	<h1 class="title">
+		<span>Experience &amp; Skills</span>
+	</h1>
+	<div id="flow">
+		<p>Interaction&nbsp;&amp; <br>UX&nbsp;Design</p>
+	</div>
+	<div id="chart">
+		<p>User&nbsp;Research&nbsp;&amp; <br>Analytics</p>
+	</div>
+	<div id="draw">
+		<p>Animation&nbsp;&amp; <br>Pixel&nbsp;Pushing</p>
+	</div>
+	<div id="code">
+		<p>Prototyping&nbsp;&amp; <br>Coding&nbsp;in&nbsp;JS</p>
 	</div>
 </div>
 
-<div id="sectionShsh" class="section">
-	<a id="bookmark5"></a>
-	<div id="pointerShsh" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="title">
-		<h1 id="logoShsh"><span>Shsh Web Design</span></h1>
-	</div>
-	<div class="projContainer animated">
-		<a id="shshThumbs" href="shsh.html" target="_self"><span></span></a>
-		<a id="projShshDesigns" href="shsh.html" target="_self" class="project">
-			<h2 class="button"><span>view web designs</span></h2>
-			<p>A selection of web identity and design work commissioned by various clients while I was doing business as Shsh Web Design.  I designed, coded, and published these websites.</p>
-		</a>
-	</div>
+<div id="sideProjects">
+	<h1>
+		<span>Side Projects</span>
+	</h1>
+	<a id="illustration" href="sideprojects.html#bookmark1" class="column">
+		<p>Illustration</p>
+	</a>
+	<a id="film" href="sideprojects.html#bookmark2" class="column">
+		<p>Film Making</p>
+	</a>
+	<a id="photo" href="sideprojects.html#bookmark3" class="column">
+		<p>Photography</p>
+	</a>
+	<a id="product" href="sideprojects.html#bookmark5" class="column">
+		<p>Product</p>
+	</a>
 </div>
 
-<div id="sectionEssays" class="section">
-	<a id="bookmark6"></a>
-	<div id="pointerEssays" class="pointer">
-		<div><div class="arrow"></div></div>
+<div class="caseStudyFooter">
+	<div>
+		<p class="thanks">Thanks for visiting!</p>
+		<p>
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.   
+			Tap my name to contact me via Twitter.<br>
+		</p>
 	</div>
-	<div class="title">
-		<h1 id="logoEssays"><span>Product Essays</span></h1>
-	</div>
-	<div class="projContainer">
-		<a id="projEssaysRatings" href="user-ratings.html" target="_self" class="project animated">
-			<h2 class="button"><span>read:  user-ratings</span></h2>
-			<p>From Amazon to Yelp!, most user-ratings websites are doing it wrong.  Here's what they should be doing.</p>
-		</a>
-		<a id="projEssaysAR" href="augmented.html" target="_self" class="project">
-			<h2 class="button"><span>read: augmented reality</span></h2>
-			<p>Designing product for augmented reality requires understanding that our senses are already mediated by technology.</p>
-		</a>
-	</div>
-</div>
-
-<div id="sectionDocumentary" class="section">
-	<a id="bookmark7"></a>
-	<div id="pointerDocumentary" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="title">
-		<h1 id="logoDocumentary"><span>Documentary</span></h1>
-	</div>
-	<div class="projContainer">
-		<a id="projDocumentaryVideo" href="vimeo.html" target="_self" class="project animated">
-			<h2 class="button"><span></span><div><i></i></div></h2>
-			<p>Watch this 4 minute documentary, which explores the motivations of an abstract painter whose work I admire.  I made this video noncommissioned because I wanted to gain a deeper understanding of a fellow artist.</p>
-		</a>
-	</div>
-</div>
-
-<div id="sectionPortraits" class="section">
-	<a id="bookmark8"></a>
-	<div id="pointerPortraits" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="title">
-		<h1 id="logoPortraits"><span>Portrait Photography</span></h1>
-	</div>
-	<div class="projContainer">
-		<a id="projPortraitsPhotos" href="portraits.html" target="_self" class="project animated">
-			<h2 class="button"><span>view slideshow</span></h2>
-		</a>
-	</div>
-</div>
-
-<div id="sectionMixed" class="section">
-	<a id="bookmark9"></a>
-	<div id="pointerMixed" class="pointer">
-		<div><div class="arrow"></div></div>
-	</div>
-	<div class="title">
-		<h1 id="logoMixed"><span>Mixed Media Artwork</span></h1>
-		<!-- photo paralax bg -->
-	</div>
-	<div class="projContainer">
-		<a id="projMixedMug" href="cylindration.html" target="_self" class="project animated">
-			<h2 class="button"><span>view product manual</span></h2>
-			<p>An elaborate parody of the typical physical product manual featuring my technical writing &amp; technical illustration.</p>
-		</a>
-		<a id="projMixedMural" href="mural.html" target="_self" class="project">
-			<h2 class="button"><span>view mural painting</span></h2>
-			<p>I was one of the volunteer painters on a mural four-story tall mural at San Francisco's Argonne Elementary School.</p>
-		</a>
-	</div>
-</div>
-
-<div id="sectionFooter" class="section">
-	<div class="title">
-		<h1 id="logoFooter"><span>Thanks for visiting!</span></h1>
-		<p><a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>, except where noted.   
-		<span>Resume</span> available upon request. <br>
-		Trademarks &amp; copyrights are the property of their respective owners.</p>
-	</div>
-</div>
-
-<div id="miniMap">
-	<ul>
-		<li id="map0"><a href="#bookmark0"></a></li>
-		<li id="map1"><a href="#bookmark1"></a></li>
-		<li id="map2"><a href="#bookmark2"></a></li>
-		<li id="map3"><a href="#bookmark3"></a></li>
-		<li id="map4"><a href="#bookmark4"></a></li>
-		<li id="map5"><a href="#bookmark5"></a></li>
-		<li id="map6"><a href="#bookmark6"></a></li>
-		<li id="map7"><a href="#bookmark7"></a></li>
-		<li id="map8"><a href="#bookmark8"></a></li>
-		<li id="map9"><a href="#bookmark9"></a></li>
-	</ul>
 </div>
 
 </body>

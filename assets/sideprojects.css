@@ -1,0 +1,1121 @@
+HTML, BODY {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+A {
+	text-decoration: none;
+	color: black;
+}
+
+H1 {
+	font-family: 'Roboto Slab', serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 52px;
+	letter-spacing: initial;
+	margin: 0px;
+	padding: 10px 0px 10px 0px;
+}
+
+H2 {
+	font-family: 'Roboto Slab', serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 22px;
+	letter-spacing: initial;
+	margin: 0px;
+	padding: 10px 0px 10px 0px;
+}
+
+P {
+	font-family: 'Arimo', Arial, Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 19px;
+	letter-spacing: initial;
+	line-height: 23px;
+	margin: 5px 0px 5px 0px;
+	padding: 0px;
+}
+
+.section {
+	padding-top: 60px;
+	padding-bottom: 80px;
+	overflow: hidden;
+}
+
+.title {
+	max-width: 1050px;
+	width: 100%;
+	margin: 0px auto 0px auto;
+	text-align: center;
+}
+
+.projContainer {
+	max-width: 1050px;
+	width: 100%;
+	margin: 20px auto 0px auto;
+	text-align: center;
+	font-size: 0px; /* prevents spacing between inline blocks */
+}
+
+.projContainer P {
+	padding: 0px 0px 0px 5px;
+}
+
+.project {
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	margin: 0px 25px 40px 25px;
+	text-align: left;
+	font-size: 14px;
+}
+
+.project P {
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 5px;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.button {
+	border: 2px solid;
+	border-radius: 5px;
+	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.2);
+	padding: 10px;
+	text-align: center;
+}
+
+.project .button:hover SPAN {
+	/*
+	display: block;
+	margin: -4px 3px 4px -3px;
+	*/
+}
+
+.pointer {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: -60px; /* removes section top-padding */
+}
+
+.pointer DIV {
+	width: 100px;
+	margin: 0px auto 0px auto;
+	padding-bottom: 10px; /* restores section top-padding (adding to arrow height) */
+}
+
+.pointer DIV .arrow {
+	margin: 0px;
+	padding: 0px !important;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 50px 0 50px;
+	border-color: transparent;
+	-webkit-transform: rotate(360deg);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* HEADER */
+/* ======== */
+
+#header {
+	background-color: rgb(255, 0, 0);
+	color: rgba(255,255,255,0.7);
+	padding: 0.5vw 2vw 0.5vw 2vw;
+	text-align: right;
+}
+
+#header H1 {
+	font-weight: normal;
+	font-size: 2vw;
+}
+
+
+
+
+
+
+
+/* ======== */
+/* FERMI */
+/* ======== */
+
+#sectionFermi {
+	background-color: black;
+	background-image: url(fermi_slide_8.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	color: white;
+	box-shadow: inset -100px 0px 100px 50px rgba(0, 0, 0, 1);
+}
+
+#pointerFermi {
+}
+
+#pointerFermi DIV {
+	padding-right: 480px;
+}
+
+#sectionFermi .arrow {
+	border-top-color: rgb(255, 0, 0); /* header red */
+}
+
+#logoFermi {
+	text-shadow: 4px 5px 0px rgba(0, 0, 0, 0.6);
+	padding: 30px 0px 50px 0px;
+}
+
+#sectionFermi A P {
+	color: rgba(255, 255, 0, 0.67);
+}
+
+#projFermiGuide {
+	padding-left: 520px;
+	width: 320px;
+}
+
+#projFermiGuide DIV {
+	padding: 10px;
+	background-color: black;
+	border: 7px solid red;
+	box-shadow: 0px 0px 10px 3px black;
+}
+
+#sectionFermi .button {
+	color: rgb(0, 0, 0);
+	border-color: rgb(160, 0, 0);
+	border-radius: 0px;
+	box-shadow: 3px 4px 0px 0px rgba(255, 0, 0, 0.1);
+	background-color: rgba(255, 0, 0, 1); /* old/lame browser support */
+	background: linear-gradient(to bottom, rgba(255, 0, 0, 1) 60%, rgba(255, 0, 0, 0.7) 100%);	
+}
+
+#sectionFermi .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(255, 0, 0, 0.5);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* DOCUMENTARY */
+/* ======== */
+
+#sectionDocumentary {
+	background-color: orange;
+	background-image: url(abstract_bg.jpg);
+	background-position: center;
+	background-size: 100%
+}
+
+#pointerDocumentary {
+}
+
+#pointerDocumentary DIV {
+	padding-right: 0px;
+}
+
+#sectionDocumentary .arrow {
+	border-top-color: rgb(0,0,0);
+}
+
+#sectionDocumentary .title {
+	color: rgba(255, 255, 255, 1);
+	text-shadow: 0px 0px 25px #DA951C;
+}
+
+#projDocumentaryVideo {
+	width: 100%;
+	max-width: 650px;
+}
+
+#sectionDocumentary A P {
+	color: rgba(255, 255, 255, 1);
+	font-size: 30px;
+	line-height: 40px;
+	text-shadow: 0px 0px 25px #DA951C;
+}
+
+#sectionDocumentary .button {
+	border: none;
+	box-shadow: none;
+	background-color: rgba(0, 0, 0, 0.3);
+	height: 30px;
+}
+
+#sectionDocumentary .button SPAN {
+	display: block;
+	float: left;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 15px 0px 15px 25px;
+	border-color: transparent;
+	border-left-color: white;
+	-webkit-transform: rotate(360deg);
+	margin-left: 10px;
+}
+
+#sectionDocumentary .button DIV {
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	height: 25px;
+	margin: 2px 2px 0px 50px;
+}
+
+#sectionDocumentary .button I {
+	display: block;
+	height: 23px;
+	width: 0px;
+	margin: 1px;
+	background-color: white;
+}
+
+#sectionDocumentary .button:hover {
+	background-color: orange;
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* PORTRAITS */
+/* ======== */
+
+#sectionPortraits {
+	padding-bottom: 180px;
+	background-color: rgb(235, 235, 235);
+	background-image: url(portraits_bg.jpg);
+	background-attachment: fixed;
+	background-position: 0px center;
+	background-repeat: no-repeat;
+	background-size: 51%; /* Firefox renders 50% incorrectly */ 
+	box-shadow: inset -100px 0px 100px 50px rgba(235, 235, 235, 1);
+}
+
+#pointerPortraits {
+}
+
+#pointerPortraits DIV {
+	padding-left: 400px;
+}
+
+#sectionPortraits .arrow {
+	border-top-color: #FFC866;
+}
+
+#sectionPortraits .title H1 {
+	padding-top: 60px;
+	padding-left: 400px;
+	color: rgba(202, 170, 149, 1);
+}
+
+#projPortraitsPhotos {
+	padding-left: 400px;
+}
+
+#sectionPortraits .button {
+	color: rgb(202, 170, 149);
+	border-color: rgb(202, 170, 149);
+	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.1);
+	background-color: rgb(255, 255, 255);
+	background: linear-gradient(to bottom, rgb(255, 255, 255) 60%, rgb(229, 215, 205) 100%);
+}
+
+#sectionPortraits .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(202, 170, 149, 0.2);
+}
+
+
+
+
+
+/* ======== */
+/* MIXED */
+/* ======== */
+
+#sectionMixed {
+	background-color: rgb(118, 206, 255);
+}
+
+#pointerMixed {
+}
+
+#pointerMixed DIV {
+	padding-right: 0px;
+}
+
+#sectionMixed .arrow {
+	border-top-color: rgb(235, 235, 235);
+}
+
+#sectionMixed .button {
+	color: rgba(0, 0, 0, 0.8);
+	border-color: rgba(0, 0, 0, 0.3);
+	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+#sectionMixed .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* WATCH */
+/* ======== */
+
+#sectionWatch {
+	background-color: black;
+	background-image: url(wrist_companion.jpg);
+	background-size: 862px 862px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: left;
+	color: white;
+	box-shadow: inset 0px 0px 100px 50px rgba(0, 0, 0, 1);
+	border-spacing: 0; /* arbitraty value needed for animation */
+}
+
+#sectionWatchEffect {
+	padding-bottom: 80px;
+	margin-bottom: -80px;
+	background-repeat: no-repeat;
+}
+
+#pointerWatch {
+}
+
+#pointerWatch DIV {
+	padding-left: 200px;
+}
+
+#sectionWatch .title H1 {
+	padding-left: 200px;
+	text-shadow: 0px 0px 40px rgba(255, 220, 145, 0.63);
+}
+
+#sectionWatch A P {
+	color: rgba(255, 235, 200, 0.5);
+}
+
+#sectionWatch .arrow {
+	border-top-color: rgb(118, 206, 255); /* mixed baby blue */
+}
+
+#projWatchDesigns {
+	padding-left: 200px;
+}
+
+#sectionWatch .button {
+	color: rgb(0, 0, 0);
+	border-color: rgba(189, 116, 119, 1);
+	box-shadow: 3px 4px 0px 0px rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 0, 0, 1);
+	background: linear-gradient(to bottom, rgba(253, 168, 128, 1) 60%, rgba(173, 114, 116, 1) 100%);
+}
+
+#sectionWatch .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.8);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* SHSH */
+/* ======== */
+
+#sectionShsh {
+	background-color: white;
+}
+
+#pointerShsh {
+}
+
+#pointerShsh DIV {
+	padding-right: 420px;
+}
+
+#sectionShsh .arrow {
+	border-top-color: #000; /* fermi black */
+}
+
+#logoShsh SPAN {
+	display: block;
+	width: 550px;
+	height: 160px;
+	margin: 0px auto 0px auto;
+	font-size: 0px;
+	background-image: url(logoShsh.png);
+}
+
+#shshThumbs {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0px 75px 40px 25px;
+	width: 500px;
+	height: 251px;
+	background-image: url(shsh_thumbs.png);
+	background-size: 500px 251px;
+}
+
+#projShshDesigns {
+	margin-top: 5px;
+}
+
+#sectionShsh .button {
+	border-color: rgb(0, 0, 0);
+	background-color: rgba(255, 255, 255, 0.3); /* old/lame browser support */
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 60%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+#sectionShsh .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* GET READY */
+/* ======== */
+
+#sectionGetReady {
+	padding-bottom: 0px;
+	background-color: rgb(62,191,210);
+	background: linear-gradient(to bottom, rgb(45, 140, 154) 0%, rgb(62, 191, 210) 40%);
+}
+
+#getReadyBG {
+	padding-bottom: 80px;
+	background-image: url(getReadyBG.png);
+	background-repeat: no-repeat;
+	background-position: calc(100% + 100px) -94px;
+}
+
+#pointerGetReady {
+}
+
+#pointerGetReady DIV {
+	padding-right: 378px;
+}
+
+#sectionGetReady .arrow {
+	border-top-color: rgb(255,255,255); /* shsh white */
+}
+
+#sectionGetReady .title {
+	margin-top: 45px;
+}
+
+#logoGetReady SPAN {
+	display: block;
+	width: 459px;
+	height: 77px;
+	margin: 0px auto 0px auto;
+	font-size: 0px;
+	background-image: url(logoGetReady.png);
+	background-repeat: no-repeat;
+}
+
+#projGetReadyMocks {
+	margin: 0px 176px 40px 25px;	
+}
+
+#sectionGetReady .button {
+	color: rgb(0, 0, 0);
+	border-color: rgb(238, 195, 0);
+	box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.3);
+	background-color: rgb(255, 195, 0); /* old/lame browser support */
+	background: linear-gradient(to bottom, rgb(255, 195, 0) 60%, rgb(255, 170, 0) 100%);
+}
+
+#sectionGetReady .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
+
+#sectionGetReady P {
+	color: rba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* ESSAYS */
+/* ======== */
+
+#sectionEssays {
+	background-color: rgb(0, 0, 0);
+	padding-bottom: 35vh;
+	color: white;
+}
+
+#pointerEssays {
+}
+
+#pointerEssays DIV {
+	padding-right: 0px;
+}
+
+#sectionEssays .arrow {
+	border-top-color: rgb(62, 191, 210); /* ger ready blue */
+}
+
+#sectionEssays .button {
+	color: rgba(255,255,255,0.8);
+	border-color: rgba(255,255,255,0.3);
+	box-shadow: 3px 4px 0px 0px rgba(255,255,255,0.2);
+}
+
+#sectionEssays .button:hover {
+	box-shadow: 0px 0px 2px 0px rgba(255,255,255,0.3);
+	margin: 4px -3px -4px 3px;
+	text-shadow: 0px 0px 10px rgba(255,255,255,0.2);
+}
+
+#sectionEssays P {
+	color: rgba(255,255,255,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* FOOTER  */
+/* ======== */
+
+.caseStudyFooter {
+	text-align: center;
+	padding-bottom: 11vw;
+	color: rgb(133,133,133);
+} 
+
+.caseStudyFooter A {
+	color: rgb(133,133,133);
+	font-weight: bold;
+}
+
+.thanks {
+	font-family: 'Roboto Slab', serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 52px;
+	font-weight: normal;
+	color: black;
+	letter-spacing: initial;
+	margin: 0;
+	padding: 90px 0px 30px 0px;
+}
+
+.caseStudyFooter P {
+	display: block;
+}
+
+.caseStudyFooter P A SPAN {
+	color: black;
+	border-bottom: 1px dotted rgb(133, 133, 133);
+} 
+
+.caseStudyFooter .twitterLink:before {
+	content: '\00A9';
+	letter-spacing: 5px;
+} 
+
+.caseStudyFooter .twitterLink:hover:before {
+	content: '@';
+	letter-spacing: initial;
+} 
+
+.caseStudyMenu {
+}
+
+.caseStudyMenu A {
+	display: inline-block;
+	vertical-align: top;
+	width: 33.3%;
+	box-sizing: border-box;
+	padding-top: 4vw;
+	text-align: center;
+}
+
+.caseStudyMenu DIV {
+	height: 9vw;
+	margin-top: 3.5vw;
+	margin-bottom: -3.5vw;
+    transition: margin 300ms ease-out;
+}
+
+.caseStudyMenu SPAN {
+	display: block;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: initial;
+	font-size: 3vw;
+	color: white;
+    margin: 2vw auto 4.5vw auto;
+    opacity: 0;
+    filter: alpha(opacity=0); /* For IE8 and earlier */
+    transition: opacity 600ms ease-out;
+}
+
+.caseStudyMenu A:hover DIV {
+	margin-top: 1vw;
+	margin-bottom: -1vw;
+}
+
+.caseStudyMenu A:hover SPAN {
+	opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.caseStudyMenu IMG {
+	width: 75%;
+	border: 0;
+}
+
+#optionCardpool {
+	background-color: rgb(245, 103, 160);
+}
+
+#optionRottenTomatoes {
+	background-color: rgb(57, 121, 0);
+}
+
+#optionRottenTomatoes SPAN {
+	color: yellow;
+	text-shadow: 0 0.15vw 0 rgba(0, 0, 0, 1);
+}
+
+#optionCouchSurfing {
+	background-color: rgb(208, 83, 0);
+}
+
+#optionSideProjects {
+	background-color: rgb(65 ,65 ,65);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* MINIMAP */
+/* ======== */
+
+#miniMap {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	height: 100%;
+
+}
+
+#miniMap:before { 
+	content: ''; 
+	display: inline-block; 
+	vertical-align: middle; 
+	width: 0px; 
+	height: 100%; 
+	margin-right: -0.25em; /* Adjusts for spacing */ 
+}
+
+#miniMap UL {
+	display: inline-block;
+	vertical-align: middle; 
+	background-color: rgba(255, 255, 255, 0.2);
+	margin-right: 10px;
+	border-radius: 5px;
+	padding: 0px;
+	font-size: 0px;
+}
+
+#miniMap LI {
+	list-style: none;
+}
+
+#miniMap LI A {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 6px;	
+	margin: 3px 8px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#miniMap LI A:hover {
+	width: 12px;
+	height: 12px;
+	margin: 1px 6px;
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+#map1 A {
+	margin-top: 8px !important; 
+}
+
+#map8 A {
+	margin-bottom: 8px !important; 
+}
+
+#map1 A:hover {
+	background-color: rgb(0, 0, 0); 
+	margin-top: 6px !important; 
+}
+
+#map2 A:hover {
+	background-color: orange;
+}
+
+#map3 A:hover {
+	background-color: rgb(235, 235, 235);
+}
+
+#map4 A:hover {
+	background-color: rgb(118, 206, 255);
+}
+
+#map5 A:hover {
+	background-color: rgb(0, 0, 0);
+}
+
+#map6 A:hover {
+	background-color: rgb(255, 255, 255);
+}
+
+#map7 A:hover {
+	background-color: orange;
+}
+
+#map8 A:hover {
+	background-color: rgb(0, 0, 0);
+}
+
+
+
+
+
+
+
+
+
+/* ======== */
+/* SMALLER SCREENS */
+/* ======== */
+
+@media all and (max-width: 1300px) {
+
+	#getReadyBG {
+		background-position: calc(100% + 300px) -94px;
+	}
+
+}
+
+@media all and (max-width: 1024px) {
+
+	#getReadyBG {
+		background-position: calc(100% + 350px) -94px;
+	}
+
+	#logoGetReady SPAN {
+		background-size: 90%;
+	}
+
+	/*  */
+
+	#sectionWatch {
+		background-size: 560px 560px;
+		background-position: -70px 50px;
+	}
+
+	/*  */
+
+	#sectionFermi {
+		background-size: contain;
+	}
+
+}
+
+@media all and (max-width: 890px) {
+
+	.caseStudyFooter P.thanks {
+		font-size: 9vw;
+		padding: 11vw 0 5vw 0;
+	}
+
+	.caseStudyFooter P {
+		font-size: 3vw;
+	}
+
+	.caseStudyFooter P A SPAN {
+		border-bottom-width: 2px;
+	} 
+
+	/* GET READY */
+
+	#getReadyBG {
+		background-position: calc(100% + 450px) -94px;
+	}
+
+	#logoGetReady SPAN {
+		background-size: 85%;
+	}
+
+	/* FERMI */
+	#projFermiGuide {
+		padding-left: 300px;
+	}
+
+	/* DOCUMENTARY */
+
+	#projDocumentaryVideo {
+		width: 600px;
+	}
+
+	/* PORTRAITS */
+
+	#sectionPortraits {
+		padding-bottom: 200px;
+		background-size: 51%; /* Firefox renders 50% incorrectly */ 
+	}
+
+	#sectionPortraits .title H1 {
+		padding-left: 200px;
+		padding-top: 20px;
+	}
+
+	#pointerPortraits DIV {
+		padding-left: 200px;
+	}
+
+	#projPortraitsPhotos {
+		padding-left: 200px;
+	}
+
+}
+
+@media all and (max-width: 640px) {
+
+	H1 {
+		font-size: 36px; 
+	}
+
+	H2 {
+		font-size: 19px;
+	}
+
+	.pointer DIV .arrow {
+		border-width: 40px 40px 0px 40px;
+	}
+
+	/* GET READY */
+
+	#pointerGetReady DIV {
+		padding-right: 265px;
+	}
+
+	#getReadyBG {
+		background-position: calc(100% + 180px) -94px;
+	}
+
+	#logoGetReady SPAN {
+		background-size: 75%;
+		background-position: 15%;
+	}
+
+	#sectionGetReady P {
+		visibility: hidden;
+	}
+
+	/* FERMI */
+
+	#pointerFermi DIV {
+		padding-right: 265px;
+	}
+
+	#projFermiGuide {
+		padding-left: 0px;
+	}
+
+	#sectionFermi {
+		background-size: 667px 367px;
+		box-shadow: inset -50px 0px 50px 25px rgba(0, 0, 0, 1);
+	}
+
+	#logoFermi SPAN {
+		font-size: 40px; 
+	}
+
+	/* SHSH */
+
+	#pointerShsh DIV {
+		padding-right: 265px;
+	}
+
+	#logoShsh SPAN {
+		width: 350px;
+		height: 102px;
+		background-size: 350px 102px;
+	}
+
+	#shshThumbs {
+		width: 350px;
+		height: 176px;
+		background-size: 350px 176px;
+		margin: 0px 25px 80px 25px;
+	}
+
+	#projShshDesigns {
+		margin-top: 0px;
+	}
+
+	/* WATCH */
+
+	#pointerWatch .arrow {
+		visibility: hidden;
+	}
+
+	#sectionWatch {
+		background-size: 500px 500px;
+		background-position: -70px 235px;
+	}
+
+	#sectionWatchEffect {
+		padding-bottom: 145px;
+		margin-bottom: -145px;
+	}
+
+	#pointerWatch DIV {
+		padding-left: 0px;
+	}
+
+	#sectionWatch .title H1 {
+		padding: 0px 10px 0px 10px;
+	}
+
+	#sectionWatch A P {
+		text-shadow: 0px 0px 25px black;
+	}
+
+	#projWatchDesigns {
+		padding-left: 0px;
+	}
+
+	/* DOCUMENTARY */
+
+	#projDocumentaryVideo {
+		width: 350px;
+	}
+
+	#sectionDocumentary A P {
+		font-size: 22px;
+		line-height: 30px;
+	}
+
+	/* PORTRAITS */
+
+	#sectionPortraits {
+		padding-bottom: 100px;
+		background-size: 75%;
+		box-shadow: inset -50px 0px 50px 25px rgba(235, 235, 235, 1);
+	}
+
+	#pointerPortraits DIV {
+		padding-left: 0px;
+	}
+
+	#sectionPortraits .title H1 {
+		padding-top: 20px;
+		padding-left: 0px;
+	}
+
+	#projPortraitsPhotos {
+		padding-left: 0px;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
