@@ -11,7 +11,7 @@ $(window).load(function() {
 	var shardAngle = 2; 
 	var shardWidth = 40;
 	var shardSpacing = 5;
-	var headerTitle = 'Mattthew Brauer';
+	var headerTitle = 'Mattthew';
 	var headerSubtitle = 'Product Designer, Storyteller, & Artist.  Click on my name!';
 
 	$('#sectionHeader').bind('reveal',function(event){

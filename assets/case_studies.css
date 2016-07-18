@@ -133,20 +133,20 @@ A.pageLink:after {
 	background-color: rgb(208, 83, 0);
 }
 
-#optionPersonal {
+#optionSideProjects {
 	background-color: rgb(65 ,65 ,65);
-}
-
-.caseStudyFooter A {
-	color: rgb(133,133,133);
 }
 
 .caseStudyFooter {
 	text-align: center;
-	max-width: 900px;
-	padding: 0px 80px 80px 80px;
-	margin: 0px auto;
+	padding-bottom: 11vw;
+	color: rgb(133,133,133);
 } 
+
+.caseStudyFooter A {
+	color: rgb(133,133,133);
+	font-weight: bold;
+}
 
 .thanks {
 	font-family: 'Roboto Slab', serif;
@@ -156,6 +156,7 @@ A.pageLink:after {
 	font-weight: normal;
 	color: black;
 	letter-spacing: initial;
+	margin: 0;
 	padding: 90px 0px 30px 0px;
 }
 
@@ -837,14 +838,18 @@ DIV.prototypeOverlay:hover {
 
 @media all and (max-width: 748px) {
 
-	.caseStudyFooter P {
-		font-size: 14px;
+	.caseStudyFooter P.thanks {
+		font-size: 9vw;
+		padding: 11vw 0 5vw 0;
 	}
 
-	.caseStudyFooter P.thanks {
-		font-size: 47px;
-		padding: 90px 0px 30px 0px;
+	.caseStudyFooter P {
+		font-size: 3vw;
 	}
+
+	.caseStudyFooter P A SPAN {
+		border-bottom-width: 2px;
+	} 
 
 	/* Cardpool */
 
@@ -903,24 +908,6 @@ DIV.prototypeOverlay:hover {
 	P, UL {
 		font-size: 15px;
 	}
-
-	.caseStudyFooter {
-		padding-left: 40px;
-		padding-right: 40px;
-	}
-
-	.caseStudyFooter P {
-		font-size: 11px;
-	}
-
-	.caseStudyFooter P.thanks {
-		font-size: 42px;
-		padding: 90px 0px 30px 0px;
-	}
-
-	.caseStudyFooter P A SPAN {
-		border-bottom-width: 2px;
-	} 
 
 	/* Cardpool */
 
