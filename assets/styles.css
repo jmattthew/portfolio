@@ -133,6 +133,7 @@ P {
 
 #caseStudies {
 	font-size: 0;
+	overflow: hidden; /* Necessary for Firefox */
 }
 
 #caseStudies .column {

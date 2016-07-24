@@ -909,6 +909,10 @@ DIV.prototypeOverlay:hover {
 		font-size: 15px;
 	}
 
+	.pointer {
+		margin-top: -0.5px; /* attempt to fix Firefox mobile rendering issue */
+	}
+
 	/* Cardpool */
 
 	#cardpoolHeader .headerBG {
