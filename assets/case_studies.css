@@ -116,6 +116,15 @@ A.pageLink:after {
 	border: 0;
 }
 
+#optionFontFinder {
+	background-color: hsl(0, 0%, 24%); /* font finder grey */
+}
+
+
+#optionFontFinder SPAN {
+	color: red;
+}
+
 #optionCardpool {
 	background-color: rgb(245, 103, 160);
 }
@@ -126,7 +135,6 @@ A.pageLink:after {
 
 #optionRottenTomatoes SPAN {
 	color: yellow;
-	text-shadow: 0 0.15vw 0 rgba(0, 0, 0, 1);
 }
 
 #optionCouchSurfing {
@@ -141,7 +149,7 @@ A.pageLink:after {
 	text-align: center;
 	padding-bottom: 11vw;
 	color: rgb(133,133,133);
-} 
+}
 
 .caseStudyFooter A {
 	color: rgb(133,133,133);
@@ -167,17 +175,17 @@ A.pageLink:after {
 .caseStudyFooter P A SPAN {
 	color: black;
 	border-bottom: 1px dotted rgb(133, 133, 133);
-} 
+}
 
 .caseStudyFooter .twitterLink:before {
 	content: '\00A9';
 	letter-spacing: 5px;
-} 
+}
 
 .caseStudyFooter .twitterLink:hover:before {
 	content: '@';
 	letter-spacing: initial;
-} 
+}
 
 
 
@@ -390,7 +398,7 @@ A.pageLink:after {
     text-align: left;
     width: 45%;
     margin: 2%;
-	border: 1px solid rgb(232,232,232);	
+	border: 1px solid rgb(232,232,232);
 }
 
 .cardpoolPrototype {
@@ -453,7 +461,7 @@ DIV.prototypeOverlay:hover {
 
 #rottenHeader {
 	background-color: rgb(87, 150, 0); /* old/lame browser support */
-	background: linear-gradient(to bottom, rgb(87, 150, 0) 0%, rgb(57, 121, 0) 60%); 
+	background: linear-gradient(to bottom, rgb(87, 150, 0) 0%, rgb(57, 121, 0) 60%);
 }
 
 #rottenHeader > DIV {
@@ -545,27 +553,29 @@ DIV.prototypeOverlay:hover {
 #rottenScreenshots {
 	display: block;
 	width: 80vw;
-	height: 50vw;
+	height: 49.9vw;
+	max-width: 900px;
+	max-height: 562px;
 	margin: 5vw auto 0 auto;
 	border: 1px solid rgb(232,232,232);
 }
 
 #rottenScreenshots > DIV {
-	width: 80vw;
-	height: 50vw;
+	height: 49.9vw;
+	max-height: 562px;
+	background-size: 100%;
 }
 
 #rottenScreenshots > DIV:first-child {
-	margin-bottom: -50vw;
 	background-image: url('../rotten_tomatoes/assets/app_screenshot1.png');
-	background-size: 80vw 50vw;
 	transition: background-size 500ms ease-out, background-position 500ms ease-out;
 }
 
 #rottenScreenshots > DIV:last-child {
+	position: relative;
+	top: -100%;
 	background-image: url('../rotten_tomatoes/assets/app_screenshot2.png');
-	background-size: 80vw 50vw;
-	background-position: 0vw 0vw;
+	background-position: 0 0;
 	opacity: 0;
 	transition: opacity 500ms linear, background-size 500ms ease-out, background-position 500ms ease-out;
 }
@@ -798,9 +808,141 @@ DIV.prototypeOverlay:hover {
 	animation-duration: 350ms;
 }
 
+
+
+
+
+
+
+/* =========== */
+/* Font Finder */
+/* =========== */
+
+
+
+
+
+
+
+#fontFinderHeader {
+	background-color: hsl(0, 0%, 85%);
+	background-image: url(study_fontFinder_headline_bg.png);
+	background-size: 500px 300px;
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+
+#fontFinderHeader > DIV {
+	margin-left: 80px;
+	max-width: 900px;
+	height: 300px;
+	box-sizing: border-box;
+	padding-top: 60px;
+}
+
+#fontFinderHeader H1 {
+	color: hsl(0, 100%, 50%);
+	font-weight: normal;
+}
+
+#fontFinderHeader .logo SPAN {
+	display: block;
+	height: 150px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 0px;
+	background-image: url('logoFontFinder.png');
+	background-size: 420px;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#fontFinderStudy {
+	max-width: 900px;
+	padding: 0px 80px;
+	margin: 0px auto;
+}
+
+#fontFinderStudy .pointer {
+	width: 100%;
+}
+
+#fontFinderStudy .pointer > DIV {
+	margin-left: -5px;
+}
+
+#fontFinderStudy .pointer .arrow {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 50px 0 50px;
+	border-color: transparent;
+	-webkit-transform: rotate(360deg);
+	border-top-color: hsl(0, 0%, 85%); /* grey */
+}
+
+#fontFinderStudy H2 {
+	color: hsl(0, 0%, 55%);
+}
+
+#fontFinderStudy P {
+	color: hsl(0, 0%, 70%);
+}
+
+#fontFinderStudy A {
+	color: black;
+}
+
+#fontFinderStudy A SPAN {
+	border-bottom: 1px dotted black;
+}
+
+#fontFinderStudy #praise DIV {
+	display: inline-block;
+	vertical-align: top;
+	overflow: hidden;
+}
+
+#fontFinderStudy #praise DIV:nth-child(1) {
+	width: 450px;
+}
+
+#fontFinderStudy #praise DIV:nth-child(2) {
+	margin-top: 10px;
+	width: 450px;
+}
+
+#fontFinderStudy #producthunt {
+	display: block;
+	width: 450px;
+}
+
+#fontFinderStudy #producthunt IMG {
+	width: 450px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(225, 232, 237);
+	border-radius: 4px;
+}
+
+#fontFinderStudy #producthunt:hover IMG {
+	border-color: rgb(204, 214, 221);
+}
+
+#fontFinderStudy #producthunt SPAN {
+	font-family: Arimo;
+    font-weight: 400;
+    font-size: 14px;
+	color: hsl(0,0%,50%);
+	padding-left: 15px;
+}
+
+
 /* Generated with Bounce.js. Edit at http://goo.gl/bkOekC */
 
-@keyframes animation { 
+@keyframes animation {
 	 0.00% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); }
 	 1.30% { transform: matrix3d(3.905, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); }
 	 2.55% { transform: matrix3d(4.554, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); }
@@ -819,13 +961,13 @@ DIV.prototypeOverlay:hover {
 	50.00% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); }
 	60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }
 	82.78% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-	100.0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+	100.0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
-@keyframes animationText { 
+@keyframes animationText {
 	  0.00% { opacity: 0; }
 	 99.99% { opacity: 0; }
-	100.00% { opacity: 1; } 
+	100.00% { opacity: 1; }
 }
 
 
@@ -849,7 +991,7 @@ DIV.prototypeOverlay:hover {
 
 	.caseStudyFooter P A SPAN {
 		border-bottom-width: 2px;
-	} 
+	}
 
 	/* Cardpool */
 
@@ -887,6 +1029,11 @@ DIV.prototypeOverlay:hover {
 
 	.couchDonutChart P {
 		font-size: 1.4vw;
+	}
+
+	/* Font Finder */
+	#fontFinderHeader {
+		background-image: none;
 	}
 
 }

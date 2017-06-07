@@ -5,7 +5,7 @@ $(window).load(function() {
 	var hasScrolled = false;
 	var allowShardEdit = false;
 	var shards = 1;
-	var shardAngle = 2; 
+	var shardAngle = 2;
 	var shardWidth = 40;
 	var shardSpacing = 5;
 	var headerTitle = 'Mattthew';
@@ -70,7 +70,7 @@ $(window).load(function() {
 	$('#shardHolder').bind('dropShards',function(event) {
 		$(this).find('.shard').each(function(index) {
 			var delay = Math.random()*750;
-			$(this).trigger('drop',[delay,index]);    
+			$(this).trigger('drop',[delay,index]);
 		});
 	});
 
@@ -95,10 +95,10 @@ $(window).load(function() {
 		});
 	});
 
-	// wrap up animation 
+	// wrap up animation
 	$('#shardHolder').bind('unifyShards',function(event) {
-		$('#shard_0').clone(false).appendTo($('#shardHolder')).attr('id','shard_glow'); 
-		$('#shard_0').clone(false).appendTo($('#shardHolder')).attr('id','shard_end'); 
+		$('#shard_0').clone(false).appendTo($('#shardHolder')).attr('id','shard_glow');
+		$('#shard_0').clone(false).appendTo($('#shardHolder')).attr('id','shard_end');
 		$('#shard_end').addClass('endShard');
 		$('#shard_end').css('opacity','0');
 		$('#shard_end').find('span').css('-webkit-clip-path','');
@@ -114,14 +114,14 @@ $(window).load(function() {
 			duration: 400,
 			easing: 'easeOutQuad',
 			complete: function() {
-			}    
+			}
 		});
 		$('#shard_glow').animate({
 			opacity: 1,
 		}, {
 			duration: 300,
 			easing: 'linear',
-			complete: function() {   
+			complete: function() {
 				$('#shard_glow').animate({
 					opacity: 0,
 				}, {
@@ -129,9 +129,9 @@ $(window).load(function() {
 					easing: 'easeOutQuad',
 					complete: function() {
 						$('#shardHolder').trigger('removeShards');
-					}    
+					}
 				});
-			}    
+			}
 		});
 	});
 
@@ -177,7 +177,7 @@ $(window).load(function() {
 		$('#shardHolder').trigger('bindEvents');
 		$('#shardHolder').trigger('addShards');
 		$('#shardHolder').trigger('addShardCSS');
-		$('#shardHolder').trigger('dropShards');			
+		$('#shardHolder').trigger('dropShards');
 	});
 
 	//
@@ -188,6 +188,10 @@ $(window).load(function() {
 		} else if (e.which == '27') { // escape
 			$(this).blur();
 		}
+	});
+
+	$('.twitterLink').click(function() {
+		$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 	});
 
 	function animateCubes() {
@@ -273,7 +277,7 @@ $(window).load(function() {
 			$('#shardHolder').trigger('bindEvents');
 			$('#shardHolder').trigger('addShards');
 			$('#shardHolder').trigger('addShardCSS');
-			$('#shardHolder').trigger('dropShards');			
+			$('#shardHolder').trigger('dropShards');
 		}, 800);
 	} else {
 		// these animations move too slowly on mobile devices

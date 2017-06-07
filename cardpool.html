@@ -12,9 +12,9 @@
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
+
 	ga('create', 'UA-52293845-1', 'auto');
-	ga('send', 'pageview');	
+	ga('send', 'pageview');
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
@@ -24,7 +24,7 @@
 		var el = $(obj).children();
 		var w = $(document).width()/el.outerWidth(true);
 		if(el.css('transform')=='none') {
-			el.css('transform','scale(1)');			
+			el.css('transform','scale(1)');
 		}
 		var matrixRegex = /matrix\((-?\d*\.?\d+),\s*0,\s*0,\s*(-?\d*\.?\d+),\s*0,\s*0\)/;
 		var matches = $(el).css('transform').match(matrixRegex);
@@ -34,7 +34,7 @@
 		} else {
 			el.css('transition','transform 0.1s ease-out');
 			el.css('transform','scale(1)');
-		} 
+		}
 	};
 
 	$(window).load(function() {
@@ -45,6 +45,10 @@
 		$('.personas').click(function() {
 			doZoom(this);
 			return false;
+		});
+
+		$('.twitterLink').click(function() {
+			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 		});
 	});
 
@@ -73,14 +77,14 @@
 	</div>
 	<h2>Background</h2>
 	<p>
-		As the sole UX designer for Cardpool, my challenge was to launch our first mobile app, moving from sketchpad to app store in 6 months.  The project clock was already ticking by the time I was hired, so I was expected to air drop in at full sprint.  
+		As the sole UX designer for Cardpool, my challenge was to launch our first mobile app, moving from sketchpad to app store in 6 months.  The project clock was already ticking by the time I was hired, so I was expected to air drop in at full sprint.
 	</p>
 	<p>
 		Cardpool is an online exchange for pre-owned gift cards.  While website customers can both buy discounted gift cards and sell unwanted cards, the product mission for the app was to increase sales.  Our ancillary goal was to expand the user base to a wider audience by modernizing the user interface and visual design.
 	</p>
 	<h2>Process</h2>
 	<p>
-		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Meanwhile, I studied our demographics to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of app-flows and animations as well as providing art-direction to our external visual design team.  After launch, I have continued to recommend app updates based on the study of our analytics and direct user feedback.  
+		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Meanwhile, I studied our demographics to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of app-flows and animations as well as providing art-direction to our external visual design team.  After launch, I have continued to recommend app updates based on the study of our analytics and direct user feedback.
 	</p>
 	<a name="personas"></a>
 	<h3>Personas &amp; Marketing Research</h3>
@@ -170,7 +174,7 @@
 		I had modeled the entire mobile app as a fully interactive prototype with real brands that could be used for precise usability testing.  We hired a testing firm to provide facilities and recruit 10 users for 90 minute interview sessions.  I identified the most important open-ended tasks to give each user, and I observed the interviews on-site to.  We conducted interviews by day, and by night I iterated the prototype based on the days feedback.
 	</p>
 	<p>
-		We discovered an important oversight where we had included out-of-stock brands in our sort by top-discount, which led to user frustration.  We also learned how to clarify our security hurdles with a better progress-meter and by making our forms more visually exciting.  We learned many smaller but crucial lessons about the visual design, including improving readability with higher color-contrast and more visible error messages. 
+		We discovered an important oversight where we had included out-of-stock brands in our sort by top-discount, which led to user frustration.  We also learned how to clarify our security hurdles with a better progress-meter and by making our forms more visually exciting.  We learned many smaller but crucial lessons about the visual design, including improving readability with higher color-contrast and more visible error messages.
 	</p>
 	<a name="prototypes"></a>
 	<h3>Prototyping &amp; Design</h3>
@@ -179,10 +183,10 @@
 		<div class="prototypeOverlay"></div>
 		<div>Tap to open prototype</div></a>
 	<p>
-		To meet our tight deadline, we decided to outsource visual design to an agency.  We also hired a team of temporary contract iOS developers to quickly scale our engineering talent pool.  Given the number of external staff, I wanted to provide the team with a fully functional clickable prototype that modeled every button on every screen within the app.  
+		To meet our tight deadline, we decided to outsource visual design to an agency.  We also hired a team of temporary contract iOS developers to quickly scale our engineering talent pool.  Given the number of external staff, I wanted to provide the team with a fully functional clickable prototype that modeled every button on every screen within the app.
 	</p>
 	<p>
-		Meanwhile, I provided art direction to the design agency and coordinated our contract copy editor.  Development began as soon as the first screen had a wireframe and design mockup, and I managed to stay just ahead of the development team over the next seven months. 
+		Meanwhile, I provided art direction to the design agency and coordinated our contract copy editor.  Development began as soon as the first screen had a wireframe and design mockup, and I managed to stay just ahead of the development team over the next seven months.
 	</p>
 	<h2>Results</h2>
 	<ul>
@@ -197,7 +201,13 @@
 </div>
 
 <div class="caseStudyMenu">
-	<a href="rotten_tomatoes.html" id="optionRottenTomatoes">
+<a href="font_finder.html" id="optionFontFinder">
+		<div>
+			<img src="assets/logoFontFinder.png" alt="Font Finder logo">
+		</div>
+		<span>Case Study</span>
+	</a><!--
+--><a href="rotten_tomatoes.html" id="optionRottenTomatoes">
 		<div>
 			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
 		</div>
@@ -208,12 +218,6 @@
 			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
 		</div>
 		<span>Case Study</span>
-	</a><!--
---><a href="sideprojects.html" id="optionSideProjects">
-		<div>
-			<img src="assets/logoShshReverse.png" alt="Shsh">
-		</div>
-		<span>Side Projects</span>
 	</a>
 </div>
 
@@ -221,7 +225,7 @@
 	<div>
 		<p class="thanks">Thanks for visiting!</p>
 		<p>
-			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.   
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
 			Tap my name to contact me via Twitter.<br>
 		</p>
 	</div>
