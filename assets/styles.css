@@ -83,7 +83,7 @@ P {
 #logoHeader A {
 	padding: 0;
 	color: rgb(206, 206, 206);
-} 
+}
 
 #shardEditor {
 	font-family: 'Roboto Slab', serif;
@@ -106,7 +106,7 @@ P {
 	display: inline-block;
 	position: relative;
 	visibility: hidden;
-	padding: 0; 
+	padding: 0;
 	width: 100%;
 }
 
@@ -183,23 +183,23 @@ P {
 }
 
 #c1, #c1 .front {
-	background-color: rgb(245, 103, 160); /* pink */
+	background-color: hsl(0, 0%, 24%); /* font grey */
 }
 
 #c2, #c2 .front {
-	background-color: rgb(57, 121, 0); /* green */
+	background-color: hsl(336, 88%, 68%); /* cardpool pink */
 }
 
 #c3, #c3 .front {
-	background-color: rgb(208, 83, 0); /* orange */
+	background-color: hsl(92, 100%, 24%); /* rotten green */
 }
 
 #c1 .top, #c2 .top, #c3 .top {
-	background-color: white; 	
+	background-color: white;
 }
 
 #c1 .bottom, #c2 .bottom, #c3 .bottom {
-	background-color: white; 	
+	background-color: white;
 }
 
 .front > DIV {
@@ -228,12 +228,19 @@ P {
 	border-bottom: 1px dotted white;
 }
 
-#c2 .front SPAN {
-	color: yellow;
-	text-shadow: 0 0.15vw 0 rgba(0, 0, 0, 1);
+#c1 .front SPAN {
+	color: red;
 }
 
-#c2 .front SPAN SPAN {
+#c1 .front SPAN SPAN {
+	border-bottom: 1px dotted red;
+}
+
+#c3 .front SPAN {
+	color: yellow;
+}
+
+#c3 .front SPAN SPAN {
 	border-bottom: 1px dotted yellow;
 }
 
@@ -264,14 +271,14 @@ P {
 
 .pointer > DIV .arrow {
 	margin: 0 0 0 auto;
-	border-left-width: 70px; 
+	border-left-width: 70px;
 	/*
 	border-top-color: rgb(57, 121, 0);
 	*/
 }
 
 .pointer > SPAN .arrow {
-	border-right-width: 70px; 
+	border-right-width: 70px;
 	/*
 	border-top-color: rgb(57, 121, 0);
 	 */
@@ -427,7 +434,7 @@ P {
 	text-align: center;
 	padding-bottom: 11vw;
 	color: rgb(133,133,133);
-} 
+}
 
 .caseStudyFooter A {
 	color: rgb(133,133,133);
@@ -453,17 +460,17 @@ P {
 .caseStudyFooter P A SPAN {
 	color: black;
 	border-bottom: 1px dotted rgb(133, 133, 133);
-} 
+}
 
 .caseStudyFooter .twitterLink:before {
 	content: '\00A9';
 	letter-spacing: 5px;
-} 
+}
 
 .caseStudyFooter .twitterLink:hover:before {
 	content: '@';
 	letter-spacing: initial;
-} 
+}
 
 
 
@@ -504,11 +511,11 @@ P {
 	}
 
 	.pointer > DIV .arrow {
-		border-left-width: 10vw 
+		border-left-width: 10vw
 	}
 
 	.pointer > SPAN .arrow {
-		border-right-width: 10vw; 
+		border-right-width: 10vw;
 	}
 
 	/* SKILLS */
@@ -568,7 +575,7 @@ P {
 
 	.caseStudyFooter P A SPAN {
 		border-bottom-width: 2px;
-	} 
+	}
 
 	/*  */
 

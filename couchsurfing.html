@@ -12,9 +12,9 @@
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
+
 	ga('create', 'UA-52293845-1', 'auto');
-	ga('send', 'pageview');	
+	ga('send', 'pageview');
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
@@ -24,7 +24,7 @@
 		var el = $(obj).children();
 		var w = $(document).width()/el.outerWidth(true);
 		if(el.css('transform')=='none') {
-			el.css('transform','scale(1)');			
+			el.css('transform','scale(1)');
 		}
 		var matrixRegex = /matrix\((-?\d*\.?\d+),\s*0,\s*0,\s*(-?\d*\.?\d+),\s*0,\s*0\)/;
 		var matches = $(el).css('transform').match(matrixRegex);
@@ -34,13 +34,17 @@
 		} else {
 			el.css('transition','transform 0.1s ease-out');
 			el.css('transform','scale(1)');
-		} 
+		}
 	};
 
 	$(window).load(function() {
 		$('#donut').click(function() {
 			doZoom(this);
 			return false;
+		});
+
+		$('.twitterLink').click(function() {
+			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 		});
 	});
 
@@ -68,7 +72,7 @@
 	</div>
 	<h2>Background</h2>
 	<p>
-		CouchSurfing.com was one of the pioneer website of what came to be know as the “sharing economy”.  It preceded both AirBnb and Lyft, and many of the tools for trust ratings were incubated by CouchSurfing, then duplicated and improved by other successful websites.  
+		CouchSurfing.com was one of the pioneer website of what came to be know as the “sharing economy”.  It preceded both AirBnb and Lyft, and many of the tools for trust ratings were incubated by CouchSurfing, then duplicated and improved by other successful websites.
 	</p>
 	<p>
 		I joined CouchSurfing three years after its public launch in 2004 as the 2nd full-time employee.  I helped select and hire almost every employee who followed me, growing the company to 45 people, and building the product department from the ground up.  I co-designed the first CouchSurfing mobile app, my product initiatives helped the company acquire $21 million in venture capital funding.
@@ -93,10 +97,10 @@
 		</div>
 	</a>
 	<p>
-		In collaboration with my talented team members, I product managed and launched CouchSurfing's first iOS mobile app, I created the product design and UX for the <a href="#experiences" class="pageLink"><span>casual meetups</span></a> tool.  I overhauled the interfaces for user <a href="#profiles" class="pageLink"><span>profile search</span></a> and <a href="#messaging" class="pageLink"><span>user messaging</span></a>, and I oversaw our first rebranding effort.  
+		In collaboration with my talented team members, I product managed and launched CouchSurfing's first iOS mobile app, I created the product design and UX for the <a href="#experiences" class="pageLink"><span>casual meetups</span></a> tool.  I overhauled the interfaces for user <a href="#profiles" class="pageLink"><span>profile search</span></a> and <a href="#messaging" class="pageLink"><span>user messaging</span></a>, and I oversaw our first rebranding effort.
 	</p>
 	<p>
-		Through ongoing quantitative analysis, I optimized the revenue funnel, revamped the first-time user experience, created new strategies for our user <a href="#matching" class="pageLink"><span>matching algorithm</span></a>, and designed internal tools for user safety and customer support.  I also had a hand in the UI of many smaller features such as the <a href="#hosting" class="pageLink"><span>hosting availability</span></a> widget.  
+		Through ongoing quantitative analysis, I optimized the revenue funnel, revamped the first-time user experience, created new strategies for our user <a href="#matching" class="pageLink"><span>matching algorithm</span></a>, and designed internal tools for user safety and customer support.  I also had a hand in the UI of many smaller features such as the <a href="#hosting" class="pageLink"><span>hosting availability</span></a> widget.
 	</p>
 	<h2>Examples</h2>
 	<a name="profiles"></a>
@@ -112,7 +116,7 @@
 	<a name="hosting"></a>
 	<h3>Hosting Availability</h3>
 	<p>
-		The PDF below shows several UX design options for a widgets to be used by CouchSurfing members to mark their avialbility to host other members. 
+		The PDF below shows several UX design options for a widgets to be used by CouchSurfing members to mark their avialbility to host other members.
 	</p>
 	<a id="hostingPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20status%20widget%20-%203%20approaches.pdf" target="_self">
 		<div>
@@ -142,7 +146,13 @@
 </div>
 
 <div class="caseStudyMenu">
-	<a href="cardpool.html" id="optionCardpool">
+<a href="font_finder.html" id="optionFontFinder">
+		<div>
+			<img src="assets/logoFontFinder.png" alt="Font Finder logo">
+		</div>
+		<span>Case Study</span>
+	</a><!--
+--><a href="cardpool.html" id="optionCardpool">
 		<div>
 			<img src="assets/logoCardpool.png" alt="Cardpool Logo">
 		</div>
@@ -153,12 +163,6 @@
 			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
 		</div>
 		<span>Case Study</span>
-	</a><!--
---><a href="sideprojects.html" id="optionSideProjects">
-		<div>
-			<img src="assets/logoShshReverse.png" alt="Shsh">
-		</div>
-		<span>Side Projects</span>
 	</a>
 </div>
 
@@ -166,7 +170,7 @@
 	<div>
 		<p class="thanks">Thanks for visiting!</p>
 		<p>
-			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.   
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
 			Tap my name to contact me via Twitter.
 		</p>
 	</div>
