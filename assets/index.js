@@ -12,10 +12,10 @@ $(window).load(function() {
 	var headerSubtitle = 'Tap on my name!';
 	var wH = $(window).height();
 	var cY = $('#caseStudies').offset().top + $('#caseStudies').height();
-	var flip1Start =  1.00;
-	var flip1End   =  0.85;
-	var flip2Start =  0.50;
-	var flip2End   =  0.20;
+	var flip1Start =  1.80; // start white top to front
+	var flip1End   =  1.10; // end white top to front
+	var flip2Start =  0.90; // start front to color bottom
+	var flip2End   =  0.50; // end front to color bottom
 
 	$('#sectionHeader').bind('reveal',function(event){
 		$(this).find('p span').animate({
@@ -150,18 +150,21 @@ $(window).load(function() {
 
 	//
 	$('#shardHolder').click(function() {
-		if(!Modernizr.touch) {
-			if(allowShardEdit) {
-				$('#shardHolder').css('display','none');
-				$('#shardSpacer').css('display','none');
-				$('#shardEditor').css('display','block');
-				$('#shardEditor').focus();
-				$('#shardEditor')[0].setSelectionRange(0, $('#shardEditor')[0].value.length);
-				$('#sectionHeader p span').css('top','25px');
-				$('#sectionHeader p span').html('has great taste in designers!');
-			}
-			return false;
+		if(allowShardEdit) {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'shard'
+			});
+			$('#shardHolder').css('display','none');
+			$('#shardSpacer').css('display','none');
+			$('#shardEditor').css('display','block');
+			$('#shardEditor').focus();
+			$('#shardEditor')[0].setSelectionRange(0, $('#shardEditor')[0].value.length);
+			$('#sectionHeader p span').css('top','25px');
+			$('#sectionHeader p span').html('has great taste in designers!');
 		}
+		return false;
 	});
 
 	//
@@ -178,6 +181,11 @@ $(window).load(function() {
 		$('#shardHolder').trigger('addShards');
 		$('#shardHolder').trigger('addShardCSS');
 		$('#shardHolder').trigger('dropShards');
+		ga('send', 'event', {
+			eventCategory: 'Screen Interaction',
+			eventAction: 'submit',
+			eventLabel: 'shard: ' + el.value
+		});
 	});
 
 	//
@@ -191,14 +199,19 @@ $(window).load(function() {
 	});
 
 	$('.twitterLink').click(function() {
+		ga('send', 'event', {
+			eventCategory: 'Outbound Link',
+			eventAction: 'click',
+			eventLabel: 'https://twitter.com/mattthew'
+		});
 		$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 	});
 
 	function animateCubes() {
 		var scroll = $(window).scrollTop();
-		var r = (cY-scroll) / wH; // bottom edge of caseStudies relative to window height
-		for (var i = 1, il = 3; i <= il; i++) {
-			var f1S = flip1Start - ((i-1)*0.07); // to delay rotation of cubes 2 & 3
+		var r = (cY-scroll) / wH; // bottom edge of caseStudies (cY), position relative to window height
+		for (var i = 1, il = 6; i <= il; i++) {
+			var f1S = flip1Start - ((i-1)*0.07); // stagger rotation of cubes
 			var f1E = flip1End - ((i-1)*0.07);
 			var f2S = flip2Start - ((i-1)*0.07);
 			var f2E = flip2End - ((i-1)*0.07);
@@ -265,27 +278,15 @@ $(window).load(function() {
 		animateCubes();
 	});
 
-	$('#skills').click(function(){
-		$(window).scrollTop(cY-(wH/1.6));
-	});
-
 	// ACTION
 
-	if(!Modernizr.touch) {
-		$('#sectionHeader').trigger('reveal');
-		var animationTimer = window.setTimeout(function() {
-			$('#shardHolder').trigger('bindEvents');
-			$('#shardHolder').trigger('addShards');
-			$('#shardHolder').trigger('addShardCSS');
-			$('#shardHolder').trigger('dropShards');
-		}, 800);
-	} else {
-		// these animations move too slowly on mobile devices
-		$('#sectionHeader P SPAN').html('Product designer, artist, storyteller');
-		$('#shard_0').css('visibility','visible');
-		$('#sectionHeader p span').css('top','0px');
-		$('#shardHolder').click(function(){ return false; })
-	}
+	$('#sectionHeader').trigger('reveal');
+	var animationTimer = window.setTimeout(function() {
+		$('#shardHolder').trigger('bindEvents');
+		$('#shardHolder').trigger('addShards');
+		$('#shardHolder').trigger('addShardCSS');
+		$('#shardHolder').trigger('dropShards');
+	}, 800);
 
 	var cubeTimer = window.setTimeout(function() {
 		// delay needed because shard animation changes document height

@@ -13,8 +13,6 @@ A {
 
 H1 {
 	font-family: 'Roboto Slab', serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	letter-spacing: initial;
 	font-size: 31px;
 	color: white;
@@ -24,8 +22,6 @@ H1 {
 
 H2 {
 	font-family: 'Roboto Slab', serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: 22px;
 	letter-spacing: initial;
 	padding: 0px;
@@ -36,8 +32,6 @@ H2 {
 
 H3 {
 	font-family: 'Roboto Slab', serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: 16px;
 	text-transform: uppercase;
 	letter-spacing: initial;
@@ -53,8 +47,6 @@ H3:before {
 
 P, UL {
 	font-family: 'Arimo', Arial, Helvetica, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: 19px;
 	letter-spacing: initial;
 	line-height: 26px;
@@ -90,8 +82,6 @@ A.pageLink:after {
 	display: block;
 	font-family: 'Roboto Slab', serif;
 	font-weight: 300;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	letter-spacing: initial;
 	font-size: 3vw;
 	color: white;
@@ -116,10 +106,17 @@ A.pageLink:after {
 	border: 0;
 }
 
+.caseStudyMenu A {
+	transition: box-shadow 300ms ease-out;
+}
+
+.caseStudyMenu A:hover {
+	box-shadow: inset 0 0 5vh 0vh rgba(0, 0, 0, 0.5);
+}
+
 #optionFontFinder {
 	background-color: hsl(0, 0%, 24%); /* font finder grey */
 }
-
 
 #optionFontFinder SPAN {
 	color: red;
@@ -127,6 +124,10 @@ A.pageLink:after {
 
 #optionCardpool {
 	background-color: rgb(245, 103, 160);
+}
+
+#optionCardpoolWeb {
+	background-color: rgb(51, 153, 255); /* cardpool blue */
 }
 
 #optionRottenTomatoes {
@@ -158,8 +159,6 @@ A.pageLink:after {
 
 .thanks {
 	font-family: 'Roboto Slab', serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: 52px;
 	font-weight: normal;
 	color: black;
@@ -207,7 +206,12 @@ A.pageLink:after {
 	background: linear-gradient(to bottom, rgb(157, 23, 61) 0%, rgb(245, 103, 160) 40%);
 }
 
-#cardpoolHeader > DIV {
+#cardpool_webHeader {
+	background-color: rgb(51, 153, 255);
+	background: linear-gradient(to bottom, rgb(51, 153, 255) 50%, rgb(170, 213, 255) 100%);
+}
+
+#cardpoolHeader > DIV, #cardpool_webHeader > DIV {
 	margin: 0px auto;
 	max-width: 900px;
 	height: 300px;
@@ -215,11 +219,11 @@ A.pageLink:after {
 	padding: 60px 80px 0px 80px;
 }
 
-#cardpoolHeader H1 {
+#cardpoolHeader H1, #cardpool_webHeader H1 {
 	font-weight: normal;
 }
 
-#cardpoolHeader .logo SPAN {
+#cardpoolHeader .logo SPAN, #cardpool_webHeader .logo SPAN {
 	display: block;
 	height: 100px;
 	margin: 0px;
@@ -243,7 +247,20 @@ A.pageLink:after {
 	background-position: calc(100% + 30px) -70px;
 }
 
-#cardpoolStudy {
+#cardpool_webHeader .headerBG {
+	height: 390px;
+	width: 100%;
+	float: right;
+	max-width: 900px;
+	margin: -300px auto 0px auto;
+	padding: 0px;
+	background-image: url('cardpool_webBG.png');
+	background-repeat: no-repeat;
+	background-size: 420px;
+	background-position: calc(100% + 160px) 20px;
+}
+
+#cardpoolStudy, #cardpool_webStudy {
 	max-width: 900px;
 	padding: 0px 80px;
 	margin: 0px auto;
@@ -253,15 +270,19 @@ A.pageLink:after {
 	color: rgb(247, 70, 141);
 }
 
-#cardpoolStudy .pointer {
+#cardpool_webStudy H2 {
+	color: rgb(51, 153, 255);
+}
+
+#cardpoolStudy .pointer, #cardpool_webStudy .pointer {
 	width: 100%;
 }
 
-#cardpoolStudy .pointer > DIV {
+#cardpoolStudy .pointer > DIV, #cardpool_webStudy .pointer > DIV {
 	margin-left: -5px;
 }
 
-#cardpoolStudy .pointer .arrow {
+#cardpoolStudy .pointer .arrow, #cardpool_webStudy .pointer .arrow {
 	width: 0;
 	height: 0;
 	border-style: solid;
@@ -271,12 +292,20 @@ A.pageLink:after {
 	border-top-color: rgb(245, 103, 160);
 }
 
+#cardpool_webStudy .pointer .arrow {
+	border-top-color: rgb(170, 213, 255);
+}
+
 #cardpoolStudy A {
 	color: rgb(116, 116, 116);
 }
 
 #cardpoolStudy A SPAN {
 	border-bottom: 1px dotted rgb(247, 70, 141);
+}
+
+#cardpool_webStudy A SPAN {
+	border-bottom: 1px dotted rgb(70, 182, 247);
 }
 
 #cardpoolStudy A.personas {
@@ -403,7 +432,7 @@ A.pageLink:after {
 
 .cardpoolPrototype {
 	float: right;
-	margin: 0 2vw 6vw 5vw;
+	margin: 0 0 6vw 5vw;
 	border: 0 !important;
 }
 
@@ -416,8 +445,6 @@ A.pageLink:after {
 
 .cardpoolPrototype DIV {
 	font-family: 'Arimo', serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	letter-spacing: initial;
 	font-size: 1.4vw;
 	font-weight: normal;
@@ -444,8 +471,68 @@ DIV.prototypeOverlay:hover {
     filter: alpha(opacity=0); /* For IE8 and earlier */
 }
 
+#competitiveAnalysisPDF {
+	width: 30vw;
+	height: 18.27vw;
+	background-size: 30vw 18.27vw;
+	background-image: url('../cardpool/assets/competitive_analysis_screenshot.png');
+	box-shadow: inset 0 -20vw 20vw -20vw rgba(0, 0, 0, 0.3);
+	float: right;
+	margin: 0 0 5vw 5vw;
+}
 
+#sitemapSample {
+	width: 15vw;
+	float: right;
+	margin: 0 0 5vw 2vw;
+}
 
+#sitemapSample IMG {
+	display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 100%;
+	border: 1px solid rgb(232,232,232);
+	transform-origin: 100% 25%;
+}
+
+#styleguideSample {
+	width: 30vw;
+	float: right;
+	margin: 0 0 5vw 5vw;
+}
+
+#styleguideSample IMG {
+	display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 100%;
+	border: 1px solid rgb(232,232,232);
+	transform-origin: 85% 25%;
+}
+
+#cardview {
+	width: 40vw;
+	margin: 0 0 5vw 5vw;
+	float: right;
+}
+
+#cardview IMG {
+	display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 100%;
+	border: 1px solid rgb(232,232,232);
+}
+
+#cardview DIV {
+	font-family: 'Arimo', serif;
+	letter-spacing: initial;
+	font-size: 1.4vw;
+	font-weight: normal;
+	text-align: center;
+	margin-top: 0.6vw;
+}
 
 
 
@@ -547,7 +634,7 @@ DIV.prototypeOverlay:hover {
 	width: 360px;
 	border: 1px solid rgb(232,232,232) !important;
 	box-sizing: border-box;
-	transform-origin: 81% 0%;
+	transform-origin: 81% 25%;
 }
 
 #rottenScreenshots {
@@ -587,7 +674,7 @@ DIV.prototypeOverlay:hover {
 
 
 /* ======== */
-/* Cardpool */
+/* CouchSurfing */
 /* ======== */
 
 
@@ -762,7 +849,7 @@ DIV.prototypeOverlay:hover {
 }
 
 .pdf > DIV {
-	width: 50vw;
+	width: 100%;
 	height: 100%;
 	padding: 2vw 2vw 0 0;
 	box-sizing: border-box;
@@ -784,8 +871,6 @@ DIV.prototypeOverlay:hover {
 	border-radius: .5vw;
 	text-align: center;
 	font-family: 'Roboto Slab', serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: 3vw;
 	font-weight: normal;
 	color: black;
@@ -952,6 +1037,132 @@ DIV.prototypeOverlay:hover {
 	border-radius: 4px;
 }
 
+
+
+
+
+
+/* ======== */
+/* Vibration */
+/* ======== */
+
+
+
+
+
+
+#vibrationHeader {
+	background-color: hsl(271, 30%, 23%) /* haptic grey */
+}
+
+#vibrationHeader > DIV {
+	margin-left: 80px;
+	max-width: 900px;
+	height: 300px;
+	box-sizing: border-box;
+	padding-top: 60px;
+}
+
+#vibrationHeader H1 {
+	color: white;
+	font-weight: normal;
+	padding-top: 10px;
+}
+
+#vibrationHeader .logo SPAN {
+	display: block;
+	height: 150px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 0px;
+	background-image: url('logoVibration.png');
+	background-size: 420px;
+	background-position: -83px;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#vibrationStudy {
+	max-width: 900px;
+	padding: 0px 80px;
+	margin: 0px auto;
+}
+
+#vibrationStudy .pointer {
+	width: 100%;
+}
+
+#vibrationStudy .pointer > DIV {
+	margin-left: -5px;
+}
+
+#vibrationStudy .pointer .arrow {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 50px 0 50px;
+	border-color: transparent;
+	-webkit-transform: rotate(360deg);
+	border-top-color: hsl(271, 30%, 23%) /* haptic grey */
+}
+
+#vibrationStudy H2 {
+	color: hsl(271, 30%, 23%) /* haptic grey */
+}
+
+#vibrationStudy P {
+	color: hsl(0, 0%, 70%);
+}
+
+#vibrationStudy A {
+	color: hsl(271, 30%, 23%) /* haptic grey */
+}
+
+#vibrationStudy A SPAN {
+	border-bottom: 1px dotted hsl(271, 30%, 23%) /* haptic grey */;
+}
+
+#vibrationStudy #unsupported {
+	display: none;
+}
+
+#vibrationStudy #screenshot A {
+
+}
+
+#vibrationStudy #screenshot {
+	width: 25vw;
+	margin: 0 0 5vw 5vw;
+	float: right;
+}
+
+#vibrationStudy #screenshot IMG {
+	display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 100%;
+	border: 1px solid rgb(232,232,232);
+}
+
+#vibrationStudy #screenshot DIV {
+	font-family: 'Arimo', serif;
+	letter-spacing: initial;
+	font-size: 1.4vw;
+	font-weight: normal;
+	text-align: center;
+	margin-top: 0.6vw;
+}
+
+
+
+
+
+
+
+/* ======== */
+/* PDF Animation */
+/* ======== */
+
 /* Generated with Bounce.js. Edit at http://goo.gl/bkOekC */
 
 @keyframes animation {
@@ -1072,6 +1283,10 @@ DIV.prototypeOverlay:hover {
 		margin-top: -0.5px; /* attempt to fix Firefox mobile rendering issue */
 	}
 
+	.caseStudyFooter P {
+		font-size: 2.1vw;
+	}
+
 	/* Cardpool */
 
 	#cardpoolHeader .headerBG {
@@ -1163,7 +1378,39 @@ DIV.prototypeOverlay:hover {
 		margin-bottom: 8vw;
 	}
 
-	/*  Rotten Tomatoes */
+	#competitiveAnalysisPDF {
+		width: 100%;
+		height: 40vw;
+		background-size: 100%;
+		float: none;
+		margin: 0 0 5vw 0;
+	}
+
+	#styleguideSample {
+		width: 100%;
+		float: none;
+		margin: 0 0 5vw 0;
+	}
+
+	#sitemapSample {
+		width: 100%;
+		float: none;
+		margin: 0 0 5vw 0;
+	}
+
+	#cardview {
+		width: 100%;
+		margin: 0 0 5vw 0;
+		float: none;
+	}
+
+	#cardview DIV {
+		font-size: 2vw;
+		margin-top: 2vw;
+		margin-bottom: 8vw;
+	}
+
+	/* Rotten Tomatoes */
 
 	#rottenHeader > DIV {
 		height: 250px;
@@ -1179,6 +1426,13 @@ DIV.prototypeOverlay:hover {
 	#rottenHeader H1 {
 		font-size: 30px;
 	}
+
+	/* Vibration */
+
+	#vibrationStudy #screenshot {
+		display: none;
+	}
+
 	/*  */
 
 }

@@ -22,7 +22,7 @@ $(window).load(function() {
 		// minimap colors
 		sections[1].color = 'rgb(0, 0, 0)'; // fermi black
 		sections[2].color = 'rgb(255, 200, 102)'; // documentary orange cream
-		sections[3].color = 'rgb(235, 235, 235)'; // portraits snow 
+		sections[3].color = 'rgb(235, 235, 235)'; // portraits snow
 		sections[4].color = 'rgb(118, 206, 255)'; // mixed media powder blue
 		sections[5].color = 'rgb(0, 0, 0)'; // watch black
 		sections[6].color = 'rgb(255, 255, 255)'; // shsh white
@@ -39,7 +39,7 @@ $(window).load(function() {
 		}
 	}
 
-	// 
+	//
 	function initiateMinimap() {
 		var num = currentSection;
 		$('#map' + num + ' A').css('width','12px');
@@ -65,24 +65,27 @@ $(window).load(function() {
 	}
 
 	function fixMobileBackgrounds() {
-		/* 
-			needed because most mobile browsers 
-			don't support fixed backgrounds 
-		*/
-		if(Modernizr.touch) {
+		/*
+			note:  Modernizr.touch check removed
+
+			Most mobile browsers don't support fixed backgrounds,
+			so these sections will look broken
+
 			$('#sectionWatch, #sectionFermi, #sectionPortraits').css('background-attachment','scroll');
-		}
+		*/
 	}
 
 	// starts animtion for currentSection
 	function doAnimation() {
 
-		if(currentSection==1 && !Modernizr.touch) {
+		if(currentSection==1) {
+
+			// note:  Modernizr.touch check removed - this won't work on some mobile devices
 
 			// fermi (disabled on touch because too slow)
 			var str = $('#logoFermi SPAN').css('font-size');
 			var startNum = parseInt(str.substr(0,str.length-2));
-			var endNum = startNum + 7; 
+			var endNum = startNum + 7;
 			$('#logoFermi SPAN').animate({
 				fontSize: endNum
 			}, {
@@ -121,20 +124,20 @@ $(window).load(function() {
 				width: x,
 			}, {
 				'duration': 1000,
-				'queue': false, 
+				'queue': false,
 				'easing': 'easeInCubic'
-			});					
+			});
 			$(el).animate({
 				opacity: 0,
 			}, {
 				'duration': 1500,
-				'queue': false, 
+				'queue': false,
 				'easing': 'linear',
 				'complete': function() {
 					$(el).css('opacity','1');
 					$(el).css('width','0px');
 				}
-			});	
+			});
 
 		} else if(currentSection==3) {
 
@@ -187,9 +190,11 @@ $(window).load(function() {
 
 	}
 
-	// 
+	//
 	function setStartAnimation(num) {
-		if(num == 1 && !Modernizr.touch) {
+		if(num == 1) {
+
+			// note:  Modernizr.touch check removed - this won't work on some mobile devices
 
 			// fermi
 			// end is same as start
@@ -245,7 +250,7 @@ $(window).load(function() {
     $(window).resize(function() {
 		clearTimeout($.data(this, 'scrollTimer'));
 		$.data(this, 'scrollTimer', setTimeout(function() {
-			docHeight = $( window ).height();    
+			docHeight = $( window ).height();
 			getSectionLocations();
 		}, 500));
 	});
@@ -254,7 +259,7 @@ $(window).load(function() {
 	$(window).scroll(function() {
 
 		var scrollY = $(document).scrollTop();
-		// section is updated when 'animated' class within 
+		// section is updated when 'animated' class within
 		// the section reaches .5 way up the page
 		var y = scrollY + docHeight - 15 - (docHeight*0.5);
 		for(var i=1, iL=sections.length; i<iL; i++) {
@@ -276,16 +281,16 @@ $(window).load(function() {
 			for(var i=1; i<sections.length; i++) {
 				$('#map'+ i + ' A').css('width','');
 				$('#map'+ i + ' A').css('height','');
-				$('#map'+ i + ' A').css('margin','');	
-				$('#map'+ i + ' A').css('background-color','');	
-				$('#map'+ i + ' A').css('box-shadow','');	
+				$('#map'+ i + ' A').css('margin','');
+				$('#map'+ i + ' A').css('background-color','');
+				$('#map'+ i + ' A').css('box-shadow','');
 			}
 			var num = currentSection;
 			$('#map'+ num + ' A').css('width','12px');
 			$('#map'+ num + ' A').css('height','12px');
 			$('#map'+ num + ' A').css('margin','1px 6px');
 			$('#map'+ num + ' A').css('background-color',sections[num].color);
-			$('#map'+ num + ' A').css('box-shadow','0px 0px 2px 0px rgba(0, 0, 0, 0.3)');			
+			$('#map'+ num + ' A').css('box-shadow','0px 0px 2px 0px rgba(0, 0, 0, 0.3)');
 		}
 
 		if(scrollY == 1) {
@@ -294,7 +299,7 @@ $(window).load(function() {
 		}
 
 		if(currentSection > lastSection) {
-			// scrolling down:  
+			// scrolling down:
 			// start this section's animation
 			doAnimation();
 		} else if(currentSection < lastSection) {

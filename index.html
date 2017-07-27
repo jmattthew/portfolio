@@ -20,12 +20,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script src="assets/jquery-ui.min.js"></script>
 <script src="assets/jquery.easing.min.js"></script>
-<script src="assets/modernizr.2.8.3-custom-build.js"></script>
+<script src="assets/jquery.scrolldepth.min.js"></script>
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery.scrollDepth({
+			nonInteraction: false,
+			pixelDepth: false
+		});
+	});
+</script>
 <script src="assets/index.js"></script>
 
-
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700,300|Arimo:400,700" rel="stylesheet" type="text/css">
 <link href="assets/styles.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -52,42 +58,84 @@
 </svg>
 
 <div id="caseStudies">
-	<a href="font_finder.html" class="column" id="c1">
-		<div class="cube">
-			<div class="face front">
-				<div>
-					<div>
-						<img src="assets/logoFontFinder.png" alt="Better Google Font Finder Logo">
-					</div>
-					<span><span>Case Study</span></span>
-				</div>
-			</div>
-			<div class="face top"></div>
-			<div class="face bottom"></div>
-		</div>
-	</a>
-	<a href="cardpool.html" class="column" id="c2">
+	<a href="cardpool.html" class="column" id="c1">
 		<div class="cube">
 			<div class="face front">
 				<div>
 					<div>
 						<img src="assets/logoCardpool.png" alt="Cardpool Logo">
 					</div>
-					<span><span>Case Study</span></span>
+					<span><span>Mobile App</span></span>
 				</div>
 			</div>
 			<div class="face top"></div>
 			<div class="face bottom"></div>
 		</div>
 	</a>
-	<a href="rotten_tomatoes.html" class="column" id="c3">
+	<a href="font_finder.html" class="column" id="c2">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoFontFinder.png" width="400" alt="Better Google Font Finder Logo">
+					</div>
+					<span><span>Typography Tool</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+		</div>
+	</a>
+	<a href="cardpool_web.html" class="column" id="c3">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoCardpool.png" alt="Cardpool Logo">
+					</div>
+					<span><span>Website</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+		</div>
+	</a>
+	<a href="couchsurfing.html" class="column" id="c4">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
+					</div>
+					<span><span>Product Design</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+		</div>
+	</a>
+	<a href="rotten_tomatoes.html" class="column" id="c5">
 		<div class="cube">
 			<div class="face front">
 				<div>
 					<div>
 						<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
 					</div>
-					<span><span>Case Study</span></span>
+					<span><span>Chrome App</span></span>
+				</div>
+			</div>
+			<div class="face top"></div>
+			<div class="face bottom"></div>
+		</div>
+	</a>
+	<a href="vibration.html" class="column" id="c6">
+		<div class="cube">
+			<div class="face front">
+				<div>
+					<div>
+						<img src="assets/logoVibration.png" alt="Vibration Generator Logo">
+					</div>
+					<span><span>Android Only</span></span>
 				</div>
 			</div>
 			<div class="face top"></div>
@@ -106,9 +154,6 @@
 </div>
 
 <div id="skills">
-	<h1 class="title">
-		<span>Experience &amp; Skills</span>
-	</h1>
 	<div id="flow">
 		<p>Interaction&nbsp;&amp; <br>UX&nbsp;Design</p>
 	</div>
@@ -120,6 +165,15 @@
 	</div>
 	<div id="code">
 		<p>Prototyping&nbsp;&amp; <br>Coding&nbsp;in&nbsp;JS</p>
+	</div>
+</div>
+
+<div class="caseStudyFooter">
+	<div>
+		<p>
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
+			Tap my name to contact me via Twitter.<br>
+		</p>
 	</div>
 </div>
 
@@ -139,16 +193,6 @@
 	<a id="product" href="sideprojects.html#bookmark5" class="column">
 		<p>Product</p>
 	</a>
-</div>
-
-<div class="caseStudyFooter">
-	<div>
-		<p class="thanks">Thanks for visiting!</p>
-		<p>
-			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
-			Tap my name to contact me via Twitter.<br>
-		</p>
-	</div>
 </div>
 
 </body>

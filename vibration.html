@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>@Mattthew - Android Haptic Vibration Patter Generator</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=640">
+
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="assets/jquery.scrolldepth.min.js"></script>
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery.scrollDepth({
+			nonInteraction: false,
+			pixelDepth: false
+		});
+	});
+
+	$(window).load(function() {
+
+		if(navigator.vibrate) {
+			console.log('supported');
+			$('#supported').css('display','inline');
+			$('#unsupported').css('display','none');
+		} else {
+			console.log('unsupported');
+			$('#supported').css('display','none');
+			$('#unsupported').css('display','inline');
+		}
+
+		$('.outbound').click(function(event) {
+			ga('send', 'event', {
+				eventCategory: 'Outbound Link',
+				eventAction: 'click',
+				eventLabel: event.target.href
+			});
+		});
+
+		$('.twitterLink').click(function() {
+			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
+		});
+
+	});
+
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700,300|Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="assets/case_studies.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="vibrationHeader">
+	<div>
+		<div class="logo">
+			<span></span>
+		</div>
+		<h1>Android Haptic Pattern Generator</h1>
+	</div>
+</div>
+
+<div id="vibrationStudy">
+	<div class="pointer">
+		<div><div class="arrow"></div></div>
+	</div>
+	<h2></h2>
+	<p>
+		This tool allows product designers to create and test complex haptic patterns and to discover how the patterns actually feel in their hands.  The tool allows precise control of vibration, much like a sound-wave synthesizer.
+	</p>
+	<p>
+		<span id="supported">
+			Your browser supports this tool, but your device may not.  As 2017, you'll need an Android device to feel the good vibration. &nbsp;
+		</span>
+		<span id="unsupported">
+			Unfortunately, your browser does not support this tool.  As 2017, you'll need an Android device to feel the good vibration.
+		</span>
+		<span>
+			If you're on an Android device, please try out the <a href="font_finder/font_finder_website.html" target="_blank"><span>vibration generator!</span></a>.
+		</span>
+	</p>
+	<h2>The only tool of its kind</h2>
+	<a id="screenshot" href="vibration/live_tool.html" target="_blank">
+		<img src="vibration/assets/vibration_screenshot.png" alt="Screenshot of the  haptic vibration pattern generator">
+		<div>Tap to open live website</div>
+	</a>
+	<p>
+		Android devices give responsive web developers access to the device's vibration motor and the ability provide users with haptic feedback.  While haptic feedback has traditionally been reserved for OS functions such as notification-alerts and key-presses, product designers are free to incorporate haptic feedback into their websites.  However, until now, it was very difficult to produce unique haptic patterns (e.g. a vibration that fades softly to full strength) because the browser cannot directly control the strength nor frequency of the device's vibration motor.  The motor can merely be turned on at full strength for the specified duration.
+	</p>
+	<p>
+		I wanted to explore when and what type of haptic feedback might be appropriate within the browser setting, so a envisioned and coded this tool to experiment with haptic patterns.  I realized that complex haptic patterns could be created by very rapidly cycling the vibration motor ON &amp; OFF.  By changing the duration of the ON &amp; OFF phases of each cycle - much like a Morse code - the "attack" &amp; "decay" of vibration could be controlled exactly like a very low frequency sound wave.
+	</p>
+	<h2></h2>
+</div>
+
+<div class="caseStudyMenu">
+	<a href="cardpool.html" id="optionCardpool">
+		<div>
+			<img src="assets/logoCardpool.png" alt="Cardpool Logo">
+		</div>
+		<span>iOS App</span>
+	</a><!--
+--><a href="rotten_tomatoes.html" id="optionRottenTomatoes">
+		<div>
+			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
+		</div>
+		<span>Chrome App</span>
+	</a><!--
+	--><a href="couchsurfing.html" id="optionCouchSurfing">
+		<div>
+			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
+		</div>
+		<span>Product Design</span>
+	</a>
+</div>
+
+<div class="caseStudyFooter">
+	<div>
+		<p class="thanks">Thanks for visiting!</p>
+		<p>
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink outbound"><span>Mattthew</span></a>.
+			Tap my name to contact me via Twitter.
+		</p>
+	</div>
+</div>
+
+</body>
+</html>

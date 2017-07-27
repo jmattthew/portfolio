@@ -18,8 +18,15 @@
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-
+<script src="assets/jquery.scrolldepth.min.js"></script>
 <script type="text/javascript">
+	jQuery(function() {
+		jQuery.scrollDepth({
+			nonInteraction: false,
+			pixelDepth: false
+		});
+	});
+
 	function doZoom(obj) {
 		var el = $(obj).children();
 		var w = $(document).width()/el.outerWidth(true);
@@ -38,15 +45,24 @@
 	};
 
 	$(window).load(function() {
+
+		$('.outbound').click(function(event) {
+			ga('send', 'event', {
+				eventCategory: 'Outbound Link',
+				eventAction: 'click',
+				eventLabel: event.target.href
+			});
+		});
+
 		$('.twitterLink').click(function() {
 			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 		});
+
 	});
 
 </script>
 
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700,300|Arimo:400,700" rel="stylesheet" type="text/css">
 <link href="assets/case_studies.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -70,15 +86,15 @@
 		This product allows people explore, filter, and select fonts based on their visual attributes.  I conceived, designed, and coded the tool as a personal project.
 	</p>
 	<p>
-		The core idea of the project is to create a user interface that doesn't require any explanation, doesn't use any font terminology, and encourages visual exploration.  In that vein, I encourage you to <a href="https://jmattthew.github.io/better-font-finder/better-font-finder.html" target="_blank"><span>try it now</span></a>.
+		The core idea of the project is to create a user interface that doesn't require any explanation, doesn't use any font terminology, and encourages visual exploration.  In that vein, I encourage you to <a href="font_finder/font_finder_website.html" target="_blank"><span>try it now</span></a>.
 	</p>
 	<h2>Praise</h2>
 	<div id="praise">
 		<div>
-			<blockquote class="twitter-tweet" data-lang="en" width="400"><p lang="en" dir="ltr">We’re digging this visual <a href="https://twitter.com/hashtag/GoogleFonts?src=hash">#GoogleFonts</a> finder &1F50E; by <a href="https://twitter.com/mattthew">@mattthew</a> — as another way to find just the right type <a href="https://t.co/jrpvi4ssXh">https://t.co/jrpvi4ssXh</a></p>&mdash; Google Design (@GoogleDesign) <a href="https://twitter.com/GoogleDesign/status/872165746863943680">June 6, 2017</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<blockquote class="twitter-tweet" data-lang="en" width="400"><p lang="en" dir="ltr">We’re digging this visual <a href="https://twitter.com/hashtag/GoogleFonts?src=hash" target="_blank" class="outbound">#GoogleFonts</a> finder &1F50E; by <a href="https://twitter.com/mattthew" target="_blank" class="outbound">@mattthew</a> — as another way to find just the right type <a href="font_finder/font_finder_website.html" target="_blank">https://t.co/jrpvi4ssXh</a></p>&mdash; Google Design (@GoogleDesign) <a href="https://twitter.com/GoogleDesign/status/872165746863943680" target="_blank" class="outbound">June 6, 2017</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</div><!--
 	--><div>
-			<a id="producthunt" href="https://www.producthunt.com/posts/better-google-font-finder" target="_blank">
+			<a id="producthunt" href="https://www.producthunt.com/posts/better-google-font-finder" class="outbound" target="_blank">
 				<img src="assets/study_fontFinder_productHunt.png" border="0">
 				<span>5th best "Typography" product on Product Hunt</span>
 			</a>
@@ -86,7 +102,7 @@
 	</div>
 	<h2>Screenshot</h2>
 	<div id="screenshot">
-		<a href="https://jmattthew.github.io/better-font-finder/better-font-finder.html" target="_blank"></a>
+		<a href="font_finder/font_finder_website.html" target="_blank"></a>
 	</div>
 </div>
 
@@ -95,19 +111,19 @@
 		<div>
 			<img src="assets/logoCardpool.png" alt="Cardpool Logo">
 		</div>
-		<span>Case Study</span>
+		<span>iOS App</span>
 	</a><!--
 --><a href="rotten_tomatoes.html" id="optionRottenTomatoes">
 		<div>
 			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
 		</div>
-		<span>Case Study</span>
+		<span>Chrome App</span>
 	</a><!--
 	--><a href="couchsurfing.html" id="optionCouchSurfing">
 		<div>
 			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
 		</div>
-		<span>Case Study</span>
+		<span>Product Design</span>
 	</a>
 </div>
 
@@ -115,7 +131,7 @@
 	<div>
 		<p class="thanks">Thanks for visiting!</p>
 		<p>
-			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink outbound"><span>Mattthew</span></a>.
 			Tap my name to contact me via Twitter.
 		</p>
 	</div>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>@Mattthew - Cardpool</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=640">
+
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="assets/jquery.scrolldepth.min.js"></script>
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery.scrollDepth({
+			nonInteraction: false,
+			pixelDepth: false
+		});
+	});
+
+	function doZoom(obj) {
+		var el = $(obj).children();
+		var w = $(window).width()/el.outerWidth(true);
+		var h = $(window).height()/el.outerHeight(true);
+		var x = w;
+		if(h<w) { x=h; }
+		if(el.css('transform')=='none') {
+			el.css('transform','scale(1)');
+		}
+		var matrixRegex = /matrix\((-?\d*\.?\d+),\s*0,\s*0,\s*(-?\d*\.?\d+),\s*0,\s*0\)/;
+		var matches = $(el).css('transform').match(matrixRegex);
+		if(matches[1] == 1) {
+			el.css('transform-origin')
+			el.css('transition','transform 0.5s ease-out');
+			el.css('transform','scale(' + x + ')');
+		} else {
+			el.css('transition','transform 0.1s ease-out');
+			el.css('transform','scale(1)');
+		}
+	};
+
+	$(window).load(function() {
+
+		$('#sitemapSample A').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'cardpool sitemap'
+			});
+			doZoom(this);
+			return false;
+		});
+
+		$('#styleguideSample A').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'cardpool style guide'
+			});
+			doZoom(this);
+			return false;
+		});
+
+		$('.twitterLink').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Outbound Link',
+				eventAction: 'click',
+				eventLabel: 'https://twitter.com/mattthew'
+			});
+			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
+		});
+
+	});
+
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700,300|Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="assets/case_studies.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="cardpool_webHeader">
+	<div>
+		<div class="logo">
+			<span>Cardpool</span>
+		</div>
+		<h1>Cardpool Case Study</h1>
+	</div>
+	<div class="headerBG"></div>
+</div>
+
+<div id="cardpool_webStudy">
+	<div class="pointer">
+		<div><div class="arrow"></div></div>
+	</div>
+	<h2>Web &amp; Native Mobile</h2>
+	<p>
+		Continue reading below for a case study of the responsive website, or learn about the <a href="cardpool.html" target="_blank"><span>native mobile app</span></a>.
+	</p>
+	<h2>Background</h2>
+	<p>
+		After launching Cardpool's mobile app, my next project was to revamp its website.  The existing website had not been designed for mobile devices, had an out-dated appearance, and a checkout flow that was not optimized.  We knew that although many customers accessed the website from tablet and mobile devices, those devices had poor conversion to sales.  Therefore, it was critical for the new UX to provide an easier-to-use shopping cart and checkout flow for all device sizes.  My designs met all of these goals, and you can view the final product at <a href="cardpool/live_website.html" target="_self"><span>Cardpool.com</span></a>.
+	</p>
+	<h2>Process</h2>
+	<div id="sitemapSample">
+		<a href="#">
+			<img src="cardpool/assets/cardpool_checkout_flowchart.png" alt="Sample page from the Cardpool site map"></a>
+	</div>
+	<p>
+		While still finishing the native mobile app project, I began working with the product manager on our strategy for the website project.  I helped the PM define the time-line for launching high-level features while I also began <a href="#research" class="pageLink"><span>UX research</span></a>.  The marketing team at Cardpool's parent company had recently completed new branding guidelines and a new color palette, which I then incorporated into the <a href="#styleguide" class="pageLink"><span>style guide</span></a> documentation.  After my sitemap was approved, I began creating wirefames &amp; <a href="#usabilityTesting" class="pageLink"><span>prototypes</span></a> to use for conducting live <a href="#usabilityTesting" class="pageLink"><span>usability tests</span></a>.  With the prototypes validated through testing, I proceeded to create the final pixel-perfect mockups and UX documentation for the engineering team.  This included micro-interactions, <a href="#delight" class="pageLink"><span>transitions, &amp; animations</span></a>, error states, and website micro-copy</a>.
+	</p>
+	<a name="research"></a>
+	<h3>Research</h3>
+	<a id="competitiveAnalysisPDF" class="pdf" href="cardpool/pdf/web_competitive_analysis.pdf" target="_blank">
+		<div>
+			<div><span>View PDF</span></div>
+		</div>
+	</a>
+	<p>
+		My research included analysis of direct competitors in gift card exchange (e.g. Raise.com) as well as best practices from the eCommerce industry (e.g. Amazon).  Additionally, I had a chance to iterate on the mobile app by incorporated the qualitative feedback &amp; user metrics that we had received since the launch of the mobile app.  Based on this research, the PM and I determined and scoped several new page-level features to incorporate.
+	</p>
+	<a name="styleguide"></a>
+	<h3>Style Guide</h3>
+	<div id="styleguideSample">
+		<a href="#">
+			<img src="cardpool/assets/cardpool_styleguide.png" alt="Sample page from the Cardpool Style Guide"></a>
+	</div>
+	<p>
+		The style guide I created goes beyond typography, color, and layout.  It also defines every state of interactivity of each screen element.  Here you can see an excerpt of the form element documentation.
+	</p>
+	<p>
+		Due to the emphasis on improving the checkout flow, I wanted form elements to be best in class.  Using the new "float label" standard employed by Material Design, form elements are color branded, and feature unique color states and animated transitions for hover, focus, valid, invalid, and other states.
+	</p>
+	<p>
+	</p>
+	<a name="usabilityTesting"></a>
+	<h3>Usability testing</h3>
+	<a href="cardpool/prototype3.html" target="_blank" class="cardpoolPrototype">
+		<img src="cardpool/assets/cardpool_prototype3.png" alt="Screenshot of Cardpool form feilds prototype">
+		<div class="prototypeOverlay"></div>
+		<div>Tap to open prototype</div></a>
+	<p>
+		I created the prototype of sample form fields to justify the approach to stakeholders and provide exact transition and timing effect details to engineering.  The handling of form validation and error states that is detailed in the prototype served to increase conversion during checkout, which is inherently prone to user error.
+	</p>
+	<p>
+		Next, it was critical to perfect the page that allowed users to select a set of gift cards to add to their carts.  While my innovation of using the slider feature was successful for mobile devices, user feedback and competitive analysis indicated that a traditional product list would be more successful for the website.
+	</p>
+	<p>
+		I created several working prototypes that contained real product data, and developed a set of tasks for usability testing subjects.  The prototypes included a version of the page with a slider, like the mobile app, and a Kayak-like version in which the user could reduce a long list of cards by using several filters.  Testing revealed that, unlike mobile users, desktop users preferred to see a long list of options.  Additionally, they found Kayak-like filters to be overwhelming, and preferred to manually sift through their options.
+	</p>
+	<a name="delight"></a>
+	<h3>Transitions &amp; Animations</h3>
+	<a id="cardview" href="cardpool/live_website.html#buy-macys-gift-cards" target="_blank">
+		<img src="cardpool/assets/cardpool_cardview.jpg" alt="Screenshot of Cardpool's card selection screen">
+		<div>Tap to open live website</div>
+	</a>
+	<p>
+		Where budget allowed, I argued for the live site to incorporate transitions &amp; animations to add to user delight.  Sometimes transitions should be as subtle as 50 millisecond hover effects.  Sometimes they should be dramatic, such as with the presentation of the card list shown here.  The cards slide from off-screen to their resting position using a staggered animation effect that I designed.
+	</p>
+	<p>
+		Usability testing of this effect validated this approach and its added expense.  Users reported excitement and increased attention.
+	</p>
+	<h2>Beyond the web</h2>
+	<p>
+		I also designing Cardpool's native mobile <a href="cardpool.html" target="_self"><span>iOS app</span></a> and their in-store kiosk.
+	</p>
+</div>
+
+<div class="caseStudyMenu">
+<a href="font_finder.html" id="optionFontFinder">
+		<div>
+			<img src="assets/logoFontFinder.png" alt="Font Finder logo">
+		</div>
+		<span>Typography Tool</span>
+	</a><!--
+--><a href="rotten_tomatoes.html" id="optionRottenTomatoes">
+		<div>
+			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
+		</div>
+		<span>Chome App</span>
+	</a><!--
+--><a href="couchsurfing.html" id="optionCouchSurfing">
+		<div>
+			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
+		</div>
+		<span>Product Design</span>
+	</a>
+</div>
+
+<div class="caseStudyFooter">
+	<div>
+		<p class="thanks">Thanks for visiting!</p>
+		<p>
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
+			Tap my name to contact me via Twitter.<br>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>
