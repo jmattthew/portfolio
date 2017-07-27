@@ -18,8 +18,15 @@
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-
+<script src="assets/jquery.scrolldepth.min.js"></script>
 <script type="text/javascript">
+	jQuery(function() {
+		jQuery.scrollDepth({
+			nonInteraction: false,
+			pixelDepth: false
+		});
+	});
+
 	function doZoom(obj) {
 		var el = $(obj).children();
 		var w = $(document).width()/el.outerWidth(true);
@@ -38,24 +45,40 @@
 	};
 
 	$(window).load(function() {
+
 		$('#appMap A').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'cardpool app map'
+			});
 			doZoom(this);
 			return false;
 		});
 		$('.personas').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'cardpool personas'
+			});
 			doZoom(this);
 			return false;
 		});
 
 		$('.twitterLink').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Outbound Link',
+				eventAction: 'click',
+				eventLabel: 'https://twitter.com/mattthew'
+			});
 			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 		});
+
 	});
 
 </script>
 
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700,300|Arimo:400,700" rel="stylesheet" type="text/css">
 <link href="assets/case_studies.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -75,16 +98,27 @@
 	<div class="pointer">
 		<div><div class="arrow"></div></div>
 	</div>
+	<h2>Native Mobile &amp; Web</h2>
+	<p>
+		Continue reading below for a case study of the native mobile app, or learn about the <a href="cardpool_web.html" target="_self"><span>responsive website</span></a>.
+	</p>
 	<h2>Background</h2>
 	<p>
-		As the sole UX designer for Cardpool, my challenge was to launch our first mobile app, moving from sketchpad to app store in 6 months.  The project clock was already ticking by the time I was hired, so I was expected to air drop in at full sprint.
+		As the sole UX designer for Cardpool, my challenge was to launch our first mobile app, moving from sketchpad to app store in 7 months.  The project clock was already ticking by the time I was hired, so I was expected to air drop in at full sprint.
 	</p>
 	<p>
-		Cardpool is an online exchange for pre-owned gift cards.  While website customers can both buy discounted gift cards and sell unwanted cards, the product mission for the app was to increase sales.  Our ancillary goal was to expand the user base to a wider audience by modernizing the user interface and visual design.
+		Cardpool is an online exchange for pre-owned gift cards.  While visitors can both buy discounted gift cards and sell unwanted cards, the product mission for the app was to increase sales.  Our ancillary goal was to expand the user base to a wider audience by modernizing the user interface and visual design.  You can view the final product by installing the <a href="cardpool/appstore.html" target="_blank"><span>Cardpool iPhone App</span></a>.
 	</p>
+	<h2>Results</h2>
+	<ul>
+		<li>Launched the app in 7 months.</li>
+		<li>Exceeded 1 million in revenue 4 months after launch.</li>
+		<li>Acheived visit-to-sale conversion that surpasses the industry average.</li>
+		<li>Earned 4.5 star rating in the App Store (summer 2017 version).</li>
+	</ul>
 	<h2>Process</h2>
 	<p>
-		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Meanwhile, I studied our demographics to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of app-flows and animations as well as providing art-direction to our external visual design team.  After launch, I have continued to recommend app updates based on the study of our analytics and direct user feedback.
+		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Meanwhile, I studied our demographics to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of app-flows and animations as well as providing art-direction to our external visual design team.
 	</p>
 	<a name="personas"></a>
 	<h3>Personas &amp; Marketing Research</h3>
@@ -166,7 +200,7 @@
 	</div>
 	<a name="usabilityTesting"></a>
 	<h3>Usability testing</h3>
-	<a href="cardpool/prototype1.html" target="_self" class="cardpoolPrototype">
+	<a href="cardpool/prototype1.html" target="_blank" class="cardpoolPrototype">
 		<img src="cardpool/assets/cardpool_prototype1.jpg" alt="Screenshot of Cardpool iOS app prototype 1">
 		<div class="prototypeOverlay"></div>
 		<div>Tap to open prototype</div></a>
@@ -178,7 +212,7 @@
 	</p>
 	<a name="prototypes"></a>
 	<h3>Prototyping &amp; Design</h3>
-	<a href="cardpool/prototype2.html" target="_self" class="cardpoolPrototype">
+	<a href="cardpool/prototype2.html" target="_blank" class="cardpoolPrototype">
 		<img src="cardpool/assets/cardpool_prototype2.jpg" alt="Screenshot of Cardpool iOS app prototype 2">
 		<div class="prototypeOverlay"></div>
 		<div>Tap to open prototype</div></a>
@@ -188,15 +222,9 @@
 	<p>
 		Meanwhile, I provided art direction to the design agency and coordinated our contract copy editor.  Development began as soon as the first screen had a wireframe and design mockup, and I managed to stay just ahead of the development team over the next seven months.
 	</p>
-	<h2>Results</h2>
-	<ul>
-		<li>Launched the app in 7 months (1 month past plan).</li>
-		<li>Exceeded 1 million in revenue 4 months after launch.</li>
-		<li>Visit-to-sale conversion rate surpasses the industry average.</li>
-		<li>4.5 star rating in the app store (summer 2016 version).</li>
-	</ul>
+	<h2>Post-launch</h2>
 	<p>
-		You can download the <a href="cardpool/appstore.html" target="_self"><span>Cardpool iPhone App</span></a> from the Apple App store.
+		I continued to recommend app updates based on the study of our analytics and direct user feedback.  I also applied the learnings from the mobile app project to begin designing Cardpool's <a href="cardpool_web.html" target="_self"><span>responsive website</span></a>.
 	</p>
 </div>
 
@@ -205,19 +233,19 @@
 		<div>
 			<img src="assets/logoFontFinder.png" alt="Font Finder logo">
 		</div>
-		<span>Case Study</span>
+		<span>Typography Tool</span>
 	</a><!--
 --><a href="rotten_tomatoes.html" id="optionRottenTomatoes">
 		<div>
 			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
 		</div>
-		<span>Case Study</span>
+		<span>Chrome App</span>
 	</a><!--
 --><a href="couchsurfing.html" id="optionCouchSurfing">
 		<div>
 			<img src="assets/logoCouch.png" alt="CouchSurfing Logo">
 		</div>
-		<span>Case Study</span>
+		<span>Product Design</span>
 	</a>
 </div>
 
@@ -225,7 +253,7 @@
 	<div>
 		<p class="thanks">Thanks for visiting!</p>
 		<p>
-			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink outbound"><span>Mattthew</span></a>.
 			Tap my name to contact me via Twitter.<br>
 		</p>
 	</div>

@@ -1,0 +1,1708 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>@Mattthew - Cardpool Form Fields Prototype</title>
+<meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Khula:400,600,700" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=350">
+<script>
+	$(document).ready(function(){
+
+		storeWindowHeight();
+		storeValidationStatus();
+		storeInitialLabels();
+		createTabIndex();
+
+		$('.checkbox, .radio').keydown(function(event) {
+			// this prevents space key press from scrolling the page
+			// we need space key to select fake radio/checkbox buttons
+		    if (event.which == 32) {
+		        return false;
+		    }
+		});
+
+		// bind validation events (i.e. check if user entry is valid
+		// and/or format user entry)
+
+		$('#full_name INPUT').keyup(function(event) {
+			if(!ignoreCode(event.which)) {
+				validateName(this);
+			}
+		});
+
+		$('#phone INPUT').keyup(function(event) {
+			if(!ignoreCode(event.which)) {
+				validatePhone(this);
+			}
+		});
+
+		$('#gender .field').click(function() {
+			validateGender(this);
+		});
+
+		$('#gender .field').keyup(function(event) {
+			// make fake radio respond to space key
+			if(event.which == 32) {
+				validateGender(this);
+			}
+		});
+
+		$('#comments textarea').keyup(function(event) {
+			if(!ignoreCode(event.which)) {
+				validateComments(this);
+			}
+		});
+
+		$('#month INPUT').keyup(function(event) {
+			if(!ignoreCode(event.which)) {
+				validateMonth(this);
+			}
+		});
+
+		$('#year INPUT').keyup(function(event) {
+			if(!ignoreCode(event.which)) {
+				validateYear(this);
+			}
+		});
+
+		$('#color INPUT').keyup(function(event) {
+			if(!ignoreCode(event.which)) {
+				validateColor(this);
+			}
+		});
+
+		$('.combobox INPUT').keyup(function(event) {
+			// general combobox events must be binded after specific box bindings
+			if(!ignoreCode(event.which)) {
+				validateComboBox(event, $(this).parent(), $(this).val());
+			}
+		});
+
+		$('.combobox A').click(function(event) {
+			validateComboBox(event, $(this).parent().parent(), $(this).find('LI').html());
+		});
+
+		$('#agreement').keyup(function(event) {
+			// make fake checkbox respond to space key
+			if(event.which == 32) {
+				validateAgreement(this);
+				return false;
+			}
+		});
+
+		$('#agreement').click(function(event) {
+			validateAgreement(this);
+		});
+
+
+
+
+
+
+		// bind feedback events (i.e. change visual appearance)
+		// feedback binding must happen after validation bindings
+
+	    $(window).resize(function() {
+	    	// store window height 500ms after resize stops
+			clearTimeout($.data(this, 'resizeTimer'));
+			$.data(this, 'resizeTimer', setTimeout(function() {
+				storeWindowHeight();
+			}, 500));
+		});
+
+		$('.field INPUT, .field TEXTAREA').focus(function() {
+			giveFocusFeedback(this);
+		});
+
+		$('.field INPUT, .field TEXTAREA').blur(function() {
+			giveblurFeedback(this);
+		});
+
+		$('.field INPUT').keyup(function(event) {
+			validateForm();
+			if(!ignoreCode(event.which)) {
+				giveKeyupFeedback($(this).parent());
+			}
+		});
+
+		$('.field.checkbox').click(function() {
+			validateForm();
+			giveCheckboxFeedback(this);
+		});
+
+		$('.field.checkbox').keyup(function(event) {
+			if(event.which != 9) {
+				// do not give feedback if checkbox was tabbed into
+				validateForm();
+				giveCheckboxFeedback(this);
+			}
+		});
+
+		$('.radio .field').click(function() {
+			validateForm();
+			giveRadioFeedback(this);
+		});
+
+		$('.radio .field').keyup(function(event) {
+			if(event.which != 9) {
+				// do not give feedback if radio was tabbed into
+				validateForm();
+				giveRadioFeedback(this);
+			}
+		});
+
+		$('.field TEXTAREA').keyup(function(event) {
+			validateForm();
+			if(!ignoreCode(event.which)) {
+				giveKeyupFeedback($(this).parent());
+				giveTextareaLengthFeedback($(this));
+			}
+		});
+
+		$('.combobox INPUT').focus(function() {
+			giveComboboxFocusFeedback(this);
+		});
+
+		$('.combobox INPUT').keyup(function(event) {
+			updateComboBoxDropDown(event, $(this).parent());
+		});
+
+		$('.combobox INPUT').blur(function() {
+			giveComboboxBlurFeedback(this);
+		});
+
+		$('.combobox A').click(function() {
+			validateForm();
+			giveKeyupFeedback($(this).parent().parent());
+		});
+
+		$('#submitter').click(function() {
+			giveSubmitFeedback();
+		});
+
+		$('.field').click(function() {
+			// make sure form element A tags don't scroll the page
+			return false;
+		});
+
+	});
+
+	var blurredWindowHeight = 0;
+	function storeWindowHeight() {
+		blurredWindowHeight = $(window).height();
+	}
+
+	function storeValidationStatus() {
+		// the validation status of each field and the form itself
+		// are stored as $.data.  This sets the intial status
+		$('#theForm').data('allFieldsValid',false);
+		$('.field').data('isValid',false);
+		$('.field.optional').data('isValid',true);
+		$('.combobox').data('selectedOption','');
+		$('#submitter').data('isValid',true);
+	}
+
+	function storeInitialLabels() {
+		// the text in each field's label can be changed
+		// so we need to store the original labels
+		$('#submitter').data('initialLabel',$('#submitter').find('SPAN').html());
+		$('#gender').find('SPAN').data('initialLabel',$('#gender').find('SPAN').html());
+		$('.field LABEL').each(function() {
+			$(this).data('initialLabel',$(this).html());
+		});
+	}
+
+	function createTabIndex() {
+		// add a tabindex attribute to all form elements
+		var tabIndex = 1;
+		$('.field').each(function() {
+			if($(this).find('input:radio').length>0 || $(this).find('input:checkbox').length>0) {
+				// radio & checkbox buttons:  tabindex goes on the link because actual input is hidden
+				$(this).find('.check').attr('tabindex',tabIndex);
+			} else if($(this).attr('id')=='submitter') {
+				// submit button:  tabindex goes on the link
+				$(this).attr('tabindex',tabIndex);
+			} else {
+				// text fields and text area:  tabindex goes on the input as expected
+				$(this).find('input').attr('tabindex',tabIndex);
+				$(this).find('textarea').attr('tabindex',tabIndex);
+			}
+			tabIndex++;
+		});
+	}
+
+	function giveFocusFeedback(input) {
+		$(input).attr('placeholder','');
+		var field = $(input).parent();
+		$(field).removeClass('initial');
+		$(field).addClass('focused');
+		window.setTimeout(function() {
+			var wh = $(window).height();
+			var ww = $(window).width();
+			// this detects a virtual (onscreen) keyboard
+			// by the change in the window height
+			if(wh<blurredWindowHeight) {
+				var y = $(field).offset().top - $(field).height();
+				$('html, body').animate( { scrollTop: y }, 500 );
+			}
+		},500);
+	}
+
+	function giveblurFeedback(input) {
+		var field = $(input).parent();
+		var label = $(field).find('label');
+		$(field).removeClass('focused');
+		if(!$(field).hasClass('error')) {
+			setTimeout(function() {
+				// this delay is needed so that tapping
+				// a combobox option fills the input field
+				// before we check its value
+				if($(input).val()=='') {
+					$(field).addClass('initial');
+				} else {
+					$(label).html($(label).data('initialLabel'));
+				}
+			},100);
+		}
+	}
+
+	function giveComboboxFocusFeedback(input) {
+		var dropdown = $(input).parent().find('.dropdown');
+		// this flashes the scrollbar so that the user
+		// becomes aware that the dropdown is scrollable
+		$(dropdown).scrollTop($(dropdown).scrollTop()+1);
+	}
+
+	function updateComboBoxDropDown(event, field) {
+		// filter option list to show options tagged as matching
+		var matchingRows = [];
+		$(field).find('A').each(function() {
+			var row = $(this).find('LI');
+			if($(row).data('notMatch')) {
+				$(row).css('display','none');
+			} else {
+				matchingRows.push(row);
+				$(row).css('display','');
+			}
+		});
+		if(matchingRows.length == 0) {
+			$(field).find('.combobox_warn').css('display','block');
+		} else {
+			$(field).find('.combobox_warn').css('display','');
+		}
+
+		// update option list
+		var value = $(field).find('INPUT').val();
+		var dropdown = $(field).find('.dropdown');
+		if(value == '') {
+			$(dropdown).removeClass('hasInput');
+		} else {
+			$(dropdown).addClass('hasInput');
+			// this flashes the scrollbar so that the user
+			// becomes aware that the dropdown is scrollable
+			$(dropdown).scrollTop($(dropdown).scrollTop()+1);
+		}
+
+		// arrow key tapped:  highlight the appropiate option
+		if(event.which == 38 || event.which == 40) {
+			var dropdown = $(field).find('.dropdown');
+			var highlighted = $(dropdown).data('highlighted');
+			$(dropdown).find('LI').removeClass('highlighted');
+			if(highlighted === undefined) {
+				highlighted = -1;
+			}
+			$(field).find('A').removeClass('highlighted');
+			if(event.which == 38) {
+				// up arrow
+				highlighted--;
+				if(highlighted < 0) {
+					highlighted = matchingRows.length;
+				}
+			} else if(event.which == 40) {
+				// down arrow
+				highlighted++;
+				if(highlighted > matchingRows.length-1) {
+					highlighted = 0;
+					$(dropdown).scrollTop(0);
+				}
+			}
+			$(matchingRows[highlighted]).addClass('highlighted');
+			$(dropdown).data('highlighted',highlighted);
+			var h1 = $(field).find('A').eq(0).height();
+			var h2 = $(dropdown).height();
+			if(h1*(highlighted+1) > h2) {
+				$(dropdown).scrollTop(h1*(highlighted+1));
+			}
+		}
+	}
+
+	function giveComboboxBlurFeedback(input) {
+		// combo boxes are also binded with giveBlurFeedback
+		var field = $(input).parent();
+		$(field).find('LI').css('display','');
+		if(!$(field).data('isValid')) {
+			$(input).val('');
+			$(field).find('.dropdown').removeClass('hasInput');
+		}
+	}
+
+	function returnSubmitToInitial() {
+		var isValid = $('#theForm').data('allFieldsValid');
+		if(isValid) {
+			$('#submitter').addClass('initial');
+			$('#submitter').removeClass('error');
+			$('#submitter').find('SPAN').html($('#submitter').data('initialLabel'));
+		}
+	}
+
+	function giveKeyupFeedback(field) {
+		if($(field).data('isValid')) {
+			$(field).removeClass('focused');
+			$(field).addClass('valid');
+			$(field).removeClass('error');
+			$(field).find('LABEL').html($(field).find('LABEL').data('initialLabel'));
+		} else {
+			$(field).addClass('focused');
+			$(field).removeClass('valid');
+			$(field).removeClass('error');
+		}
+		returnSubmitToInitial();
+	}
+
+	function giveCheckboxFeedback(field) {
+		$(field).find('.check').blur();
+		var input = $(field).find('INPUT');
+		if($(input).prop('checked')) {
+			$(field).removeClass('initial');
+			$(field).addClass('valid');
+			$(field).removeClass('error');
+		} else {
+			$(field).addClass('initial');
+			$(field).removeClass('valid');
+		}
+		$(field).find('LABEL').html($(field).find('LABEL').data('initialLabel'));
+		returnSubmitToInitial();
+	}
+
+	function giveRadioFeedback(field) {
+		$(field).find('.check').blur();
+		$(field).find('INPUT').prop('checked',true);
+		var group = $(field).parent();
+		$(group).addClass('valid');
+		$(group).removeClass('initial');
+		$(group).removeClass('error');
+		$(group).find('.field').each(function() {
+			if($(this).find('INPUT').prop('checked')) {
+				$(this).removeClass('initial');
+				$(this).addClass('valid');
+			} else {
+				$(this).addClass('initial');
+				$(this).removeClass('valid');
+			}
+			$(this).removeClass('error');
+		});
+		$(group).find('SPAN').html($(group).find('SPAN').data('initialLabel'));
+		returnSubmitToInitial();
+	}
+
+	function giveTextareaLengthFeedback(area) {
+		// prevents input text from overlapping the label
+		if($(area)[0].scrollHeight > $(area).outerHeight() + 15) {
+			$(area).parent().addClass('longInput');
+		} else {
+			$(area).parent().removeClass('longInput');
+		}
+	}
+
+	function giveSubmitFeedback() {
+		$('#submitter').blur();
+		if($('#theForm').data('allFieldsValid')) {
+			$('#submitter').removeClass('initial');
+			$('#submitter').addClass('waiting');
+			$('#submitter').find('SPAN').html($('#submitter').find('SPAN').attr('validMsg'));
+		} else {
+			$('#submitter').removeClass('initial');
+			$('#submitter').addClass('error');
+			$('#submitter').find('SPAN').html($('#submitter').find('SPAN').attr('errorLabel'));
+			// error feedback animates from bottom to top
+			var delay = 500;
+			var lastField = $('.field').last();
+			$($('.field').get().reverse()).each(function(index) {
+				var field = $(this);
+				var label = $(field).find('LABEL');
+				var input = $(field).find('INPUT, TEXTAREA');
+				var parent = $(field).parent();
+				if(!$(field).data('isValid')) {
+					// leave valid fields unchanged
+					if($(parent).hasClass('radio')) {
+						// radio elements transition simultaneously
+						if($(parent).attr('id')!=$(lastField).parent().attr('id')) {
+							// but only once per radio group
+							delay += 100;
+							setTimeout(function() {
+								$(parent).removeClass('initial');
+								$(parent).addClass('error');
+								$(parent).find('.field').removeClass('initial');
+								$(parent).find('.field').addClass('error');
+							},delay);
+							setTimeout(function() {
+								$(parent).find('SPAN').html($(parent).find('SPAN').attr('errorLabel'));
+							},delay+150); // text is higher so update after radio group transition starts
+							lastField = $(this);
+						}
+					} else {
+						// non radio elements
+						delay += 100;
+						setTimeout(function() {
+							$(field).removeClass('initial');
+							$(field).addClass('error');
+							$(input).attr('placeholder',$(label).data('initialLabel'));
+							// optional fields and checkboxes
+							// will not be changed because they
+							// don't have an 'errorLabel' attribute
+							$(label).html($(label).attr('errorLabel'));
+						},delay);
+						lastField = $(this);
+					}
+				}
+			});
+		}
+	}
+
+	function ignoreCode(code) {
+		// in order to preserve the user's cursor position
+		// don't perform validation/formatting on keyup for:
+		// left, up, right, down, shift, ctrl, alt, cmd/windows
+		var ignoredCodes = [37,38,39,40,16,17,18,91,93];
+		var ignore = false;
+		for(i=0,il=ignoredCodes.length;i<il;i++) {
+			if (code == ignoredCodes[i]) {
+				ignore = true;
+				break;
+			}
+		}
+		return ignore;
+	}
+
+	function validateName(input) {
+		var isValid = false;
+		var field = $(input).parent();
+		// remove starting whitespace
+		$(input).val($(input).val().replace(/^\s/g,''));
+		// check for two words
+		var words = $(input).val().split(' ');
+		if(words.length>1) {
+			if(words[0].length>1 && words[1].length>1) {
+				isValid = true;
+			}
+	 	}
+		$(field).data('isValid',isValid);
+	}
+
+	function validatePhone(input) {
+		var field = $(input).parent();
+		var digits = $(input).val();
+		// remove non-numerals and a first numeral of 0 or 1
+		digits = digits.replace(/\D/g,'');
+		digits = digits.replace(/^[0-1]/g,'');
+		digits = digits.substring(0,10);
+
+		// format input
+		if($(input).val().indexOf('(')>-1 && $(input).val().indexOf(' ')<0) {
+			digits = digits.substring(0,2);
+		}
+		if($(input).val().indexOf('  ')>-1 && $(input).val().indexOf('- ')<0) {
+			digits = digits.substring(0,5);
+		}
+		var str = '';
+		if(digits.length < 3) {
+			str += digits;
+		} else if(digits.length < 6) {
+			str += '(' + digits.substring(0,3) + ') ' + digits.substring(3,6);
+		} else {
+			str += '(' + digits.substring(0,3) + ')  ' + digits.substring(3,6) + ' - ' + digits.substring(6,10);
+		}
+		$(input).val(str);
+
+		var isValid = false;
+		if(digits.length==10) {
+			isValid = true;
+	 	}
+		$(field).data('isValid',isValid);
+	}
+
+	function validateGender(field) {
+		$(field).parent().find('.field').data('isValid',true);
+	}
+
+	function validateComments(area) {
+		var isValid = false;
+		var field = $(area).parent();
+		// check for two characters
+		if($(area).val().length > 1) {
+			isValid = true;
+	 	}
+		$(field).data('isValid',isValid);
+	}
+
+	function validateMonth(input) {
+		var value = $(input).val();
+		// remove special characters and whitespace
+		value = value.replace(/\W+/g,'');
+
+		if(value.charAt(0)>1) {
+			value = '0' + value;
+		}
+		$(input).val(value);
+
+		// record that options that match the input
+		value = value.toLowerCase();
+		var field = $(input).parent();
+		var matchingRows = [];
+		$(field).find('A').each(function() {
+			var row = $(this).find('LI');
+			var option = $(row).html();
+			var altOption = $(row).attr('altOption');
+			if(option.indexOf(value) == 0 || altOption.indexOf(value) == 0) {
+				$(row).data('notMatch',false);
+				matchingRows.push(row);
+			} else {
+				$(row).data('notMatch',true);
+			}
+		});
+		if(matchingRows.length == 1) {
+			value = $(matchingRows[0]).html();
+			$(field).data('selectedOption',value);
+		}
+	}
+
+	function validateYear(input) {
+		var value = $(input).val();
+		// remove non-numerals
+		value = value.replace(/\D/g,'');
+		$(input).val(value);
+
+		// record that options that match the input
+		var field = $(input).parent();
+		var matchingRows = [];
+		$(field).find('A').each(function() {
+			var row = $(this).find('LI');
+			var option = $(row).html();
+			var altOption = $(row).attr('altOption');
+			if(option.indexOf(value) == 0 || altOption.indexOf(value) == 0) {
+				$(row).data('notMatch',false);
+				matchingRows.push(row);
+			} else {
+				$(row).data('notMatch',true);
+			}
+		});
+		if(matchingRows.length == 1) {
+			value = $(matchingRows[0]).html();
+			$(field).data('selectedOption',value);
+		}
+	}
+
+	function validateColor(input) {
+		var value = $(input).val();
+		// remove special characters and whitespace
+		value = value.replace(/\W+/g,'');
+		$(input).val(value);
+
+		// record that options that match the input
+		value = value.toLowerCase();
+		var field = $(input).parent();
+		var matchingRows = [];
+		$(field).find('A').each(function() {
+			var row = $(this).find('LI');
+			var option = $(row).html().toLowerCase();
+			if(option.indexOf(value) >= 0) {
+				$(row).data('notMatch',false);
+				matchingRows.push(row);
+			} else {
+				$(row).data('notMatch',true);
+			}
+		});
+		if(matchingRows.length == 1) {
+			value = $(matchingRows[0]).html();
+			$(field).data('selectedOption',value);
+		}
+	}
+
+	function validateComboBox(event, field, value) {
+		var isValid = false;
+		var input = $(field).find('INPUT');
+		var selectedOption = $(field).data('selectedOption');
+
+		if(selectedOption != '') {
+			// once the field is valid, no input is accepted except delete
+			if(event.which == 8 || event.which == 36) {
+				// backspace/delete key
+				// clear the autocomplete value
+				$(field).find('LI').data('notMatch',false);
+				$(field).data('selectedOption','');
+				value = '';
+			} else {
+				value = selectedOption;
+				isValid = true;
+			}
+		}
+
+		if(event.which == 1) {
+			// tap
+			$(input).focus();
+			$(field).data('selectedOption',value);
+			isValid = true;
+		} else if(event.which == 13) {
+			// return key
+			var highlighted = $(field).find('.highlighted');
+			if(highlighted.length == 1) {
+				value = $(highlighted).html();
+				$(field).data('selectedOption',value);
+				$(field).find('LI').removeClass('highlighted');
+				$(field).find('.dropdown').data('highlighted',-1);
+				isValid = true;
+			}
+		}
+
+		$(input).val(value);
+		$(field).data('isValid',isValid);
+	}
+
+	function validateAgreement(field) {
+		var isValid = false;
+		var input = $(field).find('INPUT');
+		if($(input).prop('checked')) {
+			$(input).prop('checked',false);
+			isValid = false;
+		} else {
+			$(input).prop('checked',true);
+			isValid = true;
+		}
+		$(field).data('isValid',isValid);
+	}
+
+	function validateForm() {
+		var isValid = true;
+		$('.field').each(function() {
+			var field = $(this);
+			if(!$(field).data('isValid')) {
+				isValid = false;
+			}
+		});
+		$('#theForm').data('allFieldsValid',isValid);
+	}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<style>
+
+		body {
+			font-size: 13px;
+			font-family: 'Raleway', 'Arial', Sans-serif;
+			background-color: white;
+		}
+
+		form {
+			padding: 0;
+			margin: 0;
+		}
+
+		/******************************/
+
+		/* Structural styles */
+
+		/******************************/
+
+		#theForm {
+			float: left;
+			padding: 30px;
+			width: 350px;
+			border-right: 1px solid #cccccc;
+			box-sizing: border-box;
+		}
+
+		#month {
+			width: calc(50% - 12px);
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 20px;
+		}
+
+		#year {
+			width: calc(50% - 12px);
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.field {
+			display: block;
+			height: 50px;
+			margin-bottom: 20px;
+			text-decoration: none;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #3399ff;
+			border-radius: 0px;
+			box-shadow: inset 0px 2px 4px 0px rgba(0,0,0,.1);
+		}
+
+		.field label {
+			display: block;
+			margin-left: 10px;
+			margin-top: 5px;
+			height: 45px;
+			margin-bottom: -50px;
+			box-sizing: border-box;
+			color: #999999;
+		}
+
+		.field input {
+			font-family: 'Khula', 'Arial', Sans-serif;
+			border: none;
+			height: 50px;
+			box-sizing: border-box;
+			width: 100%;
+			font-size: 18px;
+			margin: 0;
+			padding: 20px 0 0 10px;
+			display: block;
+			position: relative;
+			background: none;
+		}
+
+		.field .check {
+			margin-top: -25px;
+			text-align: right;
+		    box-sizing: border-box;
+		    padding-right: 5px;
+			display: none;
+			fill: white;
+			stroke: white;
+			stroke-width: 125px;
+		}
+
+		.field .check svg {
+			width: 21px;
+			height: 21px;
+		}
+
+		.field.optional .check {
+			display: block;
+			font-size: 13px;
+			margin-top: -20px;
+			color: #999999;
+		}
+
+		.field.checkbox {
+			height: initial;
+			border-style: solid;
+			border-top-width: 1px;
+			border-bottom-width: 1px;
+			border-left-width: 0;
+			border-right-width: 0;
+			box-shadow: none;
+		}
+
+		.field.checkbox .check {
+			display: block;
+			width: 35px;
+			height: 35px;
+			border-radius: 6px;
+			margin-top: 25px;
+			margin-bottom: 10px;
+			margin-left: 5px;
+			border-width: 2px;
+			border-style: solid;
+			text-align: center;
+			cursor: pointer;
+			box-shadow: inset 0px 2px 4px 0px rgba(0,0,0,.1);
+		}
+
+		.field.checkbox .check svg {
+			width: 45px;
+			height: 45px;
+			margin-top: -10px;
+		}
+
+		.field.checkbox label {
+			height: 20px;
+			cursor: pointer;
+			font-size: 18px;
+			margin-left: 55px;
+			margin-top: 15px;
+			transition: color 250ms;
+		}
+
+		.field.checkbox input {
+			display: none;
+		}
+
+		.field.checkbox label a {
+			transition: color 250ms;
+		}
+
+		.field.checkbox .check {
+			transition: border-color 250ms, fill 250ms;
+		}
+
+		.field.checkbox .check svg {
+			transition: opacity 100ms;
+		}
+
+		.radio {
+			border-style: solid;
+			border-top-width: 1px;
+			border-bottom-width: 1px;
+			border-left-width: 0;
+			border-right-width: 0;
+			padding: 5px 0 0 0;
+			margin-bottom: 20px;
+		}
+
+		.radio > span {
+			display: block;
+			font-size: 13px;
+			padding: 5px 0 5px 10px;
+			color: #999999;
+		}
+
+		.radio .field {
+			border-width: 0;
+			margin-bottom: 0;
+			position: relative;
+			top: 15px;
+			box-shadow: none;
+		}
+
+		.radio .field .check {
+			display: block;
+			width: 35px;
+			height: 35px;
+			margin-top: -45px;
+			margin-left: 5px;
+			border-width: 2px;
+			border-style: solid;
+			text-align: center;
+			border-radius: 100%;
+			box-shadow: inset 0px 2px 4px 0px rgba(0,0,0,.1);
+			cursor: pointer;
+			transition: border-color 250ms, fill 250ms;
+		}
+
+		.radio .field .check svg {
+			width: 42px;
+			height: 42px;
+			margin-top: -8px;
+			transition: opacity 100ms;
+		}
+
+		.radio .field label {
+			cursor: pointer;
+			font-size: 18px;
+			height: 35px;
+			margin-left: 55px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.radio .field input {
+			display: none;
+		}
+
+		.field.text_area {
+			height: initial;
+		}
+
+		.text_area label {
+		    margin-top: 0;
+		    height: 25px;
+		    margin-bottom: -25px;
+		    padding-top: 5px;
+		}
+
+		.text_area.longInput label {
+			visibility: hidden;
+		}
+
+		.text_area textarea {
+			border: 0;
+		    background-color: transparent;
+		    width: 100%;
+		    height: 110px;
+		    box-sizing: border-box;
+		    padding: 25px 5px 5px 10px;
+		    margin-bottom: -27px;
+		    font-size: 18px;
+			resize: vertical;
+			font-family: inherit; /* IE fix */
+		}
+
+		.text_area .check {
+			margin-top: 0;
+			margin-bottom: 0px;
+			display: block;
+			z-index: -1; /* otherwise this covers the resize control */
+			position: relative;
+		}
+
+		.field .dropdown {
+			display: block;
+			visibility: hidden;
+			opacity: 0;
+			/* the 100ms delay is needed both for the registry of click events and to give time for the label to transition*/
+			transition: visibility 0ms 100ms, opacity 250ms 100ms;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			background-color: white;
+			border-radius: 6px;
+			box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.2);
+			position: relative;
+			top: 6px;
+			z-index: 1;
+			left: -2px;
+			width: calc(100% + 4px);
+			padding: 6px 0px;
+			max-height: 152px;
+			box-sizing: border-box;
+			overflow: scroll;
+		}
+
+		.field .dropdown A {
+			display: block;
+			text-decoration: none;
+			color: #3399ff;
+		}
+
+		.field .dropdown LI {
+			padding: 10px;
+		}
+
+		.field .dropdown .combobox_warn {
+			color: #999999;
+			padding: 10px;
+			display: none;
+		}
+
+		.field .dropdown .highlighted {
+			background-color: whitesmoke;
+		}
+
+		.button {
+			height: 40px;
+			border-radius: 5px;
+			box-sizing: border-box;
+			text-align: center;
+			text-decoration: none;
+			display: block;
+			font-weight: bold;
+			box-shadow: none;
+			overflow: hidden;
+		}
+
+		.button span {
+			display: block;
+			position: relative;
+			top: 50%;
+			transform: perspective(1px) translateY(-50%);
+		}
+
+		/******************************/
+
+		/* Initial (unvalidated) styles */
+
+		/******************************/
+
+		.field.initial {
+			border-color: #3399ff;
+			background-color: white;
+			transition: border-color 250ms;
+		}
+
+		.field.initial label {
+			font-size: 18px;
+			color: #999999;
+			padding-top: 18px;
+			transition: padding-top 100ms, font-size 100ms;
+		}
+
+		.field.optional {
+			border-color: #999999;
+		}
+
+		.field.checkbox.initial {
+			border-color: #cccccc;
+		}
+
+		.field.checkbox.initial label {
+			padding-top: 3px;
+			color: #3399ff;
+		}
+
+		.field.checkbox.initial label a {
+			color: #3399ff;
+		}
+
+		.field.checkbox.initial .check {
+			border-color: #3399ff;
+		}
+
+		.field.checkbox.initial .check svg {
+			opacity: 0;
+		}
+
+		.radio.initial {
+			border-color: #cccccc;
+		}
+
+		.radio.initial .field.initial {
+				background-color: transparent;
+		}
+
+		.radio.initial .field.initial label {
+			padding-top: 0;
+			color: #3399ff;
+			transition: color 250ms;
+		}
+
+		.radio.initial .field.initial .check {
+			background-color: white;
+			border-color: #3399ff;
+			transition: border-color 250ms;
+		}
+
+		.radio.initial .field.initial .check svg {
+			opacity: 0;
+		}
+
+		.field.text_area.initial label {
+			font-size: 18px;
+		    padding-top: 10px;
+		    padding-bottom: 0;
+			transition: padding-top 100ms, font-size 100ms;
+		}
+
+		.field.text_area.initial .check {
+			opacity: 0;
+		}
+
+		.button.initial {
+			background-color: #3399ff;
+			color: white;
+			border: none;
+			transition: background-color 500ms;
+		}
+
+		/******************************/
+
+		/* Hover styles */
+
+		/******************************/
+
+		.field.initial:hover {
+			border-color: #246bb2;
+		}
+
+		.field.checkbox.initial:hover {
+			border-color: #cccccc;
+		}
+
+		.field.checkbox.initial:hover a {
+			color: #246bb2;
+		}
+
+		.field.checkbox.valid:hover a {
+			color: #666666;
+		}
+
+		.field.checkbox.initial:hover .check {
+			border-color: #246bb2;
+		}
+
+		.field.checkbox.valid:hover .check {
+			border-color: #666666;
+			fill: #666666;
+		}
+
+		.field.checkbox.initial:hover label {
+			color: #246bb2;
+		}
+
+		.field.checkbox.valid:hover label {
+			color: #666666;
+		}
+
+		.radio.initial .field:hover label {
+			color: #246bb2;
+		}
+
+		.radio.initial .field.initial:hover .check {
+			border-color: #246bb2;
+		}
+
+		.radio.valid .field.valid:hover .check {
+			border-color: #666666;
+			fill: #666666;
+		}
+
+		.radio.valid .field.initial:hover .check {
+			border-color: #666666;
+		}
+
+		.radio.valid .field.valid:hover label {
+			color: #666666;
+		}
+
+		.radio.valid .field.initial:hover label {
+			color: #666666;
+		}
+
+		.field .dropdown A:hover {
+			background-color: whitesmoke;
+		}
+
+		.button.initial:hover {
+			background-color: #246bb2;
+		}
+
+		/******************************/
+
+		/* Focused styles */
+
+		/******************************/
+
+		.field.focused {
+			border-color: #246bb2;
+			box-shadow: none;
+			transition: background-color 500ms, border-color 500ms;
+		}
+
+		.field.focused label {
+			font-size: 13px;
+			color: #999999;
+			padding-top: 0;
+			transition: padding-top 100ms, font-size 100ms;
+		}
+
+		.field.focused .dropdown.showOnFocus {
+			/*
+			It makes sense to show the dropdown onFocus when the user
+			needs to know all the available options (e.g. "pick a color").
+			It makes sense to NOT show the dropdown onFocus when the user
+			doesn't need to know the available options (e.g. "pick a country").
+			*/
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.field.focused .dropdown.hasInput {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.field.text_area.focused label {
+			font-size: 13px;
+		    padding-top: 5px;
+			transition: padding-top 100ms, font-size 100ms;
+		}
+
+		.field.text_area.focused .check {
+			opacity: 0;
+		}
+
+		/******************************/
+
+		/* Valid styles */
+
+		/******************************/
+
+		.field.valid {
+			border-color: #999999;
+		}
+
+		.field.valid .check {
+			fill: #3bd47f;
+			display: block;
+		}
+
+		.field.valid label {
+			color: #999999;
+		}
+
+		.field.checkbox.valid {
+			border-color: #cccccc;
+			transition: border-color 100ms;
+		}
+
+		.field.checkbox.valid .check {
+			border-color: #999999;
+			fill: #999999;
+			box-shadow: none;
+			transition: border-color 250ms, color 250ms;
+		}
+
+		.field.checkbox.valid label {
+			padding-top: 3px;
+			color: #999999;
+		}
+
+		.field.checkbox.valid label a {
+			color: #999999;
+		}
+
+		.radio.valid {
+			border-color: #cccccc;
+			transition: border-color 100ms;
+		}
+
+		.radio.valid .field label {
+			padding-top: 0;
+		}
+
+		.radio.valid .field.valid .check {
+			fill: #999999;
+			box-shadow: none;
+			border-color: #999999;
+			transition: background-color 250ms, color 250ms;
+		}
+
+		.radio.valid .field.initial .check {
+			border-color: #999999;
+			transition: background-color 250ms, color 250ms;
+		}
+
+		.radio.valid .field.initial .check svg {
+			opacity: 0;
+		}
+
+		.field.text_area.valid label {
+			font-size: 13px;
+		    padding-top: 5px;
+		}
+
+		.field.text_area.valid .check {
+			opacity: 1;
+			transition: opacity 100ms;
+		}
+
+		.field.valid .dropdown {
+			visibility: hidden;
+			opacity: 0;
+			/* the 100ms delay is needed both for the registry of click events and to give time for the label to transition*/
+			transition: visibility 0ms 100ms, opacity 250ms 100ms;
+		}
+
+		/******************************/
+
+		/* Error styles */
+
+		/******************************/
+
+		.field.error {
+			border-color: #ff2259;
+			background-color: #fffafb;
+			color: white;
+			transition: background-color 500ms, border-color 500ms;
+		}
+
+		.field.error label {
+			color: #ff2259;
+			transition: color 500ms;
+		}
+
+		.field.checkbox.error {
+			background-color: white;
+			border-color: #cccccc;
+		}
+
+		.field.checkbox.error label {
+			padding-top: 3px;
+		}
+
+		.field.checkbox.error label A {
+			color: #ff2259;
+		}
+
+		.field.checkbox.error .check {
+			fill: #fffafb;
+			border-color: #ff2259;
+			background-color: #fffafb;
+			transition: background-color 500ms, border-color 500ms, fill 500ms;
+		}
+
+		.field.checkbox.error .check svg {
+			opacity: 0;
+		}
+
+		.radio.error {
+			border-color: #cccccc;
+		}
+
+		.radio.error > span {
+			color: #ff2259;
+			transition: color 500ms;
+		}
+
+		.radio .field.error {
+			background-color: transparent;
+		}
+
+		.radio .field.error .check {
+			border-color: #ff2259;
+			transition: background-color 500ms;
+		}
+
+		.radio .field.error .check svg {
+			opacity: 0;
+		}
+
+		.field.text_area.error label {
+			font-size: 13px;
+		    padding-top: 5px;
+		}
+
+		.field.text_area.error .check {
+			opacity: 0;
+		}
+
+		.field.error .dropdown {
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 0ms, opacity 250ms 100ms;
+		}
+
+		.button.error {
+			background-color: #ff2259;
+			color: white;
+			transition: background-color 500ms;
+		}
+
+		/******************************/
+
+		/* Waiting styles */
+
+		/******************************/
+
+		.button.waiting {
+			animation: buttonWait 500ms forwards;
+			animation-timing-function: ease-out;
+			padding: 0px 10px;
+			cursor: default;
+		}
+
+		.button.waiting span {
+			animation: buttonSpanWait 500ms forwards;
+			animation-timing-function: linear;
+			background-size: 58px;
+			background-repeat: no-repeat;
+			background-position: right center;
+			/* no need to use a data:image, I'm using it here only to keep everything in one file */
+			background-image: url('data:image/gif;base64,R0lGODlhcQAfAKIHAOr0/6/T//X6/+Lx/5XF/zOZ/9ns/////yH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDMkVCRjZBOTU2NjMxMUU2QTZGNUY1REZDRDdCQzAxMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDMkVCRjZBQTU2NjMxMUU2QTZGNUY1REZDRDdCQzAxMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMyRUJGNkE3NTY2MzExRTZBNkY1RjVERkNEN0JDMDEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMyRUJGNkE4NTY2MzExRTZBNkY1RjVERkNEN0JDMDEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEBRQABwAsAAAAAHEAHwAAA/94utz+MMpJq62G6M17D8KlCMJgnmiKAqF4lGqstk5W3Hiu73dwAYagcEgsBge0icDIbCYPBp502qsMmtgikrLMeoM0AXXM80mA3+9AmU63COQ4jiDptr3PxvWeXR/kgAUGEWh8WH4PdoZOf4FxZg97i0yIDoqTRSGOcXQQkphElQ2XoEKam2OdkaVaEaSsp6hTqg6frAaiDK+lsbI8tHq3Q7kLu6C9vjrADLasxCPCQ8jJcxHNpc8v0aaN1MrW27iu4QbT3ssL16DZxpjm1OgK6pjs5O/J8Qfzk/Xh97759i3qt+2frIDhCEYziArhNoXCGG5yGA3iLYmOKAqzCKtYmzcckGolHOfvAJyPOAZBaDeQZEGTKG/k0/YSXEUFAE5+VEnoZp2aUFCGtIktj6WIenQ25MmlFIALJdYZheKhatWhFUjI2GqChIsXALjKYPG1rNmzaL8mAAAh+QQFCgAHACwBAAEARwAdAAAD2nh6AvMwyiiWvfiYwLv/npEJg2GeaKqaVZYZRCzPdB0HlrDuPOteAZtwSMApeshV6xckOmk4QHKK+ime2FmJyl1iYNlsgNtlhsVkKsB8fo7TybWr2Sa+4T15hl4X3vE7ehh8fTV/gCqCQIVDh4goihaEjDKOjyaRC5OURZcrmQqblJaXoAeijKSPpqiFqoisnIaeiWyylbQpsbe4uSe7vJ2+mLa8r4Bei8HCw8kWYMEBUsNWB8sEAzq+zhfQskbantyDt0YKJJfjL5zmOQ4T8BEA6lYbIPcfIhYJACH5BAUUAAcALCkAAQAfAB0AAANbeHoT9DBKOZYlJevNeybWgXlkSQDKWK4dOLBwZ6hx/NT4jdv0bvY+jy74I66GxhYw+VkykUwNNFqYRq1PZxK71Rq53wCVQ3iNNQbRubrw5kLiZ2jhmNglgcoiAQAh+QQFCgAHACwpAAEARwAdAAAD0nh6IvMwygjEujibwLv/n5EdgGGeaKqaw+gORCzPdC23y7DuvDFYroXBRizGRKSeUoULwozQ2m9JRQFdgahWFihVq83RdkzQfalhzJMcNZ+V6cuabXS/efEcvX2HO/dQdn1Mf4BFgoMoeQpzhjSIiSyFjlKRK4sHjZQxkJGYmpudiZ+blZYppKUzooOpqpynqJOvrH2utLGKs6q1d7e8uSe/pQLBkkGvMsXGVyNZrwFJuZgLyTmx1HqlYcuJAEEZA8+AAXkOE+gSDeAvGyDvHiYXCQAh+QQFFAAHACxRAAEAHwAdAAADWHiqQf4wxrCqOSXrzXs51xJ4ZJlRoKl6F7G+GoHBtEHXN2zn686bvh8pKOwQi5sjMqNcNpHPYlQ4/VV511z2tqXNlpyDCxw7DMiagaILtIyFhFAFJKnX5wkAIfkEBQoABwAsUQABAB8AHQAAA1R4qjL+MEaxqjA4680zXVcnjsYXkuhGDWmbDafbxjJK1+ONd/qu+jYgqScsFUVEYRK49DV3T1y0NpVVXdfZsXNgbV+H7JDxLVm8QFgFBJC4I4CPIgEAIfkEBQoABwAsAQABAB8AHQAAA1R4ehP+MEazaiM4680xXUMnjt5Cnh1loKx2tDARxuxKo/ZN5rrI95wfUCMceowpZFC5KRqdQyhQ2qPqrDcsTRsbcFsKJmagADA/i8CzAjJI3hK0IgEAOw==');
+		}
+
+		@keyframes buttonWait {
+			  0% {
+			  		margin-right: 0%;
+			  		margin-left: 0%;
+			  		background-color: #246bb2;
+					color: white;
+					border: none;
+			   	 }
+			100% {
+					margin-right: 10%;
+					margin-left: 10%;
+					background-color: white;
+					color: #999999;
+					border: 2px solid #999999;
+				 }
+		}
+
+		@keyframes buttonSpanWait {
+			  0% {
+			  		opacity: 0;
+			   	 }
+			 30% {
+			  		opacity: 0;
+			   	 }
+			100% {
+					opacity: 1;
+				 }
+		}
+
+
+		/******************************/
+
+		/* Styles not used in the form */
+
+		/******************************/
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		h1, h2 {
+			color: black;
+		}
+
+		#notes_container {
+			float: left;
+			padding: 30px;
+			width: 400px;
+			color: #666666;
+		}
+
+		#notes_container h1 {
+			color: #3399ff;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+
+		#notes_toggle {
+			display: none;
+		}
+
+		#notes {
+			opacity: 0;
+			position: relative;
+			top: -30px;
+			transition:  opacity 250ms 0ms ease-in, top 0ms 500ms;
+		}
+
+		#notes_toggle:checked + #notes {
+			display: block;
+			opacity: 1;
+			top: 0;
+			transition:  opacity 500ms 0ms ease-in, top 250ms 0ms;
+		}
+
+	</style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<body>
+	<div id="theForm">
+		<h1>Enter info:</h1>
+		<form>
+			<a href="#" id="full_name" class="field initial">
+				<!-- alternate text for labels (e.g. error state) are stored as an attribute -->
+				<label errorLabel="Oops! Full name requires two names.">Full name</label>
+				<input type="text" name="name" value="">
+				<div class="check">
+					<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+						<!-- this inline SVG should be replaced with an SVG asset -->
+						<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+				</div>
+			</a>
+			<a href="#" id="favorite_animal" class="field initial optional">
+				<label>Favorite animal</label>
+				<input type="text" name="favorite_animal" value="">
+				<div class="check">(optional)</div>
+			</a>
+			<a href="#" id="phone" class="field initial">
+				<label errorLabel="Oops! Phone requires ten digits.">Phone</label>
+				<input type="text" name="phone" value="">
+				<div class="check">
+					<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+						<!-- this inline SVG should be replaced with an SVG asset -->
+						<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+				</div>
+			</a>
+			<div id="gender" class="radio initial">
+				<span errorLabel="Please select a gender.">Gender</span>
+				<a href="#" id="female" class="field initial">
+					<label>Female</label>
+					<div class="check">
+						<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+							<!-- this inline SVG should be replaced with an SVG asset -->
+							<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+						<input type="radio" name="gender">
+					</div>
+				</a>
+				<a href="#" id="male" class="field initial">
+					<label>Male</label>
+					<div class="check">
+						<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+							<!-- this inline SVG should be replaced with an SVG asset -->
+							<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+						<input type="radio" name="gender">
+					</div>
+				</a>
+				<a href="#" id="other" class="field initial">
+					<label>Other</label>
+					<div class="check">
+						<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+							<!-- this inline SVG should be replaced with an SVG asset -->
+							<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+						<input type="radio" name="gender">
+					</div>
+				</a>
+			</div>
+			<a href="#" id="comments" class="field text_area initial">
+				<label errorLabel="Oops!  Comments are required.">Comments</label>
+				<textarea name="comments" value=""></textarea>
+				<div class="check">
+					<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+						<!-- this inline SVG should be replaced with an SVG asset -->
+						<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+				</div>
+			</a>
+			<div id="month" class="field combobox initial">
+				<label errorLabel="Oops! Required.">Month</label>
+				<input type="text" name="month" value="">
+				<div class="check">
+					<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+						<!-- this inline SVG should be replaced with an SVG asset -->
+						<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+				</div>
+				<ul class="dropdown">
+					<li class="combobox_warn">Oops!</li>
+					<a href="#"><li altOption="january">01</li></a>
+					<a href="#"><li altOption="february">02</li></a>
+					<a href="#"><li altOption="march">03</li></a>
+					<a href="#"><li altOption="april">04</li></a>
+					<a href="#"><li altOption="may">05</li></a>
+					<a href="#"><li altOption="june">06</li></a>
+					<a href="#"><li altOption="july">07</li></a>
+					<a href="#"><li altOption="august">08</li></a>
+					<a href="#"><li altOption="september">09</li></a>
+					<a href="#"><li altOption="october">10</li></a>
+					<a href="#"><li altOption="november">11</li></a>
+					<a href="#"><li altOption="december">12</li></a>
+				</ul>
+			</div><!--
+			--><div id="year" class="field combobox initial">
+				<label errorLabel="Oops! Required.">Year</label>
+				<input type="text" name="year" value="">
+				<div class="check">
+					<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+						<!-- this inline SVG should be replaced with an SVG asset -->
+						<path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+				</div>
+				<ul class="dropdown">
+					<li class="combobox_warn">Oops!</li>
+					<a href="#"><li altOption="2021">21</li></a>
+					<a href="#"><li altOption="2020">20</li></a>
+					<a href="#"><li altOption="2019">19</li></a>
+					<a href="#"><li altOption="2018">18</li></a>
+					<a href="#"><li altOption="2017">17</li></a>
+					<a href="#"><li altOption="2016">16</li></a>
+				</ul>
+			</div>
+			<div id="color" class="field combobox initial optional">
+				<label>Pick a color</label>
+				<input type="text" name="color" value="">
+				<div class="check">(optional)</div>
+				<ul class="dropdown showOnFocus">
+					<li class="combobox_warn">Oops! That color is not available.</li>
+					<a href="#"><li>Red</li></a>
+					<a href="#"><li>Canadian Red</li></a>
+					<a href="#"><li>Orange</li></a>
+					<a href="#"><li>Yellow</li></a>
+					<a href="#"><li>Green</li></a>
+					<a href="#"><li>Blue</li></a>
+					<a href="#"><li>Purple</li></a>
+				</ul>
+			</div>
+			<div id="agreement" class="field checkbox initial">
+				<label>I agree to <a href="#">this</a>.</label>
+				<div class="check">
+					<!-- this inline SVG should be replaced with an SVG asset -->
+					<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/></svg>
+					<input type="checkbox" id="agreement_input">
+				</div>
+			</div>
+			<a href="#" id="submitter" class="button field initial">
+				<span errorLabel="Errors above" validMsg="Please wait">Continue</span>
+			</a>
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="notes_container">
+		<label for="notes_toggle"><h1>Toggle UX Notes</h1></label>
+		<input type="checkbox" id="notes_toggle"/>
+		<div id="notes">
+			<h2>Styling of fields</h2>
+			<h3>Float Labels</h3>
+			<p>
+				The "float labels" style has been adopted in Google's Material Design standard because it more clearly separates fields, uses space more efficiently, and visually groups  together each field's information:  label, user input, placeholder message, and error message.
+			</p>
+			<h3>Automatically Formatting</h3>
+			<p>
+				Automatically formatting input as users type helps ensure valid input and is easier for users.  For example, the "phone" field here immediately erases letters &amp; special characters on keyup, leaving only valid numerals.  Since it automatically adds the "( ) -" characters, users don't need to learn any required formatting.  Users also know immediately that they won't get an error message from leaving out hidden requirements.
+			</p>
+			<h3>Optional fields</h3>
+			<p>
+				Labeling fields as "optional" rather than as "required" creates less visual clutter because almost all fields are required.  This labeling also emphasizes the benefits to the user rather than the hurdles.
+			</p>
+			<h3>Large format</h3>
+			<p>
+				Large elements, especially radio &amp; check-box buttons are both easier to see and easier to tap.
+			</p>
+			<h2>Feedback for users</h2>
+			<h3>Instant positivity</h3>
+			<p>
+				Positive feedback is welcome and not distracting.  It tells users that they can continue but don't need to.
+			</p>
+			<h3>Delayed negativity</h3>
+			<p>
+				Negative feedback is stressful and distracting.  Negative feedback on keyup may be inappropriate because we don't know if the user has finished editing the field.  Similarly, negative feedback on blur needlessly distracts users from filling out the next field and feels like micromanagement.  Users sometimes skip or leave fields incomplete for valid reasons, intending to return before submitting.  By tapping to submit, the user signals to us that they're ready for their input to be evaluated.
+			</p>
+			<h3>Co-located</h3>
+			<p>
+				As Google's Material Design standard observes, feedback is easier to find when it originates from where the user is currently looking:  the element they're editing or tapping when feedback arrives.  Since negative feedback arrive on the tap of submit, the error message begins with the submit buttons and cascades upwards, leading the user's eye to the top of the form and the first field-specific error.
+			</p>
+			<h3>Soft</h3>
+			<p>
+				Adding very brief transitions between every state gives a feeling of gentleness and elegance.  Even the hover states transition over 100 milliseconds.
+			</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -18,8 +18,15 @@
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-
+<script src="assets/jquery.scrolldepth.min.js"></script>
 <script type="text/javascript">
+	jQuery(function() {
+		jQuery.scrollDepth({
+			nonInteraction: false,
+			pixelDepth: false
+		});
+	});
+
 	function doZoom(obj) {
 		var el = $(obj).children();
 		var w = $(document).width()/el.outerWidth(true);
@@ -38,7 +45,29 @@
 	};
 
 	$(window).load(function() {
+
+		$('.outbound').click(function(event) {
+			ga('send', 'event', {
+				eventCategory: 'Outbound Link',
+				eventAction: 'click',
+				eventLabel: event.target.href
+			});
+		});
+
+		$('.pdf').click(function(event) {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'couchsurfing' + event.target.href
+			});
+		});
+
 		$('#donut').click(function() {
+			ga('send', 'event', {
+				eventCategory: 'Screen Interaction',
+				eventAction: 'click',
+				eventLabel: 'couchsurfing donut'
+			});
 			doZoom(this);
 			return false;
 		});
@@ -46,12 +75,12 @@
 		$('.twitterLink').click(function() {
 			$(this).attr('href','https://twitter.com/messages/compose?recipient_id=3084491');
 		});
+
 	});
 
 </script>
 
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700,300|Arimo:400,700" rel="stylesheet" type="text/css">
 <link href="assets/case_studies.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -91,8 +120,8 @@
 				</div>
 			</div>
 			<p>
-				Cliche level of donut charts<br>
-				in UX portoflios :-)
+				Of UX portfolios contain donut charts<br>
+				Just checking if you're reading :-)
 			</p>
 		</div>
 	</a>
@@ -108,7 +137,7 @@
 	<p>
 		We redesigned results list when searching for people to meet based on interviews with users, quantitative research, and eye-tracking.  The PDF below explains the before and after in greater detail.
 	</p>
-	<a id="profilesPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20micro%20profile.pdf" target="_self">
+	<a id="profilesPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20micro%20profile.pdf" target="_blank">
 		<div>
 			<div><span>View PDF</span></div>
 		</div>
@@ -116,9 +145,9 @@
 	<a name="hosting"></a>
 	<h3>Hosting Availability</h3>
 	<p>
-		The PDF below shows several UX design options for a widgets to be used by CouchSurfing members to mark their avialbility to host other members.
+		The PDF below shows several UX design options for a widgets to be used by CouchSurfing members to mark their availability to host other members.
 	</p>
-	<a id="hostingPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20status%20widget%20-%203%20approaches.pdf" target="_self">
+	<a id="hostingPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20status%20widget%20-%203%20approaches.pdf" target="_blank">
 		<div>
 			<div><span>View PDF</span></div>
 		</div>
@@ -126,9 +155,9 @@
 	<a name="matching"></a>
 	<h3>Matching &amp; Messaging</h3>
 	<p>
-		CouchSurfing is a dual sided "marketplace", with times of inequal supply and demand in different parts of the world and in different seasons.  I proposed multiple solutions to improve our matching algorithm taking into account these market dynamics and user behavior.  I also proposed improvements to the matching algorithm to better ensure that members had a great experience meeting each other based on user ratings.
+		CouchSurfing is a dual sided "marketplace", with times of unequal supply and demand in different parts of the world and in different seasons.  I proposed multiple solutions to improve our matching algorithm taking into account these market dynamics and user behavior.  I also proposed improvements to the matching algorithm to better ensure that members had a great experience meeting each other based on user ratings.
 	</p>
-	<a id="matchingPDF" class="pdf" href="couch/pdf/strategy%20-%20CS%20request%20feedback%20system.pdf" target="_self">
+	<a id="matchingPDF" class="pdf" href="couch/pdf/strategy%20-%20CS%20request%20feedback%20system.pdf" target="_blank">
 		<div>
 			<div><span>View PDF</span></div>
 		</div>
@@ -136,9 +165,9 @@
 	<a name="experiences"></a>
 	<h3>Casual Meetups</h3>
 	<p>
-		The "couch" was just one of the potential venues for an experience between to members.  Initially, the only other venue was organized events.  I helped create the third venue, our casual meetups product, which allowed members to spontaneously gather around a place of interest or an activity.  The PDF below shows some early prototype UX for this product and a flow chart explaining how members choose the right venue to meet their needs.
+		The "couch" was just one of the potential venues for an experience between to members.  Initially, the only other venue was organized events.  I helped create the third venue, our casual meet-ups product, which allowed members to spontaneously gather around a place of interest or an activity.  The PDF below shows some early prototype UX for this product and a flow chart explaining how members choose the right venue to meet their needs.
 	</p>
-	<a id="experiencesPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20experiences.pdf" target="_self">
+	<a id="experiencesPDF" class="pdf" href="couch/pdf/mockup%20-%20CS%20experiences.pdf" target="_blank">
 		<div>
 			<div><span>View PDF</span></div>
 		</div>
@@ -150,19 +179,19 @@
 		<div>
 			<img src="assets/logoFontFinder.png" alt="Font Finder logo">
 		</div>
-		<span>Case Study</span>
+		<span>Typography Tool</span>
 	</a><!--
 --><a href="cardpool.html" id="optionCardpool">
 		<div>
 			<img src="assets/logoCardpool.png" alt="Cardpool Logo">
 		</div>
-		<span>Case Study</span>
+		<span>iOS App</span>
 	</a><!--
 --><a href="rotten_tomatoes.html" id="optionRottenTomatoes">
 		<div>
 			<img src="assets/logoRT.png" alt="Rotten Tomatoes Logo">
 		</div>
-		<span>Case Study</span>
+		<span>Chrome App</span>
 	</a>
 </div>
 
@@ -170,7 +199,7 @@
 	<div>
 		<p class="thanks">Thanks for visiting!</p>
 		<p>
-			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink"><span>Mattthew</span></a>.
+			<a href="https://twitter.com/mattthew" target="_blank" class="twitterLink outbound"><span>Mattthew</span></a>.
 			Tap my name to contact me via Twitter.
 		</p>
 	</div>
