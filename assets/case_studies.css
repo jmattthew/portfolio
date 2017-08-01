@@ -308,6 +308,7 @@ A.pageLink:after {
 	border-bottom: 1px dotted rgb(70, 182, 247);
 }
 
+/*
 #cardpoolStudy A.personas {
 	display: block;
 	text-align: center;
@@ -415,6 +416,19 @@ A.pageLink:after {
 
 #groupon {
 	background-image: url('../cardpool/assets/persona_icon_groupon.png');
+}
+*/
+
+#personas {
+	text-align: center;
+}
+
+#personas IMG {
+	display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 45%;
+    margin: 2%;
 }
 
 #appMap {
@@ -1222,7 +1236,7 @@ DIV.prototypeOverlay:hover {
 		background-position: calc(100% + 145px) -70px;
 	}
 
-	#appMap IMG {
+	#appMap IMG, #personas IMG {
 		width: 60%;
 	}
 
@@ -1352,7 +1366,7 @@ DIV.prototypeOverlay:hover {
 		padding: .6vw 0 .6vw 21%;
 	}
 
-	#appMap IMG {
+	#appMap IMG, #personas IMG {
 		width: 75%;
 	}
 

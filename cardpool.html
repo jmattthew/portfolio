@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>@Mattthew - Cardpool</title>
+<title>@Mattthew - Cardpool Mobile</title>
 <meta name="description" content="Mattthew:  Product designer, storyteller, and artist in San Francisco.">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta id="deviceViewPort" name="viewport" content="width=640">
@@ -55,7 +55,7 @@
 			doZoom(this);
 			return false;
 		});
-		$('.personas').click(function() {
+		$('#personas A').click(function() {
 			ga('send', 'event', {
 				eventCategory: 'Screen Interaction',
 				eventAction: 'click',
@@ -118,77 +118,8 @@
 	</ul>
 	<h2>Process</h2>
 	<p>
-		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Meanwhile, I studied our demographics to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of app-flows and animations as well as providing art-direction to our external visual design team.
+		Right away I began conducting research, beginning with thorough <a href="#analysis" class="pageLink"><span>competitive analysis</span></a>.  Combining this research with our product goals, I began architecting the <a href="#analysis" class="pageLink"><span>app flow</span></a>.  Once UX designs were ready, I conducted in-person <a href="#usabilityTesting" class="pageLink"><span>usability testing</span></a> to discover pain points.  I studied our marketing research to create <a href="#personas" class="pageLink"><span>personas</span></a> for visual design and prepared several <a href="#prototypes" class="pageLink"><span>prototypes</span></a> of the animated interactions.  Finally, I delivered an end-to-end functional prototype to engineering as they began their first sprints.
 	</p>
-	<a name="personas"></a>
-	<h3>Personas &amp; Marketing Research</h3>
-	<p>
-		Demographic and survey research revealed that our 50% of the legacy user base was 45 and older.  Additionally, a large majority were Caucasian.  I developed personas to guide our visual design decisions towards appealing to a younger and more diverse user base.
-	</p>
-	<a class="personas" href="#personas">
-		<div>
-			<div class="persona_page">
-				<div id="persona_header1" class="persona_header">
-					<img id="persona_luis" src="cardpool/assets/persona_luis.png" alt="Headshot of an imaginary man name Luis">
-					<div>Luis</div>
-				</div>
-				<div class="persona_content">
-					<div>
-						<h4>Bio:</h4>
-						<p>Male, 26</p>
-						<p>Unmarried</p>
-						<p>Associate's Degree</p>
-						<p>Medical Lab Technician Intern</p>
-					</div><!--
-					--><div>
-						<h4>Desires:</h4>
-						<p>To find deals at his favorite popular clothing brands and restaurants.</p>
-					</div><!--
-					--><div>
-						<h4>Behaviors &amp; Beliefs:</h4>
-						<p>As a young intern, Luis has a tight budget yet is brand-conscious.  Luis is a savvy online shopper and quick to try new apps.<br><br>
-						With long hours and a busy personal life, his home is mostly a crash-pad.  He eats out often and shops online primarily via his mobile phone.</p>
-					</div><!--
-					--><div>
-						<h4>Favorite Apps:</h4>
-						<p id="instagram" class="persona_icon" >Instagram</p>
-						<p id="snapchat" class="persona_icon" >Snapchat</p>
-						<p id="amazon" class="persona_icon" >Amazon</p>
-					</div>
-				</div>
-			</div><!--
-			--><div class="persona_page">
-				<div id="persona_header2" class="persona_header">
-					<img id="persona_elaine" src="cardpool/assets/persona_elaine.png" alt="Headshot of an imaginary woman name Elaine">
-					<div>Elaine</div>
-				</div>
-				<div class="persona_content">
-					<div>
-						<h4>Bio:</h4>
-						<p>Female, 32</p>
-						<p>Married with 4 y/o daughter</p>
-						<p>Bachelor's Degree</p>
-						<p>Account Manager</p>
-					</div><!--
-					--><div>
-						<h4>Desires:</h4>
-						<p>To balance the family budget while renovating and decorating her new home.</p>
-					</div><!--
-					--><div>
-						<h4>Behaviors &amp; Beliefs:</h4>
-						<p>Elaine enjoys maximizes her budget from every angle.  She uses multiple credit cards to earn points.<br><br>
-						She frequently uses coupons and online discount codes, and she waits for sales to make purchases.  Her new home is her castle, and she shops to make it beautiful.</p>
-					</div><!--
-					--><div>
-						<h4>Favorite Apps:</h4>
-						<p id="pinterest" class="persona_icon" >Pinterest</p>
-						<p id="retailmenot" class="persona_icon" >RetailMeNot</p>
-						<p id="groupon" class="persona_icon" >Groupon</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</a>
 	<a name="analysis"></a>
 	<h3>Competitive research</h3>
 	<p>
@@ -210,6 +141,72 @@
 	<p>
 		We discovered an important oversight where we had included out-of-stock brands in our sort by top-discount, which led to user frustration.  We also learned how to clarify our security hurdles with a better progress-meter and by making our forms more visually exciting.  We learned many smaller but crucial lessons about the visual design, including improving readability with higher color-contrast and more visible error messages.
 	</p>
+	<a name="personas"></a>
+	<h3>Visual Design Personas</h3>
+	<p>
+		To meet our tight deadline, we decided to outsource visual design to an agency, and I provided art direction.  Marketing demographic survey research revealed that 50% of the legacy user base was 45 and older.  The business need was for the visual design to appeal to a younger and more diverse user base.  I developed marketing personas to guide the visual design.
+	</p>
+	<div id="personas">
+		<a href="#personas">
+			<img src="cardpool/assets/cardpool_personas.jpg" alt="Visual Design Personas for the Cardpool Mobile App"></a>
+	</div>
+	<!--
+		<div>
+			<div class="persona_page">
+				<div id="persona_header1" class="persona_header">
+					<img id="persona_luis" src="cardpool/assets/persona_luis.png" alt="Headshot of an imaginary man name Luis">
+					<div>Luis</div>
+				</div>
+				<div class="persona_content">
+					<div>
+						<h4>Bio:</h4>
+						<p>Male, 26</p>
+						<p>Unmarried</p>
+						<p>Associate's Degree</p>
+						<p>Medical Lab Technician Intern</p>
+					</div><div>
+						<h4>Desires:</h4>
+						<p>To find deals at his favorite popular clothing brands and restaurants.</p>
+					</div><div>
+						<h4>Behaviors &amp; Beliefs:</h4>
+						<p>As a young intern, Luis has a tight budget yet is brand-conscious.  Luis is a savvy online shopper and quick to try new apps.<br><br>
+						With long hours and a busy personal life, his home is mostly a crash-pad.  He eats out often and shops online primarily via his mobile phone.</p>
+					</div><div>
+						<h4>Favorite Apps:</h4>
+						<p id="instagram" class="persona_icon" >Instagram</p>
+						<p id="snapchat" class="persona_icon" >Snapchat</p>
+						<p id="amazon" class="persona_icon" >Amazon</p>
+					</div>
+				</div>
+			</div><div class="persona_page">
+				<div id="persona_header2" class="persona_header">
+					<img id="persona_elaine" src="cardpool/assets/persona_elaine.png" alt="Headshot of an imaginary woman name Elaine">
+					<div>Elaine</div>
+				</div>
+				<div class="persona_content">
+					<div>
+						<h4>Bio:</h4>
+						<p>Female, 32</p>
+						<p>Married with 4 y/o daughter</p>
+						<p>Bachelor's Degree</p>
+						<p>Account Manager</p>
+					</div><div>
+						<h4>Desires:</h4>
+						<p>To balance the family budget while renovating and decorating her new home.</p>
+					</div><div>
+						<h4>Behaviors &amp; Beliefs:</h4>
+						<p>Elaine enjoys maximizes her budget from every angle.  She uses multiple credit cards to earn points.<br><br>
+						She frequently uses coupons and online discount codes, and she waits for sales to make purchases.  Her new home is her castle, and she shops to make it beautiful.</p>
+					</div><div>
+						<h4>Favorite Apps:</h4>
+						<p id="pinterest" class="persona_icon" >Pinterest</p>
+						<p id="retailmenot" class="persona_icon" >RetailMeNot</p>
+						<p id="groupon" class="persona_icon" >Groupon</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	-->
 	<a name="prototypes"></a>
 	<h3>Prototyping &amp; Design</h3>
 	<a href="cardpool/prototype2.html" target="_blank" class="cardpoolPrototype">
@@ -217,10 +214,10 @@
 		<div class="prototypeOverlay"></div>
 		<div>Tap to open prototype</div></a>
 	<p>
-		To meet our tight deadline, we decided to outsource visual design to an agency.  We also hired a team of temporary contract iOS developers to quickly scale our engineering talent pool.  Given the number of external staff, I wanted to provide the team with a fully functional clickable prototype that modeled every button on every screen within the app.
+		To quickly scale our engineering talent pool we hired a team of temporary contract iOS developers.  Given the number of external staff, I wanted to provide the team with a fully functional prototype that modeled every button on every screen within the app.
 	</p>
 	<p>
-		Meanwhile, I provided art direction to the design agency and coordinated our contract copy editor.  Development began as soon as the first screen had a wireframe and design mockup, and I managed to stay just ahead of the development team over the next seven months.
+		Development began as soon as the first screen had a wireframe and design mockup, and I managed to stay just ahead of the development team over the next seven months.  Meanwhile, I provided art direction to the design agency and coordinated our contract copy editor.
 	</p>
 	<h2>Post-launch</h2>
 	<p>
