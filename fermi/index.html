@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Where is everybody?!</title>
+<title>Mattthew: Where is everybody?!</title>
+<meta name="description" content="Mattthew's visual exploration of Fermi's Paradox. Mattthew is a product designer, storyteller, and artist based in San Francisco.">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script src="../assets/jquery.easing.min.js"></script>
@@ -12,7 +13,7 @@
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
+
 	ga('create', 'UA-52293845-1', 'auto');
 	ga('send', 'pageview');
 </script>
@@ -32,7 +33,7 @@ $(document).ready(function() {
 	// determine the aspect ration of the document
 	function setDocAspect() {
 	    var docWidth = $( window ).width();
-    	var docHeight = $( window ).height();    
+    	var docHeight = $( window ).height();
 		var docAspect = docWidth/docHeight;
 		if(docAspect >= aspect) {
 			aspectType = 'wide';
@@ -68,7 +69,7 @@ $(document).ready(function() {
 		currentSlide = slides[0][0];
 		slideOffset = slides[0][1];
 	}
-		
+
 	// snap scroll to current slide
 	function doSnap() {
 		var snapLimit = 0;
@@ -77,15 +78,15 @@ $(document).ready(function() {
 			snapLimit  = $(window).width() * .1;
 			if(slideOffset < snapLimit) {
 //				var left = $('#p' + currentSlide).offset().left;
-//				$('body').animate( { scrollLeft: left }, 500, 'easeOutBack' );	
-				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 500, easing: 'easeOutBack' }) 
+//				$('body').animate( { scrollLeft: left }, 500, 'easeOutBack' );
+				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 500, easing: 'easeOutBack' })
 			}
 		} else {
 			snapLimit  = $(window).height() * .1;
 			if(slideOffset < snapLimit) {
 //				var top = $('#p' + currentSlide).offset().top;
 //				$('body').animate( { scrollTop: top }, 500, 'easeOutBack' );
-				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 500, easing: 'easeOutBack' }) 
+				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 500, easing: 'easeOutBack' })
 			}
 		}
 	}
@@ -101,34 +102,34 @@ $(document).ready(function() {
 			if(currentSlide < 0) { currentSlide = 0; }
 			if(aspectType == 'tall') {
 //				var left = $('#p' + currentSlide).offset().left;
-//				$('body').animate( { scrollLeft: left }, 1500, 'easeOutQuad' );	
-				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 1000, easing: 'easeInOutBack' }) 
+//				$('body').animate( { scrollLeft: left }, 1500, 'easeOutQuad' );
+				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 1000, easing: 'easeInOutBack' })
 			} else {
 //				var top = $('#p' + currentSlide).offset().top;
 //				$('body').animate( { scrollTop: top }, 1500, 'easeOutQuad' );
-				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 1000, easing: 'easeInOutBack' }) 
+				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 1000, easing: 'easeInOutBack' })
 			}
-		});	
+		});
 		$('#next').click(function(event) {
 			currentSlide += 1;
 			if(currentSlide > totalSlides-1) { currentSlide = totalSlides-1; }
 			if(aspectType == 'tall') {
 //				var left = $('#p' + currentSlide).offset().left;
-//				$('body').velocity( { scrollLeft: left }, 1500, 'easeOutQuad' );	
-				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 2000, easing: 'easeInOutBack' }) 
+//				$('body').velocity( { scrollLeft: left }, 1500, 'easeOutQuad' );
+				$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 2000, easing: 'easeInOutBack' })
 			} else {
 //				var top = $('#p' + currentSlide).offset().top;
 //				$('body').velocity( { scrollTop: top }, 1500, 'easeOutQuad' );
-				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 2000, easing: 'easeInOutBack' }) 
+				$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 2000, easing: 'easeInOutBack' })
 			}
-		});					
+		});
 	}
-	
-	// change scroll style, scale slides 
+
+	// change scroll style, scale slides
 	function resize() {
 		setDocAspect();
 	    var docWidth = $( window ).width();
-    	var docHeight = $( window ).height();    
+    	var docHeight = $( window ).height();
 		var x = 0;
 		var y = 0;
 		var m = 0;
@@ -136,7 +137,7 @@ $(document).ready(function() {
 		var h = '';
 		// change scroll type
 		if(aspectType == 'tall') {
-			x = docWidth; 
+			x = docWidth;
 			y = Math.round(docWidth/aspect);
 			m = Math.round(x/40);
 			$('.slideP, .slideQ, .slideR').css('display','inline-block');
@@ -180,15 +181,15 @@ $(document).ready(function() {
 		$('#previous,#next').css('width',w);
 		$('#previous,#next').css('height',h);
 	}
-	
+
 	// move to current slide
 	function scrolltoCurrentSlide() {
 //		var left = $('#p' + currentSlide).offset().left;
 //		var top = $('#p' + currentSlide).offset().top;
-//		$('body').animate( { scrollLeft: left }, 1 );			
-//		$('body').animate( { scrollTop: top }, 1 );			
-		$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 1 }) 
-		$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 1 }) 
+//		$('body').animate( { scrollLeft: left }, 1 );
+//		$('body').animate( { scrollTop: top }, 1 );
+		$('#p' + currentSlide).velocity('scroll', { axis: "x", duration: 1 })
+		$('#p' + currentSlide).velocity('scroll', { axis: "y", duration: 1 })
 	}
 
 	function doParalax() {
@@ -228,10 +229,10 @@ $(document).ready(function() {
 	function loadProgress() {
 		// center indicator
 	    var w = ($( window ).width() - $('#loadIndicator').width())/2;
-    	var h = ($( window ).height() - $('#loadIndicator').height())/2;    
+    	var h = ($( window ).height() - $('#loadIndicator').height())/2;
 		$('#loadIndicator').css('left',w);
 		$('#loadIndicator').css('top',h);
-		
+
 		$('img').each(function() {
 			totalImages++;
 			var tmpImg = new Image();
@@ -240,7 +241,7 @@ $(document).ready(function() {
 				loadedImages++;
 			};
 		});
-	
+
 		var interval = setInterval(function() {
 			var percent = totalImages/100;
 			var loaded = Math.round(loadedImages/percent);
@@ -251,7 +252,7 @@ $(document).ready(function() {
 				$('#loadIndicator').velocity("fadeOut", { duration: 500 }, function() {
 		    		$('#loadIndicator').css('display','none');
 				});
-			}		   
+			}
 		}, 10);
 	}
 
@@ -273,7 +274,7 @@ $(document).ready(function() {
 			doSnap();
 		}, 500));
 	});
-		
+
 	// GO!
 	loadProgress();
 	resize();
@@ -290,16 +291,16 @@ $(document).ready(function() {
 	.slideQ               { position: absolute; display: none; margin-left: auto; margin-right: auto; vertical-align: middle; text-align: center; }
 	.slideR               { position: absolute; display: none; margin-left: auto; margin-right: auto; vertical-align: middle; text-align: center; }
 	.slideImg             { margin-left: auto; margin-right: auto; }
-	
+
     #p9:before            { content: ''; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* Adjusts for spacing */ }
     #surveyInfo           { display: inline-block; margin-left: auto; margin-right: auto; vertical-align: middle; }
     #surveyInfo A         { color: red; }
 
 	#previous             { display: block; position: fixed; left: 0px; top: 0px; cursor: w-resize; z-index: ; }
 	#next                 { display: block; position: fixed; right: 0px; top: 0px; cursor: e-resize; }
-	
+
 	#loadIndicator        { position: absolute; top: 5px; left: 5px; background-color: #790000; border: 4px solid red; color: #FFFFFF; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14px; padding: 10px 30px; text-align: center; }
-	
+
 	#byline               { position: fixed; right:10px; top:10px; text-align: right; }
     #byline A             { color:rgb(179, 179, 179); font-size:14px; font-family:Helvetica, sans-serif; text-decoration: none; }
     #byline A:hover       { text-decoration:underline; }
@@ -309,7 +310,7 @@ $(document).ready(function() {
 <body>
 <div id="fullWindow">
 	<div id="centerer"></div>
-	
+
 	<!-- P level Slides(background)  -->
 	<div class="slideP">
 		<img id="p0" src="images/p0.jpg" class="slideImg" />
@@ -339,11 +340,11 @@ $(document).ready(function() {
 		<img id="p8" src="images/p8.jpg" class="slideImg" />
 	</div><!-- removes the space between inline-blocks
 	--><div class="slideP">
-		<div id="p9" class="slideImg">		
+		<div id="p9" class="slideImg">
 			<div id="surveyInfo">
-				Thanks for visiting!  How do you answer Fermi's Paradox?<br/>  
+				Thanks for visiting!  How do you answer Fermi's Paradox?<br/>
 				Please share your opinion with this <a href="https://docs.google.com/forms/d/1tIjZecsgsXdkQ3QxfXJix8eYGDvdZxWLjObopzdT5hk/viewform" target="_blank">short survey</a>.<br/>
-				If you liked this, say something nice <a href="https://twitter.com/mattthew" target="_blank">@mattthew</a>.    
+				If you liked this, say something nice <a href="https://twitter.com/mattthew" target="_blank">@mattthew</a>.
 			</div>
 		</div>
 	</div>
@@ -375,7 +376,7 @@ $(document).ready(function() {
 	<!-- Nav Buttons -->
 	<a id="previous" href="#" onClick="return false;"></a>
 	<a id="next" href="#" onClick="return false;"></a>
-	
+
 	<!-- Load Indicator -->
 	<div id="loadIndicator">Loading Images...<br/>0%</div>
 
