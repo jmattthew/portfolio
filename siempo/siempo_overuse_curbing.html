@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="deviceViewPort" name="viewport" content="width=device-width">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900" rel="stylesheet">
+<link href="assets/overuse_curbing.css" rel="stylesheet" title="allStyles">
+
+<script defer
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script defer
+	src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+	integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM="
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+	integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0="
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"
+	integrity="sha256-S6G5lg9rzC1JCAkx3dQFqP2lefkFxwlNVn0rWCOueXA="
+	crossorigin="anonymous">
+</script>
+<script defer
+	src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.js"
+	integrity="sha256-61t9J2iva27YDWzHrwpnF+xaIHo2vd19i0SDyJB+nhE="
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script defer
+	src="assets/overuse_curbing.js"></script>
+
+</head>
+<body>
+
+<div id="content">
+	<div id="simulated_app"></div>
+	<div id="simulated_app_top"></div>
+	<div id="cover_upper" class="cover cover_pos_split">
+		<div class="blurred"></div>
+		<div class="gradient">
+			<div id="countdown_pie">
+				<svg>
+					<circle id="countdown_pie_outer"/>
+					<circle id="countdown_pie_inner"/>
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div id="cover_lower" class="cover cover_pos_split">
+		<div class="blurred"></div>
+		<div class="gradient">
+			<div id="message_container">
+ 				<div class="message">
+					<span></span>
+				</div>
+ 				<div id="buy_time" class="button">
+					<span class="fas fa-clock"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="top_statusbar">
+		<div id="time_back"></div>
+		<div id="time_next"></div>
+	</div>
+	<div id="bottom_navigationbar"></div>
+	<div id="fakeKeyboard" class="hidden"></div>
+</div>
+
+</body>
+</html>
