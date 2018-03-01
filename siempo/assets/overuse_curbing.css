@@ -1,0 +1,335 @@
+/* PROPERTIES NOT ANIMATED BY JS */
+
+body, html {
+	background-color: white;
+	padding: 0;
+	margin: 0;
+	font-size: 0; /* needed due to use of inline-block */
+	font-family: Roboto;
+	font-weight: 400;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+#content {
+	width: 100vw;
+	height: 100vh;
+}
+
+#simulated_app {
+	width: 100vw;
+	height: 541.3vw;
+	background-image: url('over_facebook_screenshot.jpg');
+	background-size: 100vw;
+}
+
+#simulated_app_top {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 39.1vw;
+	background-image: url('over_facebook_screenshot.jpg');
+	background-size: 100vw;
+}
+
+.cover {
+	width: calc(100vw - 16px);
+	position: fixed;
+	left: 8px;
+	border-radius: 16px;
+	box-sizing: border-box;
+	overflow: hidden;
+	opacity: 0;
+}
+
+.gradient {
+	position: absolute;
+	width: calc(100vw - 16px);
+	height: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.blurred {
+	position: absolute;
+	width: 105vw;
+	height: 524vw;
+	width: 100%;
+	left: -9px;
+	background-image: url('over_facebook_screenshot.jpg');
+	background-size: 100vw 524vw;
+	filter: blur(4px);
+}
+
+#message_container {
+	margin: 0 8px 8px 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.message, .button {
+	height: 32px;
+	margin-left: 8px;
+	box-sizing: border-box;
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: 500;
+}
+
+.message {
+	flex-grow: 1;
+	border-radius: 16px;
+	border-bottom-right-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.86);
+	color: rgba(0,0,0,0.65);
+	overflow: hidden;
+	height: 0;
+	margin-top: 40px;
+}
+
+.message span {
+	margin: 8px 10px 0 10px;
+	display: block;
+}
+
+.message strong {
+	font-weight: 900;
+}
+
+.emoji {
+	color: black;
+	font-style: normal;
+	text-shadow: 0 0 0px rgb(0, 0, 0);
+}
+
+.button {
+	padding: 0px 8px;
+	margin-top: 8px;
+	border-radius: 4px;
+	background-color: rgba(0,0,0,0.65);
+	color: rgba(255, 255, 255, 0.86);
+}
+
+.button span, .button svg {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: perspective(1px) translateY(-50%);
+}
+
+#countdown_pie {
+	position: relative;
+	margin: 0 auto;
+	width: 201px;
+	top: -50%;
+	transform: translateY(50%);
+	filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));
+}
+
+#countdown_pie svg {
+	width: 200px;
+	height: 200px;
+	transform: scale(0.1) rotate(-90deg);
+	opacity: 0;
+}
+
+#countdown_pie_inner {
+	r: 45px;
+	cx: 100px;
+	cy: 100px;
+	fill: none;
+	stroke: rgba(0,0,0,0.2);
+	stroke-width: 90px;
+	stroke-dasharray: 0 283; /* 2πr ≈ 283 */
+}
+
+#countdown_pie_outer {
+	r:100px;
+	cx:100px;
+	cy:100px;
+	fill:white;
+}
+
+#cover_upper {
+	height: 25vh;
+}
+
+#cover_upper .gradient {
+	background:
+		linear-gradient(-180deg,
+			rgba(204, 0, 255, 0.7),
+			rgba(230, 96, 177, 0.7));
+}
+
+#cover_upper.cover_pos_top {
+	top: 32px;
+	box-shadow:
+		0px -12px 24px -4px rgba(0, 0, 0, 0.5),
+		12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		-12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		0px 12px 24px -4px rgba(0, 0, 0, 0.0);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#cover_upper.cover_pos_top .blurred {
+	top: -32px;
+}
+
+#cover_upper.cover_pos_split {
+	top: 32px;
+	box-shadow:
+		0px -12px 24px -4px rgba(0, 0, 0, 0.5),
+		12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		-12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		0px 12px 24px -4px rgba(0, 0, 0, 0.5);
+}
+
+#cover_upper.cover_pos_split .blurred {
+	top: -32px;
+}
+
+#cover_upper.cover_pos_bottom {
+	top: calc((50vh - 56px));
+	box-shadow:
+		0px -12px 24px -4px rgba(0, 0, 0, 0.5),
+		12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		-12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		0px 12px 24px -4px rgba(0, 0, 0, 0.0);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#cover_upper.cover_pos_bottom .blurred {
+	top: calc((50vh - 56px) * -1);
+}
+
+#cover_lower {
+	height: calc(25vh + 0px);
+}
+
+#cover_lower .gradient {
+	background:
+		linear-gradient(-180deg,
+			rgba(230, 96, 177, 0.7),
+			rgba(255, 194, 102, 0.7));
+}
+
+#cover_lower.cover_pos_top {
+	top: calc((25vh + 32px));
+	box-shadow:
+		0 12px 24px -4px rgba(0, 0, 0, 0.5),
+		12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		-12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		0px -12px 24px -4px rgba(0, 0, 0, 0.0);
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+#cover_lower.cover_pos_top .blurred {
+	top: calc((25vh + 32px) * -1);
+}
+
+#cover_lower.cover_pos_split {
+	top: calc((75vh - 56px));
+	box-shadow:
+		0px -12px 24px -4px rgba(0, 0, 0, 0.5),
+		12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		-12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		0px 12px 24px -4px rgba(0, 0, 0, 0.5);
+}
+
+#cover_lower.cover_pos_split .blurred {
+	top: calc((75vh - 56px) * -1);
+}
+
+#cover_lower.cover_pos_bottom {
+	top: calc((75vh - 56px));
+	box-shadow:
+		0 12px 24px -4px rgba(0, 0, 0, 0.5),
+		12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		-12px 0px 12px -12px rgba(0, 0, 0, 0.5),
+		0px -12px 24px -4px rgba(0, 0, 0, 0.0);
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+#cover_lower.cover_pos_bottom .blurred {
+	top: calc((75vh - 56px) * -1);
+}
+
+#top_statusbar {
+	width: 100vw;
+	height: 24px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-image: url('statusbar_white.png');
+	background-size: 411px;
+	background-position: right;
+	background-repeat: no-repeat;
+	background-color: rgb(41, 69, 128);
+}
+
+#time_back, #time_next {
+	display: inline-block;
+	width: 50vw;
+	height: 24px;
+}
+
+#bottom_navigationbar {
+	width: 100vw;
+	height: 48px;
+	position: fixed;
+	bottom: 0;
+	background-image: url('navigationbar_white.png');
+	background-size: 411px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+
+#fakeKeyboard {
+	width: 100vw;
+	height: 80.5vw;
+	position: absolute;
+	bottom: 0;
+	box-shadow:
+		0px 4px 4px rgba(0, 0, 0, 0.24),
+		0px 0px 4px rgba(0, 0, 0, 0.12);
+	background-image: url('fake_keyboard.png');
+	background-size: 100vw 80.5vw;
+	transition: opacity 150ms 0ms linear, height 150ms 0ms linear;
+}
+
+#fakeKeyboard.hidden {
+	opacity: 0;
+	height: 0vw;
+}
+
+
+
+
+
+/* JS ANIMATED PROPERTIES - INITIAL STATE */
+
+#help.initial {
+	opacity: 0;
+}
+
+
+
+
+
+/* JS ANIMATED PROPERTIES - ACTIVE STATE */
+
+#help.active {
+	opacity: 1;
+}
+
