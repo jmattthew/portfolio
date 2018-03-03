@@ -39,28 +39,52 @@
 <body>
 
 <div id="content">
-	<div id="simulated_app"></div>
-	<div id="simulated_app_top"></div>
-	<div id="cover_upper" class="cover cover_pos_split">
-		<div class="blurred"></div>
-		<div class="gradient">
-			<div id="countdown_pie">
-				<svg>
-					<circle id="countdown_pie_outer"/>
-					<circle id="countdown_pie_inner"/>
-				</svg>
-			</div>
-		</div>
+	<div id="junkfood_app" class="junkfood_app_content">
+		<div class="junkfood_app_nav"></div>
 	</div>
 	<div id="cover_lower" class="cover cover_pos_split">
-		<div class="blurred"></div>
+		<div class="blurred junkfood_app_content">
+			<div class="junkfood_app_nav"></div>
+		</div>
 		<div class="gradient">
 			<div id="message_container">
  				<div class="message">
 					<span></span>
 				</div>
- 				<div id="buy_time" class="button">
-					<span class="fas fa-clock"></span>
+			</div>
+		</div>
+	</div>
+	<div id="cover_upper" class="cover cover_pos_split">
+		<div class="blurred junkfood_app_content">
+			<div class="junkfood_app_nav"></div>
+		</div>
+		<div class="gradient">
+			<div id="countdown_pie">
+				<div>
+					<svg>
+						<circle id="countdown_pie_outer"/>
+						<circle id="countdown_pie_inner"/>
+					</svg>
+				</div>
+			</div>
+			<div id="button_container">
+ 				<div id="button_break" class="button">
+ 					<span>
+						<i class="fas fa-clock"></i>
+						<b>Stretch</b>
+					</span>
+				</div>
+ 				<div id="button_calls" class="button">
+ 					<span>
+						<i class="fas fa-phone"></i>
+						<b>Calls</b>
+					</span>
+				</div>
+ 				<div id="button_wellness" class="button">
+ 					<span>
+						<i class="fas fa-leaf"></i>
+						<b>Wellness</b>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -72,6 +96,12 @@
 	<div id="bottom_navigationbar"></div>
 	<div id="fakeKeyboard" class="hidden"></div>
 </div>
+
+<svg height="0">
+  <filter id="filter_blur">
+    <feGaussianBlur stdDeviation="2"/>
+  </filter>
+</svg>
 
 </body>
 </html>

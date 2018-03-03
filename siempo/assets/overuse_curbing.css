@@ -17,14 +17,18 @@ body, html {
 	height: 100vh;
 }
 
-#simulated_app {
+#junkfood_app {
+
+}
+
+.junkfood_app_content {
 	width: 100vw;
 	height: 541.3vw;
 	background-image: url('over_facebook_screenshot.jpg');
 	background-size: 100vw;
 }
 
-#simulated_app_top {
+.junkfood_app_nav {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -56,87 +60,80 @@ body, html {
 
 .blurred {
 	position: absolute;
-	width: 105vw;
+	width: 100vw;
 	height: 524vw;
-	width: 100%;
 	left: -9px;
-	background-image: url('over_facebook_screenshot.jpg');
-	background-size: 100vw 524vw;
-	filter: blur(4px);
+	filter:url('#filter_blur');
 }
 
-#message_container {
+#button_container {
+	display: table;
+	width: 100%;
+	border-spacing: 8px;
 	margin: 0 8px 8px 0;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	position: relative;
-}
-
-.message, .button {
-	height: 32px;
-	margin-left: 8px;
-	box-sizing: border-box;
-	font-size: 14px;
-	line-height: 16px;
-	font-weight: 500;
-}
-
-.message {
-	flex-grow: 1;
-	border-radius: 16px;
-	border-bottom-right-radius: 4px;
-	background-color: rgba(255, 255, 255, 0.86);
-	color: rgba(0,0,0,0.65);
-	overflow: hidden;
-	height: 0;
-	margin-top: 40px;
-}
-
-.message span {
-	margin: 8px 10px 0 10px;
-	display: block;
-}
-
-.message strong {
-	font-weight: 900;
-}
-
-.emoji {
-	color: black;
-	font-style: normal;
-	text-shadow: 0 0 0px rgb(0, 0, 0);
+	position: absolute;
+	top: 0;
 }
 
 .button {
+	display: table-cell;
+/*	width: calc((100%/3) - (32px/3)); */ /* for 3 buttons */
+/*	margin-top: 8px;
+	margin-left: 8px;
+*/
 	padding: 0px 8px;
-	margin-top: 8px;
 	border-radius: 4px;
-	background-color: rgba(0,0,0,0.65);
-	color: rgba(255, 255, 255, 0.86);
+	background-color: rgba(255, 255, 255, 1);
+	color: hsl(280, 27%, 44%);
+	height: 32px;
+	box-sizing: border-box;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.33);
+	font-size: 14px;
+	line-height: 16px;
 }
 
-.button span, .button svg {
+.button span {
 	display: block;
 	position: relative;
 	top: 50%;
 	transform: perspective(1px) translateY(-50%);
+	text-align: center;
+}
+
+.button i, .button b {
+	font-weight: 500;
+	font-style: normal;
+	text-transform: uppercase;
+}
+
+.button svg {
+	margin-right: 6px;
+}
+
+#button_calls, #button_wellness {
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
 #countdown_pie {
 	position: relative;
 	margin: 0 auto;
+	height: 200px;
 	width: 201px;
 	top: -50%;
 	transform: translateY(50%);
 	filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));
 }
 
+#countdown_pie div {
+	opacity: 0;
+	transform: scale(0.1);
+}
+
 #countdown_pie svg {
 	width: 200px;
 	height: 200px;
-	transform: scale(0.1) rotate(-90deg);
-	opacity: 0;
+	transform: rotate(-90deg);
+	transform-origin: 50% 50%;
 }
 
 #countdown_pie_inner {
@@ -154,6 +151,43 @@ body, html {
 	cx:100px;
 	cy:100px;
 	fill:white;
+}
+
+#message_container {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0 8px 8px 0;
+}
+
+.message {
+	height: 0px;
+	margin-left: 8px;
+	margin-top: 8px;
+	box-sizing: border-box;
+	border-radius: 16px;
+	border-bottom-right-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.86);
+	color: rgba(0,0,0,0.65);
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: 500;
+	overflow: hidden;
+}
+
+.message span {
+	margin: 8px 10px 0 10px;
+	display: block;
+}
+
+.message strong {
+	font-weight: 900;
+}
+
+.emoji {
+	color: black;
+	font-style: normal;
+	text-shadow: 0 0 0px rgb(0, 0, 0);
 }
 
 #cover_upper {

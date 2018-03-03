@@ -41,6 +41,22 @@ function showFakeKeyboard(show) {
 	}
 }
 
+function pickAnimation($el) {
+	if($el.data('moveable')) {
+		if(coverPos == 'top') {
+			animateToSplit('top');
+		} else if(coverPos == 'bottom') {
+			animateToSplit('bottom');
+		} else if(coverPos == 'split') {
+			if($el.attr('id') == 'cover_upper') {
+				animateToBottom();
+			} else {
+				animateToTop();
+			}
+		}
+	}
+}
+
 function animateToSplit(animateFrom) {
 	coverPos = 'split';
 
@@ -243,10 +259,10 @@ function animateToTop() {
 	});
 }
 
-function setcoverSize(doFull) {
+function setcoverSize() {
 	console.log('coverAmount: ' + coverAmount);
 	// unique actions for each coverAmount
-	if(coverAmount == 101) {
+	if(countDown) {
 		coverSize = ($(window).height() - marginTop - marginBottom)/2;
 		$(covU + ',' + covL).css({
 			'opacity' : 1
@@ -255,114 +271,104 @@ function setcoverSize(doFull) {
 	} else {
 		coverSize = ($(window).height() - marginTop - marginBottom) * (coverMax) * (coverAmount / 100);
 		coverSize = coverSize < coverMin ? coverMin : coverSize;
-	}
-	if(coverAmount == 0) {
-		animateToSplit('top');
-	}
-	if(coverAmount < 10) {
-		// hide lower cover
-		$(covL).data('moveable',false);
-		TweenLite.to(covL, 1, {
-			'opacity' : 0
-		});
-	}
-	if(coverAmount == 10) {
-		// show lower cover and first message
-		$(covL).data('moveable',true);
-		TweenLite.to(covL, 1, {
-			delay : 0.25,
-			'opacity' : 1
-		});
-		$(covL + ' .message span').html(MessageIntro);
-		TweenLite.to($(covL + ' .message'), 0.5, {
-			delay : 1,
-			'height' : 32,
-			'marginTop' : 8
-		});
-		$(covL).draggable('option','containment',[8,$(covU).offset().top + coverSize,8,$(window).height() - 56 - coverSize]);
-	}
-	if(coverAmount < 20) {
-		// hide upper cover
-		$(covU).data('moveable',false);
-		TweenLite.to(covU, 1, {
-			'opacity' : 0
-		});
-	}
-	if(coverAmount == 20) {
-		// show upper cover
-		$(covU).data('moveable',true);
-		TweenLite.to(covU, 1, {
-			'opacity' : 1
-		});
-		$(covU).draggable('option','containment',[8,32,8,$(covL).offset().top - coverSize]);
-	}
-	if(coverAmount == 30) {
-		// remove 2nd message
-		$(covL + ' .message').eq(1).remove();
-	}
-	if(coverAmount == 40 && $(covL + ' .message').length < 2) {
-		// show second message
-		$el = $(covL + ' .message').eq(0).clone();
-		$el.find('span').html(MessageUsage);
-		$el.find('strong').html('7h 00m');
-		$(covL + ' .message').last().after($el);
-		$el.css({
-			'height' : 0,
-			'marginTop' : 40
-		});
-		TweenLite.to($el, 0.5, {
-			'delay' : 0.5,
-			'height' : 32,
-			'marginTop' : 8
-		});
-		// compensate for small screens
-		TweenLite.to($(message_container), 0.5, {
-			delay : 0.5,
-			'top' : coverSize - 88
-		});
-	}
-	if(coverAmount == 50) {
-		// update 2nd message
-		$(covL + ' .message').last().find('strong').html('7h 10m');
-		TweenLite.to($(message_container), 0.5, {
-			delay : 0.5,
-			'top' : ''
-		});
-	}
-	if(coverAmount == 60) {
-		// update 2nd message
-		$(covL + ' .message').last().find('strong').html('7h 20m');
-	}
-	if(coverAmount == 70) {
-		// update 2nd message
-		$(covL + ' .message').last().find('strong').html('7h 30m');
-	}
-	if(coverAmount == 80) {
-		// update 2nd message
-		$(covL + ' .message').last().find('strong').html('7h 40m');
-	}
-	if(coverAmount == 90) {
-		// update 2nd message
-		$(covL + ' .message').last().find('strong').html('7h 50m');
-		// remove 3rd message
-		$(covL + ' .message').eq(2).remove();
-	}
-	if(coverAmount == 100 && $(covL + ' .message').length < 3) {
-		// update 2nd message
-		$(covL + ' .message').last().find('strong').html('8h 00m');
-		// show 3rd message
-		$el = $(covL + ' .message').eq(0).clone();
-		$el.find('span').html(MessageFinal);
-		$(covL + ' .message').last().after($el);
-		$el.css({
-			'height' : 0,
-			'marginTop' : 40
-		});
-		TweenLite.to($el, 0.5, {
-			'delay' : 0.5,
-			'height' : 48,
-			'marginTop' : 8
-		});
+		if(coverAmount == 0) {
+			animateToSplit('top');
+		}
+		if(coverAmount < 10) {
+			// hide lower cover
+			$(covL).data('moveable',false);
+			$(covL).draggable('option','disabled',true);
+			TweenLite.to(covL, 1, {
+				'opacity' : 0
+			});
+		}
+		if(coverAmount == 10) {
+			// show lower cover and first message
+			$(covL).data('moveable',true);
+			$(covL).draggable('option','disabled',false);
+
+			TweenLite.to(covL, 1, {
+				delay : 0.25,
+				'opacity' : 1
+			});
+			$(covL + ' .message span').html(MessageIntro);
+			TweenLite.to($(covL + ' .message'), 0.5, {
+				delay : 1,
+				'height' : 32,
+			});
+		}
+		if(coverAmount < 20) {
+			// hide upper cover
+			$(covU).data('moveable',false);
+			$(covU).draggable('option','disabled',true);
+			TweenLite.to(covU, 1, {
+				'opacity' : 0
+			});
+		}
+		if(coverAmount == 20) {
+			// show upper cover
+			$(covU).data('moveable',true);
+			$(covU).draggable('option','disabled',false);
+			TweenLite.to(covU, 1, {
+				'opacity' : 1
+			});
+			// remove 2nd message
+			$(covL + ' .message').eq(1).remove();
+		}
+		if(coverAmount == 30 && $(covL + ' .message').length < 2) {
+			// show second message
+			$el = $(covL + ' .message').eq(0).clone();
+			$el.find('span').html(MessageUsage);
+			$el.find('strong').html('3m');
+			$(covL + ' .message').last().after($el);
+			$el.css({
+				'height' : 0,
+			});
+			TweenLite.to($el, 0.5, {
+				'delay' : 0.5,
+				'height' : 32,
+			});
+		}
+		if(coverAmount == 30) {
+			$(covL + ' .message').last().find('strong').html('4m');
+		}
+		if(coverAmount == 50) {
+			// update 2nd message
+			$(covL + ' .message').last().find('strong').html('5m');
+		}
+		if(coverAmount == 60) {
+			// update 2nd message
+			$(covL + ' .message').last().find('strong').html('6m');
+		}
+		if(coverAmount == 70) {
+			// update 2nd message
+			$(covL + ' .message').last().find('strong').html('7m');
+		}
+		if(coverAmount == 80) {
+			// update 2nd message
+			$(covL + ' .message').last().find('strong').html('8m');
+		}
+		if(coverAmount == 90) {
+			// update 2nd message
+			$(covL + ' .message').last().find('strong').html('9m');
+			// remove 3rd message
+			$(covL + ' .message').eq(2).remove();
+		}
+		if(coverAmount == 100 && $(covL + ' .message').length < 3) {
+			// update 2nd message
+			$(covL + ' .message').last().find('strong').html('10m');
+			// show 3rd message
+			$el = $(covL + ' .message').eq(0).clone();
+			$el.find('span').html(MessageFinal);
+			$(covL + ' .message').last().after($el);
+			$el.css({
+				'height' : 0,
+			});
+			TweenLite.to($el, 0.5, {
+				'delay' : 0.5,
+				'height' : 48,
+			});
+		}
 	}
 
 	// animate size & position
@@ -374,13 +380,14 @@ function setcoverSize(doFull) {
 	} else if(coverPos == 'bottom') {
 		Utop = Ltop;
 	}
+	$(covU + ', ' + covL).css('position',''); // shouldn't be necessary, but jqueiryui-draggable adds position:relative under certain unknown circumstances.
 	TweenLite.to(covU, s, {
-		'height' : 			coverSize,
-		'top' : 			Utop
+		'height' : 				coverSize,
+		'top' : 				Utop,
+		onComplete : 			setDragBounds()
 	});
 	if(coverPos != 'bottom') {
 		// add a litte wobble
-		console.log((Utop + coverSize) * -1);
 		TweenLite.to(covUB, s*0.5, {
 			ease : 				Circ.easeOut,
 			'top' : 			(Utop - (coverSize/8)) * -1
@@ -390,6 +397,15 @@ function setcoverSize(doFull) {
 			ease : 				Elastic.easeOut.config(1, 0.3),
 			'top' : 			Utop * -1
 		});
+		TweenLite.to('.blurred .junkfood_app_nav', s*0.5, {
+			ease : 				Circ.easeOut,
+			'top' : 			(coverSize/8) * -1
+		});
+		TweenLite.to('.blurred .junkfood_app_nav', s*3.5, {
+			delay : 			s*0.5,
+			ease : 				Elastic.easeOut.config(1, 0.3),
+			'top' : 			0
+		});
 	} else {
 		TweenLite.to(covUB, s*4, {
 			ease : 				Elastic.easeOut.config(1, 0.3),
@@ -397,8 +413,8 @@ function setcoverSize(doFull) {
 		});
 	}
 	TweenLite.to(covL, s, {
-		'height' : 			coverSize,
-		'top' : 			Ltop + coverSize
+		'height' : 				coverSize,
+		'top' : 				Ltop + coverSize
 	});
 	TweenLite.to(covLB, s*4, {
 		ease : 				Elastic.easeOut.config(1, 0.3),
@@ -409,12 +425,30 @@ function setcoverSize(doFull) {
 function startCountdown() {
 	$(covU).data('moveable',false);
 	$(covL).data('moveable',false);
-	TweenLite.to('#countdown_pie svg', 1.5, {
+	var s = 0;
+	TweenMax.to('#countdown_pie div', 1.5, {
 		delay : 1,
 		ease : Elastic.easeOut.config(0.75, 0.4),
-		'transform' : 'scale(1) rotate(-90deg)',
+		'transform' : 'scale(0.6)',
 	});
-	TweenLite.to('#countdown_pie svg', 0.5, {
+	s = 2;
+	var tl1 = new TimelineMax({
+		delay : 2.5,
+		repeat : 5
+	});
+	tl1
+		.to('#countdown_pie div', s, {
+			delay : s/2,
+			ease : Linear.easeNone,
+			'transform' : 'scale(0.8)'
+		})
+		.to('#countdown_pie div', s, {
+			delay : s/2,
+			ease : Linear.easeNone,
+			'transform' : 'scale(0.6)'
+		})
+	;
+	TweenLite.to('#countdown_pie div', 0.5, {
 		delay : 1,
 		'opacity' : 1
 	});
@@ -436,22 +470,93 @@ function startCountdown() {
 		'marginTop' : 8
 	});
 	/* 2πr ≈ 283 */
-	TweenLite.to('#countdown_pie_inner', 30, {
+	s = 30;
+	TweenLite.to('#countdown_pie_inner', s, {
 		delay : 1,
 		'stroke-dasharray' : '283 0',
 		onComplete : function() {
+			countDown = false;
+			$(covU).data('moveable',true);
+			$(covL).data('moveable',true);
 			coverAmount = 0;
 			setcoverSize();
+			tl1.clear();
+			TweenMax.to('#countdown_pie div', 0.25, {
+				'transform' : 'scale(0.1)',
+				'opacity' : 0
+			});
 			TweenLite.delayedCall(1, function(){
-				$('#countdown_pie svg').css({
-					'transform' : 'scale(0.1) rotate(-90deg)',
-					'opacity' : 0
-				});
-				$(covL + ' .message').eq(1).remove();
+				$('#countdown_pie_inner').css({
+					'stroke-dasharray' : ''
+				})
+				$(covL + ' .message').eq(0).remove();
 				animateToSplit('top');
-			})
+			});
 		}
 	});
+}
+
+function updateCoverAmount(code) {
+	if(code == 188) {
+		// ,< pressed
+		coverAmount -= 10;
+		coverAmount = coverAmount < 0 ? 0 : coverAmount;
+		setcoverSize();
+	} else if(code == 190) {
+		// .> pressed
+		coverAmount += 10;
+		coverAmount = coverAmount > 100 ? 100 : coverAmount;
+		setcoverSize();
+	}
+}
+
+function coverDrag($el) {
+	var top = parseInt($el.css('top'));
+	var other = '';
+	$el.find('.blurred').css('top',top*-1);
+	if(coverPos != 'split') {
+		// drag other cover too
+		if(covU.indexOf($el.attr('id')) > -1) {
+			top += coverSize;
+			other = covL;
+		} else {
+			top -= coverSize;
+			other = covU;
+		}
+		$(other).css('top',top);
+		$(other).find('.blurred').css('top',top*-1);
+	}
+}
+
+function setDragBounds() {
+	var dragBoundsU = [
+		8,
+		marginTop,
+		8,
+		$(covL).offset().top - coverSize
+	];
+	var dragBoundsL = [
+		8 ,$(covU).offset().top + coverSize,
+		8,
+		$(window).height() - marginBottom - coverSize
+	];
+	$(covU).draggable('option','containment',dragBoundsU);
+	$(covL).draggable('option','containment',dragBoundsL);
+}
+
+function joinCovers() {
+	if(coverPos = 'split') {
+		var distance = $(covU).offset().top + coverSize - $(covL).offset().top;
+		if(distance < 2 && distance > -2) {
+			if($(covU).offset().top > $(window).height()/2) {
+				coverPos = 'top';
+				$(covU + ', ' + covL).removeClass('cover_pos_split').addClass('cover_pos_top');
+			} else {
+				coverPos = 'bottom';
+				$(covU + ', ' + covL).removeClass('cover_pos_split').addClass('cover_pos_bottom');
+			}
+		}
+	}
 }
 
 function bindEvents() {
@@ -466,35 +571,21 @@ function bindEvents() {
 
 	$('body').keyup(function(event) {
 		var code = event.keyCode || event.which;
-		if(code == 188) {
-			// ,< pressed
-			coverAmount -= 10;
-			coverAmount = coverAmount < 0 ? 0 : coverAmount;
-			setcoverSize();
-		} else if(code == 190) {
-			// .> pressed
-			coverAmount += 10;
-			coverAmount = coverAmount > 100 ? 100 : coverAmount;
-			setcoverSize();
-		}
+		updateCoverAmount(code);
 	});
 
 	$('#time_back').click(function() {
 		if (screenfull.enabled && !screenfull.isFullscreen) {
 			screenfull.request($('body')[0]);
 		}
-		coverAmount -= 10;
-		coverAmount = coverAmount < 0 ? 0 : coverAmount;
-		setcoverSize();
+		updateCoverAmount(188); // down
 	});
 
 	$('#time_next').click(function(){
 		if (screenfull.enabled && !screenfull.isFullscreen) {
 			screenfull.request($('body')[0]);
 		}
-		coverAmount += 10;
-		coverAmount = coverAmount > 100 ? 100 : coverAmount;
-		setcoverSize();
+		updateCoverAmount(190); // up
 	})
 
 	$('#bottom_navigationbar').click(function(){
@@ -504,59 +595,31 @@ function bindEvents() {
 	})
 
 	$('#cover_upper, #cover_lower').click(function() {
-		if($(this).data('moveable')) {
-			if(coverPos == 'top') {
-				animateToSplit('top');
-			} else if(coverPos == 'bottom') {
-				animateToSplit('bottom');
-			} else if(coverPos == 'split') {
-				if($(this).attr('id') == 'cover_upper') {
-					animateToBottom();
-				} else {
-					animateToTop();
-				}
-			}
-		}
+		pickAnimation($(this));
 	});
 
-	$('#cover_upper').draggable({
+	$('#cover_upper, #cover_lower').draggable({
+		disabled: true,
+		distance: 2,
 		drag: function( event, ui ) {
-			var top = parseInt($(this).css('top'));
-			$(this).find('.blurred').css('top',top*-1);
-			if(coverPos != 'split') {
-				top += coverSize;
-				$(covL).css('top',top);
-				$(covL).find('.blurred').css('top',top*-1);
-			}
+			coverDrag($(this));
 		},
 		stop: function( event, ui ) {
-			$(covL).draggable('option','containment',[8,$('#cover_upper').offset().top + coverSize,8,$(window).height() - 56 - coverSize]);
-			coverPos = 'split';
+			setDragBounds();
+			joinCovers();
 		}
 	});
 
-	$('#cover_lower').draggable({
-		drag: function( event, ui ) {
-			var top = parseInt($(this).css('top'));
-			$(this).find('.blurred').css('top',top*-1);
-			if(coverPos != 'split') {
-				top -= coverSize;
-				$(covU).css('top',top);
-				$(covU).find('.blurred').css('top',top*-1);
-			}
-		},
-		stop: function( event, ui ) {
-			$(covU).draggable('option','containment',[8,32,8,$('#cover_lower').offset().top - coverSize]);
-			coverPos = 'split';
-		}
-	});
-
-	$('#buy_time').click(function() {
-		if(coverAmount < 101) {
-			coverAmount = 101;
+	$('#button_break').click(function() {
+		if(!countDown) {
+			countDown = true;
 			setcoverSize();
 			startCountdown();
 		}
+	});
+
+	$('#button_calls, #button_wellness').click(function() {
+		event.stopPropagation();
 	});
 
 }
@@ -564,8 +627,8 @@ function bindEvents() {
 // elements to be animated
 var covU = '#cover_upper'; // border-radius, border, height, top
 var covL = '#cover_lower'; // border-radius, border, height, top
-var covUB = '#cover_upper .blurred'; // top, height
-var covLB = '#cover_lower .blurred'; // top, height
+var covUB = covU + ' .blurred'; // top, height
+var covLB = covL + ' .blurred'; // top, height
 
 // constants
 var coverMax = 0.33; // ratio of window height = 1
@@ -573,15 +636,16 @@ var coverMin = 48; // minimum pixel height
 var radMax = 16; // border-radius
 var marginTop = 32;
 var marginBottom = 56;
-var MessageIntro = 'We\'ve got your back :)';
-var MessageUsage = 'You\'ve used you phone <strong></strong> today <i class="emoji">🤔</i>';
-var MessageFinal = 'Lock your phone to meet your goal<br>These messages disappear in 8 hours <i class="emoji">🌞</i>'
-var MessageCountdown1 = 'Enjoy 5 mins of unblocked viewing after this break<br>A few deep breaths will pass the time!';
-var MessageCountdown2 = 'This cover will self-destruct in 30 seconds <i class="emoji">🔥</i>';
+var countDown = false;
+var MessageIntro = 'You flagged this app for less use <i class="emoji">👍</i>';
+var MessageUsage = 'You\'ve used this app <strong></strong> <i class="emoji">🤔</i>';
+var MessageFinal = 'Take a 5 min break to return screen to normal<br>Try an option above, or lock your phone <i class="emoji">💪</i>'
+var MessageCountdown1 = 'You\'ll get 5 mins of unblocked use after this<br>break. Meanwhile, enjoy a few deep breaths!';
+var MessageCountdown2 = 'This message will self-destruct in 30 secs <i class="emoji">🔥</i>';
 
 // variables
 var coverPos = 'split';
-var coverAmount = 0; // ratio of coverMax = 100
+var coverAmount = -10; // ratio of coverMax = 100
 var coverSize = 0;
 $(covU).data('moveable',false);
 $(covL).data('moveable',false);
@@ -589,6 +653,7 @@ $(covL).data('moveable',false);
 bindEvents();
 
 /* TweenMax reference
+	var tl1 = new TimelineLite();
 	tl1
 		.add(function(){
 		})
