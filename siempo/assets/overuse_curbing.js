@@ -423,6 +423,8 @@ function setcoverSize() {
 }
 
 function startCountdown() {
+	window.clearInterval(usageTimer);
+	usageSeconds = 0;
 	$(covU).data('moveable',false);
 	$(covL).data('moveable',false);
 	var s = 0;
@@ -480,6 +482,9 @@ function startCountdown() {
 			$(covL).data('moveable',true);
 			coverAmount = 0;
 			setcoverSize();
+			usageTimer = setInterval(function() {
+				usageTimerFunction()
+			},1000);
 			tl1.clear();
 			TweenMax.to('#countdown_pie div', 0.25, {
 				'transform' : 'scale(0.1)',
@@ -500,13 +505,16 @@ function updateCoverAmount(code) {
 	if(code == 188) {
 		// ,< pressed
 		coverAmount -= 10;
-		coverAmount = coverAmount < 0 ? 0 : coverAmount;
-		setcoverSize();
+		if(coverAmount > 0) {
+			coverAmount -= 10;
+			setcoverSize();
+		}
 	} else if(code == 190) {
 		// .> pressed
-		coverAmount += 10;
-		coverAmount = coverAmount > 100 ? 100 : coverAmount;
-		setcoverSize();
+		if(coverAmount < 100) {
+			coverAmount += 10;
+			setcoverSize();
+		}
 	}
 }
 
@@ -559,6 +567,14 @@ function joinCovers() {
 	}
 }
 
+function usageTimerFunction() {
+	usageSeconds += 1;
+	var mins = (usageSeconds * acceleration)/60;
+	if(parseInt(mins) == mins) {
+		updateCoverAmount(190); // up
+	}
+}
+
 function bindEvents() {
 	$('#fakeKeyboard').click(function() {
 		// prevents hiding of onscreen keyboard
@@ -575,15 +591,18 @@ function bindEvents() {
 	});
 
 	$('#time_back').click(function() {
-		if (screenfull.enabled && !screenfull.isFullscreen) {
-			screenfull.request($('body')[0]);
-		}
 		updateCoverAmount(188); // down
+		window.clearInterval(usageTimer);
 	});
 
 	$('#time_next').click(function(){
 		if (screenfull.enabled && !screenfull.isFullscreen) {
 			screenfull.request($('body')[0]);
+		}
+		if(usageTimer == 0) {
+			usageTimer = setInterval(function() {
+				usageTimerFunction()
+			},1000);
 		}
 		updateCoverAmount(190); // up
 	})
@@ -637,6 +656,7 @@ var radMax = 16; // border-radius
 var marginTop = 32;
 var marginBottom = 56;
 var countDown = false;
+var acceleration = 4; // must be an integer
 var MessageIntro = 'You flagged this app for less use <i class="emoji">👍</i>';
 var MessageUsage = 'You\'ve used this app <strong></strong> <i class="emoji">🤔</i>';
 var MessageFinal = 'Take a 5 min break to return screen to normal<br>Try an option above, or lock your phone <i class="emoji">💪</i>'
@@ -647,6 +667,8 @@ var MessageCountdown2 = 'This message will self-destruct in 30 secs <i class="em
 var coverPos = 'split';
 var coverAmount = -10; // ratio of coverMax = 100
 var coverSize = 0;
+var usageTimer = 0;
+var usageSeconds = 0;
 $(covU).data('moveable',false);
 $(covL).data('moveable',false);
 
