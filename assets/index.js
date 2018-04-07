@@ -1090,6 +1090,24 @@ function bindEvents() {
 			}
 		}, 500));
 	});
+	$('body, #contact_button, #about_button, #stack_button').click(function(vars) {
+		var el, isFull;
+		if(narrowScreen) {
+			el = $('body')[0];
+			document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+			isFull = document.fullscreenElement;
+			if (document.fullscreenEnabled && !isFull) {
+				if (el.requestFullscreen) {
+					el.requestFullscreen();
+				} else if (el.mozRequestFullScreen) {
+					el.mozRequestFullScreen();
+				} else if (el.webkitRequestFullScreen) {
+					el.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+				}
+			}
+		}
+	});
+
 	$('#home_start').click(function() {
 		page = 'stack';
 		showStack();
