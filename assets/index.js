@@ -533,17 +533,15 @@ function revealDetails() {
 	resizeFloatTargets($scroller);
 	loadIframes($scroller);
 	$scroller.data('stopAnims',true);
+	// Firefox remembers the last scroll position on refresh
+	$scroller.scrollTop(0);
 	// GSAP does say you can simply pass
 	// the element to be scroll to, but
 	// that only works in Chrome
-	if(isFirefox) {
-		// Firefox remembers the last scroll position on refresh
-		$scroller.scrollTop(0);
-	}
 	TweenMax.to($scroller, s*2.25, {
 		ease : Power2.easeOut,
 		scrollTo: {
-			y : $detailSkill.offset().top
+			y : $detailSkill.offset().top - $scroller.offset().top
 		},
 	});
 	TweenMax.delayedCall(s*2.25, function() {
