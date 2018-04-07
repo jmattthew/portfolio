@@ -1,7 +1,7 @@
 /* PROPERTIES NOT ANIMATED BY JS */
 
 body {
-	background-color: black;
+	background-color: hsla(0, 0%, 90%, 1);
 	padding: 0;
 	margin: 0;
 	font-size: 0; /* needed due to use of inline-block */
@@ -56,6 +56,7 @@ body {
 }
 
 #pulltab {
+	display: none;
 	width: 66px;
 	height: 44px;
 	margin-top: 6px;

@@ -3,6 +3,7 @@ var helpMessage = 1; // which message is showing
 var helpMessages = 0; // will be updated after DOM load
 var savedIntention = '';
 var state = 'initial';
+var tlbump;
 
 // elements to be animated
 var help = '#help';
@@ -14,6 +15,9 @@ var label = '#intentions_label';
 var input = '#intentions_input';
 
 $(window).load(function() {
+
+	tlbump = new TimelineMax({repeat:-1});
+	bump();
 
 	// bind events
 	$('#intentions_input').keyup(function(event) {
@@ -47,7 +51,7 @@ $(window).load(function() {
 		animateSave();
 	});
 
-	$('#intentions_back').click(function() {
+	$('#intentions_back').click(function(event) {
 		event.stopPropagation();
 		animateInitial();
 	});
@@ -307,7 +311,7 @@ function showFakeKeyboard(show) {
 					$('#fakeKeyboard').addClass('hidden');
 					$('#help_actions').addClass('realkeyboard');
 				}
-			},10);
+			},100);
 		}
 	}
 }
@@ -356,4 +360,23 @@ function helpTips() {
 	$('#help_message_indicator').html(helpMessage + ' of 4');
 	$('.help_message, #help_tips').addClass('hidden');
 	$('#help_message_1, #help_message_indicator, #help_next').removeClass('hidden');
+}
+
+function bump() {
+	console.log(location.hash);
+	if(location.hash == '#bump') {
+		tlbump
+			.to(card, 0.25, {
+				ease : Power2.easeOut,
+				y : -20
+			},'+=2.0')
+			.to(card, 0.75, {
+				ease : Bounce.easeOut,
+				y : 0
+			})
+		;
+	}
+	$('#intentions_card').mouseenter(function() {
+		tlbump.pause(0);
+	});
 }
