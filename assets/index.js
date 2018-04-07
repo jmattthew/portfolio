@@ -27,11 +27,11 @@ function makeSVGInline() {
 			imgSrc = $img.attr('src');
 			imgAlt = $img.attr('alt');
 			$.get(imgSrc, function(data) {
-				console.log(data);
-				$svg = $(data).find('svg');
-				console.log($svg);
-				$svg.attr('alt',imgAlt);
-				$img.replaceWith($svg);
+				$svg = $(data);
+				if($svg.length>0) {
+					$svg.attr('alt',imgAlt);
+					$img.replaceWith($svg);
+				}
 			}, 'html');
 		});
 //	} else {
@@ -43,9 +43,9 @@ function makeSVGInline() {
 		// 	imgSrc = imgSrc.replace('assets/','');
 		// 	imgAlt = $img.attr('alt');
 		// 	$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
-		// 	$svg.attr('alt',imgAlt);
 		// 	if($svg.length>0) {
-		// 		$(this).replaceWith($svg);
+		// 		$svg.attr('alt',imgAlt);
+		// 		$img.replaceWith($svg);
 		// 	}
 		// });
 		// $('#svg_holder_testing').remove();
