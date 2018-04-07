@@ -23,30 +23,29 @@ function makeSVGInline() {
 
 	$('.svg').each(function(){
 		var imgSrc = $(this).attr('src');
-		requests.push(
-			$.ajax({
-				url: imgSrc,
-				dataType: 'html',
-				success: function(data) {
-					var $svg = $(data);
-					$svg.attr('img-src',this.url)
-					$('#remote_svg_holder').append($svg);
-				}
-			})
-		);
-		$.when.apply(null, requests).then(function() {
-			$('.svg').each(function(){
-				var $img, imgSrc, imgAlt, $svg;
-
-				$img = $(this);
-				imgSrc = $img.attr('src');
-				imgAlt = $img.attr('alt');
-				$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
-				$svg.attr('alt',imgAlt);
-				$img.replaceWith($svg);
-			});
-			$('#remote_svg_holder').remove();
+		var ajax = $.ajax({
+			url: imgSrc,
+			dataType: 'html',
+			success: function(data) {
+				var $svg = $(data);
+				$svg.attr('img-src',this.url)
+				$('#remote_svg_holder').append($svg);
+			}
 		});
+		requests.push(ajax);
+	});
+	$.when.apply($, requests).then(function() {
+		$('.svg').each(function(){
+			var $img, imgSrc, imgAlt, $svg;
+
+			$img = $(this);
+			imgSrc = $img.attr('src');
+			imgAlt = $img.attr('alt');
+			$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
+			$svg.attr('alt',imgAlt);
+			$img.replaceWith($svg);
+		});
+		$('#remote_svg_holder').remove();
 	});
 }
 
