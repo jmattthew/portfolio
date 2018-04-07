@@ -2466,8 +2466,15 @@ input:-webkit-autofill:active {
 	line-height: 28px;
 }
 
-#about_footer{
+#about .content #about_footer {
+	padding-left: 13vw;
 	bottom: 13vw;
+	width: 93vw;
+    font-size: 4vw;
+}
+
+#about_footer span span {
+	display: none;
 }
 
 .field {
