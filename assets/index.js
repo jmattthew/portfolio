@@ -44,9 +44,56 @@ function makeSVGInline() {
 			$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
 			$svg.attr('alt',imgAlt);
 			$img.replaceWith($svg);
+			navigateToHash();
 		});
 		$('#remote_svg_holder').remove();
 	});
+}
+
+function navigateToHash() {
+	var h = location.hash;
+	var validProject = false;
+
+	if(h.length>0) {
+		h = h.substring(1,h.length);
+		console.log(h);
+		if(h == 'contact' || h == 'about') {
+			hideStackButton();
+			collapseNavigation();
+			doNavTransition(h);
+			page = h;
+			sendGaEvent('hash','navigation','#'+h);
+		} else {
+			if(h == 'Siempo') {
+				$activeProject = $('#project_SiPo');
+				validProject = true;
+			} else if(h == 'Cardpool') {
+				$activeProject = $('#project_CaPo');
+				validProject = true;
+			} else if(h == 'CouchSurfing') {
+				$activeProject = $('#project_CoSu');
+				validProject = true;
+			} else if(h == 'Rotten_Tomatoes') {
+				$activeProject = $('#project_RoTo');
+				validProject = true;
+			} else if(h == 'Font_Finder') {
+				$activeProject = $('#project_FoFi');
+				validProject = true;
+			} else if(h == 'Tactile_Generator') {
+				$activeProject = $('#project_TaGe');
+				validProject = true;
+			}
+			if(validProject) {
+				skill = 'skill_strategy';
+				revealDetails();
+				hideStackButton();
+				page = 'details';
+				sendGaEvent('hash','project','#'+h);
+			} else {
+				window.history.replaceState(null, null, 'index.html');
+			}
+		}
+	}
 }
 
 function applyBlur() {
@@ -248,7 +295,7 @@ function filterProjects($skill) {
 		$('#tab_RoTo').addClass('tab_4 hoverable');
 		$('#tab_FoFi').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_SiPo')
+		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_research') {
 		$('#tab_SiPo').addClass('tab_1');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
@@ -256,7 +303,7 @@ function filterProjects($skill) {
 		$('#tab_RoTo').addClass('tab_4 hoverable');
 		$('#tab_FoFi').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_SiPo')
+		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_interaction') {
 		$('#tab_SiPo').addClass('tab_1');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
@@ -264,7 +311,7 @@ function filterProjects($skill) {
 		$('#tab_TaGe').addClass('tab_4 hoverable');
 		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
-		$activeProject = $('#project_SiPo')
+		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_visual') {
 		$('#tab_SiPo').addClass('tab_1');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
@@ -272,7 +319,7 @@ function filterProjects($skill) {
 		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_SiPo')
+		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_prototypes') {
 		$('#tab_SiPo').addClass('tab_1');
 		$('#tab_RoTo').addClass('tab_2 hoverable');
@@ -280,7 +327,7 @@ function filterProjects($skill) {
 		$('#tab_TaGe').addClass('tab_4 hoverable');
 		$('#tab_CaPo').css('display','none');
 		$('#tab_CoSu').css('display','none');
-		$activeProject = $('#project_SiPo')
+		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_artwork') {
 		//
 	}
@@ -1287,10 +1334,9 @@ var $activeProject;
 var highlightDuration = 0; // duration of skill highlighting animation
 var scrollSpeedArray = [0]; // speed of details images animations
 
-window.history.replaceState(null, null, 'index.html');
 TweenLite.defaultEase = Linear.easeNone;
 bindEvents();
 makeSVGInline();
+// navigateToHash executed by makeSVGInline;
 narrowScreenImages();
 checkVibrationSupport();
-
