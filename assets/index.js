@@ -19,37 +19,35 @@ jQuery.expr.filters.offscreen = function(el) {
 };
 
 function makeSVGInline() {
-	var $img, $svg, imgSrc, imgAlt;
+	var requests = [];
 
-//	if(location.protocol.indexOf('file')<0) {
-		$('.svg').each(function(){
-			$img = $(this);
-			imgSrc = $img.attr('src');
-			imgAlt = $img.attr('alt');
-			$.get(imgSrc, function(data) {
-				$svg = $(data);
-				if($svg.length>0) {
-					$svg.attr('alt',imgAlt);
-					$img.replaceWith($svg);
+	$('.svg').each(function(){
+		var imgSrc = $(this).attr('src');
+		requests.push(
+			$.ajax({
+				url: imgSrc,
+				dataType: 'html',
+				success: function(data) {
+					var $svg = $(data);
+					$svg.attr('img-src',this.url)
+					$('#remote_svg_holder').append($svg);
 				}
-			}, 'html');
+			})
+		);
+		$.when.apply(null, requests).then(function() {
+			$('.svg').each(function(){
+				var $img, imgSrc, imgAlt, $svg;
+
+				$img = $(this);
+				imgSrc = $img.attr('src');
+				imgAlt = $img.attr('alt');
+				$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
+				$svg.attr('alt',imgAlt);
+				$img.replaceWith($svg);
+			});
+			$('#remote_svg_holder').remove();
 		});
-//	} else {
-		// may be removed for production
-		// for testing with local files
-		// $('.svg').each(function(){
-		// 	$img = $(this);
-		// 	imgSrc = $img.attr('src');
-		// 	imgSrc = imgSrc.replace('assets/','');
-		// 	imgAlt = $img.attr('alt');
-		// 	$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
-		// 	if($svg.length>0) {
-		// 		$svg.attr('alt',imgAlt);
-		// 		$img.replaceWith($svg);
-		// 	}
-		// });
-		// $('#svg_holder_testing').remove();
-//	}
+	});
 }
 
 function applyBlur() {
