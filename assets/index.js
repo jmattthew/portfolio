@@ -26,13 +26,13 @@ function makeSVGInline() {
 			$img = $(this);
 			imgSrc = $img.attr('src');
 			imgAlt = $img.attr('alt');
-			console.log(imgSrc);
 			$.get(imgSrc, function(data) {
 				console.log(data);
 				$svg = $(data).find('svg');
+				console.log($svg);
 				$svg.attr('alt',imgAlt);
 				$img.replaceWith($svg);
-			}, 'xml');
+			}, 'html');
 		});
 //	} else {
 		// may be removed for production
