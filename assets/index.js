@@ -21,33 +21,35 @@ jQuery.expr.filters.offscreen = function(el) {
 function makeSVGInline() {
 	var $img, $svg, imgSrc, imgAlt;
 
-	// prevents error from local files
-	if(location.protocol.indexOf('file')<0) {
+//	if(location.protocol.indexOf('file')<0) {
 		$('.svg').each(function(){
 			$img = $(this);
 			imgSrc = $img.attr('src');
 			imgAlt = $img.attr('alt');
+			console.log(imgSrc);
 			$.get(imgSrc, function(data) {
+				console.log(data);
 				$svg = $(data).find('svg');
 				$svg.attr('alt',imgAlt);
 				$img.replaceWith($svg);
 			}, 'xml');
 		});
-	} else {
+//	} else {
 		// may be removed for production
-		$('.svg').each(function(){
-			$img = $(this);
-			imgSrc = $img.attr('src');
-			imgSrc = imgSrc.replace('assets/','');
-			imgAlt = $img.attr('alt');
-			$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
-			$svg.attr('alt',imgAlt);
-			if($svg.length>0) {
-				$(this).replaceWith($svg);
-			}
-		});
-		$('#svg_holder_testing').remove();
-	}
+		// for testing with local files
+		// $('.svg').each(function(){
+		// 	$img = $(this);
+		// 	imgSrc = $img.attr('src');
+		// 	imgSrc = imgSrc.replace('assets/','');
+		// 	imgAlt = $img.attr('alt');
+		// 	$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
+		// 	$svg.attr('alt',imgAlt);
+		// 	if($svg.length>0) {
+		// 		$(this).replaceWith($svg);
+		// 	}
+		// });
+		// $('#svg_holder_testing').remove();
+//	}
 }
 
 function applyBlur() {
