@@ -659,14 +659,13 @@ svg {
 	box-sizing: border-box;
 }
 
-#about_info, #about_footer {
+#about_info {
+	height: calc(100vh - 367px);
+	overflow: scroll;
 	font-family: 'Crimson Text', serif;
 	font-weight: 100;
 	font-size: 36px;
 	line-height: 46px;
-}
-
-#about_info {
 	text-align: justify;
 }
 
@@ -679,25 +678,22 @@ svg {
 
 #about .content #about_footer {
 	position: absolute;
-	padding-left: 120px;
-	left: 0;
-	bottom: 100px;
+	left: 47px;
+	bottom: 47px;
+	padding: 0;
+	width: calc(100vw - 94px);
+	overflow: hidden;
+	white-space: nowrap;
+	font-family: 'Crimson Text', serif;
+	font-weight: 100;
+	line-height: 40px;
 	font-size: 20px;
-	line-height: 20px;
-}
-
-#about_footer span {
-	display: block;
-	margin-bottom: 20px;
 }
 
 #about_footer a {
 	display: inline-block;
 	vertical-align: middle;
-	margin-right: 10px;
-}
-
-#about_footer a {
+	margin-right: 15px;
 	width: 40px;
 	height: 40px;
 	box-shadow:
@@ -707,6 +703,12 @@ svg {
 	background-color: #c154ee;
 	fill: white;
 	transition: transform 200ms ease-out;
+}
+
+#about_footer > div {
+	position: relative;
+	left: 230px;
+	top: 43px;
 }
 
 #about_footer a.hoverable:hover {
@@ -738,6 +740,8 @@ svg {
 #contact_form {
 	padding: 0;
 	margin: 0;
+	height: 385px;
+	overflow: hidden;
 }
 
 .field {
@@ -2113,6 +2117,10 @@ input:-webkit-autofill:active {
 	padding-left: 70px;
 }
 
+#about_footer > div {
+	position: initial;
+}
+
 #contact h1 {
 	font-size: 82px;
 	line-height: 82px;
@@ -2443,8 +2451,8 @@ input:-webkit-autofill:active {
 #contact .content > div,
 #about .content > div {
 	padding-left: 6vw;
-	margin-top: 6vw;
 	width: 80vw;
+	margin-top: 6vw;
 }
 
 #contact h1,
@@ -2460,20 +2468,17 @@ input:-webkit-autofill:active {
 	font-size: 8.7vw;
 }
 
-
-#about_info {
+#about .content #about_info {
+	height: calc(100vh - 32vw - 180px);
 	font-size: 20px;
 	line-height: 28px;
 }
 
-#about .content #about_footer {
-	padding-left: 13vw;
-	bottom: 13vw;
-	width: 93vw;
-    font-size: 4vw;
+#about_footer > div {
+	position: initial;
 }
 
-#about_footer span span {
+#about_footer > div > span:last-child {
 	display: none;
 }
 
