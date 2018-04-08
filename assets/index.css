@@ -1,3 +1,7 @@
+#navigation, .details, #contact, #about, #nope, #filters, #skill_stack, #projects {
+	display: initial;
+}
+
 /**/
 /****/
 /******/
@@ -8,6 +12,7 @@
 /****************/
 /* ALL AND WIDTH 900px */
 
+/* moved to index_inline.css
 html,
 body {
 	padding: 0;
@@ -21,6 +26,7 @@ body {
 	cursor: url('cursor@1x.png') 32 32, auto;
 	cursor: -webkit-image-set( url('cursor@1x.png') 1x, url('cursor@2x.png') 2x ) 32 32, auto;
 }
+*/
 
 a, button, .hoverable {
 	cursor: url('pointer@1x.png') 38 32, auto;
@@ -49,6 +55,7 @@ svg {
 	display: none;
 }
 
+/* moved to index_inline.css
 .frame,
 #nope {
 	position: absolute;
@@ -65,6 +72,7 @@ svg {
 	height: 100%;
 	overflow: scroll;
 }
+*/
 
 #filters {
 	/* if the svg filter is set to display:none */
@@ -91,6 +99,7 @@ svg {
 /****************/
 /* HOME */
 
+/* moved to index_inline.css
 #home .content {
 	background-image:
 		linear-gradient(30deg,
@@ -138,6 +147,7 @@ svg {
 	border: 0 solid white;
 	border-bottom-width: 2px;
 }
+*/
 
 #skill_stack {
 	padding-top: 30px;
@@ -796,12 +806,6 @@ input:-webkit-autofill:active {
 }
 
 :-ms-input-placeholder {
-	color: rgba(255, 255, 255, 0.6);
-}
-:-ms-input-placeholder {
-	color: rgba(255, 255, 255, 0.6);
-}
-::-ms-input-placeholder {
 	color: rgba(255, 255, 255, 0.6);
 }
 ::-ms-input-placeholder {
@@ -2086,6 +2090,7 @@ input:-webkit-autofill:active {
 
 @media screen and (min-width: 760px) and (max-width: 900px) {
 
+/* moved to index_inline.css
 #home_start {
 	width: 720px;
 }
@@ -2110,6 +2115,7 @@ input:-webkit-autofill:active {
 #home_start h2 span {
 	border-bottom-width: 2.5px;
 }
+*/
 
 #contact .content > div,
 #about .content > div {
@@ -2156,6 +2162,7 @@ input:-webkit-autofill:active {
 /****************/
 /* HOME */
 
+/* moved to index_inline.css
 #home_start {
 	width: 100vw;
 }
@@ -2180,6 +2187,7 @@ input:-webkit-autofill:active {
 #home_start h2 span {
 	border-bottom-width: 0.5vw;
 }
+*/
 
 #skill_stack {
 	padding-top: 9vw;

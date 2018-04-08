@@ -21,14 +21,15 @@
 	id="deviceViewPort"
 	name="viewport"
 	content="width=device-width">
-<!-- -->
-<link
-	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300|Crimson+Text:400"
-	rel="stylesheet" type="text/css">
-<link
-	href="assets/index.css"
-	rel="stylesheet" type="text/css">
-<!-- -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+	WebFont.load({
+		google: {
+			families: ['Work Sans:100,200,300','Crimson Text:400']
+		}
+	});
+</script>
 <script defer
 	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"
 	integrity="sha256-S6G5lg9rzC1JCAkx3dQFqP2lefkFxwlNVn0rWCOueXA="
@@ -47,6 +48,153 @@
 <script defer
 	src="assets/contact.js">
 </script>
+<style type="text/css">
+/* minimum CSS needed to render home page */
+
+#navigation, .details, #contact, #about, #nope, #filters, #skill_stack, #projects {
+	display: none;
+}
+
+/* ALL AND WIDTH 900px */
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	font-family: 'Work Sans', 'Helvetica', sans-serif;
+	font-size: 0;
+	color: rgb(255,255,255);
+	cursor: url('assets/cursor@1x.png') 32 32, auto;
+	cursor: -webkit-image-set( url('assets/cursor@1x.png') 1x, url('assets/cursor@2x.png') 2x ) 32 32, auto;
+}
+
+.frame,
+#nope {
+	position: absolute;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	padding: 20px;
+	box-sizing: border-box;
+	background-color: rgb(255,255,255);
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+}
+
+#home .content {
+	background-image:
+		linear-gradient(30deg,
+			rgba(243, 47, 178, 0) 40%,
+			rgb(188, 87, 248) 90%),
+		linear-gradient(120deg,
+			rgb(243, 154, 98) 10%,
+			rgb(243, 47, 178) 30%,
+			rgb(243, 47, 178) 50%,
+			rgb(243, 32, 78) 90%);
+	background-color: #FF33A0;
+}
+
+#home_start {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#home_start h1,
+#home_start h2 {
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+#home_start h1 {
+	margin-top: 120px;
+	margin-left: 120px;
+	font-size: 100px;
+	font-weight: 200;
+	line-height: 100px;
+	letter-spacing: -3px;
+}
+
+#home_start h2 {
+	margin-top: 70px;
+	margin-left: 120px;
+	font-size: 80px;
+	font-weight: 100;
+	line-height: 105px;
+}
+
+#home_start h2 span {
+	border: 0 solid white;
+	border-bottom-width: 2px;
+}
+
+@media screen and (min-width: 760px) and (max-width: 900px) {
+
+#home_start {
+	width: 720px;
+}
+
+#home_start h1 {
+	margin-top: 180px;
+	margin-left: 90px;
+	font-size: 95px;
+	font-weight: 200;
+	line-height: 95px;
+	letter-spacing: -3px;
+}
+
+#home_start h2 {
+	margin-top: 60px;
+	margin-left: 90px;
+	font-size: 70px;
+	font-weight: 100;
+	line-height: 100px;
+}
+
+#home_start h2 span {
+	border-bottom-width: 2.5px;
+}
+
+}
+
+@media screen and (max-width: 759px) {
+
+#home_start {
+	width: 100vw;
+}
+
+#home_start h1 {
+	margin-top: 32vw;
+	margin-left: 13vw;
+	font-size: 13.7vw;
+	font-weight: 200;
+	line-height: 13.7vw;
+	letter-spacing: 0.4vw;
+}
+
+#home_start h2 {
+	margin-top: 9vw;
+	margin-left: 13vw;
+	font-size: 9vw;
+	font-weight: 100;
+	line-height: 14vw;
+}
+
+#home_start h2 span {
+	border-bottom-width: 0.5vw;
+}
+
+}
+</style>
+
 </head>
 <body>
 <div id="home" class="frame">
@@ -631,7 +779,10 @@
 						My <a href="https://jmattthew.github.io/better-font-finder/better-font-finder.html" target="_blank" class="ga_event_out">Font Finder</a> website allows people explore, filter, and select fee Google Fonts based on the visual attributes of the fonts. I conceived, designed, and coded this tool as a passion project.
 					</p>
 					<div id="FoFi_tweet">
-						<blockquote class="twitter-tweet" data-lang="en" width="400"><p lang="en" dir="ltr">We’re digging this visual <a href="https://twitter.com/hashtag/GoogleFonts?src=hash" target="_blank" class="outbound">#GoogleFonts</a> finder &1F50E; by <a href="https://twitter.com/mattthew" target="_blank" class="outbound">@mattthew</a> — as another way to find just the right type <a href="font_finder/font_finder_website.html" target="_blank">https://t.co/jrpvi4ssXh</a></p>&mdash; Google Design (@GoogleDesign) <a href="https://twitter.com/GoogleDesign/status/872165746863943680" target="_blank" class="outbound">June 6, 2017</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						<blockquote class="twitter-tweet" data-lang="en" width="400"><p lang="en" dir="ltr">We’re digging this visual <a href="https://twitter.com/hashtag/GoogleFonts?src=hash" target="_blank" class="outbound">#GoogleFonts</a> finder &1F50E; by <a href="https://twitter.com/mattthew" target="_blank" class="outbound">@mattthew</a> — as another way to find just the right type <a href="font_finder/font_finder_website.html" target="_blank">https://t.co/jrpvi4ssXh</a></p>&mdash; Google Design (@GoogleDesign) <a href="https://twitter.com/GoogleDesign/status/872165746863943680" target="_blank" class="outbound">June 6, 2017</a></blockquote>
+						<script async
+							src="https://platform.twitter.com/widgets.js"
+							charset="utf-8"></script>
 					</div>
 					<p>
 						<i id="i_FoFi_product_hunt" class="float_target"></i>
@@ -851,5 +1002,21 @@
 	</defs>
 </svg>
 <div id="remote_svg_holder" style="display: none;"></div>
+<noscript id="deferred_styles">
+	<link href="assets/index.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+	var loadDeferredStyles = function() {
+		var addStylesNode = document.getElementById("deferred_styles");
+		var replacement = document.createElement("div");
+		replacement.innerHTML = addStylesNode.textContent;
+		document.body.appendChild(replacement)
+		addStylesNode.parentElement.removeChild(addStylesNode);
+	};
+	var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+	window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+	else window.addEventListener('load', loadDeferredStyles);
+</script>
 </body>
 </html>
