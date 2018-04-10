@@ -887,7 +887,9 @@ function bumpCloseButton($scroller) {
 			});
 			TweenMax.delayedCall(1, function(){
 				$el.data('bumping',false);
-				sendGaEvent('forward','scrolled to bottom',window.location.hash);
+				if(!$scroller.data('stopAnims')) {
+					sendGaEvent('forward','scrolled to bottom',window.location.hash);
+				}
 			});
 		}
 	}
