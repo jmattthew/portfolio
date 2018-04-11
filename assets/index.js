@@ -23,30 +23,28 @@ function makeSVGInline() {
 
 	$('.svg').each(function(){
 		var imgSrc = $(this).attr('src');
-		var ajax = $.ajax({
+		var request = $.ajax({
 			url: imgSrc,
-			dataType: 'html',
-			success: function(data) {
-				var $svg = $(data);
-				$svg.attr('img-src',this.url)
-				$('#remote_svg_holder').append($svg);
-			}
-		});
-		requests.push(ajax);
-	});
-	$.when.apply($, requests).then(function() {
-		$('.svg').each(function(){
-			var $img, imgSrc, imgAlt, $svg;
+			dataType: 'html'
+		})
+		.done(function(data) {
+			var $svg, $img, imgAlt;
 
-			$img = $(this);
-			imgSrc = $img.attr('src');
+			$svg = $(data);
+			$svg.attr('style','');
+			$img = $('[src*="'+this.url+'"]');
 			imgAlt = $img.attr('alt');
-			$svg = $('[img-src*="'+imgSrc+'"]').eq(0).clone();
 			$svg.attr('alt',imgAlt);
 			$img.replaceWith($svg);
-			navigateToHash();
-		});
-		$('#remote_svg_holder').remove();
+		})
+		requests.push(request);
+	});
+	$.when.apply($, requests).then(function() {
+		// success
+		navigateToHash();
+	}, function() {
+		// failure
+		navigateToHash();
 	});
 }
 

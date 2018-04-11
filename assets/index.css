@@ -997,10 +997,6 @@ input:-webkit-autofill:active {
 	transition: transform 200ms ease-out;
 }
 
-#navigation a img {
-	opacity: 0;
-}
-
 #navigation a svg {
 	transition: transform 200ms ease-out;
 }

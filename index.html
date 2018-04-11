@@ -21,12 +21,15 @@
 	id="deviceViewPort"
 	name="viewport"
 	content="width=device-width">
+<!--
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:100,200,300" rel="stylesheet">
+-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 <script>
 	WebFont.load({
 		google: {
-			families: ['Work Sans:100,200,300','Crimson Text:400']
+			families: ['Crimson Text:400','Work Sans:100,200,300']
 		}
 	});
 </script>
@@ -53,6 +56,11 @@
 
 #navigation, .details, #contact, #about, #nope, #filters, #skill_stack, #projects {
 	display: none;
+}
+
+/* hiding text while loading because the FOUT looks awful */
+.wf-loading #home_start {
+	visibility: hidden;
 }
 
 /* ALL AND WIDTH 900px */
@@ -900,7 +908,7 @@ body {
 					<textarea name="message" value=""></textarea>
 				</a>
 				<button type="submit" form="contact_form" id="field_submitter" class="field initial">
-					<img alt="paper airplane icon for submit button" class="svg" src="assets/message.svg">
+					<img alt="paper airplane icon for submit button" class="svg" src="assets/nav_contact.svg">
 				</button>
 				<div style="position: absolute; left: -5000px;">
 					<input type="checkbox" name="governing_brown_polka_dotted_tapir" value="1" tabindex="-1" autocomplete="no">
@@ -952,28 +960,28 @@ body {
 <div id="navigation" class="hoverable">
 	<a href="#" target="_self" id="contact_button" class="hoverable">
 		<div>
-			<img alt="paper airplane icon for contact us link" class="svg" src="assets/message.svg">
+			<img alt="paper airplane icon for contact us link" class="svg" src="assets/nav_contact.svg">
 		</div>
 		<span>Contact</span>
 	</a>
 	<a href="#" target="_self" id="about_button" class="hoverable">
 		<div>
-			<img alt="letter-i icon for more information link" class="svg" src="assets/about.svg" class="hoverable">
+			<img alt="letter-i icon for more information link" class="svg" src="assets/nav_about.svg" class="hoverable">
 		</div>
 		<span>About</span>
 	</a>
 	<a href="#" target="_self" id="stack_button" class="hoverable">
 		<div>
 			<div>
-				<img alt="stack icon for next link" class="svg" src="assets/stack.svg">
-				<img alt="letter-x icon for back link" class="svg" src="assets/close.svg">
+				<img alt="stack icon for next link" class="svg" src="assets/nav_stack.svg">
+				<img alt="letter-x icon for back link" class="svg" src="assets/nav_close.svg">
 			</div>
 		</div>
 		<span>Back</span>
 	</a>
 	<a href="#" target="_self" id="back_to_projects" class="hoverable">
 		<div>
-			<img alt="letter-x icon for back link" class="svg" src="assets/close.svg">
+			<img alt="letter-x icon for back link" class="svg" src="assets/nav_close.svg">
 			<svg id="scroll_amount_indicator">
 				<!-- Firefox won't recognize r, cx, & cy as CSS values -->
 				<circle	r="19" cx="20" cy="20" /></svg>
@@ -1001,7 +1009,6 @@ body {
 		</filter>
 	</defs>
 </svg>
-<div id="remote_svg_holder" style="display: none;"></div>
 <noscript id="deferred_styles">
 	<link href="assets/index.css" rel="stylesheet" type="text/css">
 </noscript>
