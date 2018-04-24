@@ -31,7 +31,7 @@ function makeSVGInline() {
 			var $svg, $img, imgAlt;
 
 			$svg = $(data);
-			$svg.attr('style','');
+			$svg.css('fill','');
 			$img = $('[src*="'+this.url+'"]');
 			imgAlt = $img.attr('alt');
 			$svg.attr('alt',imgAlt);
