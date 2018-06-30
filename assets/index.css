@@ -1103,6 +1103,20 @@ input:-webkit-autofill:active {
 	background-color: white;
 }
 
+#noscript {
+	display: block;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	padding: 28px;
+	background-color: white;
+	border-bottom-left-radius: 28px;
+	box-shadow:
+		0 10px 14px 2px rgba(0, 0, 0, 0.1);
+	font-size: 28px;
+	color: rgb(159, 69, 212);
+}
+
 @media screen and (max-width: 1020px) {
 	#navigation #back_to_projects {
 		bottom: 407px;
@@ -2619,6 +2633,16 @@ input:-webkit-autofill:active {
 
 #navigation a#back_to_projects {
 	visibility: hidden;
+}
+
+#noscript {
+	padding: 7vw 0;
+	border-radius: 0;
+	width: 100vw;
+	box-shadow:
+		0 2vw 4vw 1vw rgba(0, 0, 0, 0.1);
+	font-size: 6vw;
+	text-align: center;
 }
 
 

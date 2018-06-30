@@ -61,6 +61,7 @@ function navigateToHash() {
 			doNavTransition(h);
 			page = h;
 			sendGaEvent('hash','navigation','#'+h);
+			clearHoneypot();
 		} else {
 			if(h == 'Siempo') {
 				$activeProject = $('#project_SiPo');
@@ -92,6 +93,11 @@ function navigateToHash() {
 			}
 		}
 	}
+}
+
+function clearHoneypot() {
+	// this honeypot checkbox must be unchecked for 99inbound deliver
+	$('input[name="governing_brown_polka_dotted_tapir"]').prop('checked',false)
 }
 
 function applyBlur() {
@@ -1262,6 +1268,7 @@ function bindEvents() {
 		doNavTransition('contact');
 		lastPage = page;
 		page = 'contact';
+		clearHoneypot();
 		sendGaEvent('forward','navigation','#contact');
 		window.history.pushState(null, null, '#contact');
 		return false;
