@@ -61,9 +61,11 @@ function navigateToHash() {
 			doNavTransition(h);
 			page = h;
 			sendGaEvent('hash','navigation','#'+h);
-			clearHoneypot();
 		} else {
-			if(h == 'Siempo') {
+			if(h == 'Clover') {
+				$activeProject = $('#project_ClVr');
+				validProject = true;
+			} else if(h == 'Siempo') {
 				$activeProject = $('#project_SiPo');
 				validProject = true;
 			} else if(h == 'Cardpool') {
@@ -93,11 +95,6 @@ function navigateToHash() {
 			}
 		}
 	}
-}
-
-function clearHoneypot() {
-	// this honeypot checkbox must be unchecked for 99inbound deliver
-	$('input[name="governing_brown_polka_dotted_tapir"]').prop('checked',false)
 }
 
 function applyBlur() {
@@ -293,26 +290,29 @@ function filterProjects($skill) {
 	// hide all projects except 1st for this skill
 	id = $skill.attr('id');
 	if(id == 'skill_strategy') {
-		$('#tab_SiPo').addClass('tab_1');
-		$('#tab_CaPo').addClass('tab_2 hoverable');
-		$('#tab_CoSu').addClass('tab_3 hoverable');
-		$('#tab_RoTo').addClass('tab_4 hoverable');
+		$('#tab_ClVr').addClass('tab_1');
+		$('#tab_SiPo').addClass('tab_2 hoverable');
+		$('#tab_CaPo').addClass('tab_3 hoverable');
+		$('#tab_CoSu').addClass('tab_4 hoverable');
+		$('#tab_RoTo').css('display','none');
 		$('#tab_FoFi').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_SiPo');
+		$activeProject = $('#project_ClVr');
 	} else if(id == 'skill_research') {
-		$('#tab_SiPo').addClass('tab_1');
-		$('#tab_CaPo').addClass('tab_2 hoverable');
-		$('#tab_CoSu').addClass('tab_3 hoverable');
+		$('#tab_ClVr').addClass('tab_1');
+		$('#tab_SiPo').addClass('tab_2 hoverable');
+		$('#tab_CaPo').addClass('tab_3 hoverable');
 		$('#tab_RoTo').addClass('tab_4 hoverable');
+		$('#tab_CoSu').css('display','none');
 		$('#tab_FoFi').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_SiPo');
+		$activeProject = $('#project_ClVr');
 	} else if(id == 'skill_interaction') {
 		$('#tab_SiPo').addClass('tab_1');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_TaGe').addClass('tab_4 hoverable');
+		$('#tab_ClVr').css('display','none');
 		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
 		$activeProject = $('#project_SiPo');
@@ -320,6 +320,7 @@ function filterProjects($skill) {
 		$('#tab_SiPo').addClass('tab_1');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
+		$('#tab_ClVr').css('display','none');
 		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
 		$('#tab_TaGe').css('display','none');
@@ -329,6 +330,7 @@ function filterProjects($skill) {
 		$('#tab_RoTo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_TaGe').addClass('tab_4 hoverable');
+		$('#tab_ClVr').css('display','none');
 		$('#tab_CaPo').css('display','none');
 		$('#tab_CoSu').css('display','none');
 		$activeProject = $('#project_SiPo');
@@ -339,14 +341,14 @@ function filterProjects($skill) {
 	/*
 	Menu tree:
 		skill_strategy
+			Clover
 			Siempo
 			Cardpool
 			CouchSurfing
-			Rotten Tomatoes
 		skill_research
+			Clover
 			Siempo
 			Cardpool
-			CouchSurfing
 			Rotten Tomatoes
 		skill_interaction
 			Siempo
@@ -1268,7 +1270,6 @@ function bindEvents() {
 		doNavTransition('contact');
 		lastPage = page;
 		page = 'contact';
-		clearHoneypot();
 		sendGaEvent('forward','navigation','#contact');
 		window.history.pushState(null, null, '#contact');
 		return false;
