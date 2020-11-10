@@ -265,7 +265,7 @@ function glowSkillOnHover(event,$skill,show) {
 	yRatio = parseInt((event.pageY - $skill.offset().top) / $skill.innerHeight() * 100);
 	backgroundImage = 'radial-gradient(circle 200px at ' +
 		xRatio + '% ' + yRatio + '%,' +
-		'rgba(255,255,255,0.3) 25%,' +
+		'rgba(255,255,255,0.5) 25%,' +
 		'rgba(255,255,255,0.0) 100%)';
 	$skill.find('div').css('background-image',backgroundImage);
 }
@@ -290,7 +290,7 @@ function filterProjects($skill) {
 	// hide all projects except 1st for this skill
 	id = $skill.attr('id');
 	if(id == 'skill_strategy') {
-		$('#tab_ClVr').addClass('tab_1');
+		$('#tab_ClVr').addClass('tab_1 selected');
 		$('#tab_SiPo').addClass('tab_2 hoverable');
 		$('#tab_CaPo').addClass('tab_3 hoverable');
 		$('#tab_CoSu').addClass('tab_4 hoverable');
@@ -299,7 +299,7 @@ function filterProjects($skill) {
 		$('#tab_TaGe').css('display','none');
 		$activeProject = $('#project_ClVr');
 	} else if(id == 'skill_research') {
-		$('#tab_ClVr').addClass('tab_1');
+		$('#tab_ClVr').addClass('tab_1 selected');
 		$('#tab_SiPo').addClass('tab_2 hoverable');
 		$('#tab_CaPo').addClass('tab_3 hoverable');
 		$('#tab_RoTo').addClass('tab_4 hoverable');
@@ -308,7 +308,7 @@ function filterProjects($skill) {
 		$('#tab_TaGe').css('display','none');
 		$activeProject = $('#project_ClVr');
 	} else if(id == 'skill_interaction') {
-		$('#tab_SiPo').addClass('tab_1');
+		$('#tab_SiPo').addClass('tab_1 selected');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_TaGe').addClass('tab_4 hoverable');
@@ -317,7 +317,7 @@ function filterProjects($skill) {
 		$('#tab_RoTo').css('display','none');
 		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_visual') {
-		$('#tab_SiPo').addClass('tab_1');
+		$('#tab_SiPo').addClass('tab_1 selected');
 		$('#tab_CaPo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_ClVr').css('display','none');
@@ -326,7 +326,7 @@ function filterProjects($skill) {
 		$('#tab_TaGe').css('display','none');
 		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_prototypes') {
-		$('#tab_SiPo').addClass('tab_1');
+		$('#tab_SiPo').addClass('tab_1 selected');
 		$('#tab_RoTo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_TaGe').addClass('tab_4 hoverable');
@@ -478,8 +478,10 @@ function hideProjects(scrollToTop) {
 function switchProject(tab) {
 	var s, suffix;
 
+	$('.tab').removeClass('selected');
 	$('.tab').addClass('hoverable');
 	$(tab).removeClass('hoverable');
+	$(tab).addClass('selected');
 	suffix = $(tab).attr('id');
 	suffix = suffix.substring(suffix.indexOf('_'),suffix.length);
 	$newProject = $('#project'+suffix);
