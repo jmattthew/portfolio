@@ -573,6 +573,7 @@ function revealDetails() {
 
 	id = $activeProject.attr('id');
 	id = id.substring(id.indexOf('_')+1,id.length);
+	$('.tab').removeClass('selected');
 	$('body').addClass('viewit viewit_' + id);
 	id = '#details_' + id;
 	$detailSkill = $(id).find('.'+skill);
@@ -1131,6 +1132,10 @@ function bindEvents() {
 			if($(this).is($('#skill_artwork'))) {
 				var link = 'side_projects/sideprojects.html';
 				window.open(link)
+			} if($(this).is($('#skill_skip'))) {
+				var link = 'screen_caps.html';
+				window.open(link)
+				sendGaEvent('forward','project tab','skip');
 			} else {
 				highlightSkill($(this));
 				showStackButton();

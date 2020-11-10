@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Google Analytics -->
+<script>
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-52293845-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script async
+	src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+<title>Mattthew: Full stack product design leader, storyteller, artist</title>
+<meta
+	name="description"
+	content="View Mattthew's portolio of product designs, UX, and interactive moving images. Mattthew is a full stack product design leader, storyteller, and artist based in San Francisco.">
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+<meta
+	id="deviceViewPort"
+	name="viewport"
+	content="width=device-width">
+<!--
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:100,200,300" rel="stylesheet">
+-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+</script>
+<script>
+	WebFont.load({
+		google: {
+			families: ['Crimson Text:400','Work Sans:100,200,300']
+		}
+	});
+
+	$(document).ready(function() {
+
+  		$('#thumbnails .thumbnail').click(function(e) {
+  			$('#lightbox').css('display','block');
+  			var $el = $(this).clone();
+  			$('#lightbox').html($el);
+  			return false;
+  		});
+
+  		$('#lightbox').click(function(e) {
+  			if (!$(e.target).closest('.thumbnail').length) {
+	  			$('#lightbox').css('display','');
+	  		}
+  		});
+
+  		$(document).keyup(function(e) {
+			if (e.keyCode === 27) {
+				// esc
+	  			$('#lightbox').css('display','');
+			}
+		});
+
+	});
+
+</script>
+<style type="text/css">
+/* ALL AND WIDTH 900px */
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	background-color: hsl(0deg 0% 80%);
+	font-family: 'Work Sans', 'Helvetica', sans-serif;
+	font-size: 24px;
+	color: hsl(0 0% 40% / 1);
+}
+
+body, #lightbox .thumbnail {
+	cursor: url('assets/cursor@1x.png') 32 32, auto;
+	cursor: -webkit-image-set( url('assets/cursor@1x.png') 1x, url('assets/cursor@2x.png') 2x ) 32 32, auto;
+}
+
+#intro {
+	padding: 20px 20px 0 20px;
+	line-height: 150%;
+}
+
+#thumbnails {
+	padding-top: 20px;
+	padding-left: 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 960px;
+}
+
+.thumbnail {
+	margin-right: 20px;
+	margin-bottom: 20px;
+	width: 300px;
+	height: 300px;
+	overflow: hidden;
+	border-radius: 2px;
+	background: hsl(0deg 0% 60%);
+	background-size: cover;
+	box-shadow: 0 5px 10px 0px hsl(0deg 0% 0% / 5%);
+}
+
+#thumbnails .thumbnail, video, #lightbox {
+	cursor: url('assets/pointer@1x.png') 38 32, auto;
+	cursor: -webkit-image-set( url('assets/pointer@1x.png') 1x, url('assets/pointer@2x.png') 2x ) 38 32, auto;
+}
+
+#lightbox {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: hsl(0deg 0% 0% / 70%);
+}
+
+#lightbox .thumbnail {
+	position: relative;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 10px 40px 0px hsl(0deg 0% 0% / 50%);
+}
+
+/*
+
+
+
+
+
+
+*/
+
+.img_ClVr_prototype video {
+	height: 300px;
+}
+
+#lightbox .img_ClVr_prototype, #lightbox .img_ClVr_prototype video {
+	width: 800px;
+	height: 508px;
+}
+
+#thumbnails .img_SiPo_commercial video {
+	position: relative;
+	top: -235px;
+	width: 300px;
+}
+
+#thumbnails .img_SiPo_commercial video {
+	position: relative;
+	top: -235px;
+	width: 300px;
+}
+
+#thumbnails .img_SiPo_website video {
+	width: 300px;
+	height: 390px;
+	position: relative;
+	top: -90px;
+}
+
+#lightbox .img_SiPo_website, #lightbox .img_SiPo_website video {
+	width: 600px;
+	height: 600px;
+}
+
+#lightbox .img_SiPo_commercial, #lightbox .img_SiPo_commercial video {
+	width: 375px;
+	height: 668px;
+}
+
+.img_FoFi_screenshot1 {
+	background-image: url('assets/details_FoFi_screenshot1.png');
+}
+
+#lightbox .img_FoFi_screenshot1 {
+	max-width: 900px;
+	max-height: 546px;
+}
+
+.img_CaPo_desktop_inventory1 {
+	background-image: url('assets/details_CaPo_desktop_inventory1.jpg');
+}
+
+.img_CaPo_desktop_inventory2 {
+	background-image: url('assets/details_CaPo_desktop_inventory2.jpg');
+}
+
+#lightbox .img_CaPo_desktop_inventory1, #lightbox .img_CaPo_desktop_inventory2 {
+	max-width: 510px;
+	max-height: 420px;
+}
+
+.img_CaPo_forms {
+	background-image: url('assets/details_CaPo_forms.png');
+}
+
+#lightbox .img_CaPo_forms {
+	max-width: 550px;
+	max-height: 800px;
+}
+
+.img_CaPo_mobile_inventory1 {
+	background-image: url('assets/details_CaPo_mobile_inventory1.jpg');
+}
+
+.img_CaPo_mobile_inventory2 {
+	background-image: url('assets/details_CaPo_mobile_inventory2.jpg');
+}
+
+#lightbox .img_CaPo_mobile_inventory1, #lightbox .img_CaPo_mobile_inventory2 {
+	max-width: 750px;
+	max-height: 395px;
+}
+
+.img_CaPo_slider {
+	background-image: url('assets/details_CaPo_slider.jpg');
+}
+
+#lightbox .img_CaPo_slider {
+	max-width: 375px;
+	max-height: 672px;
+}
+
+.img_RoTo_screenshot1 {
+	background-image: url('assets/details_RoTo_screenshot1.png');
+}
+
+#lightbox .img_RoTo_screenshot1 {
+	max-width: 640px;
+	max-height: 400px;
+}
+
+.img_get_ready {
+	background-image: url('side_projects/assets/getReadyBG.png');
+}
+
+#lightbox .img_get_ready {
+	max-width: 500px;
+	max-height: 400px;
+}
+
+.img_shsh_greg {
+	background-image: url('side_projects/shsh/slide02.jpg');
+}
+
+#lightbox .img_shsh_greg {
+	max-width: 375px;
+	max-height: 450px;
+}
+
+.img_shsh_skate {
+	background-image: url('side_projects/shsh/slide03.jpg');
+}
+
+#lightbox .img_shsh_skate {
+	max-width: 400px;
+	max-height: 500px;
+}
+
+</style>
+
+</head>
+<body>
+	<div id="intro">
+		<span>
+			This is a page only contains videos &amp; screen captures without any context.<br>
+			To read the full case studies associated with each of these images, close this tab.
+		</span>
+	</div>
+	<div id="thumbnails">
+		<div class="img_ClVr_prototype thumbnail">
+			<video poster="assets/details_ClVr_prototype_poster.png" controls loop>
+					<source src="assets/details_ClVr_prototype.mov" type="video/mp4">
+					Sorry, your browser doesn't support this video.
+			</video>
+		</div>
+		<div class="img_SiPo_commercial thumbnail">
+			<video poster="assets/details_SiPo_commercial_poster.png" controls>
+				<source src="assets/details_SiPo_commercial.mp4" type="video/mp4">
+				Sorry, your browser doesn't support this video.
+			</video>
+		</div>
+		<div class="img_SiPo_website thumbnail">
+			<video poster="assets/details_SiPo_website2.jpg" controls>
+				<source src="assets/details_SiPo_website.mp4" type="video/mp4">
+				Sorry, your browser doesn't support this video.
+			</video>
+		</div>
+		<div class="img_CaPo_desktop_inventory2 thumbnail"></div>
+		<div class="img_CaPo_desktop_inventory1 thumbnail"></div>
+		<div class="img_CaPo_forms thumbnail"></div>
+		<div class="img_CaPo_mobile_inventory1 thumbnail"></div>
+		<div class="img_CaPo_mobile_inventory2 thumbnail"></div>
+		<div class="img_CaPo_slider thumbnail"></div>
+		<div class="img_FoFi_screenshot1 thumbnail"></div>
+		<div class="img_RoTo_screenshot1 thumbnail"></div>
+		<div class="img_shsh_greg thumbnail"></div>
+		<div class="img_shsh_skate thumbnail"></div>
+		<div class="img_get_ready thumbnail"></div>
+	</div>
+	<div id="lightbox">
+	</div>
+</body>
+</html>
