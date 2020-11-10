@@ -70,7 +70,10 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	background-color: hsl(0deg 0% 80%);
+	background: linear-gradient(177deg,
+	  hsl(0deg 0% 80%) 12%,
+	  hsl(0deg 0% 85%) 12%,
+	  hsl(0deg 0% 80%) 31%);
 	font-family: 'Work Sans', 'Helvetica', sans-serif;
 	font-size: 24px;
 	color: hsl(0 0% 40% / 1);
@@ -82,7 +85,7 @@ body, #lightbox .thumbnail {
 }
 
 #intro {
-	padding: 20px 20px 0 20px;
+	padding: 20px 0 10px 20px;
 	line-height: 150%;
 }
 
@@ -101,10 +104,30 @@ body, #lightbox .thumbnail {
 	width: 300px;
 	height: 300px;
 	overflow: hidden;
-	border-radius: 2px;
+	border-radius: 150px;
 	background: hsl(0deg 0% 60%);
 	background-size: cover;
-	box-shadow: 0 5px 10px 0px hsl(0deg 0% 0% / 5%);
+	box-shadow: 0 5px 10px 0px hsl(0deg 0% 0% / 20%);
+	transition: border-radius 200ms ease-out;
+}
+
+.thumbnail:hover {
+	border-radius: 2px;
+}
+
+.thumbnail span {
+    display: inline-block;
+    padding: 10px 14px;
+    position: relative;
+    top: 0;
+    font-weight: bold;
+	opacity: 0;
+    transition: opacity 200ms;
+}
+
+#thumbnails .thumbnail:hover span {
+    z-index: 1;
+	opacity: 1;
 }
 
 #thumbnails .thumbnail, video, #lightbox {
@@ -114,12 +137,18 @@ body, #lightbox .thumbnail {
 
 #lightbox {
 	display: none;
+	opacity: 0;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: hsl(0deg 0% 0% / 70%);
+	transition: opacity 200ms;
+}
+
+#lightbox:hover {
+	opacity: 1;
 }
 
 #lightbox .thumbnail {
@@ -129,8 +158,18 @@ body, #lightbox .thumbnail {
     width: 80%;
     height: 80%;
     border-radius: 8px;
-    transform: translate(-50%, -50%);
+    transform-origin: center;
     box-shadow: 0 10px 40px 0px hsl(0deg 0% 0% / 50%);
+    transform: translate(-50%, -50%) scale(1.1);
+    transition: transform 100ms ease-out;
+}
+
+#lightbox:hover .thumbnail {
+    transform: translate(-50%, -50%) scale(1.0);
+}
+
+#lightbox span {
+	display: none;
 }
 
 /*
@@ -142,8 +181,65 @@ body, #lightbox .thumbnail {
 
 */
 
-.img_ClVr_prototype video {
-	height: 300px;
+#thumbnails .img_ClVr_prototype span {
+	color: hsl(170deg 74% 25%);
+	background: white;
+}
+
+#thumbnails .img_SiPo_commercial span {
+	color: black;
+	background: white;
+}
+
+#thumbnails .img_SiPo_website span {
+	color: red;
+	background: black;
+}
+
+#thumbnails .img_CaPo_desktop_inventory2 span,
+#thumbnails .img_CaPo_desktop_inventory1 span,
+#thumbnails .img_CaPo_forms span {
+	color: hsl(210 90% 48%);
+	background: white;
+}
+
+#thumbnails .img_CaPo_mobile_inventory1 span,
+#thumbnails .img_CaPo_mobile_inventory2 span,
+#thumbnails .img_CaPo_slider span {
+	color: white;
+	background: hsl(343deg 61% 40%);
+}
+
+#thumbnails .img_FoFi_screenshot1 span,
+#thumbnails .img_RoTo_screenshot1 span,
+#thumbnails .img_shsh_greg span {
+	color: hsl(0deg 0% 40%);
+	background: white;
+}
+
+#thumbnails .img_shsh_skate span {
+	color: hsl(0deg 0% 100%);
+    background: hsl(24deg 96% 41%);
+}
+
+#thumbnails .img_get_ready span {
+    color: hsl(0deg 0% 100%);
+    background: hsl(0deg 0% 60%);
+}
+
+/*
+
+
+
+
+
+
+*/
+
+#thumbnails .img_ClVr_prototype video {
+	height: 324px;
+	position: relative;
+    top: -48px;
 }
 
 #lightbox .img_ClVr_prototype, #lightbox .img_ClVr_prototype video {
@@ -153,14 +249,13 @@ body, #lightbox .thumbnail {
 
 #thumbnails .img_SiPo_commercial video {
 	position: relative;
-	top: -235px;
-	width: 300px;
+    height: 532px;
+    top: -208px;
 }
 
-#thumbnails .img_SiPo_commercial video {
-	position: relative;
-	top: -235px;
-	width: 300px;
+#lightbox .img_SiPo_commercial, #lightbox .img_SiPo_commercial video {
+	width: 375px;
+	height: 668px;
 }
 
 #thumbnails .img_SiPo_website video {
@@ -173,11 +268,7 @@ body, #lightbox .thumbnail {
 #lightbox .img_SiPo_website, #lightbox .img_SiPo_website video {
 	width: 600px;
 	height: 600px;
-}
-
-#lightbox .img_SiPo_commercial, #lightbox .img_SiPo_commercial video {
-	width: 375px;
-	height: 668px;
+	background-color: black;
 }
 
 .img_FoFi_screenshot1 {
@@ -260,11 +351,14 @@ body, #lightbox .thumbnail {
 	max-height: 450px;
 }
 
-.img_shsh_skate {
+#thumbnails .img_shsh_skate {
 	background-image: url('side_projects/shsh/slide03.jpg');
+	background-size: 310px;
+    background-position: -4px;
 }
 
 #lightbox .img_shsh_skate {
+	background-image: url('side_projects/shsh/slide03.jpg');
 	max-width: 400px;
 	max-height: 500px;
 }
@@ -276,39 +370,64 @@ body, #lightbox .thumbnail {
 	<div id="intro">
 		<span>
 			This is a page only contains videos &amp; screen captures without any context.<br>
-			To read the full case studies associated with each of these images, close this tab.
+			To read the full case studies associated with these projects, close this tab.
 		</span>
 	</div>
 	<div id="thumbnails">
 		<div class="img_ClVr_prototype thumbnail">
+			<span>Clover Health</span>
 			<video poster="assets/details_ClVr_prototype_poster.png" controls loop>
 					<source src="assets/details_ClVr_prototype.mov" type="video/mp4">
 					Sorry, your browser doesn't support this video.
 			</video>
 		</div>
-		<div class="img_SiPo_commercial thumbnail">
-			<video poster="assets/details_SiPo_commercial_poster.png" controls>
-				<source src="assets/details_SiPo_commercial.mp4" type="video/mp4">
-				Sorry, your browser doesn't support this video.
-			</video>
-		</div>
 		<div class="img_SiPo_website thumbnail">
+			<span>Siempo Launcher</span>
 			<video poster="assets/details_SiPo_website2.jpg" controls>
 				<source src="assets/details_SiPo_website.mp4" type="video/mp4">
 				Sorry, your browser doesn't support this video.
 			</video>
 		</div>
-		<div class="img_CaPo_desktop_inventory2 thumbnail"></div>
-		<div class="img_CaPo_desktop_inventory1 thumbnail"></div>
-		<div class="img_CaPo_forms thumbnail"></div>
-		<div class="img_CaPo_mobile_inventory1 thumbnail"></div>
-		<div class="img_CaPo_mobile_inventory2 thumbnail"></div>
-		<div class="img_CaPo_slider thumbnail"></div>
-		<div class="img_FoFi_screenshot1 thumbnail"></div>
-		<div class="img_RoTo_screenshot1 thumbnail"></div>
-		<div class="img_shsh_greg thumbnail"></div>
-		<div class="img_shsh_skate thumbnail"></div>
-		<div class="img_get_ready thumbnail"></div>
+		<div class="img_SiPo_commercial thumbnail">
+			<span>Siempo Launcher</span>
+			<video poster="assets/details_SiPo_commercial_poster.png" controls>
+				<source src="assets/details_SiPo_commercial.mp4" type="video/mp4">
+				Sorry, your browser doesn't support this video.
+			</video>
+		</div>
+		<div class="img_CaPo_desktop_inventory2 thumbnail">
+			<span>Cardpool</span>
+		</div>
+		<div class="img_CaPo_desktop_inventory1 thumbnail">
+			<span>Cardpool</span>
+		</div>
+		<div class="img_CaPo_forms thumbnail">
+			<span>Cardpool</span>
+		</div>
+		<div class="img_CaPo_mobile_inventory1 thumbnail">
+			<span>Cardpool</span>
+		</div>
+		<div class="img_CaPo_mobile_inventory2 thumbnail">
+			<span>Cardpool</span>
+		</div>
+		<div class="img_CaPo_slider thumbnail">
+			<span>Cardpool</span>
+		</div>
+		<div class="img_FoFi_screenshot1 thumbnail">
+			<span>Font Finder</span>
+		</div>
+		<div class="img_RoTo_screenshot1 thumbnail">
+			<span>Rotten Tomatoes</span>
+		</div>
+		<div class="img_shsh_greg thumbnail">
+			<span>Shsh Web</span>
+		</div>
+		<div class="img_shsh_skate thumbnail">
+			<span>Shsh Web</span>
+		</div>
+		<div class="img_get_ready thumbnail">
+			<span>Shsh Web</span>
+		</div>
 	</div>
 	<div id="lightbox">
 	</div>
