@@ -1,435 +1,138 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-<!-- Google Analytics -->
-<script>
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-52293845-1', 'auto');
-	ga('send', 'pageview');
-</script>
-<script async
-	src='https://www.google-analytics.com/analytics.js'></script>
-<!-- End Google Analytics -->
-<title>Mattthew: Full stack product design leader, storyteller, artist</title>
-<meta
-	name="description"
-	content="View Mattthew's portolio of product designs, UX, and interactive moving images. Mattthew is a full stack product design leader, storyteller, and artist based in San Francisco.">
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=UTF-8" />
-<meta
-	id="deviceViewPort"
-	name="viewport"
-	content="width=device-width">
-<!--
-<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:100,200,300" rel="stylesheet">
--->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-<script
-	src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous">
-</script>
-<script>
-	WebFont.load({
-		google: {
-			families: ['Crimson Text:400','Work Sans:100,200,300']
-		}
-	});
-
-	$(document).ready(function() {
-
-  		$('#thumbnails .thumbnail').click(function(e) {
-  			$('#lightbox').css('display','block');
-  			var $el = $(this).clone();
-  			$('#lightbox').html($el);
-  			return false;
-  		});
-
-  		$('#lightbox').click(function(e) {
-  			if (!$(e.target).closest('.thumbnail').length) {
-	  			$('#lightbox').css('display','');
-	  		}
-  		});
-
-  		$(document).keyup(function(e) {
-			if (e.keyCode === 27) {
-				// esc
-	  			$('#lightbox').css('display','');
+	<!-- Google Analytics -->
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-52293845-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+	<!-- End Google Analytics -->
+	<title>Mattthew: Full stack product design leader, storyteller, artist</title>
+	<meta name="description" content="View Mattthew's portolio of product designs, UX, and interactive moving images. Mattthew is a full stack product design leader, storyteller, and artist based in San Francisco.">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta id="deviceViewPort" name="viewport" content="width=device-width">
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+	</script>
+	<script>
+		WebFont.load({
+			google: {
+				families: ['Crimson Text:400','Work Sans:100,200,300']
 			}
 		});
 
-	});
-
-</script>
-<style type="text/css">
-/* ALL AND WIDTH 900px */
-
-html,
-body {
-	padding: 0;
-	margin: 0;
-	background: linear-gradient(177deg,
-	  hsl(0deg 0% 80%) 12%,
-	  hsl(0deg 0% 85%) 12%,
-	  hsl(0deg 0% 80%) 31%);
-	font-family: 'Work Sans', 'Helvetica', sans-serif;
-	font-size: 24px;
-	color: hsl(0 0% 40% / 1);
-}
-
-body, #lightbox .thumbnail {
-	cursor: url('assets/cursor@1x.png') 32 32, auto;
-	cursor: -webkit-image-set( url('assets/cursor@1x.png') 1x, url('assets/cursor@2x.png') 2x ) 32 32, auto;
-}
-
-#intro {
-	padding: 20px 0 10px 20px;
-	line-height: 150%;
-}
-
-#thumbnails {
-	padding-top: 20px;
-	padding-left: 20px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	max-width: 960px;
-}
-
-.thumbnail {
-	margin-right: 20px;
-	margin-bottom: 20px;
-	width: 300px;
-	height: 300px;
-	overflow: hidden;
-	border-radius: 150px;
-	background: hsl(0deg 0% 60%);
-	background-size: cover;
-	box-shadow: 0 5px 10px 0px hsl(0deg 0% 0% / 20%);
-	transition: border-radius 200ms ease-out;
-}
-
-.thumbnail:hover {
-	border-radius: 2px;
-}
-
-.thumbnail span {
-    display: inline-block;
-    padding: 10px 14px;
-    position: relative;
-    top: 0;
-    font-weight: bold;
-	opacity: 0;
-    transition: opacity 200ms;
-}
-
-#thumbnails .thumbnail:hover span {
-    z-index: 1;
-	opacity: 1;
-}
-
-#thumbnails .thumbnail, video, #lightbox {
-	cursor: url('assets/pointer@1x.png') 38 32, auto;
-	cursor: -webkit-image-set( url('assets/pointer@1x.png') 1x, url('assets/pointer@2x.png') 2x ) 38 32, auto;
-}
-
-#lightbox {
-	display: none;
-	opacity: 0;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: hsl(0deg 0% 0% / 70%);
-	transition: opacity 200ms;
-}
-
-#lightbox:hover {
-	opacity: 1;
-}
-
-#lightbox .thumbnail {
-	position: relative;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 80%;
-    border-radius: 8px;
-    transform-origin: center;
-    box-shadow: 0 10px 40px 0px hsl(0deg 0% 0% / 50%);
-    transform: translate(-50%, -50%) scale(1.1);
-    transition: transform 100ms ease-out;
-}
-
-#lightbox:hover .thumbnail {
-    transform: translate(-50%, -50%) scale(1.0);
-}
-
-#lightbox span {
-	display: none;
-}
-
-/*
-
-
-
-
-
-
-*/
-
-#thumbnails .img_ClVr_prototype span {
-	color: hsl(170deg 74% 25%);
-	background: white;
-}
-
-#thumbnails .img_SiPo_commercial span {
-	color: black;
-	background: white;
-}
-
-#thumbnails .img_SiPo_website span {
-	color: red;
-	background: black;
-}
-
-#thumbnails .img_CaPo_desktop_inventory2 span,
-#thumbnails .img_CaPo_desktop_inventory1 span,
-#thumbnails .img_CaPo_forms span {
-	color: hsl(210 90% 48%);
-	background: white;
-}
-
-#thumbnails .img_CaPo_mobile_inventory1 span,
-#thumbnails .img_CaPo_mobile_inventory2 span,
-#thumbnails .img_CaPo_slider span {
-	color: white;
-	background: hsl(343deg 61% 40%);
-}
-
-#thumbnails .img_FoFi_screenshot1 span,
-#thumbnails .img_RoTo_screenshot1 span,
-#thumbnails .img_shsh_greg span {
-	color: hsl(0deg 0% 40%);
-	background: white;
-}
-
-#thumbnails .img_shsh_skate span {
-	color: hsl(0deg 0% 100%);
-    background: hsl(24deg 96% 41%);
-}
-
-#thumbnails .img_get_ready span {
-    color: hsl(0deg 0% 100%);
-    background: hsl(0deg 0% 60%);
-}
-
-/*
-
-
-
-
-
-
-*/
-
-#thumbnails .img_ClVr_prototype video {
-	height: 324px;
-	position: relative;
-    top: -48px;
-}
-
-#lightbox .img_ClVr_prototype, #lightbox .img_ClVr_prototype video {
-	width: 800px;
-	height: 508px;
-}
-
-#thumbnails .img_SiPo_commercial video {
-	position: relative;
-    height: 532px;
-    top: -208px;
-}
-
-#lightbox .img_SiPo_commercial, #lightbox .img_SiPo_commercial video {
-	width: 375px;
-	height: 668px;
-}
-
-#thumbnails .img_SiPo_website video {
-	width: 300px;
-	height: 390px;
-	position: relative;
-	top: -90px;
-}
-
-#lightbox .img_SiPo_website, #lightbox .img_SiPo_website video {
-	width: 600px;
-	height: 600px;
-	background-color: black;
-}
-
-.img_FoFi_screenshot1 {
-	background-image: url('assets/details_FoFi_screenshot1.png');
-}
-
-#lightbox .img_FoFi_screenshot1 {
-	max-width: 900px;
-	max-height: 546px;
-}
-
-.img_CaPo_desktop_inventory1 {
-	background-image: url('assets/details_CaPo_desktop_inventory1.jpg');
-}
-
-.img_CaPo_desktop_inventory2 {
-	background-image: url('assets/details_CaPo_desktop_inventory2.jpg');
-}
-
-#lightbox .img_CaPo_desktop_inventory1, #lightbox .img_CaPo_desktop_inventory2 {
-	max-width: 510px;
-	max-height: 420px;
-}
-
-.img_CaPo_forms {
-	background-image: url('assets/details_CaPo_forms.png');
-}
-
-#lightbox .img_CaPo_forms {
-	max-width: 550px;
-	max-height: 800px;
-}
-
-.img_CaPo_mobile_inventory1 {
-	background-image: url('assets/details_CaPo_mobile_inventory1.jpg');
-}
-
-.img_CaPo_mobile_inventory2 {
-	background-image: url('assets/details_CaPo_mobile_inventory2.jpg');
-}
-
-#lightbox .img_CaPo_mobile_inventory1, #lightbox .img_CaPo_mobile_inventory2 {
-	max-width: 750px;
-	max-height: 395px;
-}
-
-.img_CaPo_slider {
-	background-image: url('assets/details_CaPo_slider.jpg');
-}
-
-#lightbox .img_CaPo_slider {
-	max-width: 375px;
-	max-height: 672px;
-}
-
-.img_RoTo_screenshot1 {
-	background-image: url('assets/details_RoTo_screenshot1.png');
-}
-
-#lightbox .img_RoTo_screenshot1 {
-	max-width: 640px;
-	max-height: 400px;
-}
-
-.img_get_ready {
-	background-image: url('side_projects/assets/getReadyBG.png');
-}
-
-#lightbox .img_get_ready {
-	max-width: 500px;
-	max-height: 400px;
-}
-
-.img_shsh_greg {
-	background-image: url('side_projects/shsh/slide02.jpg');
-}
-
-#lightbox .img_shsh_greg {
-	max-width: 375px;
-	max-height: 450px;
-}
-
-#thumbnails .img_shsh_skate {
-	background-image: url('side_projects/shsh/slide03.jpg');
-	background-size: 310px;
-    background-position: -4px;
-}
-
-#lightbox .img_shsh_skate {
-	background-image: url('side_projects/shsh/slide03.jpg');
-	max-width: 400px;
-	max-height: 500px;
-}
-
-</style>
-
+		$(document).ready(function() {
+
+	  		$('#thumbnails .thumbnail').click(function(e) {
+	  			$('#lightbox').css('display','block');
+	  			var $el = $(this).clone();
+	  			$('#lightbox').html($el);
+	  			return false;
+	  		});
+
+	  		$('#lightbox').click(function(e) {
+	  			if (!$(e.target).closest('.thumbnail').length) {
+		  			$('#lightbox').css('display','');
+		  		}
+	  		});
+
+	  		$(document).keyup(function(e) {
+				if (e.keyCode === 27) {
+					// esc
+		  			$('#lightbox').css('display','');
+				}
+			});
+
+		});
+	</script>
+	<link href="assets/screen_caps.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-	<div id="intro">
-		<span>
-			This is a page only contains videos &amp; screen captures without any context.<br>
-			To read the full case studies associated with these projects, close this tab.
-		</span>
+	<div id="frame">
+		<div id="content">
+			<div id="intro">
+				<span>
+					This is a page only contains videos &amp; screen captures without any context.<br>
+					To read the full case studies associated with these projects, close this tab.<br>
+					Case Studies for three 2020 projects are not yet available.
+				</span>
+			</div>
+			<div id="thumbnails">
+				<div class="img_Sens_filters thumbnail video">
+					<span>2020 Projects</span>
+					<video poster="assets/details_Sens_filters.png" controls loop>
+						<source src="assets/details_Sens_filters.mp4" type="video/mp4">
+						Sorry, your browser doesn't support this video.
+					</video>
+				</div>
+				<div class="img_Sens_analytics thumbnail">
+					<span>2020 Projects</span>
+				</div>
+				<div class="img_Sens_calendar thumbnail">
+					<span>2020 Projects</span>
+				</div>
+				<div class="img_ClVr_prototype thumbnail video">
+					<span>Clover Health</span>
+					<video poster="assets/details_ClVr_prototype_poster.png" controls loop>
+						<source src="assets/details_ClVr_prototype.mov" type="video/mp4">
+						Sorry, your browser doesn't support this video.
+					</video>
+				</div>
+				<div class="img_SiPo_website thumbnail video">
+					<span>Siempo Launcher</span>
+					<video poster="assets/details_SiPo_website2.jpg" controls>
+						<source src="assets/details_SiPo_website.mp4" type="video/mp4">
+						Sorry, your browser doesn't support this video.
+					</video>
+				</div>
+				<div class="img_SiPo_commercial thumbnail video">
+					<span>Siempo Launcher</span>
+					<video poster="assets/details_SiPo_commercial_poster.png" controls>
+						<source src="assets/details_SiPo_commercial.mp4" type="video/mp4">
+						Sorry, your browser doesn't support this video.
+					</video>
+				</div>
+				<div class="img_CaPo_desktop_inventory2 thumbnail">
+					<span>Cardpool</span>
+				</div>
+				<div class="img_CaPo_desktop_inventory1 thumbnail">
+					<span>Cardpool</span>
+				</div>
+				<div class="img_CaPo_forms thumbnail">
+					<span>Cardpool</span>
+				</div>
+				<div class="img_CaPo_mobile_inventory1 thumbnail">
+					<span>Cardpool</span>
+				</div>
+				<div class="img_CaPo_mobile_inventory2 thumbnail">
+					<span>Cardpool</span>
+				</div>
+				<div class="img_CaPo_slider thumbnail">
+					<span>Cardpool</span>
+				</div>
+				<div class="img_FoFi_screenshot1 thumbnail">
+					<span>Font Finder</span>
+				</div>
+				<div class="img_RoTo_screenshot1 thumbnail">
+					<span>Rotten Tomatoes</span>
+				</div>
+				<div class="img_ShSh_greg thumbnail">
+					<span>Shsh Web</span>
+				</div>
+				<div class="img_ShSh_skate thumbnail">
+					<span>Shsh Web</span>
+				</div>
+				<div class="img_ShSh_getready thumbnail">
+					<span>Shsh Web</span>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div id="thumbnails">
-		<div class="img_ClVr_prototype thumbnail">
-			<span>Clover Health</span>
-			<video poster="assets/details_ClVr_prototype_poster.png" controls loop>
-					<source src="assets/details_ClVr_prototype.mov" type="video/mp4">
-					Sorry, your browser doesn't support this video.
-			</video>
-		</div>
-		<div class="img_SiPo_website thumbnail">
-			<span>Siempo Launcher</span>
-			<video poster="assets/details_SiPo_website2.jpg" controls>
-				<source src="assets/details_SiPo_website.mp4" type="video/mp4">
-				Sorry, your browser doesn't support this video.
-			</video>
-		</div>
-		<div class="img_SiPo_commercial thumbnail">
-			<span>Siempo Launcher</span>
-			<video poster="assets/details_SiPo_commercial_poster.png" controls>
-				<source src="assets/details_SiPo_commercial.mp4" type="video/mp4">
-				Sorry, your browser doesn't support this video.
-			</video>
-		</div>
-		<div class="img_CaPo_desktop_inventory2 thumbnail">
-			<span>Cardpool</span>
-		</div>
-		<div class="img_CaPo_desktop_inventory1 thumbnail">
-			<span>Cardpool</span>
-		</div>
-		<div class="img_CaPo_forms thumbnail">
-			<span>Cardpool</span>
-		</div>
-		<div class="img_CaPo_mobile_inventory1 thumbnail">
-			<span>Cardpool</span>
-		</div>
-		<div class="img_CaPo_mobile_inventory2 thumbnail">
-			<span>Cardpool</span>
-		</div>
-		<div class="img_CaPo_slider thumbnail">
-			<span>Cardpool</span>
-		</div>
-		<div class="img_FoFi_screenshot1 thumbnail">
-			<span>Font Finder</span>
-		</div>
-		<div class="img_RoTo_screenshot1 thumbnail">
-			<span>Rotten Tomatoes</span>
-		</div>
-		<div class="img_shsh_greg thumbnail">
-			<span>Shsh Web</span>
-		</div>
-		<div class="img_shsh_skate thumbnail">
-			<span>Shsh Web</span>
-		</div>
-		<div class="img_get_ready thumbnail">
-			<span>Shsh Web</span>
-		</div>
-	</div>
-	<div id="lightbox">
-	</div>
+	<div id="lightbox"></div>
 </body>
+
 </html>
