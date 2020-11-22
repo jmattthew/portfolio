@@ -17,12 +17,75 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
 	</script>
+	<script type="text/javascript" src="assets/details_Sens_analytics_enc.js"></script>
 	<script>
 		WebFont.load({
 			google: {
 				families: ['Crimson Text:400','Work Sans:100,200,300']
 			}
 		});
+
+		// code from https://github.com/bradyjoslin/webcrypto-example/blob/master/script.js
+		const base64_to_buf = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
+		const enc = new TextEncoder();
+		const dec = new TextDecoder();
+		const getPasswordKey = (password) => window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey",]);
+		const deriveKey = (passwordKey, salt, keyUsage) =>
+			window.crypto.subtle.deriveKey(
+				{
+					name: "PBKDF2",
+					salt: salt,
+					iterations: 250000,
+					hash: "SHA-256",
+				},
+				passwordKey,
+				{
+					name: "AES-GCM",
+					length: 256
+				},
+				false,
+				keyUsage
+			);
+
+		async function decryptData(encryptedData, password) {
+			try {
+				const encryptedDataBuff = base64_to_buf(encryptedData);
+				const salt = encryptedDataBuff.slice(0, 16);
+				const iv = encryptedDataBuff.slice(16, 16 + 12);
+				const data = encryptedDataBuff.slice(16 + 12);
+				const passwordKey = await getPasswordKey(password);
+				const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
+				const decryptedContent = await window.crypto.subtle.decrypt(
+				{
+					name: "AES-GCM",
+					iv: iv,
+				},
+					aesKey,
+					data
+				);
+				return dec.decode(decryptedContent);
+			} catch (e) {
+				console.log(`Error - ${e}`);
+				return "";
+			}
+		}
+
+		async function insertEncryptedBG(encryptedData,pw,$el) {
+			const password = pw;
+			const decryptedData = await decryptData(encryptedData, password);
+	  		$el.css('background-image', 'url("data:image/png;base64,' + decryptedData + '")');
+		}
+
+		function findGetParameter(parameterName) {
+		    var result = null,
+		        tmp = [];
+		    var items = location.search.substr(1).split("&");
+		    for (var index = 0; index < items.length; index++) {
+		        tmp = items[index].split("=");
+		        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+		    }
+		    return result;
+		}
 
 		$(document).ready(function() {
 
@@ -46,7 +109,15 @@
 				}
 			});
 
+	  		if(!findGetParameter('pw')) {
+	  			$('.img_Sens_analytics').css('display','none');
+	  		} else {
+		  		pw = findGetParameter('pw');
+				insertEncryptedBG(details_Sens_analytics_enc,pw,$('.img_Sens_analytics'));
+	  		}
+
 		});
+
 	</script>
 	<link href="assets/screen_caps.css" rel="stylesheet" type="text/css">
 </head>

@@ -179,10 +179,6 @@ video,
 	height: 776px;
 }
 
-.img_Sens_analytics {
-	background-image: url('details_Sens_analytics.png');
-}
-
 #lightbox .img_Sens_analytics {
 	max-width: 776px;
 	max-height: 804px;
