@@ -157,6 +157,15 @@ video,
 	display: none;
 }
 
+.protected {
+	display: none;
+}
+
+#enter_password {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
 /**/
 /****/
 /******/

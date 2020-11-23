@@ -62,7 +62,10 @@ function navigateToHash() {
 			page = h;
 			sendGaEvent('hash','navigation','#'+h);
 		} else {
-			if(h == 'Clover') {
+			if(h == 'Sense') {
+				$activeProject = $('#project_Sens');
+				validProject = true;
+			} else if(h == 'Clover') {
 				$activeProject = $('#project_ClVr');
 				validProject = true;
 			} else if(h == 'Siempo') {
@@ -196,7 +199,8 @@ function hideStack() {
 	TweenMax.to('#home_start', 0.5, {
 		delay : thisDelay,
 		'opacity' : 1
-	});}
+	});
+}
 
 function highlightSkill($skill) {
 	var twinSkills, offsetY;
@@ -285,24 +289,26 @@ function filterProjects($skill) {
 
 	$('.project').css('display','none');
 	$('.tab').css('display','');
-	$('.tab').removeClass('tab_1 tab_2 tab_3 tab_4 hoverable')
+	$('.tab').removeClass('tab_1 tab_2 tab_3 tab_4 hoverable selected')
 	// hide tabs not relevant to selected skill
 	// hide all projects except 1st for this skill
 	id = $skill.attr('id');
 	if(id == 'skill_strategy') {
-		$('#tab_ClVr').addClass('tab_1 selected');
-		$('#tab_SiPo').addClass('tab_2 hoverable');
-		$('#tab_CaPo').addClass('tab_3 hoverable');
-		$('#tab_CoSu').addClass('tab_4 hoverable');
+		$('#tab_Sens').addClass('tab_1 selected');
+		$('#tab_ClVr').addClass('tab_2 hoverable');
+		$('#tab_SiPo').addClass('tab_3 hoverable');
+		$('#tab_CaPo').addClass('tab_4 hoverable');
+		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
 		$('#tab_FoFi').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_ClVr');
+		$activeProject = $('#project_Sens');
 	} else if(id == 'skill_research') {
 		$('#tab_ClVr').addClass('tab_1 selected');
 		$('#tab_SiPo').addClass('tab_2 hoverable');
 		$('#tab_CaPo').addClass('tab_3 hoverable');
 		$('#tab_RoTo').addClass('tab_4 hoverable');
+		$('#tab_Sens').css('display','none');
 		$('#tab_CoSu').css('display','none');
 		$('#tab_FoFi').css('display','none');
 		$('#tab_TaGe').css('display','none');
@@ -312,24 +318,27 @@ function filterProjects($skill) {
 		$('#tab_CaPo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_TaGe').addClass('tab_4 hoverable');
+		$('#tab_Sens').css('display','none');
 		$('#tab_ClVr').css('display','none');
 		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
 		$activeProject = $('#project_SiPo');
 	} else if(id == 'skill_visual') {
-		$('#tab_SiPo').addClass('tab_1 selected');
-		$('#tab_CaPo').addClass('tab_2 hoverable');
-		$('#tab_FoFi').addClass('tab_3 hoverable');
+		$('#tab_Sens').addClass('tab_1 selected');
+		$('#tab_SiPo').addClass('tab_2 hoverable');
+		$('#tab_CaPo').addClass('tab_3 hoverable');
+		$('#tab_FoFi').addClass('tab_4 hoverable');
 		$('#tab_ClVr').css('display','none');
 		$('#tab_CoSu').css('display','none');
 		$('#tab_RoTo').css('display','none');
 		$('#tab_TaGe').css('display','none');
-		$activeProject = $('#project_SiPo');
+		$activeProject = $('#project_Sens');
 	} else if(id == 'skill_prototypes') {
 		$('#tab_SiPo').addClass('tab_1 selected');
 		$('#tab_RoTo').addClass('tab_2 hoverable');
 		$('#tab_FoFi').addClass('tab_3 hoverable');
 		$('#tab_TaGe').addClass('tab_4 hoverable');
+		$('#tab_Sens').css('display','none');
 		$('#tab_ClVr').css('display','none');
 		$('#tab_CaPo').css('display','none');
 		$('#tab_CoSu').css('display','none');
@@ -341,10 +350,10 @@ function filterProjects($skill) {
 	/*
 	Menu tree:
 		skill_strategy
+			Sens
 			Clover
 			Siempo
 			Cardpool
-			CouchSurfing
 		skill_research
 			Clover
 			Siempo
@@ -356,6 +365,7 @@ function filterProjects($skill) {
 			Font finder
 			Tactile Generator
 		skill_visual
+			Sense
 			Siempo
 			Cardpool
 			Font finder
@@ -573,13 +583,12 @@ function revealDetails() {
 
 	id = $activeProject.attr('id');
 	id = id.substring(id.indexOf('_')+1,id.length);
-	$('.tab').removeClass('selected');
 	$('body').addClass('viewit viewit_' + id);
 	id = '#details_' + id;
 	$detailSkill = $(id).find('.'+skill);
 	$scroller = $(id).find('.scroller');
 
-	s = 1;
+	s = 0.5;
 	$(id).css('display','block');
 	TweenMax.to(id, s, {
 		delay : s*0.75,
@@ -765,7 +774,7 @@ function moveFloatBoxes($scroller,speed) {
 					}
 				} else if(top > scrollHigh && top < scrollLow && moveTo!='visible') {
 					// move box to onscreen center in direction
-					$box.data('moveTo','visible')
+					$box.data('moveTo','visible');
 					TweenMax.to($box, s, {
 						[direction]: '50%',
 						ease : Back.easeOut.config(1),
@@ -840,13 +849,41 @@ function resizeFloatTargets($scroller) {
 	}
 }
 
-function narrowScreenImages() {
-	var id;
+function maximizeFloatBox($box) {
+	if(!narrowScreen) {
+		if($box.data('maximized')) {
+			$box.css('width','');
+			$box.css('height','');
+			$box.css('left','');
+			$box.data('maximized',false);
+		} else {
+			var bw = $box.outerWidth()-40;
+			var bh = $box.outerHeight()-40;
+			var ww = $(window).width();
+			var wh = $(window).height();
+			var r = 0;
+			if(bw > bh) {
+				r = bh/bw;
+				$box.css('left',0);
+				$box.css('width',ww-40);
+				$box.css('height',Math.round((ww-40)*r));
+			} else {
+				r = bw/bh;
+				$box.css('width',Math.round((wh-40)*r));
+				$box.css('height',wh-40);
+			}
+			$box.data('maximized',true);
+		}
+	}
+}
 
+function narrowScreenImages(project) {
+	var id;
+	if(!project) { var project = ''; }
 	if(narrowScreen) {
 		// instead of animating the details image onto screen
 		// insert them inline so that user must scroll past them
-		$('.float_target').each(function(){
+		$(project + '.float_target').each(function(){
 			id = $(this).attr('id');
 			id = '#img' + id.substring(1,id.length);
 			$(this).replaceWith($(id));
@@ -1189,6 +1226,16 @@ function bindEvents() {
 		window.history.pushState(null, null, 'index.html');
 		return false;
 	});
+	$('body').keyup(function(event) {
+		if(event.keyCode == 27) {
+			hideDetails();
+			showStackButton();
+			lastPage = page;
+			page = 'projects';
+			sendGaEvent('back','details closer','from ' + window.location.hash);
+			window.history.pushState(null, null, 'index.html');
+		}
+	});
 	$('.scroller').scroll(function() {
 		moveFloatBoxes($(this),getFloatBoxSpeed($(this)));
 		updateScrollIndicator($(this));
@@ -1241,6 +1288,9 @@ function bindEvents() {
 				});
 			}
 		}
+	});
+	$('.float_box').not('.ga_event_out').click(function(event) {
+		maximizeFloatBox($(this));
 	});
 	$('.ga_event_out').click(function(event) {
 		var parent, children, count, link;
@@ -1329,6 +1379,170 @@ function bindEvents() {
 			lastPage = page;
 		}
 		return false;
+	});
+	$('#enter_password').click(function() {
+		insertDecryptedContent();
+		return false;
+	});
+}
+
+/**/
+/****/
+/******/
+/********/
+/**********/
+/************/
+/**************/
+/****************/
+/* PASSWORD PROTECTED CONTENT */
+
+// code from https://github.com/bradyjoslin/webcrypto-example/blob/master/script.js
+const base64_to_buf = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
+const enc = new TextEncoder();
+const dec = new TextDecoder();
+const getPasswordKey = (password) => window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey",]);
+const deriveKey = (passwordKey, salt, keyUsage) =>
+	window.crypto.subtle.deriveKey(
+		{
+			name: "PBKDF2",
+			salt: salt,
+			iterations: 250000,
+			hash: "SHA-256",
+		},
+		passwordKey,
+		{
+			name: "AES-GCM",
+			length: 256
+		},
+		false,
+		keyUsage
+	);
+
+async function decryptData(encryptedData, password) {
+  try {
+	const encryptedDataBuff = base64_to_buf(encryptedData);
+	const salt = encryptedDataBuff.slice(0, 16);
+	const iv = encryptedDataBuff.slice(16, 16 + 12);
+	const data = encryptedDataBuff.slice(16 + 12);
+	const passwordKey = await getPasswordKey(password);
+	const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
+	const decryptedContent = await window.crypto.subtle.decrypt(
+	  {
+		name: "AES-GCM",
+		iv: iv,
+	  },
+	  aesKey,
+	  data
+	);
+	return dec.decode(decryptedContent);
+  } catch (e) {
+	console.log(`Error - ${e}`);
+	return "";
+  }
+}
+
+async function insertDecryptedContent() {
+	var decryptedCount = 0;
+	const pw = window.prompt('Enter password:');
+	const caseStudySensDec = await decryptData(caseStudySensEnc, pw);
+	if(caseStudySensDec) {
+		decryptedCount++;
+		$('#details_Sens .case_study').html(caseStudySensDec);
+	}
+	var id = '';
+	var $float = $('<div>');
+	$float.addClass('float_box');
+	$float.append('<div>');
+	const detailsSensAnalyticsOldDec = await decryptData(detailsSensAnalyticsOldEnc, pw);
+	if(detailsSensAnalyticsOldDec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics_Old';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalyticsOldDec;
+		img.alt = 'Design of Sense analytics page before this project began';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalyticsExplore1Dec = await decryptData(detailsSensAnalyticsExplore1Enc, pw);
+	if(detailsSensAnalyticsExplore1Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics_Explore1';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalyticsExplore1Dec;
+		img.alt = 'Early lo-fidelity mockups of potential analtyics components';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalyticsExplore2Dec = await decryptData(detailsSensAnalyticsExplore2Enc, pw);
+	if(detailsSensAnalyticsExplore2Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics_Explore2';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalyticsExplore2Dec;
+		img.alt = 'Another interation of components, at higher fidelity';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalyticsExplore3Dec = await decryptData(detailsSensAnalyticsExplore3Enc, pw);
+	if(detailsSensAnalyticsExplore3Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics_Explore3';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalyticsExplore3Dec;
+		img.alt = 'Another iteration of components, reducing complexity';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalyticsExplore4Dec = await decryptData(detailsSensAnalyticsExplore4Enc, pw);
+	if(detailsSensAnalyticsExplore4Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics_Explore4';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalyticsExplore4Dec;
+		img.alt = 'Exploration of line chart component';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalyticsExplore5Dec = await decryptData(detailsSensAnalyticsExplore5Enc, pw);
+	if(detailsSensAnalyticsExplore5Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics_Explore5';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalyticsExplore5Dec;
+		img.alt = 'Nearly finalized analytics components';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalytics1Dec = await decryptData(detailsSensAnalytics1Enc, pw);
+	if(detailsSensAnalytics1Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics1';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalytics1Dec;
+		img.alt = 'Final design of analtyics page at project completion';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalytics2Dec = await decryptData(detailsSensAnalytics2Enc, pw);
+	if(detailsSensAnalytics2Dec) {
+		decryptedCount++;
+		$('#' + id).find('div').css('backgroundImage','url(data:image/png;base64,' + detailsSensAnalytics2Dec + ')');
+	}
+	if(decryptedCount<9) {
+		alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
+	}
+	$scroller = $('#details_Sens .scroller');
+	resizeFloatTargets($scroller);
+	narrowScreenImages('#details_Sens '); // space after id is intentional
+	$('#details_Sens .float_box').not('.ga_event_out').click(function(event) {
+		maximizeFloatBox($(this));
 	});
 }
 
