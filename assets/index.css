@@ -24,7 +24,7 @@ body {
 }
 */
 
-a, button, .hoverable {
+a, button, .hoverable, .float_box {
 	cursor: url('pointer@1x.png') 38 32, auto;
 	cursor: -webkit-image-set( url('pointer@1x.png') 1x, url('pointer@2x.png') 2x ) 38 32, auto;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -1175,14 +1175,13 @@ input:-webkit-autofill:active {
 	background-color: white;
 }
 
-.viewit #home .content,
-.viewit .project > div {
+.viewit #home .content {
 	background-image: none;
 }
 
-.viewit .project,
-.viewit .project > div {
-	background-color: transparent;
+.viewit .project {
+	background-image: none;
+	box-shadow: none;
 }
 
 .viewit #skill_stack,
@@ -1219,6 +1218,63 @@ input:-webkit-autofill:active {
 /**************/
 /****************/
 /* PROJECT COLORS */
+
+/**/
+/****/
+/******/
+/* Sens */
+
+#details_Sens,
+#details_Sens .float_box,
+.viewit.viewit_Sens #home,
+.viewit.viewit_Sens #navigation a {
+	/* brand color */
+	background-color: hsl(177, 40%, 35%);
+}
+
+#details_Sens .sidebar h3,
+#details_Sens .sidebar .description,
+.viewit.viewit_Sens .project h3,
+.viewit.viewit_Sens .project a,
+.viewit.viewit_Sens .project .description,
+.viewit.viewit_Sens #navigation a span,
+.viewit.viewit_Sens #navigation a#back_to_projects span {
+	/* brand color */
+	color: hsl(177, 40%, 35%);
+}
+
+#details_Sens .sidebar svg,
+.viewit.viewit_Sens .project svg,
+.viewit.viewit_Sens #navigation a#back_to_projects svg {
+	/* brand color */
+	stroke: hsl(177, 40%, 35%);
+	fill: hsl(177, 40%, 35%);
+}
+
+#details_Sens .case_study,
+#details_Sens .case_study a {
+	/* darker, less vibrant color for text */
+	color: hsl(177, 40%, 20%);
+}
+
+#details_Sens .case_study h2,
+#details_Sens .case_study h3 {
+	/* brand color transparent */
+	color: hsla(177, 40%, 35%, 0.6);
+}
+
+#details_Sens .case_study,
+#details_Sens .case_study h2,
+#details_Sens .case_study h3 {
+	/* very light version of brand color */
+	background-color: hsl(177, 20%, 97%);
+}
+
+.viewit.viewit_Sens #navigation a#back_to_projects {
+	/* brand color very transparent */
+	box-shadow:
+		0 0 14px 1px hsla(177, 40%, 35%, 0.2);
+}
 
 /**/
 /****/
@@ -1628,6 +1684,57 @@ input:-webkit-autofill:active {
 /**************/
 /****************/
 /* PROJECT IMAGES */
+
+/**/
+/****/
+/******/
+/* Sens */
+
+#img_Sens_Analytics_Old {
+	width: 485px;
+	height: 300px;
+}
+
+#img_Sens_Analytics_Explore1 {
+	width: 485px;
+	height: 332px;
+}
+
+#img_Sens_Analytics_Explore2 {
+	width: 485px;
+	height: 356px;
+}
+
+#img_Sens_Analytics_Explore3 {
+	width: 485px;
+	height: 327px;
+}
+
+#img_Sens_Analytics_Explore4 {
+	width: 485px;
+	height: 513px;
+}
+
+#img_Sens_Analytics_Explore5 {
+	width: 485px;
+	height: 456px;
+}
+
+#img_Sens_Analytics1 {
+	width: 485px;
+	height: 503px;
+}
+
+#img_Sens_Analytics1 > div {
+	opacity: 0;
+	transition: opacity 250ms 0ms;
+}
+
+#img_Sens_Analytics1:hover > div {
+	opacity: 1;
+	transition: opacity 250ms 100ms;
+}
+
 
 /**/
 /****/

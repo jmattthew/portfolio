@@ -17,7 +17,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
 	</script>
-	<script type="text/javascript" src="assets/details_Sens_analytics_enc.js"></script>
+	<script type="text/javascript" src="assets/details_Sens_analytics2_enc.js"></script>
 	<script>
 		WebFont.load({
 			google: {
@@ -73,18 +73,13 @@
 		async function insertEncryptedBG(encryptedData,pw,$el) {
 			const password = pw;
 			const decryptedData = await decryptData(encryptedData, password);
-	  		$el.css('background-image', 'url("data:image/png;base64,' + decryptedData + '")');
-		}
-
-		function findGetParameter(parameterName) {
-		    var result = null,
-		        tmp = [];
-		    var items = location.search.substr(1).split("&");
-		    for (var index = 0; index < items.length; index++) {
-		        tmp = items[index].split("=");
-		        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-		    }
-		    return result;
+			if(decryptedData) {
+		  		$el.css('background-image', 'url("data:image/png;base64,' + decryptedData + '")');
+		  		$el.css('display','block');
+		  		alert('Success!  Thank you.')
+			} else {
+				alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
+			}
 		}
 
 		$(document).ready(function() {
@@ -109,12 +104,12 @@
 				}
 			});
 
-	  		if(!findGetParameter('pw')) {
-	  			$('.img_Sens_analytics').css('display','none');
-	  		} else {
-		  		pw = findGetParameter('pw');
-				insertEncryptedBG(details_Sens_analytics_enc,pw,$('.img_Sens_analytics'));
-	  		}
+  			$('#enter_password').click(function(e) {
+		  		var pw = window.prompt('Enter password');
+		  		if(pw) {
+					insertEncryptedBG(detailsSensAnalytics2Enc,pw,$('.img_Sens_analytics'));
+		  		}
+  			});
 
 		});
 
@@ -127,9 +122,9 @@
 		<div id="content">
 			<div id="intro">
 				<span>
-					This is a page only contains videos &amp; screen captures without any context.<br>
-					To read the full case studies associated with these projects, close this tab.<br>
-					Case Studies for three 2020 projects are not yet available.
+					This is a page only contains videos &amp; screen captures without any context.
+					To read the full case studies associated with these projects, close this tab.
+					If you have a password, tap to <span id="enter_password">Show password protected images</span>.
 				</span>
 			</div>
 			<div id="thumbnails">
@@ -140,7 +135,7 @@
 						Sorry, your browser doesn't support this video.
 					</video>
 				</div>
-				<div class="img_Sens_analytics thumbnail">
+				<div class="img_Sens_analytics thumbnail protected">
 					<span>2020 Projects</span>
 				</div>
 				<div class="img_Sens_calendar thumbnail">
