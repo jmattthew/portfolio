@@ -873,6 +873,7 @@ function maximizeFloatBox($box) {
 				$box.css('height',wh-40);
 			}
 			$box.data('maximized',true);
+			sendGaEvent('forward',skill + ' ' + window.location.hash,$box.attr('id'));
 		}
 	}
 }
@@ -1100,6 +1101,10 @@ function sendGaEvent(category, action, label) {
 		eventAction: action,
 		eventLabel: label
 	});
+	gtag('event', action, {
+		'event_category': category,
+		'event_label': label
+	});
 	//	console.log(category + '-' + action + '-' + label);
 }
 
@@ -1232,7 +1237,7 @@ function bindEvents() {
 			showStackButton();
 			lastPage = page;
 			page = 'projects';
-			sendGaEvent('back','details closer','from ' + window.location.hash);
+			sendGaEvent('back','escape','from ' + window.location.hash);
 			window.history.pushState(null, null, 'index.html');
 		}
 	});
