@@ -1386,7 +1386,8 @@ function bindEvents() {
 		return false;
 	});
 	$('#enter_password').click(function() {
-		insertDecryptedContent();
+		var pw = window.prompt('Enter password:');
+		insertDecryptedContent(pw,'manual');
 		return false;
 	});
 }
@@ -1446,9 +1447,8 @@ async function decryptData(encryptedData, password) {
   }
 }
 
-async function insertDecryptedContent() {
+async function insertDecryptedContent(pw,pwEntryType) {
 	var decryptedCount = 0;
-	const pw = window.prompt('Enter password:');
 	const caseStudySensDec = await decryptData(caseStudySensEnc, pw);
 	if(caseStudySensDec) {
 		decryptedCount++;
@@ -1540,16 +1540,25 @@ async function insertDecryptedContent() {
 		decryptedCount++;
 		$('#' + id).find('div').css('backgroundImage','url(data:image/png;base64,' + detailsSensAnalytics2Dec + ')');
 	}
-	if(decryptedCount<9) {
+	if(decryptedCount<9 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
+	} else {
+		localStorage.setItem('password',pw);
+		$scroller = $('#details_Sens .scroller');
+		resizeFloatTargets($scroller);
+		narrowScreenImages('#details_Sens '); // space after id is intentional
+		$('#details_Sens .float_box').not('.ga_event_out').click(function(event) {
+			maximizeFloatBox($(this));
+		});
 	}
-	$scroller = $('#details_Sens .scroller');
-	resizeFloatTargets($scroller);
-	narrowScreenImages('#details_Sens '); // space after id is intentional
-	$('#details_Sens .float_box').not('.ga_event_out').click(function(event) {
-		maximizeFloatBox($(this));
-	});
 }
+
+$('#last_encoded_file').on('load',function() {
+	if(localStorage.getItem('password')) {
+		var pw = localStorage.getItem('password');
+		insertDecryptedContent(pw,'auto');
+	}
+});
 
 /**/
 /****/

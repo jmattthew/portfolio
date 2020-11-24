@@ -17,7 +17,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
 	</script>
-	<script type="text/javascript" src="assets/details_Sens_analytics2_enc.js"></script>
+	<script id="last_encoded_file" type="text/javascript" src="assets/details_Sens_analytics2_enc.js"></script>
 	<script>
 		WebFont.load({
 			google: {
@@ -70,14 +70,16 @@
 			}
 		}
 
-		async function insertEncryptedBG(encryptedData,pw,$el) {
+		async function insertEncryptedBG(encryptedData,pw,$el,passwordEntryType) {
 			const password = pw;
 			const decryptedData = await decryptData(encryptedData, password);
 			if(decryptedData) {
 		  		$el.css('background-image', 'url("data:image/png;base64,' + decryptedData + '")');
 		  		$el.css('display','block');
-		  		alert('Success!  Thank you.')
-			} else {
+		  		if(passwordEntryType == 'manual') {
+			  		alert('Success!  Thank you.')
+			  	}
+			} else if(passwordEntryType == 'manual') {
 				alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
 			}
 		}
@@ -107,9 +109,15 @@
   			$('#enter_password').click(function(e) {
 		  		var pw = window.prompt('Enter password');
 		  		if(pw) {
-					insertEncryptedBG(detailsSensAnalytics2Enc,pw,$('.img_Sens_analytics'));
+					insertEncryptedBG(detailsSensAnalytics2Enc,pw,$('.img_Sens_analytics'),'manual');
 		  		}
   			});
+
+			if(localStorage.getItem('password')) {
+				var pw = localStorage.getItem('password');
+				console.log(pw);
+				insertEncryptedBG(detailsSensAnalytics2Enc,pw,$('.img_Sens_analytics'),'auto');
+	  		}
 
 		});
 
