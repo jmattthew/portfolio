@@ -743,7 +743,12 @@ function moveFloatBoxes($scroller,speed) {
 							onComplete : function(){
 								// since this.target is #blur
 								// remove all blurs
-								$('.float_box').removeClass('blur');
+								$boxes = $('.float_box');
+								$boxes.removeClass('blur');
+								$boxes.css('width','');
+								$boxes.css('height','');
+								$boxes.css('left','');
+								$boxes.data('maximized',false);
 							}
 						});
 					}
@@ -768,7 +773,12 @@ function moveFloatBoxes($scroller,speed) {
 							onComplete : function(){
 								// since this.target is #blur
 								// remove all blurs
-								$('.float_box').removeClass('blur');
+								$boxes = $('.float_box');
+								$boxes.removeClass('blur');
+								$boxes.css('width','');
+								$boxes.css('height','');
+								$boxes.css('left','');
+								$boxes.data('maximized',false);
 							}
 						});
 					}
@@ -859,18 +869,30 @@ function maximizeFloatBox($box) {
 		} else {
 			var bw = $box.outerWidth()-40;
 			var bh = $box.outerHeight()-40;
+			var bw2 = 0;
+			var bh2 = 0;
 			var ww = $(window).width();
 			var wh = $(window).height();
 			var r = 0;
 			if(bw > bh) {
+				// landscape
 				r = bh/bw;
+				bw2 = ww-40;
+				bh2 = (ww-40)*r;
+				if(bh2 > wh) {
+					bw2 = (wh-40)/r;
+					bh2 = wh-40;
+				}
 				$box.css('left',0);
-				$box.css('width',ww-40);
-				$box.css('height',Math.round((ww-40)*r));
+				$box.css('width',bw2);
+				$box.css('height',Math.round(bh2));
 			} else {
+				// portrait
 				r = bw/bh;
-				$box.css('width',Math.round((wh-40)*r));
-				$box.css('height',wh-40);
+				bw2 = (wh-40)*r
+				bh2 = wh-40;
+				$box.css('width',Math.round(bw2));
+				$box.css('height',bh2);
 			}
 			$box.data('maximized',true);
 			sendGaEvent('forward',skill + ' ' + window.location.hash,$box.attr('id'));
@@ -1233,12 +1255,28 @@ function bindEvents() {
 	});
 	$('body').keyup(function(event) {
 		if(event.keyCode == 27) {
-			hideDetails();
-			showStackButton();
-			lastPage = page;
-			page = 'projects';
-			sendGaEvent('back','escape','from ' + window.location.hash);
-			window.history.pushState(null, null, 'index.html');
+			/* escape */
+			var maximizedFloat = false;
+			$('.float_box').each(function() {
+				if($(this).data('maximized')) {
+					maximizedFloat = $(this);
+					return false;
+				}
+			});
+			console.log(maximizedFloat);
+			if(maximizedFloat) {
+				maximizeFloatBox(maximizedFloat);
+			} else {
+				var confirm = window.confirm('Exit to menu?');
+				if(confirm) {
+					hideDetails();
+					showStackButton();
+					lastPage = page;
+					page = 'projects';
+					sendGaEvent('back','escape','from ' + window.location.hash);
+					window.history.pushState(null, null, 'index.html');
+				}
+			}
 		}
 	});
 	$('.scroller').scroll(function() {
