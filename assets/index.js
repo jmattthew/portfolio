@@ -54,7 +54,6 @@ function navigateToHash() {
 
 	if(h.length>0) {
 		h = h.substring(1,h.length);
-		console.log(h);
 		if(h == 'contact' || h == 'about') {
 			hideStackButton();
 			collapseNavigation();
@@ -957,7 +956,9 @@ function bumpCloseButton($scroller) {
 			TweenMax.delayedCall(1, function(){
 				$el.data('bumping',false);
 				if(!$scroller.data('stopAnims')) {
-					sendGaEvent('forward','scrolled to bottom',window.location.hash);
+					if(window.location.hash.length > 0) {
+						sendGaEvent('forward','scrolled to bottom',window.location.hash);
+					}
 				}
 			});
 		}
@@ -1194,11 +1195,12 @@ function bindEvents() {
 			// page = 'projects' is set
 			// at the end of animation
 			if($(this).is($('#skill_artwork'))) {
-				var link = 'side_projects/sideprojects.html';
-				window.open(link)
+				// var link = 'side_projects/sideprojects.html';
+				// window.open(link)
 			} if($(this).is($('#skill_skip'))) {
 				var link = 'screen_caps.html';
 				window.open(link)
+				sendGaEvent('forward','skill stack','screen_caps');
 				sendGaEvent('forward','project tab','skip');
 			} else {
 				highlightSkill($(this));
@@ -1206,8 +1208,8 @@ function bindEvents() {
 				filterProjects($(this));
 				revealProjects();
 				skill = $(this).attr('id');
+				sendGaEvent('forward','skill stack',skill);
 			}
-			sendGaEvent('forward','skill stack',skill);
 		} else if(page = 'projects') {
 			lastPage = page;
 			page = 'stack';
@@ -1263,7 +1265,6 @@ function bindEvents() {
 					return false;
 				}
 			});
-			console.log(maximizedFloat);
 			if(maximizedFloat) {
 				maximizeFloatBox(maximizedFloat);
 			} else {
@@ -1580,6 +1581,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 	}
 	if(decryptedCount<9 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
+		sendGaEvent('forward','password','failure');
 	} else {
 		localStorage.setItem('password',pw);
 		$scroller = $('#details_Sens .scroller');
@@ -1588,6 +1590,11 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		$('#details_Sens .float_box').not('.ga_event_out').click(function(event) {
 			maximizeFloatBox($(this));
 		});
+		if(pwEntryType == 'manual') {
+			sendGaEvent('forward','password','success manual');
+		} else if(pwEntryType == 'auto') {
+			sendGaEvent('forward','password','success auto');
+		}
 	}
 }
 
