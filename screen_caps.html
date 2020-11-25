@@ -2,7 +2,15 @@
 <html>
 
 <head>
-	<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-0QKB7V88L7"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-0QKB7V88L7');
+	</script>
+	<!-- Google Analytics Universal -->
 	<script>
 		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 		ga('create', 'UA-52293845-1', 'auto');
@@ -24,6 +32,25 @@
 				families: ['Crimson Text:400','Work Sans:100,200,300']
 			}
 		});
+
+		function sendGaEvent(category, action, label) {
+			// categories: 'forward', 'back', 'out'
+			// actions:  what element was interacted with
+			// labels:
+			//     forward:  where the interaction leads to
+			//     back:  where the interaction started from
+			//     out:  outbound url the interaction leads to
+			ga('send', 'event', {
+				eventCategory: category,
+				eventAction: action,
+				eventLabel: label
+			});
+			gtag('event', action, {
+				'event_category': category,
+				'event_label': label
+			});
+			//	console.log(category + '-' + action + '-' + label);
+		}
 
 		// code from https://github.com/bradyjoslin/webcrypto-example/blob/master/script.js
 		const base64_to_buf = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
@@ -78,9 +105,14 @@
 		  		$el.css('display','block');
 		  		if(passwordEntryType == 'manual') {
 			  		alert('Success!  Thank you.')
+		  			sendGaEvent('forward','password','success manual');
+			  	} else if(passwordEntryType == 'auto') {
+		  			sendGaEvent('forward','password','success auto');
 			  	}
+			  	$('#password_prompt').hide();
 			} else if(passwordEntryType == 'manual') {
 				alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
+	  			sendGaEvent('forward','password','failure');
 			}
 		}
 
@@ -90,12 +122,22 @@
 	  			$('#lightbox').css('display','block');
 	  			var $el = $(this).clone();
 	  			$('#lightbox').html($el);
+	  			var labels = $(this)[0].classList;
+	  			var label = '';
+	  			for(var l=0,ll=labels.length; l<ll; l++) {
+	  				if(labels[l].indexOf('img') > -1) {
+	  					label = labels[l];
+	  					break
+	  				}
+	  			}
+	  			sendGaEvent('forward','reveal image screencap',label);
 	  			return false;
 	  		});
 
 	  		$('#lightbox').click(function(e) {
 	  			if (!$(e.target).closest('.thumbnail').length) {
 		  			$('#lightbox').css('display','');
+		  			sendGaEvent('back','close lightbox','click');
 		  		}
 	  		});
 
@@ -103,6 +145,7 @@
 				if (e.keyCode === 27) {
 					// esc
 		  			$('#lightbox').css('display','');
+		  			sendGaEvent('back','close lightbox','escape');
 				}
 			});
 
@@ -115,7 +158,6 @@
 
 			if(localStorage.getItem('password')) {
 				var pw = localStorage.getItem('password');
-				console.log(pw);
 				insertEncryptedBG(detailsSensAnalytics2Enc,pw,$('.img_Sens_analytics'),'auto');
 	  		}
 
@@ -132,76 +174,78 @@
 				<span>
 					This is a page only contains videos &amp; screen captures without any context.
 					To read the full case studies associated with these projects, close this tab.
-					If you have a password, tap to <span id="enter_password">Show password protected images</span>.
+					<span id="password_prompt">
+						If you have a password, tap to <span id="enter_password">Show password protected images</span>.
+					</span>
 				</span>
 			</div>
 			<div id="thumbnails">
 				<div class="img_Sens_filters thumbnail video">
-					<span>2020 Projects</span>
+					<span>Sense '20</span>
 					<video poster="assets/details_Sens_filters.png" controls loop>
 						<source src="assets/details_Sens_filters.mp4" type="video/mp4">
 						Sorry, your browser doesn't support this video.
 					</video>
 				</div>
 				<div class="img_Sens_analytics thumbnail protected">
-					<span>2020 Projects</span>
+					<span>Sense '20</span>
 				</div>
 				<div class="img_Sens_calendar thumbnail">
-					<span>2020 Projects</span>
+					<span>Sense '20</span>
 				</div>
 				<div class="img_ClVr_prototype thumbnail video">
-					<span>Clover Health</span>
+					<span>Clover Health '19</span>
 					<video poster="assets/details_ClVr_prototype_poster.png" controls loop>
 						<source src="assets/details_ClVr_prototype.mov" type="video/mp4">
 						Sorry, your browser doesn't support this video.
 					</video>
 				</div>
 				<div class="img_SiPo_website thumbnail video">
-					<span>Siempo Launcher</span>
+					<span>Siempo Launcher '18</span>
 					<video poster="assets/details_SiPo_website2.jpg" controls>
 						<source src="assets/details_SiPo_website.mp4" type="video/mp4">
 						Sorry, your browser doesn't support this video.
 					</video>
 				</div>
 				<div class="img_SiPo_commercial thumbnail video">
-					<span>Siempo Launcher</span>
+					<span>Siempo Launcher '18</span>
 					<video poster="assets/details_SiPo_commercial_poster.png" controls>
 						<source src="assets/details_SiPo_commercial.mp4" type="video/mp4">
 						Sorry, your browser doesn't support this video.
 					</video>
 				</div>
 				<div class="img_CaPo_desktop_inventory2 thumbnail">
-					<span>Cardpool</span>
+					<span>Cardpool '17</span>
 				</div>
 				<div class="img_CaPo_desktop_inventory1 thumbnail">
-					<span>Cardpool</span>
+					<span>Cardpool '17</span>
 				</div>
 				<div class="img_CaPo_forms thumbnail">
-					<span>Cardpool</span>
+					<span>Cardpool '17</span>
 				</div>
 				<div class="img_CaPo_mobile_inventory1 thumbnail">
-					<span>Cardpool</span>
+					<span>Cardpool '17</span>
 				</div>
 				<div class="img_CaPo_mobile_inventory2 thumbnail">
-					<span>Cardpool</span>
+					<span>Cardpool '17</span>
 				</div>
 				<div class="img_CaPo_slider thumbnail">
-					<span>Cardpool</span>
+					<span>Cardpool '17</span>
 				</div>
 				<div class="img_FoFi_screenshot1 thumbnail">
-					<span>Font Finder</span>
+					<span>Font Finder '17</span>
 				</div>
 				<div class="img_RoTo_screenshot1 thumbnail">
-					<span>Rotten Tomatoes</span>
+					<span>Rotten Tomatoes '16</span>
 				</div>
 				<div class="img_ShSh_greg thumbnail">
-					<span>Shsh Web</span>
+					<span>Shsh Web '06</span>
 				</div>
 				<div class="img_ShSh_skate thumbnail">
-					<span>Shsh Web</span>
+					<span>Shsh Web '06</span>
 				</div>
 				<div class="img_ShSh_getready thumbnail">
-					<span>Shsh Web</span>
+					<span>Shsh Web '06</span>
 				</div>
 			</div>
 		</div>
