@@ -85,6 +85,12 @@ function navigateToHash() {
 			} else if(h == 'Tactile_Generator') {
 				$activeProject = $('#project_TaGe');
 				validProject = true;
+			} else if(h == 'Print') {
+				$activeProject = $('#project_Sens');
+				validProject = true;
+				$('body').addClass('print');
+				$('#home_start h2').html('Product Design<br>Case Studies');
+				$('body').data('print',true);
 			}
 			if(validProject) {
 				skill = 'skill_strategy';
@@ -595,6 +601,11 @@ function revealDetails() {
 	});
 	showDetailsCloseButton(s);
 	resizeFloatTargets($scroller);
+	if($('body').data('print')) {
+		window.setTimeout(function() {
+			moveFloatBoxesForPrinting();
+		},50);
+	}
 	loadIframes($scroller);
 	$scroller.data('stopAnims',true);
 	// Firefox remembers the last scroll position on refresh
@@ -823,9 +834,27 @@ function moveFloatBoxes($scroller,speed) {
 	}
 }
 
+function moveFloatBoxesForPrinting() {
+	var $frames = $('.frame');
+	for(var f=0, fl=$frames.length; f<fl; f++) {
+		var $boxes = $frames.eq(f).find('.float_box');
+		var columnHeight = 500;
+		for(var b=0, bl=$boxes.length; b<bl; b++) {
+			var $box = $boxes.eq(b);
+			var resize = 485/ $box.outerWidth();
+			$box.css('transform','scale('+resize+')');
+			$box.css('top',columnHeight);
+			var height = 0;
+			if($box.css('display') != 'none') {
+				height = $box.outerHeight()*resize;
+			}
+			columnHeight += height + 20;
+		}
+	}
+}
+
 function resizeFloatTargets($scroller) {
 	var $targets = $scroller.find('.float_target');
-
 	// float_targets create blank space in the
 	// paragraph text for the float_box to occupy
 	for(var i=0,il=$targets.length; i<il; i++) {
@@ -864,6 +893,7 @@ function maximizeFloatBox($box) {
 			$box.css('width','');
 			$box.css('height','');
 			$box.css('left','');
+			$box.css('z-index','');
 			$box.data('maximized',false);
 		} else {
 			var bw = $box.outerWidth()-40;
@@ -893,6 +923,7 @@ function maximizeFloatBox($box) {
 				$box.css('width',Math.round(bw2));
 				$box.css('height',bh2);
 			}
+			$box.css('z-index','5');
 			$box.data('maximized',true);
 			sendGaEvent('forward',skill + ' ' + window.location.hash,$box.attr('id'));
 		}
@@ -1183,7 +1214,6 @@ function bindEvents() {
 			}
 		}
 	});
-
 	$('#home_start').click(function() {
 		page = 'stack';
 		showStack();
@@ -1587,6 +1617,9 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		$scroller = $('#details_Sens .scroller');
 		resizeFloatTargets($scroller);
 		narrowScreenImages('#details_Sens '); // space after id is intentional
+		if($('body').data('print')) {
+			moveFloatBoxesForPrinting();
+		}
 		$('#details_Sens .float_box').not('.ga_event_out').click(function(event) {
 			maximizeFloatBox($(this));
 		});
