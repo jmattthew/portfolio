@@ -1527,6 +1527,33 @@ async function insertDecryptedContent(pw,pwEntryType) {
 	var $float = $('<div>');
 	$float.addClass('float_box');
 	$float.append('<div>');
+	const detailsSensAnalytics1Dec = await decryptData(detailsSensAnalytics1Enc, pw);
+	if(detailsSensAnalytics1Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics1';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalytics1Dec;
+		img.alt = 'Final design of analtyics page at project completion';
+		$('#'+id).prepend($(img));
+		//
+		id = 'img_Sens_Analytics3';
+		$float.attr('id',id);
+		$('#details_Sens .content').after($float.clone());
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensAnalytics1Dec;
+		img.alt = 'Final design of analtyics page at project completion';
+		$('#'+id).prepend($(img));
+	}
+	const detailsSensAnalytics2Dec = await decryptData(detailsSensAnalytics2Enc, pw);
+	if(detailsSensAnalytics2Dec) {
+		decryptedCount++;
+		id = 'img_Sens_Analytics1';
+		$('#' + id).find('div').css('backgroundImage','url(data:image/png;base64,' + detailsSensAnalytics2Dec + ')');
+		id = 'img_Sens_Analytics3';
+		$('#' + id).find('div').css('backgroundImage','url(data:image/png;base64,' + detailsSensAnalytics2Dec + ')');
+	}
 	const detailsSensAnalyticsOldDec = await decryptData(detailsSensAnalyticsOldEnc, pw);
 	if(detailsSensAnalyticsOldDec) {
 		decryptedCount++;
@@ -1592,22 +1619,6 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.src = 'data:image/png;base64,' + detailsSensAnalyticsExplore5Dec;
 		img.alt = 'Nearly finalized analytics components';
 		$('#'+id).prepend($(img));
-	}
-	const detailsSensAnalytics1Dec = await decryptData(detailsSensAnalytics1Enc, pw);
-	if(detailsSensAnalytics1Dec) {
-		decryptedCount++;
-		id = 'img_Sens_Analytics1';
-		$float.attr('id',id);
-		$('#details_Sens .content').after($float.clone());
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensAnalytics1Dec;
-		img.alt = 'Final design of analtyics page at project completion';
-		$('#'+id).prepend($(img));
-	}
-	const detailsSensAnalytics2Dec = await decryptData(detailsSensAnalytics2Enc, pw);
-	if(detailsSensAnalytics2Dec) {
-		decryptedCount++;
-		$('#' + id).find('div').css('backgroundImage','url(data:image/png;base64,' + detailsSensAnalytics2Dec + ')');
 	}
 	if(decryptedCount<9 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact Mattthew for the password.');
