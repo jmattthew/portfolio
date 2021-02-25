@@ -1817,7 +1817,6 @@ input:-webkit-autofill:active {
 	overflow: hidden;
 	z-index: -1;
 	content:
-		url('details_SiPo_website2.jpg')
 		url('details_SiPo_triptych2.png')
 		url('details_SiPo_personas2.png')
 		url('details_SiPo_survey2.png');
@@ -1856,19 +1855,13 @@ input:-webkit-autofill:active {
 }
 
 #img_SiPo_website {
-	width: 500px;
-	height: 650px;
+	width: 450px;
+	height: 450px;
 }
 
-#img_SiPo_website > div {
-	background-image: url('details_SiPo_website2.jpg');
-	opacity: 0;
-	transition: opacity 250ms 0ms;
-}
-
-#img_SiPo_website:hover > div {
-	opacity: 1;
-	transition: opacity 500ms 0ms;
+#img_SiPo_website video {
+	width: 100%;
+	height: 100%;
 }
 
 #img_SiPo_triptych {
