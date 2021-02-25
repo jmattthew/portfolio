@@ -1720,17 +1720,17 @@ input:-webkit-autofill:active {
 	height: 456px;
 }
 
-#img_Sens_Analytics1 {
+#img_Sens_Analytics1, #img_Sens_Analytics3 {
 	width: 485px;
 	height: 503px;
 }
 
-#img_Sens_Analytics1 > div {
+#img_Sens_Analytics1 > div, #img_Sens_Analytics3 > div {
 	opacity: 0;
 	transition: opacity 250ms 0ms;
 }
 
-#img_Sens_Analytics1:hover > div {
+#img_Sens_Analytics1:hover > div, #img_Sens_Analytics3:hover > div {
 	opacity: 1;
 	transition: opacity 250ms 100ms;
 }
