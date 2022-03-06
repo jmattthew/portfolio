@@ -67,7 +67,7 @@ body {
 	margin: 0;
 	height: 100%;
 	width: 100%;
-	background-color: white;
+	background-color: hsl(0deg 0% 96%);
 	font-family: 'Khula', 'Helvetica', sans-serif;
 	font-weight: 300;
 }
@@ -136,7 +136,7 @@ body {
 	margin-left: 16px;
 	padding: 2px 8px;
 	text-decoration: none;
-	line-height: 190%;
+	line-height: 100%;
 	font-size: 16px;
 }
 
@@ -160,7 +160,7 @@ a {
 	flex-shrink: 0;
 	width: 1080px;
 	padding-bottom: 60px;
-	background-color: hsl(0deg 0% 96%);
+	background-color: hsl(0deg 0% 100%);
 	margin: 0 0 60px 0;
 	border-radius: 20px;
 }
@@ -173,7 +173,10 @@ a {
 	display: inline-block;
 	margin: 20px 0 0 20px;
 	padding: 10px 10px 0px 10px;
-	background-color: hsl(0deg 0% 100% / 60%);
+	background-color: hsl(0deg 0% 96%);
+	background: linear-gradient(90deg,
+		hsl(0deg 0% 96% / 100%) 0%,
+		hsl(0deg 0% 96% / 0%) 70%);
 	border-radius: 10px;
 	font-weight: 700;
 	letter-spacing: -2px;
@@ -185,10 +188,10 @@ a {
 	display: inline-block;
 	margin: -20px 0 20px 40px;
 	padding: 6px 10px 2px 10px;
-	background-color: hsl(0deg 0% 100% / 90%);
+	background-color: hsl(0deg 0% 96%);
 	background: linear-gradient(90deg,
-		hsl(0deg 0% 100% / 90%) 0%,
-		hsl(0deg 0% 100% / 50%) 100%);
+		hsl(0deg 0% 96% / 100%) 0%,
+		hsl(0deg 0% 96% / 0%) 70%);
 	border-radius: 10px;
 	font-weight: 300;
 	font-size: 20px;
@@ -304,8 +307,7 @@ a:hover {
 	background-size: 480px;
 	background-position: 0 0;
 	box-shadow:
-		inset hsl(0deg 0% 0% / 0%) 0 0 40px 0px,
-		white 0px 10px 0;
+		inset hsl(0deg 0% 0% / 0%) 0 0 40px 0px;
 	text-decoration: none;
 	transition:
 		box-shadow 250ms linear,
