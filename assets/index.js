@@ -2,10 +2,6 @@
 /****/
 /******/
 /********/
-/**********/
-/************/
-/**************/
-/****************/
 /* HANDLE PASSWORD PROTECTED CONTENT */
 
 // code from https://github.com/bradyjoslin/webcrypto-example/blob/master/script.js
@@ -58,14 +54,21 @@ async function insertDecryptedContent(pw,pwEntryType) {
 	var id = '';
 	var $float = $('<div>');
 	$float.addClass('float_box');
-
 	// 0
+
 	const caseStudySensDesignSystemDec = await decryptData(caseStudySensDesignSystemEnc, pw);
 	if(caseStudySensDesignSystemDec) {
 		decryptedCount++;
 		$('#sense .case_study').html(caseStudySensDesignSystemDec);
 	}
 	// 1
+
+	const caseStudySensPlatformDec = await decryptData(caseStudySensPlatformEnc, pw);
+	if(caseStudySensPlatformDec) {
+		decryptedCount++;
+		$('#sense_2 .case_study').html(caseStudySensPlatformDec);
+	}
+	// 2
 
 	const detailsSensButtonsDec = await decryptData(detailsSensButtonsEnc, pw);
 	if(detailsSensButtonsDec) {
@@ -77,7 +80,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = '';
 		$('#'+id).prepend($(img));
 	}
-	// 2
+	// 3
 
 	const detailsSensColorsDec = await decryptData(detailsSensColorsEnc, pw);
 	if(detailsSensColorsDec) {
@@ -89,7 +92,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 3
+	// 4
 
 	const detailsSensCompsDec = await decryptData(detailsSensCompsEnc, pw);
 	if(detailsSensCompsDec) {
@@ -101,7 +104,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 4
+	// 5
 
 	const detailsSensFlowchartDec = await decryptData(detailsSensFlowchartEnc, pw);
 	if(detailsSensFlowchartDec) {
@@ -112,8 +115,15 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.src = 'data:image/png;base64,' + detailsSensFlowchartDec;
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
+		// image is repeated lower on page
+		id = 'img_Sens_flowchart_2';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensFlowchartDec;
+		img.alt = $('#'+id).attr('imgAlt1');
+		$('#'+id).prepend($(img));
 	}
-	// 5
+	// 6
 
 	const detailsSensMigrationDec = await decryptData(detailsSensMigrationEnc, pw);
 	if(detailsSensMigrationDec) {
@@ -125,7 +135,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 6
+	// 7
 
 	const detailsSensSlidersDec = await decryptData(detailsSensSlidersEnc, pw);
 	if(detailsSensSlidersDec) {
@@ -137,7 +147,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 7
+	// 8
 
 	const detailsSensTable2Dec = await decryptData(detailsSensTable2Enc, pw);
 	if(detailsSensTable2Dec) {
@@ -149,7 +159,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt2');
 		$('#'+id).prepend($(img));
 	}
-	// 8
+	// 9
 
 	const detailsSensTable1Dec = await decryptData(detailsSensTable1Enc, pw);
 	if(detailsSensTable1Dec) {
@@ -161,9 +171,33 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 8
+	// 10
 
-	if(decryptedCount<9 && pwEntryType == 'manual') {
+	const detailsSensOrganizerDec = await decryptData(detailsSensOrganizerEnc, pw);
+	if(detailsSensOrganizerDec) {
+		decryptedCount++;
+		id = 'img_Sens_organizer';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensOrganizerDec;
+		img.alt = $('#'+id).attr('imgAlt1');
+		$('#'+id).prepend($(img));
+	}
+	// 11
+
+	const detailsSensSchedulerDec = await decryptData(detailsSensSchedulerEnc, pw);
+	if(detailsSensSchedulerDec) {
+		decryptedCount++;
+		id = 'img_Sens_scheduler';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensSchedulerDec;
+		img.alt = $('#'+id).attr('imgAlt1');
+		$('#'+id).prepend($(img));
+	}
+	// 12
+
+	if(decryptedCount<12 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact me for the password.');
 	} else {
 		localStorage.setItem('password',pw);
@@ -177,12 +211,38 @@ $('#last_encrypted_file').on('load',function() {
 	}
 });
 
+/**/
+/****/
+/******/
+/********/
+/* OTHER FUNCTIONS */
+
+function highlightNav(hash) {
+	if (!hash) return;
+	var $sections = $('#nav li a');
+	for (i=0,il=$sections.length;i<il;i++) {
+		var a = $sections.eq(i);
+		if(a.attr('href')==hash) {
+			a.addClass('selected');
+		} else {
+			a.removeClass('selected');
+		}
+	}
+}
+
 function bindEvents() {
 	$('#enter_password').click(function() {
 		var pw = window.prompt('Enter password:');
 		insertDecryptedContent(pw,'manual');
 		return false;
 	});
+
+	$('a').click(function() {
+		var href = $(this).attr("href");
+		var hash = href.substr(href.indexOf("#"));
+		highlightNav(hash);
+	});
 }
 
 bindEvents();
+highlightNav(location.hash);
