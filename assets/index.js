@@ -173,6 +173,18 @@ async function insertDecryptedContent(pw,pwEntryType) {
 	}
 	// 10
 
+	const detailsSensTemplatesDec = await decryptData(detailsSensTemplatesEnc, pw);
+	if(detailsSensTemplatesDec) {
+		decryptedCount++;
+		id = 'img_Sens_templates';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/png;base64,' + detailsSensTemplatesDec;
+		img.alt = $('#'+id).attr('imgAlt1');
+		$('#'+id).prepend($(img));
+	}
+	// 11
+
 	const detailsSensOrganizerDec = await decryptData(detailsSensOrganizerEnc, pw);
 	if(detailsSensOrganizerDec) {
 		decryptedCount++;
@@ -183,7 +195,7 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 11
+	// 12
 
 	const detailsSensSchedulerDec = await decryptData(detailsSensSchedulerEnc, pw);
 	if(detailsSensSchedulerDec) {
@@ -195,9 +207,9 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		img.alt = $('#'+id).attr('imgAlt1');
 		$('#'+id).prepend($(img));
 	}
-	// 12
+	// 13
 
-	if(decryptedCount<12 && pwEntryType == 'manual') {
+	if(decryptedCount<13 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact me for the password.');
 	} else {
 		localStorage.setItem('password',pw);
@@ -242,7 +254,23 @@ function bindEvents() {
 		var hash = href.substr(href.indexOf("#"));
 		highlightNav(hash);
 	});
+
+	$('#content').scroll(function() {
+		if(timer !== null) {
+			clearTimeout(timer);
+		}
+		timer = setTimeout(function() {
+			var $pages = $('.page');
+			for (i=0,il=$pages.length;i<il;i++) {
+				var y = $pages.eq(i).offset().top;
+				if(y > 100) break;
+			}
+			var id = $pages.eq(i-1).attr('id');
+			highlightNav('#' + id);
+		}, 150);
+	})
 }
 
+var timer = null;
 bindEvents();
 highlightNav(location.hash);
