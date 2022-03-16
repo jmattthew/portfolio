@@ -273,4 +273,7 @@ function bindEvents() {
 
 var timer = null;
 bindEvents();
+window.addEventListener('load', function() {
+	if (location.hash) location.href = location.hash;
+});
 highlightNav(location.hash);
