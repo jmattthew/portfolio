@@ -230,7 +230,7 @@ $('#last_encrypted_file').on('load',function() {
 /* OTHER FUNCTIONS */
 
 function highlightNav(hash) {
-	if (!hash) return;
+	history.replaceState(undefined, undefined, hash);
 	var $sections = $('#nav li a');
 	for (i=0,il=$sections.length;i<il;i++) {
 		var a = $sections.eq(i);
@@ -273,7 +273,6 @@ function bindEvents() {
 
 var timer = null;
 bindEvents();
-window.addEventListener('load', function() {
-	if (location.hash) location.href = location.hash;
-});
-highlightNav(location.hash);
+if (location.hash) {
+	highlightNav(location.hash);
+}

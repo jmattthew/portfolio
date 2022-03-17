@@ -94,10 +94,10 @@ a {
 
 #nav a {
 	display: inline-block;
-    margin: 0 0 4px 16px;
-	padding: 2px 8px 0px 8px;
+    margin: 0 0 6px 22px;
+	padding: 2px 12px 0px 12px;
 	font-size: 16px;
-	border-radius: 4px;
+	border-radius: 15px;
 }
 
 #nav a span {
@@ -106,36 +106,6 @@ a {
 
 #nav a.selected {
 	cursor: default;
-}
-
-#nav #nav_sense a {
-	background-color: hsl(14deg 52% 82%);
-	color: hsl(14deg 52% 25%);
-}
-
-#nav #nav_sense_2 a {
-	background-color: hsl(36deg 20% 82%);
-	color: hsl(36deg 20% 25%);
-}
-
-#nav #nav_clover a {
-	background-color: hsl(169deg 40% 79%);
-	color: hsl(169deg 40% 25%);
-}
-
-#nav #nav_siempo a {
-	background-color: hsl(194deg 80% 88%);
-	color:  hsl(194deg 80% 25%);
-}
-
-#nav #nav_cardpool a {
-	background-color: hsl(281deg 58% 89%);
-	color: hsl(281deg 58% 25%);
-}
-
-#nav #nav_couchsurfing a {
-	background-color: hsl(86deg 50% 84%);
-	color: hsl(86deg 50% 25%);
 }
 
 #nav #nav_about a,
@@ -379,8 +349,31 @@ a {
 /********/
 /* Sens */
 
-#sense {
-	min-height: 80vh;
+#nav #nav_sense a {
+	background-color: hsl(14deg 52% 82%);
+}
+
+#nav #nav_sense_2 a {
+	background-color: hsl(36deg 20% 82%);
+}
+
+#nav #nav_sense a,
+#sense a,
+#sense h1,
+#sense h2,
+#sense h3,
+#sense .page_description {
+	color: hsl(14deg 52% 25%);
+}
+
+#nav #nav_sense_2 a,
+#sense_2 a,
+#sense_2 h1,
+#sense_2 h2,
+#sense_2 h3,
+#sense_2 .page_description,
+.page p.takeaway span {
+	color: hsl(36deg 20% 35%);
 }
 
 #img_Sens_table,
@@ -455,6 +448,19 @@ a {
 /********/
 /* ClVr */
 
+#nav #nav_clover a {
+	background-color: hsl(169deg 40% 79%);
+}
+
+#nav #nav_clover a,
+#clover a,
+#clover h1,
+#clover h2,
+#clover h3,
+#clover .page_description {
+	color: hsl(169deg 40% 25%);
+}
+
 #img_ClVr_tasks,
 #img_ClVr_tasks > div {
 	width: 720px;
@@ -481,6 +487,19 @@ a {
 /******/
 /********/
 /* SiPo */
+
+#nav #nav_siempo a {
+	background-color: hsl(194deg 80% 88%);
+}
+
+#nav #nav_siempo a,
+#siempo a,
+#siempo h1,
+#siempo h2,
+#siempo h3,
+#siempo .page_description {
+	color:  hsl(194deg 80% 25%);
+}
 
 #img_SiPo_personas {
 	width: 330px;
@@ -543,6 +562,19 @@ a {
 /******/
 /********/
 /* CaPo */
+
+#nav #nav_cardpool a {
+	background-color: hsl(281deg 58% 89%);
+}
+
+#nav #nav_cardpool a,
+#cardpool a,
+#cardpool h1,
+#cardpool h2,
+#cardpool h3,
+#cardpool .page_description {
+	color: hsl(281deg 58% 25%);
+}
 
 #img_CaPo_phone_laptop_kiosk {
 	width: 330px;
@@ -618,6 +650,19 @@ a {
 /******/
 /********/
 /* CoSu */
+
+#nav #nav_couchsurfing a {
+	background-color: hsl(86deg 50% 84%);
+}
+
+#nav #nav_couchsurfing a,
+#couchsurfing a,
+#couchsurfing h1,
+#couchsurfing h2,
+#couchsurfing h3,
+#couchsurfing .page_description {
+	color: hsl(86deg 40% 25%);
+}
 
 #img_CoSu_matching_algo {
 	width: 480px;
@@ -809,8 +854,7 @@ body,
 
 .page a,
 .page h1,
-.page .page_description,
-.page p.takeaway span {
+.page .page_description {
 	color: hsl(279deg 80% 28%);
 }
 

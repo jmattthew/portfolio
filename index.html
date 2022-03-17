@@ -230,13 +230,6 @@ body {
 	</div>
 	<div id="content">
 		<div id="intro" class="page">
-			<noscript>
-				<div id="noscript">
-					<span>
-						Parts of this website won't work while you have disabled Javascript
-					</span>
-				</div>
-			</noscript>
 			<div>
 				<a id="intro_sense" href="#sense">
 					<div>
@@ -281,6 +274,11 @@ body {
 				<p>
 					This case study is password protected due to the recency of this information.  To read this case study, <a href="#" id="enter_password">enter the password</a>.
 				</p>
+				<noscript>
+					<p><strong>
+						Javascript is currently disabled, and this case study can't be shown until it is enabled.
+					</strong></p>
+				</noscript>
 				<p>
 					If you don't have a password, please <a href="#contact">contact me</a> to request it.
 				</p>
@@ -299,6 +297,11 @@ body {
 				<p>
 					This case study is password protected due to the recency of this information.  To read this case study, <a href="#" id="enter_password">enter the password</a>.
 				</p>
+				<noscript>
+					<p><strong>
+						Javascript is currently disabled, and this case study can't be shown until it is enabled.
+					</strong></p>
+				</noscript>
 				<p>
 					If you don't have a password, please <a href="#contact">contact me</a> to request it.
 				</p>
@@ -659,6 +662,11 @@ body {
 			<div class="page_description">
 				Have questions about me or my work?  Send me a message.
 			</div>
+			<noscript>
+				<p>
+					Javascript is currently disabled, and this message form can't be displayed until it is enabled.
+				</p>
+			</noscript>
 			<div class="inbound-form-wrapper" id="form_6516" data-path="https://app.99inbound.com/i/8ea461b2-5a59-49c4-9405-52a5b88cf7c8" data-token="qekSJjWS6qischKstrqacAtt"></div>
 			<div id="about_icons">
 				<a href="https://www.linkedin.com/in/mattthew/" target="_blank">
@@ -695,17 +703,32 @@ body {
 		window.msRequestAnimationFrame;
 	/* failsafe in case webfonts fail to render */
 	function failsafe() {
+		document.getElementById('loading').style.display = 'none';
 		document.getElementById('outer').style.display = 'flex';
 	}
-	failsafetimer = setTimeout(failsafe, 3000);
+	var failsafetimer = setTimeout(failsafe, 3000);
+	/* wait for deffered styles to load before scrolling */
+	var scrollToHash = function() {
+		if(location.hash) {
+			var el = document.getElementById('outer');
+			var styles = getComputedStyle(el);
+			if(styles.getPropertyValue('display') == 'flex') {
+				location.href = location.hash;
+			} else {
+				setTimeout(scrollToHash, 100);
+			}
+		}
+	}
+	setTimeout(scrollToHash, 100);
 	WebFontConfig = {
 		active: function() {
 			if (raf) {
 				raf(function() {
-					window.setTimeout(loadDeferredStyles, 0);
+					loadDeferredStyles();
 				});
+				failsafetimer = setTimeout(failsafe, 3000);
 			} else {
-				window.addEventListener('load', loadDeferredStyles);
+				loadDeferredStyles();
 			}
 			clearTimeout(failsafetimer);
 		},
