@@ -271,8 +271,36 @@ function bindEvents() {
 	})
 }
 
+function setUpAnim() {
+	$('.nav_item').css('left',-150);
+	$('.nav_item').css('opacity',0);
+	$('#nav > ul').css('opacity',0)
+}
+
+function doNavAnim() {
+	$('.nav_item').css('left',0);
+	$('.nav_item').css('opacity',1);
+	$('#nav > ul').css('opacity',1)
+}
+
+function afterRender() {
+	/* wait for deffered styles to load, the scroll and animate */
+	var el = document.getElementById('outer');
+	var styles = getComputedStyle(el);
+	if(styles.getPropertyValue('display') == 'flex') {
+		if(location.hash) {
+			location.href = location.hash;
+		}
+		doNavAnim();
+	} else {
+		setTimeout(afterRender, 100);
+	}
+}
+
 var timer = null;
 bindEvents();
 if (location.hash) {
 	highlightNav(location.hash);
 }
+setUpAnim();
+setTimeout(afterRender, 100);
