@@ -115,7 +115,6 @@ body {
 	}
 }
 
-
 #outer {
 	display: none; /* everything hidden until async styles load or failsafe */
 	width: 100%;
@@ -182,27 +181,27 @@ body {
 			<li>
 				<h3>Case Studies</h3>
 				<ul>
-					<li id="nav_sense">
+					<li class="nav_item" id="nav_sense">
 						<a href="#sense" target="_self">
 							<span>2022 — Sense I</span></a>
 					</li>
-					<li id="nav_sense_2">
+					<li class="nav_item" id="nav_sense_2">
 						<a href="#sense_2" target="_self">
 							<span>2022 — Sense II</span></a>
 					</li>
-					<li id="nav_clover">
+					<li class="nav_item" id="nav_clover">
 						<a href="#clover" target="_self">
 							<span>2019 — Clover</span></a>
 					</li>
-					<li id="nav_siempo">
+					<li class="nav_item" id="nav_siempo">
 						<a href="#siempo" target="_self">
 							<span>2018 — Siempo</span></a>
 					</li>
-					<li id="nav_cardpool">
+					<li class="nav_item" id="nav_cardpool">
 						<a href="#cardpool" target="_self">
 							<span>2016 — Cardpool</a>
 					</li>
-					<li id="nav_couchsurfing">
+					<li class="nav_item" id="nav_couchsurfing">
 						<a href="#couchsurfing" target="_self">
 							<span>2012 — CouchSurfing</span></a>
 					</li>
@@ -211,7 +210,7 @@ body {
 			<li>
 				<h3>About Me</h3>
 				<ul>
-					<li id="nav_about">
+					<li class="nav_item" id="nav_about">
 						<a href="#about" target="_self">
 							<span>Joseph Brauer</span></a>
 					</li>
@@ -220,7 +219,7 @@ body {
 			<li>
 				<h3>Contact</h3>
 				<ul>
-					<li id="nav_contact">
+					<li class="nav_item" id="nav_contact">
 						<a href="#contact" target="_self">
 							<span>Send a Message</span></a>
 					</li>
@@ -707,19 +706,7 @@ body {
 		document.getElementById('outer').style.display = 'flex';
 	}
 	var failsafetimer = setTimeout(failsafe, 3000);
-	/* wait for deffered styles to load before scrolling */
-	var scrollToHash = function() {
-		if(location.hash) {
-			var el = document.getElementById('outer');
-			var styles = getComputedStyle(el);
-			if(styles.getPropertyValue('display') == 'flex') {
-				location.href = location.hash;
-			} else {
-				setTimeout(scrollToHash, 100);
-			}
-		}
-	}
-	setTimeout(scrollToHash, 100);
+
 	WebFontConfig = {
 		active: function() {
 			if (raf) {
