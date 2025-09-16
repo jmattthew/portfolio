@@ -103,36 +103,40 @@ a {
 		opacity 300ms linear;
 }
 
-#nav_sense {
+#nav_hubspot {
 	transition-delay: 600ms;
 }
 
-#nav_sense_2 {
+#nav_sense {
 	transition-delay: 650ms;
 }
 
-#nav_clover {
+#nav_sense_2 {
 	transition-delay: 700ms;
 }
 
-#nav_siempo {
+#nav_clover {
 	transition-delay: 750ms;
 }
 
-#nav_cardpool {
+#nav_siempo {
 	transition-delay: 800ms;
 }
 
-#nav_couchsurfing {
+#nav_cardpool {
 	transition-delay: 850ms;
 }
 
+#nav_couchsurfing {
+	transition-delay: 900ms;
+}
+
 #nav_about {
-	transition-delay: 1250ms;
+	transition-delay: 1300ms;
 }
 
 #nav_contact {
-	transition-delay: 1450ms;
+	transition-delay: 1500ms;
 }
 
 #nav a {
@@ -157,6 +161,7 @@ a {
 	color: hsl(0deg 0% 25%);
 }
 
+#nav #nav_hubspot a:hover,
 #nav #nav_sense a:hover,
 #nav #nav_sense_2 a:hover,
 #nav #nav_clover a:hover,
@@ -174,7 +179,7 @@ a {
 /********/
 /* content pane */
 
-.back_to_top {
+.go_to_start {
 	float: right;
 	margin: 50px 80px 0 0;
 }
@@ -302,7 +307,6 @@ a {
 	border: 1px solid hsl(0deg 0% 0% / 10%);
 	border-radius: 10px;
 	box-sizing: border-box;
-	background-color: white;
 	background-size: 480px;
 	background-position: 0 0;
 	box-shadow:
@@ -356,6 +360,13 @@ a {
 	text-align: right;
 }
 
+#intro #intro_hubspot {
+	min-width: 1000px;
+	background-color: hsl(29, 100%, 72%);
+	background-image: url('details_Hubs_intro.png');
+	background-size: 100%;
+}
+
 #intro_sense {
 	background-color: hsl(14deg 95% 23%);
 	background-image: url('details_Sens_intro.png');
@@ -384,6 +395,25 @@ a {
 #intro_couchsurfing {
 	background-color: hsl(86deg 42% 37%);
 	background-image: url('details_CoSu_intro.png');
+}
+
+/**/
+/****/
+/******/
+/********/
+/* Hubs */
+
+#nav #nav_hubspot a {
+	background-color: hsl(29, 100%, 81%);
+}
+
+#nav #nav_hubspot a,
+#hubspot a,
+#hubspot h1,
+#hubspot h2,
+#hubspot h3,
+#hubspot .page_description {
+	color: hsl(29, 100%, 29%);
 }
 
 /**/
@@ -428,17 +458,11 @@ a {
 #img_Sens_comps {
 	width: 512px;
 	height: 300px;
-	overflow: scroll;
 }
 
 #img_Sens_colors {
 	width: 297px;
 	height: 210px;
-	transition: transform 300ms ease-out;
-}
-
-#img_Sens_colors:hover {
-	transform: scale(1.5);
 }
 
 #img_Sens_buttons {
@@ -453,20 +477,13 @@ a {
 
 #img_Sens_migration {
 	width: 500px;
-	height: 450px;
-	overflow: scroll;
+	height: 325px;
 }
 
 #img_Sens_flowchart,
 #img_Sens_flowchart_2 {
 	width: 540px;
 	height: 518px;
-	transition: transform 300ms ease-out;
-}
-
-#img_Sens_flowchart:hover,
-#img_Sens_flowchart_2:hover {
-	transform: scale(1.5);
 }
 
 #img_Sens_templates {
@@ -482,7 +499,50 @@ a {
 #img_Sens_scheduler {
 	width: 518px;
 	height: 450px;
+}
+
+#img_Sens_colors,
+#img_Sens_migration,
+#img_Sens_organizer,
+#img_Sens_templates,
+#img_Sens_sliders,
+#img_Sens_flowchart,
+#img_Sens_flowchart_2 {
+	transition: transform 300ms ease-out;
+}
+
+#img_Sens_colors:hover,
+#img_Sens_migration:hover,
+#img_Sens_organizer:hover,
+#img_Sens_templates:hover,
+#img_Sens_sliders:hover,
+#img_Sens_flowchart:hover,
+#img_Sens_flowchart_2:hover {
+	transform: scale(1.5);
+}
+
+#img_Sens_comps,
+#img_Sens_scheduler {
 	overflow: scroll;
+	cursor: row-resize;
+}
+
+#img_Sens_comps img,
+#img_Sens_scheduler img {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+#img_Sens_comps:hover img,
+#img_Sens_scheduler:hover img {
+  transform: translateY(20px); /* Adjust the value for the desired scroll distance */
+  animation: scroll-bump 500ms ease-in-out forwards;
+}
+
+@keyframes scroll-bump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(40px); }
+  100% { transform: translateY(0); }
 }
 
 /**/
@@ -838,7 +898,7 @@ a {
 		padding-right: 40px;
 	}
 
-	.back_to_top,
+	.go_to_start,
 	.float_box {
 		margin-top: 34px;
 		margin-right: 40px;
@@ -871,7 +931,7 @@ body,
 #nav h1 a,
 #nav h2,
 #nav h3,
-.page .back_to_top {
+.page .go_to_start {
 	color: hsl(0deg 0% 68%);
 }
 

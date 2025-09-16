@@ -56,160 +56,27 @@ async function insertDecryptedContent(pw,pwEntryType) {
 	$float.addClass('float_box');
 	// 0
 
-	const caseStudySensDesignSystemDec = await decryptData(caseStudySensDesignSystemEnc, pw);
-	if(caseStudySensDesignSystemDec) {
+	const caseStudyHubsPlatformDec = await decryptData(caseStudyHubsPlatformEnc, pw);
+	if(caseStudyHubsPlatformDec) {
 		decryptedCount++;
-		$('#sense .case_study').html(caseStudySensDesignSystemDec);
+		$('#hubspot .case_study').html(caseStudyHubsPlatformDec);
 	}
 	// 1
 
-	const caseStudySensPlatformDec = await decryptData(caseStudySensPlatformEnc, pw);
-	if(caseStudySensPlatformDec) {
+	const detailsHubsExampleDec = await decryptData(detailsHubsExampleEnc, pw);
+	if(detailsHubsExampleDec) {
 		decryptedCount++;
-		$('#sense_2 .case_study').html(caseStudySensPlatformDec);
-	}
-	// 2
-
-	const detailsSensButtonsDec = await decryptData(detailsSensButtonsEnc, pw);
-	if(detailsSensButtonsDec) {
-		decryptedCount++;
-		id = 'img_Sens_buttons';
+		id = 'img_Hubs_example';
 		$float.attr('id',id);
 		var img = new Image();
-		img.src = 'data:image/gif;base64,' + detailsSensButtonsDec;
+		img.src = 'data:image/png;base64,' + detailsHubsExampleDec;
 		img.alt = '';
 		$('#'+id).prepend($(img));
 	}
-	// 3
 
-	const detailsSensColorsDec = await decryptData(detailsSensColorsEnc, pw);
-	if(detailsSensColorsDec) {
-		decryptedCount++;
-		id = 'img_Sens_colors';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensColorsDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 4
+	// 2
 
-	const detailsSensCompsDec = await decryptData(detailsSensCompsEnc, pw);
-	if(detailsSensCompsDec) {
-		decryptedCount++;
-		id = 'img_Sens_comps';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensCompsDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 5
-
-	const detailsSensFlowchartDec = await decryptData(detailsSensFlowchartEnc, pw);
-	if(detailsSensFlowchartDec) {
-		decryptedCount++;
-		id = 'img_Sens_flowchart';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensFlowchartDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-		// image is repeated lower on page
-		id = 'img_Sens_flowchart_2';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensFlowchartDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 6
-
-	const detailsSensMigrationDec = await decryptData(detailsSensMigrationEnc, pw);
-	if(detailsSensMigrationDec) {
-		decryptedCount++;
-		id = 'img_Sens_migration';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensMigrationDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 7
-
-	const detailsSensSlidersDec = await decryptData(detailsSensSlidersEnc, pw);
-	if(detailsSensSlidersDec) {
-		decryptedCount++;
-		id = 'img_Sens_sliders';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensSlidersDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 8
-
-	const detailsSensTable2Dec = await decryptData(detailsSensTable2Enc, pw);
-	if(detailsSensTable2Dec) {
-		decryptedCount++;
-		id = 'img_Sens_table';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensTable2Dec;
-		img.alt = $('#'+id).attr('imgAlt2');
-		$('#'+id).prepend($(img));
-	}
-	// 9
-
-	const detailsSensTable1Dec = await decryptData(detailsSensTable1Enc, pw);
-	if(detailsSensTable1Dec) {
-		decryptedCount++;
-		id = 'img_Sens_table';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensTable1Dec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 10
-
-	const detailsSensTemplatesDec = await decryptData(detailsSensTemplatesEnc, pw);
-	if(detailsSensTemplatesDec) {
-		decryptedCount++;
-		id = 'img_Sens_templates';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensTemplatesDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 11
-
-	const detailsSensOrganizerDec = await decryptData(detailsSensOrganizerEnc, pw);
-	if(detailsSensOrganizerDec) {
-		decryptedCount++;
-		id = 'img_Sens_organizer';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensOrganizerDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 12
-
-	const detailsSensSchedulerDec = await decryptData(detailsSensSchedulerEnc, pw);
-	if(detailsSensSchedulerDec) {
-		decryptedCount++;
-		id = 'img_Sens_scheduler';
-		$float.attr('id',id);
-		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsSensSchedulerDec;
-		img.alt = $('#'+id).attr('imgAlt1');
-		$('#'+id).prepend($(img));
-	}
-	// 13
-
-	if(decryptedCount<13 && pwEntryType == 'manual') {
+	if(decryptedCount<2 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact me for the password.');
 	} else {
 		localStorage.setItem('password',pw);
@@ -284,7 +151,7 @@ function doNavAnim() {
 }
 
 function afterRender() {
-	/* wait for deffered styles to load, the scroll and animate */
+	/* wait for deferred styles to load, the scroll and animate */
 	var el = document.getElementById('outer');
 	var styles = getComputedStyle(el);
 	if(styles.getPropertyValue('display') == 'flex') {
