@@ -54,29 +54,123 @@ async function insertDecryptedContent(pw,pwEntryType) {
 	var id = '';
 	var $float = $('<div>');
 	$float.addClass('float_box');
+
 	// 0
-
-	const caseStudyHubsPlatformDec = await decryptData(caseStudyHubsPlatformEnc, pw);
-	if(caseStudyHubsPlatformDec) {
+	const caseStudyHubsAutomationDec = await decryptData(caseStudyHubsAutomationEnc, pw);
+	if(caseStudyHubsAutomationDec) {
 		decryptedCount++;
-		$('#hubspot .case_study').html(caseStudyHubsPlatformDec);
+		$('#case_study_Hubs_platform_container').html(caseStudyHubsAutomationDec);
 	}
-	// 1
 
-	const detailsHubsExampleDec = await decryptData(detailsHubsExampleEnc, pw);
-	if(detailsHubsExampleDec) {
+	// 1
+	const detailsHubsDesign1Dec = await decryptData(detailsHubsDesign1Enc, pw);
+	if(detailsHubsDesign1Dec) {
 		decryptedCount++;
-		id = 'img_Hubs_example';
+		id = 'img_Hubs_design_1';
 		$float.attr('id',id);
 		var img = new Image();
-		img.src = 'data:image/png;base64,' + detailsHubsExampleDec;
-		img.alt = '';
+		img.src = 'data:image/webp;base64' + detailsHubsDesign1Dec;
+		img.alt = $('#'+id).attr('alt1');
 		$('#'+id).prepend($(img));
 	}
 
 	// 2
+	const detailsHubsDesign2Dec = await decryptData(detailsHubsDesign2Enc, pw);
+	if(detailsHubsDesign2Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_design_2';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsDesign2Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
 
-	if(decryptedCount<2 && pwEntryType == 'manual') {
+	// 3
+	const detailsHubsDesign3Dec = await decryptData(detailsHubsDesign3Enc, pw);
+	if(detailsHubsDesign3Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_design_2';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsDesign3Dec;
+		img.alt = $('#'+id).attr('alt2');
+		$('#'+id).prepend($(img));
+	}
+
+	// 4
+	const detailsHubsResearch1Dec = await decryptData(detailsHubsResearch1Enc, pw);
+	if(detailsHubsResearch1Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_research_1';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsResearch1Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
+
+	// 5
+	const detailsHubsResearch2Dec = await decryptData(detailsHubsResearch2Enc, pw);
+	if(detailsHubsResearch2Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_research_2';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsResearch2Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
+
+	// 6
+	const detailsHubsResearch3Dec = await decryptData(detailsHubsResearch3Enc, pw);
+	if(detailsHubsResearch3Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_research_3';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsResearch3Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
+
+	// 7
+	const detailsHubsResearch4Dec = await decryptData(detailsHubsResearch4Enc, pw);
+	if(detailsHubsResearch4Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_research_4';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsResearch4Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
+
+	// 8
+	const detailsHubsLeadership1Dec = await decryptData(detailsHubsLeadership1Enc, pw);
+	if(detailsHubsLeadership1Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_leadership_1';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsLeadership1Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
+
+	// 9
+	const detailsHubsLeadership2Dec = await decryptData(detailsHubsLeadership2Enc, pw);
+	if(detailsHubsLeadership2Dec) {
+		decryptedCount++;
+		id = 'img_Hubs_leadership_2';
+		$float.attr('id',id);
+		var img = new Image();
+		img.src = 'data:image/webp;base64' + detailsHubsLeadership2Dec;
+		img.alt = $('#'+id).attr('alt1');
+		$('#'+id).prepend($(img));
+	}
+
+	if(decryptedCount<10 && pwEntryType == 'manual') {
 		alert('Sorry, the password you entered was incorrect.  Please try again, or contact me for the password.');
 	} else {
 		localStorage.setItem('password',pw);
@@ -162,6 +256,98 @@ function afterRender() {
 	} else {
 		setTimeout(afterRender, 100);
 	}
+}
+
+function chatWithLLM(elementId) {
+	const element = document.getElementById(elementId);
+	if (!element) {
+		console.error(`Element with ID "${elementId}" not found.`);
+		return;
+	}
+
+	function processNode(node) {
+		let markdownText = '';
+		if (node.nodeType === Node.ELEMENT_NODE) {
+			const tagName = node.tagName.toLowerCase();
+			const ignore = node.classList.contains('ignore_me');
+			if(!ignore) {
+				switch (tagName) {
+					case 'h1':
+						markdownText += `# ${node.textContent.trim()}\n\n`;
+						break;
+					case 'h2':
+						markdownText += `## ${node.textContent.trim()}\n\n`;
+						break;
+					case 'h3':
+						markdownText += `### ${node.textContent.trim()}\n\n`;
+						break;
+					case 'h4':
+						markdownText += `#### ${node.textContent.trim()}\n\n`;
+						break;
+					case 'h5':
+						markdownText += `##### ${node.textContent.trim()}\n\n`;
+						break;
+					case 'h6':
+						markdownText += `###### ${node.textContent.trim()}\n\n`;
+						break;
+					case 'strong':
+						markdownText += ` **${node.textContent.trim()}** `;
+						break;
+					case 'em':
+						markdownText += ` *${node.textContent.trim()}* `;
+						break;
+					case 'q':
+						markdownText += ` "${node.textContent.trim()}" `;
+						break;
+					case 'img':
+						const altText = node.getAttribute('alt') || 'no alt text provided';
+						markdownText += `an image of: ${altText}\n\n`;
+						break;
+					case 'div':
+						// Recursively process children
+						for (const childNode of node.childNodes) {
+							markdownText += processNode(childNode);
+						}
+						break;
+					case 'span':
+						// Recursively process children
+						for (const childNode of node.childNodes) {
+							markdownText += processNode(childNode);
+						}
+						break;
+					case 'p':
+						// Recursively process children
+						for (const childNode of node.childNodes) {
+							markdownText += processNode(childNode);
+						}
+						break;
+					default:
+						// ignore content of other tags
+						break;
+				}
+			} else {
+				markdownText += `\n`;
+			}
+		} else if (node.nodeType === Node.TEXT_NODE) {
+			markdownText += node.textContent.trim();
+		}
+		return markdownText;
+	}
+
+	const preamble =
+		`Below are several impressive product design case studies written by an expert designer, Joseph, who has over twenty years of experience and is highly regarded.  Please answer my questions about these case studies with polite enthusiasm 😊.\n\n# Start of case studies\n\n`
+
+	const postamble = `\n\n# End of case studies\n\nIn your next response, please say, \n\n"What would you like to know?  You can just type 'usability', 'research', 'strategy' etc., and I'll give you highlights from relevant parts of these case studies."`;
+
+	const markdownContent = preamble + processNode(element) + postamble;
+
+	navigator.clipboard.writeText(markdownContent)
+		.then(() => {
+			window.alert(`My porfolio has been copied to your clipboard in a text-only format along with LLM instructions.  Just open your preferred LLM and paste!`)
+		})
+		.catch(err => {
+			window.alert(`I'm sorry, your clipboard couldn't be accessed.  But you can still get good results by selecting everything on this page, then paste it into your preferred LLM.`)
+		});
 }
 
 var timer = null;
