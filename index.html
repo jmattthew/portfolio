@@ -21,16 +21,41 @@
 	src="assets/index.js">
 </script>
 <!--
-Start load encrypted content as variables with base64 values
+Start load encrypted content
+Each js file defines one variable with the encoded base64 value
 -->
 <script defer
-	src="assets/case_study_Hubs_platform_enc.js">
+	src="assets/case_study_Hubs_automation_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_design_1_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_design_2_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_design_3_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_research_1_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_research_2_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_research_3_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_research_4_enc.js">
+</script>
+<script defer
+	src="assets/details_Hubs_leadership_1_enc.js">
 </script>
 <!--
 The last encrypted js file must have id="last_encrypted_file"
 -->
 <script defer id="last_encrypted_file"
-	src="assets/details_Hubs_example_enc.js">
+	src="assets/details_Hubs_leadership_2_enc.js">
 </script>
 <!--
 End load encrypted content
@@ -248,7 +273,7 @@ body {
 			<div class="page_description">
 				From opportunity analysis to rollout
 			</div>
-			<div class="case_study">
+			<div id="case_study_Hubs_platform_container" class="case_study">
 				<h2>Password Protected</h2>
 				<p>
 					This case study is password protected due to the recency of this information.  To read this case study, <a href="#" id="enter_password">enter the password</a>.
@@ -261,7 +286,6 @@ body {
 				<p>
 					If you don't have a password, please <a href="#contact">contact me</a> to request it.
 				</p>
-				<div id="img_Hubs_example" class="float_box" imgAlt1="This will become the img alt"></div>
 			</div>
 		</div>
 		<div id="sense" class="page">
@@ -296,7 +320,7 @@ body {
 					<img alt="Early example design comps with feedback" src="assets/details_Sens_comps.png">
 				</div>
 				<p>
-					Like most design projects, I began with comparative analysis.  Sense is a SASS enterprise automation tool, and users expect a familiar UI that reminds them of similar SASS tools.  I was able to present to stakeholders the similarities and differences that I found between those competing tools.  Yet that still allowed for several possible aesthetic directions, and we were hampered by "bike shed" concerns such as which corner-radius best matched our brand.  I made the case to the head of product that we were beginning to spin our wheels.
+					Like most design projects, I began with comparative analysis.  Sense is a SASS enterprise automation tool, and users expect a familiar UI that reminds them of similar SASS tools.  I was able to present to stakeholders the similarities and differences that I found between those competing tools.  Yet that still allowed for several possible aesthetic directions, and we were hampered by <q>bike shed</q> concerns such as which corner-radius best matched our brand.  I made the case to the head of product that we were beginning to spin our wheels.
 				</p>
 				<p>
 					A breakthrough came when I suggested that I had past success during in time at Blackhawk Network in utilizing a contract design firm.  I had discovered at that time that an external firm is perceived as more unbiased and expert, relieving decision making pressure from internal stakeholders.  We were able to find a firm that was recommended by one of our venture partners, which gave them enough clout that we were able to take their aesthetic recommendations and move forward.  I coordinated their efforts to create several design styles, color palettes, and font pairings.  I led the critique of their designs and gathered feedback from stakeholders <sup>(<em>scroll image</em>)</sup>.
@@ -332,7 +356,7 @@ body {
 					<img alt="Iterative steps in the migration to the new design system" src="assets/details_Sens_migration.png">
 				</div>
 				<p>
-					The answers are unique to every organization.  As the owner of the design system for the design team, I worked with the design system owner within engineering and other stakeholders to align on those critical decisions.  I documented many paths that we might take, including their benefits, costs, and risks.  For example, should we allow users to toggle between new and old, as other products have chosen to do?  That choice would add considerable costs, but greatly mitigate user confusion and resistance to change.  We ultimately decided to use my model of giving a low-cost "facelift" to all existing pages in order to make them feel closer to pages using the design system.<sup>(<em>scroll image</em>)</sup>
+					The answers are unique to every organization.  As the owner of the design system for the design team, I worked with the design system owner within engineering and other stakeholders to align on those critical decisions.  I documented many paths that we might take, including their benefits, costs, and risks.  For example, should we allow users to toggle between new and old, as other products have chosen to do?  That choice would add considerable costs, but greatly mitigate user confusion and resistance to change.  We ultimately decided to use my model of giving a low-cost <q>facelift</q> to all existing pages in order to make them feel closer to pages using the design system.<sup>(<em>scroll image</em>)</sup>
 				</p>
 				<h3>Road blocks</h3>
 				<p>
@@ -343,7 +367,7 @@ body {
 				</p>
 				<h2>What We've Learned</h2>
 				<p>
-					Sense's new design system is only part way through its rollout.  As soon as I started advocating for this project nearly three years ago, I made sure that stakeholders understood that it wouldn't just be "putting on a new coat of paint".  Moving from ad-hoc design &amp; code to a formal system requires a re-architecture of the front-end code base from the ground up, and a sea change for the design team in terms of process.
+					Sense's new design system is only part way through its rollout.  As soon as I started advocating for this project nearly three years ago, I made sure that stakeholders understood that it wouldn't just be <q>putting on a new coat of paint</q>.  Moving from ad-hoc design &amp; code to a formal system requires a re-architecture of the front-end code base from the ground up, and a sea change for the design team in terms of process.
 				</p>
 				<div id="img_Sens_flowchart" class="float_box">
 					<img alt="Sample page using the new design system" src="assets/details_Sens_flowchart.png">
@@ -353,7 +377,7 @@ body {
 				</p>
 				<h3>The Journey is just beginning!</h3>
 				<p>
-					While we've already seen huge benefits to design and engineering team velocity, we're still at an early stage and a long way from a public system such as "Material" or "Lightening".  My challenge now is creating the documentation that will guide future designers, such as examples of do's and don'ts.  As we've hired more team members, I've also had to decide how to delegate, such as handing off data-visualization components and rules to more junior designers.
+					While we've already seen huge benefits to design and engineering team velocity, we're still at an early stage and a long way from a public system such as <q>Material</q> or <q>Lightening</q>.  My challenge now is creating the documentation that will guide future designers, such as examples of do's and don'ts.  As we've hired more team members, I've also had to decide how to delegate, such as handing off data-visualization components and rules to more junior designers.
 				</p>
 				<p>
 					Lastly, I've been learning team process-design as I go.  Before the design system, there was never a need to check designs for alignment to the design system!  Now we have formal processes.  Meanwhile, our critiques have had to change to bring focus to function above form, now that the latter is largely baked in.  The hand-off to engineering also follows a new process.  Over time, my role at Sense has shifted further from nuts-and-bolts UX design towards process-design, documentation, and leadership.  Much like its impact on product development, the design system's impact on me has been a shift in focus towards infrastructure, change management, and team dynamics.
@@ -372,14 +396,14 @@ body {
 				<h2>Project 2.0</h2>
 				<h3>Background</h3>
 				<p>
-					I own the project to redesign Sense's flagship product, the messaging & database automation platform that unifies Sense's entire product suite.  The redesign, code named "project 2.0", will incorporate a completely new information architecture, all new UX patterns, and the new design system (<a href="#sense">see above</a>).  The project began with the realization that the product suite had grown so large &amp; diverse that most customers weren't using it to its full potential.  Often customers who found great success with a small part of the suite didn't discover or utilize its other parts.  Customers were overwhelmed, and their reliance on white-glove support wasn't scalable.
+					I own the project to redesign Sense's flagship product, the messaging & database automation platform that unifies Sense's entire product suite.  The redesign, code named <q>project 2.0</q>, will incorporate a completely new information architecture, all new UX patterns, and the new design system (<a href="#sense">see above</a>).  The project began with the realization that the product suite had grown so large &amp; diverse that most customers weren't using it to its full potential.  Often customers who found great success with a small part of the suite didn't discover or utilize its other parts.  Customers were overwhelmed, and their reliance on white-glove support wasn't scalable.
 				</p>
 				<p>
-					Though I've been working on the project for two years, the only engineering that has begun is data-structure to support the planned new features.  The long research and discovery phase is completely appropriate such a massive investment in company resources.  However, we couldn't and haven't kept customers waiting for new features during that time.  Throughout my "2.0" discovery processes, I've also designed and launched several smaller features.
+					Though I've been working on the project for two years, the only engineering that has begun is data-structure to support the planned new features.  The long research and discovery phase is completely appropriate such a massive investment in company resources.  However, we couldn't and haven't kept customers waiting for new features during that time.  Throughout my <q>2.0</q> discovery processes, I've also designed and launched several smaller features.
 				</p>
 				<p class="takeaway">
 					<span>
-						Each of those smaller launches has revealed pivotal insights for the design of the larger "project 2.0".  In fact, they changed my assumptions about the entire goal of the larger project.  These insights are highlighted below.
+						Each of those smaller launches has revealed pivotal insights for the design of the larger <q>project 2.0</q>.  In fact, they changed my assumptions about the entire goal of the larger project.  These insights are highlighted below.
 					</span>
 				</p>
 				<h2>Side Project: Automations Organizer</h2>
@@ -392,7 +416,7 @@ body {
 					<img alt="Automations organizer screenshot" src="assets/details_Sens_organizer.png">
 				</div>
 				<p>
-					When I conducted user interviews, multiple users stated that they simply wanted to place automations into folders or to apply tags.  When I studied hundreds of customer automation names, I found similarities in their ad-hoc naming conventions.  I discovered that some savvy users had created a crude tagging system by writing "tags" into the automation names.  For example, they embedded their client's names, branch location names, and type of message recipients into the automation names.  I used this information to design an organizer with a tagging UX that included a recommended tag naming convention.  Also, since we could automatically determine some meta-data about each automation (e.g. message recipient type), I exposed that meta-data in the designs and made it filterable.  This alleviating the need for users to manually create certain tags (e.g. tags for message recipient type).
+					When I conducted user interviews, multiple users stated that they simply wanted to place automations into folders or to apply tags.  When I studied hundreds of customer automation names, I found similarities in their ad-hoc naming conventions.  I discovered that some savvy users had created a crude tagging system by writing <q>tags</q> into the automation names.  For example, they embedded their client's names, branch location names, and type of message recipients into the automation names.  I used this information to design an organizer with a tagging UX that included a recommended tag naming convention.  Also, since we could automatically determine some meta-data about each automation (e.g. message recipient type), I exposed that meta-data in the designs and made it filterable.  This alleviating the need for users to manually create certain tags (e.g. tags for message recipient type).
 				</p>
 				<h3>What I learned about project 2.0</h3>
 				<p>
@@ -400,7 +424,7 @@ body {
 				</p>
 				<p class="takeaway">
 					<span>
-						Users were treating automations as "folders" full of loosely related messages rather than a sequence of messages that accomplished a discreet goal.  In fact, tags encouraged an incorrect mental model the limited how they used their automations.
+						Users were treating automations as <q>folders</q> full of loosely related messages rather than a sequence of messages that accomplished a discreet goal.  In fact, tags encouraged an incorrect mental model the limited how they used their automations.
 					</span>
 				</p>
 				<h2>Side Project: Message Scheduler</h2>
@@ -445,7 +469,7 @@ body {
 				</p>
 				<h3>What I learned about project 2.0</h3>
 				<p>
-					Unfortunately, in building the releasable version of this new feature, we ran into severe technical constraints.  Templates contain variables such as "recipient name", but each variable is represented by a different database entity for each different customer.  In an effort to reduce scope and launch sooner, we didn't build an automatic process to insert the appropriate database entity for each variables.
+					Unfortunately, in building the releasable version of this new feature, we ran into severe technical constraints.  Templates contain variables such as <q>recipient name</q>, but each variable is represented by a different database entity for each different customer.  In an effort to reduce scope and launch sooner, we didn't build an automatic process to insert the appropriate database entity for each variables.
 				</p>
 				<p class="takeaway">
 					<span>
@@ -461,7 +485,7 @@ body {
 				</p>
 				<p class="takeaway">
 					<span>
-						Project 2.0 would need to change users' mental modal from seeing automations as a "folder" of messages and database updates to a sequenced set of messages that work together to achieve a measurable goal.
+						Project 2.0 would need to change users' mental modal from seeing automations as a <q>folder</q> of messages and database updates to a sequenced set of messages that work together to achieve a measurable goal.
 					</span>
 				</p>
 				<h3>What we're building</h3>
@@ -472,10 +496,10 @@ body {
 					Project 2.0 is a vast epic of epics that is still in the solution design phase.  My solutions are built on my new understanding of the problem space.  The learning from the templates project showed that cuts for MVP must not cut the core user stories that drive adoption.  It's tempting to limit the scope of Project 2.0 to redesigning the UX and IA, which is already a large undertaking.  But discovering this core need for automations to be goal-driven requires the extra expense to bake goals into every page and feature.
 				</p>
 				<p>
-					Through comparative research, I had determined that a "line and node" canvas builder would be the ideal UX pattern for building automations.  That would visualized automations as a "sequence".  Meanwhile, the scheduling project revealed that we could further encourage sequencing by detaching the schedule from each message and moving it into a "trigger node" that will sit between two messages. <sup>(<em>see image</em>)</sup>
+					Through comparative research, I had determined that a <q>line and node</q> canvas builder would be the ideal UX pattern for building automations.  That would visualized automations as a <q>sequence</q>.  Meanwhile, the scheduling project revealed that we could further encourage sequencing by detaching the schedule from each message and moving it into a <q>trigger node</q> that will sit between two messages. <sup>(<em>see image</em>)</sup>
 				</p>
 				<p>
-					I've created and tested several iterations of working prototypes with customers.  Meanwhile, I've journey mapped the product suite to visualize how separate products overlap to address many use-cases.  The prototypes include a new product-wide navigation, a new "rule builder" for targeting recipients, a way to trigger automations based on recipient action (or inaction) to other automations, and a library of reusable user-made automation components.  I'm now helping to delegate some of the nuts-and-bolts UX work to my design teammates.  My role has transitioned to designing the connective tissue that maintains the product vision.
+					I've created and tested several iterations of working prototypes with customers.  Meanwhile, I've journey mapped the product suite to visualize how separate products overlap to address many use-cases.  The prototypes include a new product-wide navigation, a new <q>rule builder</q> for targeting recipients, a way to trigger automations based on recipient action (or inaction) to other automations, and a library of reusable user-made automation components.  I'm now helping to delegate some of the nuts-and-bolts UX work to my design teammates.  My role has transitioned to designing the connective tissue that maintains the product vision.
 				</p>
 			</div>
 		</div>
@@ -490,7 +514,7 @@ body {
 			<div class="case_study">
 				<h2>Background</h2>
 				<p>
-					Clover Health is an insurer for the Medicare population.  The Medicare system rates insurers based on the number of patients in each insurer's population who have chronic conditions and based on whether the insurers can prove that their patients don't experience any "gaps in care" for those chronic conditions.  This rating system is a strong incentive because it directly impacts an insurer's bottom-line.  To improve their ratings, insurers rely on the healthcare providers within their networks to carefully document the constant and consistent care of of their patients who have chronic conditions.
+					Clover Health is an insurer for the Medicare population.  The Medicare system rates insurers based on the number of patients in each insurer's population who have chronic conditions and based on whether the insurers can prove that their patients don't experience any <q>gaps in care</q> for those chronic conditions.  This rating system is a strong incentive because it directly impacts an insurer's bottom-line.  To improve their ratings, insurers rely on the healthcare providers within their networks to carefully document the constant and consistent care of of their patients who have chronic conditions.
 				</p>
 				<p>
 					My task at Clover was to design a tool to be used at doctors' offices to achieve this documentation goal.  The tool would surface administrative tasks generated by Clover's back-end systems (tasks such as ordering tests for a chronic conditions and checking if patients are correctly taking medication for those conditions).  The tool would then allow administrate staff members at doctors' offices to prioritize, manage, and complete those tasks.  Completed tasks would then automatically create the documentation necessary to prove constant care to Medicare and thereby meet Clover's business goals of increasing their rating and maintaining healthy patients.
@@ -502,7 +526,7 @@ body {
 					<img alt="Screenshot of prototype task tool" src="assets/details_ClVr_tasks2.png">
 				</div>
 				<p>
-					If we could get doctors' offices to use the tool <sup>(<em>hover over image</em>)</sup>, the bottom-line business benefit to Clover was clear.  But what were the incentives for doctors' offices to actually use the tool?  My first strategic challenge was to ensure that Clover's executive stakeholders understood the paramount importance of motivating &mdash; not just the owners and managers of doctors' offices &mdash; but also the end-users, the administrative staff members who I would be building interfaces for.  As the advocate for the end-user and expert in their needs, it was essential for me to communicate the difficulties of getting end-users to remember to engage with our tool and to understand the "what's in it for me" of using our tool.
+					If we could get doctors' offices to use the tool <sup>(<em>hover over image</em>)</sup>, the bottom-line business benefit to Clover was clear.  But what were the incentives for doctors' offices to actually use the tool?  My first strategic challenge was to ensure that Clover's executive stakeholders understood the paramount importance of motivating &mdash; not just the owners and managers of doctors' offices &mdash; but also the end-users, the administrative staff members who I would be building interfaces for.  As the advocate for the end-user and expert in their needs, it was essential for me to communicate the difficulties of getting end-users to remember to engage with our tool and to understand the <q>what's in it for me</q> of using our tool.
 				</p>
 				<h3>The Environment</h3>
 				<p>
@@ -543,7 +567,7 @@ body {
 					After validating low-fidelity prototypes with internal users, I decided to create a high-fidelity prototype in order to conduct usability tests.  This would allow users to experience end-to-end interaction patterns.  Additionally, I needed to prove to stake holders that animated transitions were necessary to convey meaning and guide the users' eyes from step to step <sup>(<em>video</em>)</sup>.
 				</p>
 				<p>
-					I conducted usability interviews with four users, asking them to complete usability goals such as choosing a task and marking it as complete within the tool.  As usual, user feedback led to significant changes to the initial designs as well as a deeper understanding of the users' motivations and workflow.  For example, while it's often better to show all available options rather than to collapse them into a drop-down menu, the single call to action "we can't or won't renew" proved more readable due to the high information density of the page.
+					I conducted usability interviews with four users, asking them to complete usability goals such as choosing a task and marking it as complete within the tool.  As usual, user feedback led to significant changes to the initial designs as well as a deeper understanding of the users' motivations and workflow.  For example, while it's often better to show all available options rather than to collapse them into a drop-down menu, the single call to action <q>we can't or won't renew</q> proved more readable due to the high information density of the page.
 				</p>
 			</div>
 		</div>
@@ -633,10 +657,10 @@ body {
 					Prototyping doesn't always need to be digital!  Siempo considered a feature to deter overuse of apps by blocking a small portion of the user's screen after a period of time.  To test this idea, I could have created a software prototype, but I wanted to see test users respond in a real-world scenario such as browsing through one of their actual social-media accounts.
 				</p>
 				<p>
-					I crafted this physical prototype <sup>(<em>image</em>)</sup> in just a few hours, and made it able to stretch to fit any device.  With "Siempo Cardboard" I was able to swap in different sizes of screen blocking and to get user feedback faster and more accurately than with a digital mockup.
+					I crafted this physical prototype <sup>(<em>image</em>)</sup> in just a few hours, and made it able to stretch to fit any device.  With <q>Siempo Cardboard</q> I was able to swap in different sizes of screen blocking and to get user feedback faster and more accurately than with a digital mockup.
 				</p>
 				<p>
-					Of course, when appropriate, I have also created high-fidelity prototypes.  You can tap on this example prototype <sup>(<em>tap image</em>)</sup> of Siempo's feature that allows users to type a personal "intention" for themselves.  Here, it was important to prototype the full visual experience including animations because the UX design of saving an intention needed to have emotional impact.  I watched test users interact with the prototype and asked them if they felt that impact.
+					Of course, when appropriate, I have also created high-fidelity prototypes.  You can tap on this example prototype <sup>(<em>tap image</em>)</sup> of Siempo's feature that allows users to type a personal <q>intention</q> for themselves.  Here, it was important to prototype the full visual experience including animations because the UX design of saving an intention needed to have emotional impact.  I watched test users interact with the prototype and asked them if they felt that impact.
 				</p>
 				<p>
 					Despite being an MVP, Siempo Beta debuted in the Google Play Store to strongly positive reviews: &ldquo;I have tried tons of &lsquo;minimalist&rsquo; launchers, this is the only one that has lived up to it's claim.&rdquo;
@@ -658,7 +682,7 @@ body {
 					<img alt="how Cardpool appears on a free standing kiosk" src="assets/details_CaPo_phone_laptop_kiosk2.jpg">
 				</div>
 				<p>
-					Cardpool is a dual-sided consumer market place where customers can sell unwanted plastic gift cards for cash and purchase pre-owned gift cards at a discount.  As the sole UX designer, I created its first <a href="https://itunes.apple.com/us/app/cardpool-mobile/id994699053" target="_blank" class="ga_event_out">Cardpool mobile app</a>, moving from sketchpad to app store in 7 months. The app earned a 4.5 star rating in the app store, was an Appy Awards finalist, and won PayBefore's "Best Mobile App" in the payments technology category.
+					Cardpool is a dual-sided consumer market place where customers can sell unwanted plastic gift cards for cash and purchase pre-owned gift cards at a discount.  As the sole UX designer, I created its first <a href="https://itunes.apple.com/us/app/cardpool-mobile/id994699053" target="_blank" class="ga_event_out">Cardpool mobile app</a>, moving from sketchpad to app store in 7 months. The app earned a 4.5 star rating in the app store, was an Appy Awards finalist, and won PayBefore's <q>Best Mobile App</q> in the payments technology category.
 				</p>
 				<p>
 					I also designed the complete overhaul of the <a href="https:www.cardpool.com" target="_blank" class="ga_event_out">Cardpool.com</a> website, making it responsive to mobile devices, and I designed the interface of Cardpool's kiosks, in-store stand-alone machines that allow customers to exchange plastic gift cards for cash vouchers <sup>(<em>hover over image</em>)</sup>.
@@ -679,7 +703,7 @@ body {
 					<img alt="UX app flow chart" src="assets/details_CaPo_app_map.png">
 				</div>
 				<p>
-					My research surfaced the fact that the competitor had a strong checkout flow but lacked the strong security features that users required.  Gift cards are inherently insecure and prone to fraud (you can think of them as "branded cash").  Protecting users and the company required guiding buyers and sellers through several security hurdles including an SMS verified phone number.  This led to researching the UX of banking and online wallet apps for approaches that made these hurdles more palatable, including a progress meter.
+					My research surfaced the fact that the competitor had a strong checkout flow but lacked the strong security features that users required.  Gift cards are inherently insecure and prone to fraud (you can think of them as <q>branded cash</q>).  Protecting users and the company required guiding buyers and sellers through several security hurdles including an SMS verified phone number.  This led to researching the UX of banking and online wallet apps for approaches that made these hurdles more palatable, including a progress meter.
 				</p>
 				<p>
 					For a project of this size, I normally create an app map flowchart to ensure that all stakeholders understand the information architecture and to ensure that all corner cases have been uncovered.  In this case, I also segregated the screens into the various levels of security needed to reach them <sup>(<em>scroll image</em>)</sup>.  These levels included, new visitors, new accounts, device verification, pin code protection, and banking credential verification.
@@ -710,7 +734,7 @@ body {
 					<img alt="screenshot of Cardpool forms" src="assets/details_CaPo_forms.png">
 				</div>
 				<p>
-					I devised and documented a detailed interaction model to handle form presentation that served to reduce the user error rate, boost user retries, and ultimately increase conversion to sales during checkout.  Using the "float label" standard employed by Material Design, these best-in-class form elements feature unique color states and animated transitions for hover, focus, valid, and error states.  I also re-wrote micro-copy such as for errors to sound friendlier and provide more detail <sup>(<em>scroll image</em>)</sup>.
+					I devised and documented a detailed interaction model to handle form presentation that served to reduce the user error rate, boost user retries, and ultimately increase conversion to sales during checkout.  Using the <q>float label</q> standard employed by Material Design, these best-in-class form elements feature unique color states and animated transitions for hover, focus, valid, and error states.  I also re-wrote micro-copy such as for errors to sound friendlier and provide more detail <sup>(<em>scroll image</em>)</sup>.
 				</p>
 				<h2>Visual &amp; Motion</h2>
 				<p>
@@ -746,7 +770,7 @@ body {
 			<div class="case_study">
 				<h2>Introduction</h2>
 				<p>
-					<a href="https://www.couchsurfing.com" target="_blank" class="ga_event_out">CouchSurfing.com</a> pioneered homeshare and the "sharing economy".  It preceded AirBnb, TaskRabbit, and Lyft, and it has sometimes been called "the free AirBnb" or "the platonic dating site".  I was the 2nd full-time employee, and I built the startup over five years until we acquired $21 million in venture capital funding.  I helped create many of its software tools and employee processes for rating the trust between sharing-community members.  Those tools were later duplicated and improved by the other sharing economy websites.
+					<a href="https://www.couchsurfing.com" target="_blank" class="ga_event_out">CouchSurfing.com</a> pioneered homeshare and the <q>sharing economy</q>.  It preceded AirBnb, TaskRabbit, and Lyft, and it has sometimes been called <q>the free AirBnb</q> or <q>the platonic dating site</q>.  I was the 2nd full-time employee, and I built the startup over five years until we acquired $21 million in venture capital funding.  I helped create many of its software tools and employee processes for rating the trust between sharing-community members.  Those tools were later duplicated and improved by the other sharing economy websites.
 				</p>
 				<p>
 					I joined CouchSurfing three years after its public launch in 2004.  I helped select and hire almost every employee who followed me, growing the company by 45 more people, and building the product department from the ground up as its Head of Product Design. I co-designed the first CouchSurfing mobile app, and managed two product designers and a researcher.
@@ -760,17 +784,17 @@ body {
 					<img alt="diagram of algorithm for matching CouchSurfing members" src="assets/details_CoSu_matching_algo1.png">
 				</div>
 				<p>
-					CouchSurfing is a dual sided "marketplace", with times of unequal supply and demand in different parts of the world and in different seasons. I studied multiple solutions to improve our matching algorithm taking into account these market dynamics and user behavior.  Unlike AirBnb, a host's location and amenities were not driving factors for matching.  Also, unlike romantic dating sites which are optimized for worse matches due to the fact the successful matches lead to lower revenue, successful matches on CouchSurfing led to higher revenue.  CouchSurfing was, and still is, a one-of-a-kind laboratory for quantifying human interaction. <sup>(<em>hover over image</em>)</sup>
+					CouchSurfing is a dual sided <q>marketplace</q>, with times of unequal supply and demand in different parts of the world and in different seasons. I studied multiple solutions to improve our matching algorithm taking into account these market dynamics and user behavior.  Unlike AirBnb, a host's location and amenities were not driving factors for matching.  Also, unlike romantic dating sites which are optimized for worse matches due to the fact the successful matches lead to lower revenue, successful matches on CouchSurfing led to higher revenue.  CouchSurfing was, and still is, a one-of-a-kind laboratory for quantifying human interaction. <sup>(<em>hover over image</em>)</sup>
 				</p>
 				<h3>Expanding the product suite</h3>
 				<div id="img_CoSu_meetups" class="float_box">
 					<img alt="portion of flow chart of the mobile casual meetups product suite" src="assets/details_CoSu_meetups.png">
 				</div>
 				<p>
-					The "couch" was just one of the potential venues for face-to-face experiences between to members.  CouchSuring.com initially launched with only this one venue, which was also its name-sake.  It then expanded to organized formal events.  I led the creation of our third venue:  our casual mobile meet-ups product suite.  This expansion allowed any number of members to spontaneously gather around any place of interest or any activity.  It has yet to be duplicated successfully on any other website. <sup>(<em>hover over image</em>)</sup>
+					The <q>couch</q> was just one of the potential venues for face-to-face experiences between to members.  CouchSuring.com initially launched with only this one venue, which was also its name-sake.  It then expanded to organized formal events.  I led the creation of our third venue:  our casual mobile meet-ups product suite.  This expansion allowed any number of members to spontaneously gather around any place of interest or any activity.  It has yet to be duplicated successfully on any other website. <sup>(<em>hover over image</em>)</sup>
 				</p>
 				<p>
-					I helped optimize CouchSurfing for the greatest number of face-to-face meetings between members.  By expanding the venues for such meetings beyond the "couch" and from 2-people to groups, I increased active users, user retention, and the network effect that those create in turn.
+					I helped optimize CouchSurfing for the greatest number of face-to-face meetings between members.  By expanding the venues for such meetings beyond the <q>couch</q> and from 2-people to groups, I increased active users, user retention, and the network effect that those create in turn.
 				</p>
 				<h2>UX Research</h2>
 				<div id="img_CoSu_search_results" class="float_box">
