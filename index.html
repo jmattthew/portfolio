@@ -182,11 +182,7 @@ body {
 					</li>
 					<li class="nav_item" id="nav_sense">
 						<a href="#sense" target="_self">
-							<span>2022 — Sense I</span></a>
-					</li>
-					<li class="nav_item" id="nav_sense_2">
-						<a href="#sense_2" target="_self">
-							<span>2022 — Sense II</span></a>
+							<span>2022 — Sense</span></a>
 					</li>
 					<li class="nav_item" id="nav_clover">
 						<a href="#clover" target="_self">
@@ -291,215 +287,213 @@ body {
 		<div id="sense" class="page">
 			<a class="go_to_start" href="#intro">Back to Top</a>
 			<h1 class="page_title">
-				Sense Design System
+				Sense for Staffing
 			</h1>
 			<div class="page_description">
-				System ownership, creation, &amp; rollout
+				Messaging &amp; automation tools for staffing &amp; recruiting
 			</div>
 			<div class="case_study">
-				<h2>Summary</h2>
-				<div id="img_Sens_table" class="float_box">
-					<img alt="Design system table after" src="assets/details_Sens_table1.png">
-					<img alt="Design system table before" src="assets/details_Sens_table2.png">
+				<h2>Contents</h2>
+				<ul>
+					<li><a href="#Sense design system ownership" target="_self">Design system ownership</a></li>
+					<li><a href="#sense_2" target="_self">Iterative UX and leadership</a></li>
+				</ul>
+					<div id="Sense design system ownership">
+					<h2>Design system ownership, creation, &amp; rollout</h2>
+					<div id="img_Sens_table" class="float_box">
+						<img alt="Design system table after" src="assets/details_Sens_table1.png">
+						<img alt="Design system table before" src="assets/details_Sens_table2.png">
+					</div>
+					<p>
+						During my three years designing for Sense, the company has rocketed to over $40 Million in revenue, a growth of over 6x.  But to generate that growth, it was necessary to take on a large amount of design and tech debt.  Customers benefited from many new products and features but suffered from an inconsistent UI style that was a remnant from the earliest days of the startup.
+					</p>
+					<p>
+						Series D funding allowed me to push Sense to build a design system <sup>(<em>hover over image</em>)</sup>.  This not only modernized and revitalized the UI and brand, but most essentially it increased the velocity of the design and engineering teams.  The value of design systems is well documented, but every company considering a design system faces the great challenge of turning the wheel of a massive moving ship, marshaling resources, and managing change for customers.
+					</p>
+					<p>
+						I left Sense before the project was completed, but this case study covers how I was able to generate consensus during this herculean project.
+					</p>
+					<h3>From advocacy to initiative</h3>
+					<p>
+						As the most senior design leader on the team, I played several key roles in kick-starting this initiative and ensuring its success over multiple years.  From my first month at Sense in 2019, I began advocating for design system adoption.  I wrote proposals about its benefits and its costs.  I presented multiple UI designs for the potential new look and feel, and I got feedback from customers during qualitative research.  But my advocacy wasn't initially successful.  The turning point came when I partnered with engineering.  I found enthusiastic front-end developers who worked with me to take our message to both product and engineering leadership.  Even before new funding came in, together we were able to kick-start the project officially.
+					</p>
+					<p>
+						Implementing a design system has larger impact — and therefore requires more consensus building — than almost any other product change.  Any design system must be highly functional, follow careful logic, and appeal to well studied use cases.  Despite this, what's most visible to stakeholders is largely the aesthetics, such as fonts, colors, shapes, and shadows.  All stakeholders have valid opinions about such aesthetics, so how can design leaders help them find common ground?
+					</p>
+					<div id="img_Sens_comps" class="float_box">
+						<img alt="Early example design comps with feedback" src="assets/details_Sens_comps.png">
+					</div>
+					<p>
+						Like most design projects, I began with comparative analysis.  Sense is a SaaS enterprise automation tool, and users expect a familiar UI that reminds them of similar SaaS tools.  I was able to present to stakeholders the similarities and differences that I found between those competing tools.  Yet that still allowed for several possible aesthetic directions, and we were hampered by <q>bike shed</q> concerns such as which corner-radius best matched our brand.  I made the case to the head of product that we were beginning to spin our wheels.
+					</p>
+					<p>
+						A breakthrough came when I suggested that I had past success during in time at Blackhawk Network in utilizing a contract design firm.  I had discovered at that time that an external firm is perceived as more unbiased and expert, relieving some of the decision making pressure from internal stakeholders.  We were able to find a firm that was recommended by one of our venture partners, which gave them enough clout that we were able to take their aesthetic recommendations and move forward.  I coordinated their efforts to create several design styles, color palettes, and font pairings.  I led the critique of their designs and gathered feedback from stakeholders <sup>(<em>scroll image</em>)</sup>.
+					</p>
+					<h3>From style guide to atomic components</h3>
+					<div id="img_Sens_colors" class="float_box">
+						<img alt="Sense design system color palette" src="assets/details_Sens_colors.png">
+					</div>
+					<p>
+						After I secured internal agreement on the style guide created by our contract firm, I began the work of articulating a visual language and reworking those styles to bring them into consistency with that visual language.  What will different colors signify to users?  How can we provide visual affordances and clues to users about which elements are interactive?  What visual aspects unify the functionally similar components in the minds of users? <sup>(<em>image</em>)</sup>
+					</p>
+					<div id="img_Sens_buttons" class="float_box">
+						<img alt="Many different variants of the button component" src="assets/details_Sens_buttons.gif">
+					</div>
+					<p>
+						Having documented this visual language, the next step was to create reusable atomic components using our design tool of choice, Figma.  Figma allows components to have <q>variants</q>, for example a single button component with a variant for default, hovered, and disabled states.  As the owner of the design system, I carefully crafted hundreds of variants of the core atomic components, ensuring their consistency.  I also baked in their animations and interaction patterns, allowing the other designers to simply drop the components into their design files then choose the appropriate variant.<sup>(<em>image</em>)</sup>
+					</p>
+					<h3>Pressure testing</h3>
+					<p>
+						Though I owned component design, I relied on my two fellow design team members to pressure test the components by including them in their prototypes.  This highlighted subtle weaknesses.  For example, they pointed out that my initial styles for disabled elements had too much visual weight.  I also decided to create informal contests within the design team to create infrequently used components, such as our slider and file-upload input.  This not only led to more creative options, but gave each designer the pride of having their name on a concrete piece of the system.<sup>(<em>image</em>)</sup>
+					</p>
+					<div id="img_Sens_sliders" class="float_box">
+						<img alt="Design explorations for the slider component" src="assets/details_Sens_sliders.png">
+					</div>
+					<p>
+						Meanwhile, I partnered with engineering as they authored the code-components to be used within the engineered product.  This also pressure tested my earlier design decisions.  The engineers encouraged me to be ruthless about keeping the number of variants low and essential.  Avoiding variants for every corner-case both reduced the code engineers needed to create and maintain and reduced risk of design inconsistencies.
+					</p>
+					<h3>Implementation &amp; Launch</h3>
+					<p>
+						How should we guide users through the potentially shocking transition from old to new?  How do we take on the gargantuan task of migrating every page and feature to the new design and code?  In what order should we make that transition, and should we continue to update features that haven't yet been migrated, adding to our tech-debt?
+					</p>
+					<div id="img_Sens_migration" class="float_box">
+						<img alt="Iterative steps in the migration to the new design system" src="assets/details_Sens_migration.png">
+					</div>
+					<p>
+						The answers to such questions are unique to every organization.  As the owner of the design system on the design side of the organization, I worked most closely with my counterpart design system owner on the engineering side.  I also worked with stakeholders to align on those critical decisions.  I documented many paths that we might take, including their benefits, costs, and risks.  For example, should we allow users to toggle between new and old, as other products have chosen to do?  That choice would add considerable costs, but greatly mitigate user confusion and resistance to change.  We ultimately decided to use my option of doing a low-cost <q>facelift</q> on all existing pages, which made them feel closer to new pages that were build on the design system.<sup>(<em>scroll image</em>)</sup>
+					</p>
+					<h3>Road blocks</h3>
+					<p>
+						Some stakeholders argued that their own products needed separate design systems.  They made the quite reasonable argument that different users may need different component behavior, just as different users sometimes need different branding.  In particular, Sense had separate brands for its B2B and B2B2C users, who are very different personas.  Additionally, some of our B2B users required a greater density of on-screen information than others.  While reasonable, these arguments threatened to slow our momentum or even send us back to the drawing board.
+					</p>
+					<p>
+						Fortunately, I had prepared for these roadblocks in advance.  Sense is hardly the first company to implement a design system, and we didn't need to re-invent the wheel.  I found blog posts describing the pros and cons of creating multiple systems, creating specialized component variants for different users, and simply using the same components for all users.
+					</p>
+					<h3>What we learned</h3>
+					<p>
+						I knew that design systems were living, but I was surprised by how quickly ours needed to adapt and evolve.  Implementing strict versioning has been helpful.  Every new page we built brought new questions about whether macro UX patterns, such as the layout within our side-panel, should be codified or left to designers' discretion.  I have been surprised to find my fellow designers falling on both sides of this question at different times.  On the one hand, they craved freedom to express themselves and chafed at shoehorning their designs into the system rules.  On the other hand, they empathized with our users' need for consistency, and they enjoyed the challenge of finding rules that worked for every situation.
+					</p>
+					<p>
+						Moving from ad-hoc design &amp; code to a formal system required a sea change for the design team, in terms of process, as well as re-architecture of the front-end code base from the ground up.  That's why, as soon as I started advocating for the project, nearly three years earlier, I made sure that stakeholders understood that we wouldn't just be putting on a <q>new coat of paint</q>.
+					</p>
+					<p>
+						Just as design systems deeply impact product development process, its impact on me was a shift in focus towards infrastructure, change management, and team dynamics.	For example, before the design system, there was of course never a need to check designs for alignment to the design system!  We needed to invent formal processes for doing that.  Meanwhile, our critiques changed focus to function above form, since form was largely baked in.  I also reworked our hand-off to engineering.  Over time, my role at Sense shifted further from nuts-and-bolts UX design towards process-design, documentation, and leadership.
+					</p>
+					<div id="img_Sens_flowchart" class="float_box">
+						<img alt="Sample page using the new design system" src="assets/details_Sens_flowchart.png">
+					</div>
+					<h3>Ensuring progress after my departure</h3>
+					<p>
+						Sense's new design system was only part way through its rollout when I left the company.  However, I already saw huge benefits to design and engineering teams' velocities.  During my tenure, I was careful to create the documentation that would guide future designers, such as examples of design <q>do's and don'ts</q>.  We also hired more team members over those three years, so I was able to oversee delegation to and training of more junior designers.
+					</p>
 				</div>
-				<p>
-					During my three years designing for Sense, the company has rocketed to over $40 Million in revenue, a growth of over 6x.  But to generate that growth, it was necessary to take on a large amount of design and tech debt.  Customers benefited from many new products and features but suffered from an inconsistent UI style that was a remnant from the earliest days of the startup.
-				</p>
-				<p>
-					Series D funding allowed me to push Sense to build a design system <sup>(<em>hover over image</em>)</sup>.  This not only modernized and revitalized the UI and brand, but most essentially it increased the velocity of the design and engineering teams.  The value of design systems is well documented, but every company considering a design system faces the great challenge of turning the wheel of a massive moving ship, marshaling resources, and managing change for customers.
-				</p>
-				<p>
-					I left Sense before the project was completed, but this case study covers how I was able to generate consensus during this herculean project.
-				</p>
-				<h3>From advocacy to initiative</h3>
-				<p>
-					As the most senior design leader on the team, I played several key roles in kick-starting this initiative and ensuring its success over multiple years.  From my first month at Sense in 2019, I began advocating for design system adoption.  I wrote proposals about its benefits and its costs.  I presented multiple UI designs for the potential new look and feel, and I got feedback from customers during qualitative research.  But my advocacy wasn't initially successful.  The turning point came when I partnered with engineering.  I found enthusiastic front-end developers who worked with me to take our message to both product and engineering leadership.  Even before new funding came in, together we were able to kick-start the project officially.
-				</p>
-				<p>
-					Implementing a design system has larger impact — and therefore requires more consensus building — than almost any other product change.  Any design system must be highly functional, follow careful logic, and appeal to well studied use cases.  Despite this, what's most visible to stakeholders is largely the aesthetics, such as fonts, colors, shapes, and shadows.  All stakeholders have valid opinions about such aesthetics, so how can design leaders help them find common ground?
-				</p>
-				<div id="img_Sens_comps" class="float_box">
-					<img alt="Early example design comps with feedback" src="assets/details_Sens_comps.png">
+				<div>
+					<h2 id="sense_2">Platform Overhaul — Codename <q>Project 2.0</q></h2>
+					<h3>Summary</h3>
+					<p>
+						I owned the project to redesign Sense's flagship product, the <strong>messaging & database automation</strong> platform that unifies Sense's entire product suite.  This overhaul, code named <q>Project 2.0</q>, incorporated a completely new information architecture, all new UX patterns, and the new design system (<a href="#sense">see above</a>).  The project began with the realization that the product suite had grown so large &amp; diverse that most customers weren't using it to its full potential.  Often customers who found great success with a small part of the suite didn't discover or utilize its other parts.  Customers were overwhelmed, and their reliance on white-glove support wasn't scalable.
+					</p>
+					<p>
+						Though I had been working on the project for two years, the only engineering that has begun was the data-structure to support the planned new features.  That long research and discovery phase was completely appropriate for the massive investment in company resources that were required.  However, we couldn't have and didn't kept customers waiting for new features during those two years.  Throughout my <q>Project 2.0</q> discovery processes, I also designed and launched several smaller features.
+					</p>
+					<p class="takeaway">
+						<span>
+							Each of those smaller launches revealed pivotal insights for the design of the larger <q>Project 2.0</q>.  In fact, they often changed my assumptions about the entire goal of the larger project.  These insights are highlighted below.
+						</span>
+					</p>
+					<h3>Side Project: Automations Organizer</h3>
+					<p><strong>Background</strong></p>
+					<p>
+						Sense recruiting tools allow users to send a series of automated messages to candidates and to use their responses to make automatic database changes.  Customers typically create dozens of such automations, but originally customers could only access them via a simple list with basic filtering.  They needed a tool to organize and search within their automations. <sup>(<em>see image</em>)</sup>
+					</p>
+					<p><strong>What we built</strong></p>
+					<div id="img_Sens_organizer" class="float_box">
+						<img alt="Automations organizer screenshot" src="assets/details_Sens_organizer.png">
+					</div>
+					<p>
+						When I conducted user interviews, multiple users stated that they simply wanted to place automations into folders or to apply tags.  When I studied hundreds of customer automation names, I found similarities in their ad-hoc naming conventions.  I discovered that some savvy users had created a crude tagging system by writing <q>tags</q> into the automation names.  For example, they embedded their client's names, branch location names, and type of message recipients into the automation names.  I used this information to design an organizer-tool with a tagging UX that included a recommended tag naming convention.  Also, since we could automatically determine some meta-data about each automation (e.g. a message's recipient type), I exposed that meta-data in the designs and made it filterable.  This alleviating the need for users to manually create certain tags (e.g. tags for message recipient type).
+					</p>
+					<p><strong>How that side-project informed <q>Project 2.0</q></strong></p>
+					<p>
+						The research revealed that customers didn't know how they should group messages to be automated.  Some created dozens of automations, each containing only a few messages.  Others created only a few automations, each containing dozens of messages.  While both of these groups were helped by the tagging system and satisfied that Sense had given them what they asked for, that new organizer-tool failed to solve a fundamental issue:
+					</p>
+					<p class="takeaway">
+						<span>
+							Users were treating automations as equivalent to <q>folders</q> — filling them with loosely related messages rather than a sequence of messages that accomplished a discreet goal.  In fact, the new tool encouraged an incorrect mental model that limited how customers used their automations.  Therefore, I realized that the focus of Project 2.0 needed to shift to helping users create a better mental model.
+						</span>
+					</p>
+					<h3>Side Project: Message Scheduler-tool</h3>
+					<p><strong>Background</strong></p>
+					<p>
+						A Sense automation can contain any number of messages to candidates.  Each message has complex rules for how it is triggered and scheduled.  This scheduler-tool contains many options that were added over years to meet customer requests and edge cases.  Eventually, the interactions between those many options become nearly impossible for users to understand.  For example, schedules can be based on dates that are static or relative to database fields, including arithmetic adjustments.  They can recur in complex intervals and change based on the time-of-day and day-of-week.
+					</p>
+					<p><strong>What we built</strong></p>
+					<div id="img_Sens_scheduler" class="float_box">
+						<img alt="Automations organizer screenshot" src="assets/details_Sens_scheduler.png">
+					</div>
+					<p>
+						When I discovered this issue during user interviews about an unrelated feature, I convinced my PM partner to prioritize a project to overhaul the scheduler-tool.  Midway through the project the original PM left Sense, and in the months before their role was refilled, I took on the responsibilities of coordinating with engineering to make sure the project was completed.
+					</p>
+					<p>
+						The project strategy was to create a new front-end UX that would reorganize and regroup the many options within the scheduler.  I started by creating a tree-map of every possible combination of options.  To my surprise, not only did I not understand the effect of some combinations, <strong>no one at the company</strong> understood them!  In fact, some of the allowed combinations in the UX were logically impossible.  After solving these issues, I created a functional prototype to test with users.  This revealed the two distinct needs for the new interface:  Firstly, users needed a form that exposed all of the potential values of the many options.  These needed to be concise and compact to make them easy to adjust.  Secondly, users needed an explanation of the result of their selected options on the messaging schedule.  Unlike the form's need for brevity, this explanation needed a verbose sentence format so that the schedule was sure to be human readable and fully understood by users. <sup>(<em>scroll image</em>)</sup>
+					</p>
+					<p><strong>How that side-project informed <q>Project 2.0</q></strong></p>
+					<p>
+						The new scheduler I championed was highly successful at improving our KPI of having fewer customer questions sent to customer service.  It was also validated as successful by a post-launch satisfaction survey.  Yet, while customers were better able to schedule each message within an automation, the project exacerbated a critical issue with automations themselves:
+					</p>
+					<p class="takeaway">
+						<span>
+							Because each message had a separate set of scheduling options, we encouraged the wrong mental model for automations.  Users treated messages within an automation as independent rather than part of a sequence with a larger goal.  Again, this side-project validated the importance of helping users create a better mental model for Sense's product suite as a whole.
+						</span>
+					</p>
+					<h3>Side Project: Template Automations</h3>
+					<p><strong>Background</strong></p>
+					<p>
+						The issue of customers not fully utilizing Sense automations was caused, in part, by customers not understanding all of the product suite's capabilities.  We knew that a time-tested way to educate users and reduce their workload was to provide them with pre-built, plug-and-play automations designed to solve common use-cases and to follow best-practices.
+					</p>
+					<p><strong>What we built</strong></p>
+					<div id="img_Sens_templates" class="float_box">
+						<img alt="Templates selector screenshot" src="assets/details_Sens_templates.png">
+					</div>
+					<p>
+						Since templates are common to many products, the UX patterns I chose made heavy use of my comparative research of other marketing and messaging automation platforms.  I partnered with our sales and customer service teams to determine the most common customer use-cases that we could productize into template content.  During this internal research, I discovered that the customer service team had already created offline templates that they stored as text in Google Docs.  They had been building automations for some customers as a white-glove service.  I organized and standardized these documents to create the starting point for the team that authored the template content.
+					</p>
+					<p>
+						While I was in the discovery phase of this project, Sense had a hackathon, and I knew an engineer who was enthusiastic about it.  They wanted to try their hand at UX design, so I shared my research findings with them and encouraged them to use the findings to decide on UX.  I treated them as a junior designer, giving the engineer wide latitude to learn.  Together we created a working MVP of the new template tool that won the popular vote hackathon award.  This resulted in the head of product re-prioritizing the templates project, moving it to the top priority for the next quarter.
+					</p>
+					</p>
+					<p><strong>How that side-project informed <q>Project 2.0</q></strong></p>
+					<p>
+						Unfortunately, in building the releasable version of this new feature, we ran into severe technical constraints.  Templates needed to contain variables, such as recipient names, but different customers used different custom database entities for those variables.  Therefore, in an effort to reduce scope and launch sooner, we decided to remove some variables from the templates rather than build an automatic process to insert the appropriate database entity for each variable and each customer.  Unfortunately, that was the wrong decision.
+					</p>
+					<p class="takeaway">
+						<span>
+							Deciding what can be cut for an MVP is always difficult, but in this case, we made the wrong cuts.  We forced customers to manually fix templates in order to use them, which lost the plug-and-play benefit that was one of the core user-stories behind the project.  The result was low adoption.
+						</span>
+					</p>
+					<h3>Conclusions for <q>Project 2.0</q> — The importance of user mental models</h3>
+					<p>
+						I began the discovery phase of Project 2.0 with the goal of re-organizing the automations product to reduce cognitive overload, expose the full capabilities of the product suite, and track the degree to which customers utilized the suite.  The successes and failures of the side projects described above changed my strategic approach to Project 2.0 considerably along the way.
+					</p>
+					<p>
+						I learned that users had an unhelpful mental model of automations that was subtly reinforced by the product design.  We missed this internally because we were biased by our own marketing and our vision of our business proposition.  We weren't doing enough <q>dog-fooding</q> and listening to users.
+					</p>
+					<p class="takeaway">
+						<span>
+							Project 2.0 would need to change users' mental modal from seeing each automation as a mere <q>folder</q> of messages and database updates to seeing them a sequenced set of messages that work together to achieve a measurable goal.
+						</span>
+					</p>
+					<p><strong>What we built</strong></p>
+					<div id="img_Sens_flowchart_2" class="float_box">
+						<img alt="Sample page using the new design system" src="assets/details_Sens_flowchart.png">
+					</div>
+					<p>
+						My learnings from the templates project showed that cuts made for an MVP must not cut the core user stories that drive adoption.  It was tempting to limit the scope of Project 2.0 to merely redesigning the UX and IA, which was a large undertaking on its own.  However, discovering the core user need for understand automations as goal-driven deserved the extra expense to bake a goal-driven mental model into every page and feature.  Through comparative research, I had determined that a <q>line and node</q> canvas builder would be the ideal UX pattern for building automations.  That would visualize each automation as a sequence rather than a disjointed list.
+					</p>
+					<p>
+						Meanwhile, the scheduling project revealed that we could further encourage goal-driven sequencing by detaching the schedule from each message and moving it into a <q>trigger node</q> that sits between two messages. <sup>(<em>see image</em>)</sup>  I created several iterations of working prototypes and tested them with customers.  Meanwhile, I journey mapped the product suite to visualize how separate products overlap to address many use-cases.  The prototypes include a new product-wide navigation, a new rule-builder for targeting recipients, a way to trigger automations based on recipient action (or inaction) to other automations, and a library of reusable user-made automation components.
+					</p>
 				</div>
-				<p>
-					Like most design projects, I began with comparative analysis.  Sense is a SaaS enterprise automation tool, and users expect a familiar UI that reminds them of similar SaaS tools.  I was able to present to stakeholders the similarities and differences that I found between those competing tools.  Yet that still allowed for several possible aesthetic directions, and we were hampered by <q>bike shed</q> concerns such as which corner-radius best matched our brand.  I made the case to the head of product that we were beginning to spin our wheels.
-				</p>
-				<p>
-					A breakthrough came when I suggested that I had past success during in time at Blackhawk Network in utilizing a contract design firm.  I had discovered at that time that an external firm is perceived as more unbiased and expert, relieving some of the decision making pressure from internal stakeholders.  We were able to find a firm that was recommended by one of our venture partners, which gave them enough clout that we were able to take their aesthetic recommendations and move forward.  I coordinated their efforts to create several design styles, color palettes, and font pairings.  I led the critique of their designs and gathered feedback from stakeholders <sup>(<em>scroll image</em>)</sup>.
-				</p>
-				<h3>From style guide to atomic components</h3>
-				<div id="img_Sens_colors" class="float_box">
-					<img alt="Sense design system color palette" src="assets/details_Sens_colors.png">
-				</div>
-				<p>
-					After I secured internal agreement on the style guide created by our contract firm, I began the work of articulating a visual language and reworking those styles to bring them into consistency with that visual language.  What will different colors signify to users?  How can we provide visual affordances and clues to users about which elements are interactive?  What visual aspects unify the functionally similar components in the minds of users? <sup>(<em>image</em>)</sup>
-				</p>
-				<div id="img_Sens_buttons" class="float_box">
-					<img alt="Many different variants of the button component" src="assets/details_Sens_buttons.gif">
-				</div>
-				<p>
-					Having documented this visual language, the next step was to create reusable atomic components using our design tool of choice, Figma.  Figma allows components to have <q>variants</q>, for example a single button component with a variant for default, hovered, and disabled states.  As the owner of the design system, I carefully crafted hundreds of variants of the core atomic components, ensuring their consistency.  I also baked in their animations and interaction patterns, allowing the other designers to simply drop the components into their design files then choose the appropriate variant.<sup>(<em>image</em>)</sup>
-				</p>
-				<h3>Pressure testing</h3>
-				<p>
-					Though I owned component design, I relied on my two fellow design team members to pressure test the components by including them in their prototypes.  This highlighted subtle weaknesses.  For example, they pointed out that my initial styles for disabled elements had too much visual weight.  I also decided to create informal contests within the design team to create infrequently used components, such as our slider and file-upload input.  This not only led to more creative options, but gave each designer the pride of having their name on a concrete piece of the system.<sup>(<em>image</em>)</sup>
-				</p>
-				<div id="img_Sens_sliders" class="float_box">
-					<img alt="Design explorations for the slider component" src="assets/details_Sens_sliders.png">
-				</div>
-				<p>
-					Meanwhile, I partnered with engineering as they authored the code-components to be used within the engineered product.  This also pressure tested my earlier design decisions.  The engineers encouraged me to be ruthless about keeping the number of variants low and essential.  Avoiding variants for every corner-case both reduced the code engineers needed to create and maintain and reduced risk of design inconsistencies.
-				</p>
-				<h2>Implementation &amp; Launch</h2>
-				<p>
-					How should we guide users through the potentially shocking transition from old to new?  How do we take on the gargantuan task of migrating every page and feature to the new design and code?  In what order should we make that transition, and should we continue to update features that haven't yet been migrated, adding to our tech-debt?
-				</p>
-				<div id="img_Sens_migration" class="float_box">
-					<img alt="Iterative steps in the migration to the new design system" src="assets/details_Sens_migration.png">
-				</div>
-				<p>
-					The answers to such questions are unique to every organization.  As the owner of the design system on the design side of the organization, I worked most closely with my counterpart design system owner on the engineering side.  I also worked with stakeholders to align on those critical decisions.  I documented many paths that we might take, including their benefits, costs, and risks.  For example, should we allow users to toggle between new and old, as other products have chosen to do?  That choice would add considerable costs, but greatly mitigate user confusion and resistance to change.  We ultimately decided to use my option of doing a low-cost <q>facelift</q> on all existing pages, which made them feel closer to new pages that were build on the design system.<sup>(<em>scroll image</em>)</sup>
-				</p>
-				<h3>Road blocks</h3>
-				<p>
-					Some stakeholders argued that their own products needed separate design systems.  They made the quite reasonable argument that different users may need different component behavior, just as different users sometimes need different branding.  In particular, Sense had separate brands for its B2B and B2B2C users, who are very different personas.  Additionally, some of our B2B users required a greater density of on-screen information than others.  While reasonable, these arguments threatened to slow our momentum or even send us back to the drawing board.
-				</p>
-				<p>
-					Fortunately, I had prepared for these roadblocks in advance.  Sense is hardly the first company to implement a design system, and we didn't need to re-invent the wheel.  I found blog posts describing the pros and cons of creating multiple systems, creating specialized component variants for different users, and simply using the same components for all users.
-				</p>
-				<h2>What we learned</h2>
-				<p>
-					I knew that design systems were living, but I was surprised by how quickly ours needed to adapt and evolve.  Implementing strict versioning has been helpful.  Every new page we built brought new questions about whether macro UX patterns, such as the layout within our side-panel, should be codified or left to designers' discretion.  I have been surprised to find my fellow designers falling on both sides of this question at different times.  On the one hand, they craved freedom to express themselves and chafed at shoehorning their designs into the system rules.  On the other hand, they empathized with our users' need for consistency, and they enjoyed the challenge of finding rules that worked for every situation.
-				</p>
-				<p>
-					Moving from ad-hoc design &amp; code to a formal system required a sea change for the design team, in terms of process, as well as re-architecture of the front-end code base from the ground up.  That's why, as soon as I started advocating for the project, nearly three years earlier, I made sure that stakeholders understood that we wouldn't just be putting on a <q>new coat of paint</q>.
-				</p>
-				<p>
-					Just as design systems deeply impact product development process, its impact on me was a shift in focus towards infrastructure, change management, and team dynamics.	For example, before the design system, there was of course never a need to check designs for alignment to the design system!  We needed to invent formal processes for doing that.  Meanwhile, our critiques changed focus to function above form, since form was largely baked in.  I also reworked our hand-off to engineering.  Over time, my role at Sense shifted further from nuts-and-bolts UX design towards process-design, documentation, and leadership.
-				</p>
-				<div id="img_Sens_flowchart" class="float_box">
-					<img alt="Sample page using the new design system" src="assets/details_Sens_flowchart.png">
-				</div>
-				<h3>Ensuring progress after my departure</h3>
-				<p>
-					Sense's new design system was only part way through its rollout when I left the company.  However, I already saw huge benefits to design and engineering teams' velocities.  During my tenure, I was careful to create the documentation that would guide future designers, such as examples of design <q>do's and don'ts</q>.  We also hired more team members over those three years, so I was able to oversee delegation to and training of more junior designers.
-				</p>
-			</div>
-		</div>
-		<div id="sense_2" class="page">
-			<a class="go_to_start" href="#intro">Back to Top</a>
-			<h1 class="page_title">
-				Sense Platform Design
-			</h1>
-			<div class="page_description">
-				Communications &amp; database automation platform for recruiters
-			</div>
-			<div class="case_study">
-				<h2>Codename <q>Project 2.0</q></h2>
-				<h3>Background</h3>
-				<p>
-					I owned the project to redesign Sense's flagship product, the messaging & database automation platform that unifies Sense's entire product suite.  This redesign, code named <q>Project 2.0</q>, incorporated a completely new information architecture, all new UX patterns, and the new design system (<a href="#sense">see above</a>).  The project began with the realization that the product suite had grown so large &amp; diverse that most customers weren't using it to its full potential.  Often customers who found great success with a small part of the suite didn't discover or utilize its other parts.  Customers were overwhelmed, and their reliance on white-glove support wasn't scalable.
-				</p>
-				<p>
-					Though I had been working on the project for two years, the only engineering that has begun was the data-structure to support the planned new features.  That long research and discovery phase was completely appropriate for the massive investment in company resources that were required.  However, we couldn't have and didn't kept customers waiting for new features during those two years.  Throughout my <q>Project 2.0</q> discovery processes, I also designed and launched several smaller features.
-				</p>
-				<p class="takeaway">
-					<span>
-						Each of those smaller launches revealed pivotal insights for the design of the larger <q>Project 2.0</q>.  In fact, they often changed my assumptions about the entire goal of the larger project.  These insights are highlighted below.
-					</span>
-				</p>
-				<h2>Side Project: Automations Organizer</h2>
-				<h3>Background</h3>
-				<p>
-					Sense recruiting tools allow users to send a series of automated messages to candidates and to use their responses to make automatic database changes.  Customers typically create dozens of such automations, but originally customers could only access them via a simple list with basic filtering.  They needed a tool to organize and search within their automations. <sup>(<em>see image</em>)</sup>
-				</p>
-				<h3>What we built</h3>
-				<div id="img_Sens_organizer" class="float_box">
-					<img alt="Automations organizer screenshot" src="assets/details_Sens_organizer.png">
-				</div>
-				<p>
-					When I conducted user interviews, multiple users stated that they simply wanted to place automations into folders or to apply tags.  When I studied hundreds of customer automation names, I found similarities in their ad-hoc naming conventions.  I discovered that some savvy users had created a crude tagging system by writing <q>tags</q> into the automation names.  For example, they embedded their client's names, branch location names, and type of message recipients into the automation names.  I used this information to design an organizer-tool with a tagging UX that included a recommended tag naming convention.  Also, since we could automatically determine some meta-data about each automation (e.g. a message's recipient type), I exposed that meta-data in the designs and made it filterable.  This alleviating the need for users to manually create certain tags (e.g. tags for message recipient type).
-				</p>
-				<h3>How that side-project informed <q>Project 2.0</q></h3>
-				<p>
-					The research revealed that customers didn't know how they should group messages to be automated.  Some created dozens of automations, each containing only a few messages.  Others created only a few automations, each containing dozens of messages.  While both of these groups were helped by the tagging system and satisfied that Sense had given them what they asked for, that new organizer-tool failed to solve a fundamental issue:
-				</p>
-				<p class="takeaway">
-					<span>
-						Users were treating automations as equivalent to <q>folders</q> — filling them with loosely related messages rather than a sequence of messages that accomplished a discreet goal.  In fact, the new tool encouraged an incorrect mental model that limited how customers used their automations.  Therefore, I realized that the focus of Project 2.0 needed to shift to helping users create a better mental model.
-					</span>
-				</p>
-				<h2>Side Project: Message Scheduler-tool</h2>
-				<h3>Background</h3>
-				<p>
-					A Sense automation can contain any number of messages to candidates.  Each message has complex rules for how it is triggered and scheduled.  This scheduler-tool contains many options that were added over years to meet customer requests and edge cases.  Eventually, the interactions between those many options become nearly impossible for users to understand.  For example, schedules can be based on dates that are static or relative to database fields, including arithmetic adjustments.  They can recur in complex intervals and change based on the time-of-day and day-of-week.
-				</p>
-				<h3>What we built</h3>
-				<div id="img_Sens_scheduler" class="float_box">
-					<img alt="Automations organizer screenshot" src="assets/details_Sens_scheduler.png">
-				</div>
-				<p>
-					When I discovered this issue during user interviews about an unrelated feature, I convinced my PM partner to prioritize a project to overhaul the scheduler-tool.  Midway through the project the original PM left Sense, and in the months before their role was refilled, I took on the responsibilities of coordinating with engineering to make sure the project was completed.
-				</p>
-				<p>
-					The project strategy was to create a new front-end UX that would reorganize and regroup the many options within the scheduler.  I started by creating a tree-map of every possible combination of options.  To my surprise, not only did I not understand the effect of some combinations, <strong>no one at the company</strong> understood them!  In fact, some of the allowed combinations in the UX were logically impossible.  After solving these issues, I created a functional prototype to test with users.  This revealed the two distinct needs for the new interface:  Firstly, users needed a form that exposed all of the potential values of the many options.  These needed to be concise and compact to make them easy to adjust.  Secondly, users needed an explanation of the result of their selected options on the messaging schedule.  Unlike the form's need for brevity, this explanation needed a verbose sentence format so that the schedule was sure to be human readable and fully understood by users. <sup>(<em>scroll image</em>)</sup>
-				</p>
-				<h3>How that side-project informed <q>Project 2.0</q></h3>
-				<p>
-					The new scheduler I championed was highly successful at improving our KPI of having fewer customer questions sent to customer service.  It was also validated as successful by a post-launch satisfaction survey.  Yet, while customers were better able to schedule each message within an automation, the project exacerbated a critical issue with automations themselves:
-				</p>
-				<p class="takeaway">
-					<span>
-						Because each message had a separate set of scheduling options, we encouraged the wrong mental model for automations.  Users treated messages within an automation as independent rather than part of a sequence with a larger goal.  Again, this side-project validated the importance of helping users create a better mental model for Sense's product suite as a whole.
-					</span>
-				</p>
-				<h2>Side Project: Template Automations</h2>
-				<h3>Background</h3>
-				<p>
-					The issue of customers not fully utilizing Sense automations was caused, in part, by customers not understanding all of the product suite's capabilities.  We knew that a time-tested way to educate users and reduce their workload was to provide them with pre-built, plug-and-play automations designed to solve common use-cases and to follow best-practices.
-				</p>
-				<h3>What we built</h3>
-				<div id="img_Sens_templates" class="float_box">
-					<img alt="Templates selector screenshot" src="assets/details_Sens_templates.png">
-				</div>
-				<p>
-					Since templates are common to many products, the UX patterns I chose made heavy use of my comparative research of other marketing and messaging automation platforms.  I partnered with our sales and customer service teams to determine the most common customer use-cases that we could productize into template content.  During this internal research, I discovered that the customer service team had already created offline templates that they stored as text in Google Docs.  They had been building automations for some customers as a white-glove service.  I organized and standardized these documents to create the starting point for the team that authored the template content.
-				</p>
-				<p>
-					While I was in the discovery phase of this project, Sense had a hackathon, and I knew an engineer who was enthusiastic about it.  They wanted to try their hand at UX design, so I shared my research findings with them and encouraged them to use the findings to decide on UX.  I treated them as a junior designer, giving the engineer wide latitude to learn.  Together we created a working MVP of the new template tool that won the popular vote hackathon award.  This resulted in the head of product re-prioritizing the templates project, moving it to the top priority for the next quarter.
-				</p>
-				</p>
-				<h3>How that side-project informed <q>Project 2.0</q></h3>
-				<p>
-					Unfortunately, in building the releasable version of this new feature, we ran into severe technical constraints.  Templates needed to contain variables, such as recipient names, but different customers used different custom database entities for those variables.  Therefore, in an effort to reduce scope and launch sooner, we decided to remove some variables from the templates rather than build an automatic process to insert the appropriate database entity for each variable and each customer.  Unfortunately, that was the wrong decision.
-				</p>
-				<p class="takeaway">
-					<span>
-						Deciding what can be cut for an MVP is always difficult, but in this case, we made the wrong cuts.  We forced customers to manually fix templates in order to use them, which lost the plug-and-play benefit that was one of the core user-stories behind the project.  The result was low adoption.
-					</span>
-				</p>
-				<h2>Conclusions for <q>Project 2.0</q> — The importance of user mental models</h2>
-				<p>
-					I began the discovery phase of Project 2.0 with the goal of re-organizing the automations product to reduce cognitive overload, expose the full capabilities of the product suite, and track the degree to which customers utilized the suite.  The successes and failures of the side projects described above changed my strategic approach to Project 2.0 considerably along the way.
-				</p>
-				<p>
-					I learned that users had an unhelpful mental model of automations that was subtly reinforced by the product design.  We missed this internally because we were biased by our own marketing and our vision of our business proposition.  We weren't doing enough <q>dog-fooding</q> and listening to users.
-				</p>
-				<p class="takeaway">
-					<span>
-						Project 2.0 would need to change users' mental modal from seeing each automation as a mere <q>folder</q> of messages and database updates to seeing them a sequenced set of messages that work together to achieve a measurable goal.
-					</span>
-				</p>
-				<h3>What we built</h3>
-				<div id="img_Sens_flowchart_2" class="float_box">
-					<img alt="Sample page using the new design system" src="assets/details_Sens_flowchart.png">
-				</div>
-				<p>
-					My learnings from the templates project showed that cuts made for an MVP must not cut the core user stories that drive adoption.  It was tempting to limit the scope of Project 2.0 to merely redesigning the UX and IA, which was a large undertaking on its own.  However, discovering the core user need for understand automations as goal-driven deserved the extra expense to bake a goal-driven mental model into every page and feature.  Through comparative research, I had determined that a <q>line and node</q> canvas builder would be the ideal UX pattern for building automations.  That would visualize each automation as a sequence rather than a disjointed list.
-				</p>
-				<p>
-					Meanwhile, the scheduling project revealed that we could further encourage goal-driven sequencing by detaching the schedule from each message and moving it into a <q>trigger node</q> that sits between two messages. <sup>(<em>see image</em>)</sup>  I created several iterations of working prototypes and tested them with customers.  Meanwhile, I journey mapped the product suite to visualize how separate products overlap to address many use-cases.  The prototypes include a new product-wide navigation, a new rule-builder for targeting recipients, a way to trigger automations based on recipient action (or inaction) to other automations, and a library of reusable user-made automation components.
-				</p>
 			</div>
 		</div>
 		<div id="clover" class="page">
@@ -843,7 +837,7 @@ body {
 				<img alt="Photo of Joesph Brauer" src="assets/joseph_brauer_face.jpg">
 			</div>
 			<p>
-				I've been designing &amp; building software products since 2000, and there's always more to learn as technology and best practices evolve.  I studied hand drawn animation in college, and I'm still passionate about the art of motion, film, and storytelling.  I've been tinkering with writing code and pushing pixels since my father brought home an Amiga 1000.  I'm happily based in San Francisco.
+				I've been designing &amp; building software products since 2000, and there's always more to learn as technology and best practices evolve.  I've worked on the evolutions brought by web 2.0, mobile, social, and most recently AI.  I studied hand drawn animation in college, and I'm still passionate about the art of motion, film, and storytelling.  I'm happily based in San Francisco.
 			</p>
 			<p>
 				&copy;Joseph Brauer 2022
