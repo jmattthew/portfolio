@@ -170,17 +170,31 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		$('#'+id).prepend($(img));
 	}
 
-	if(decryptedCount<10 && pwEntryType == 'manual') {
-		alert('Sorry, the password you entered was incorrect.  Please try again, or contact me for the password.');
+	if(decryptedCount<10) {
+		if(pwEntryType == 'manual') {
+			alert('Sorry, the password you entered was incorrect.  Please try again, or contact me for the correct password.');
+		} else if(pwEntryType == 'url') {
+			alert('The url contains a password "?pw=...", but it\'s incorrect.  Please contact me for the correct password.');
+		}
 	} else {
 		localStorage.setItem('password',pw);
+		if(pwEntryType == 'url') {
+			const stripPwUrl = new URL(window.location.href);
+			stripPwUrl.search = '';
+			window.history.replaceState({}, document.title, stripPwUrl.toString());
+		}
 	}
 }
 
 $('#last_encrypted_file').on('load',function() {
-	if(localStorage.getItem('password')) {
-		var pw = localStorage.getItem('password');
-		insertDecryptedContent(pw,'auto');
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const sp = urlParams.get('pw');
+	const ls = localStorage.getItem('password');
+	if(sp) {
+		insertDecryptedContent(sp,'url');
+	} else if(ls) {
+		insertDecryptedContent(ls,'storage');
 	}
 });
 
