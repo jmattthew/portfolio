@@ -178,23 +178,21 @@ async function insertDecryptedContent(pw,pwEntryType) {
 		}
 	} else {
 		localStorage.setItem('password',pw);
-		if(pwEntryType == 'url') {
-			const stripPwUrl = new URL(window.location.href);
-			stripPwUrl.search = '';
-			window.history.replaceState({}, document.title, stripPwUrl.toString());
-		}
+		const stripPwUrl = new URL(window.location.href);
+		stripPwUrl.search = '';
+		window.history.replaceState({}, document.title, stripPwUrl.toString());
 	}
 }
 
 $('#last_encrypted_file').on('load',function() {
 	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	const sp = urlParams.get('pw');
-	const ls = localStorage.getItem('password');
-	if(sp) {
-		insertDecryptedContent(sp,'url');
-	} else if(ls) {
-		insertDecryptedContent(ls,'storage');
+	const params = new URLSearchParams(queryString);
+	const url = params.get('pw');
+	const storage = localStorage.getItem('password');
+	if(url) {
+		insertDecryptedContent(url,'url');
+	} else if(storage) {
+		insertDecryptedContent(storage,'storage');
 	}
 });
 
